@@ -9,7 +9,10 @@ console.log( "hotel13" );
         ////                                                 
         ,   d_hotel13_rid_rgx = "[FIX:d_hotel13_r13_g_x]"  
         ,   d_hotel13_rid_rgy = "[FIX:d_hotel13_r13_g_y]"  
-        ////                                                  
+        ////                                            
+        ,   d_hotel13_g25_r16 = "[FIX:d_hotel13_g25_r13]"
+        ,   d_hotel13_r16_g25 = "[FIX:d_hotel13_r13_g25]"
+        ////
         ,   d_hotel13_rid_g_x = "[FIX:d_hotel13_r13_g_x]"  
         ,   d_hotel13_rid_g_y = "[FIX:d_hotel13_r13_g_y]"   
         ////
@@ -40,7 +43,7 @@ console.log( "hotel13" );
     ,   vis_bom : (1)   //: VISIBLE: BOMB(S)
     ,   vis_fad : (1)   //: VISIBLE: FADA(S)
     
-    ,   tik_fps : (30)   //: One Frame Per Second
+    ,   tik_fps : (1)   //: One Frame Per Second
     ,   tik_num :(0-1)  //: AKA[ hot_tik ]
     
     ,   clk_p_x :(0-1)  //: Last Clicked Pixel X
@@ -52,13 +55,24 @@ console.log( "hotel13" );
     ,   te7_clk_t_x : new Array( 7 )
     ,   te7_clk_t_y : new Array( 7 )
     
-    ,   edi_te7 :(5)  //: Editor Tile Size ://
+    ,   edi_te7     :(5)  //: Editor Tile Size    ://
+    ,   edi_la3     :(0)  //: Editor Target Layer ://
+    
+    ,   edi_mod_hol :(0)  //: Hold Brush Down     ://
+    ,   edi_mod_ran :(0)  //: Randomize Brush Size://
+    ,   edi_mod_mir :(0)  //: Mirror Brush Strokes://
+    ,   edi_mod_nov :(0)  //: NO-Overlap Mode     ://
+    
+    ,   edi_ask_emp :(0)  //: Editor Ask To Empty ://
+    ,   edi_ask_fil :(0)  //: Editor Ask To Fill  ://
     
     } : { } );;
     //: Object.seal( d_hotel13_sam.te7_clk_t_x );
     //: Object.seal( d_hotel13_sam.te7_clk_t_y );
     Object.seal( d_hotel13_sam             );
         
+    const edi_c_x =( 1 /**TightlyCoupledToDataLayout**/ );
+    const edi_c_y =( 1 /**TightlyCoupledToDataLayout**/ );
 
     const d_bugman_yes =( "[JUST_USE:d_bug]" );
     const d_bugdude_yes=( "[JUST_USE:d_bug]" );
@@ -87,15 +101,31 @@ console.log( "hotel13" );
     //:SERVER_JS_POLYFILLS:==============================://
     
         function F_PRIVATE_HOTEL13_ERR( msg ){ 
-                alert( "[err]" );
-                throw(   msg   );
+                alert( "[err:msg]:" + msg );
+                throw( "[err:msg]:" + msg );
         };;
-        function F_PRIVATE_HOTEL13_ASS( t_f ){
+        function F_PRIVATE_HOTEL13_ASS( t_f , i_msg ){
             
             if( !t_f ){ 
-                F_PRIVATE_HOTEL13_ERR("[ASSERT_FAIL]"); 
+                var msg = "[<NO_MSG>]";
+                if( 2 == arguments.length ){
+                    msg = i_msg ;
+                };;
+                F_PRIVATE_HOTEL13_ERR(
+                    "[ASSERT_FAIL]:"+i_msg
+                );;
             };;
             return( t_f );
+        };;
+        function F_PRIVATE_HOTEL13_LOG( msg , val ){
+        
+            console.log( 
+                "[HOTEL13_LOG](" + msg + ":" + val + ")"
+            );;
+        };;
+        function F_PRIVATE_HOTEL13_MSG( msg ){
+        
+            console.log( "[HOTEL13_MSG]:" + msg );
         };;
 
         if( !d_pix2048 ){
@@ -105,6 +135,8 @@ console.log( "hotel13" );
 
         if( !ERR ){ var ERR = F_PRIVATE_HOTEL13_ERR; };
         if( !ASS ){ var ASS = F_PRIVATE_HOTEL13_ASS; };
+        if( !LOG ){ var LOG = F_PRIVATE_HOTEL13_LOG; };
+        if( !MSG ){ var MSG = F_PRIVATE_HOTEL13_MSG; };
         
     //:==============================:SERVER_JS_POLYFILLS://
 
@@ -252,7 +284,7 @@ console.log( "hotel13" );
         const d_hotel13_te7_t_h = "[:::FIX:::te7_peb]" ;
         const d_hotel13_te7_wid = "[te7_lat||te7_peb]" ;
         const d_hotel13_te7_hig = "[te7_lat||te7_peb]" ;
-        const d_hotel13_te7_san = "[te7_lat:::FIX:::]" ;
+        const d_hotel13_te7_san = "[te7_lat||te7_peb]" ;
     
         var d_hotel13_te7_peb =[
               1 ,   2 ,   4 ,   8 ,  16 ,  32 ,  64
@@ -471,10 +503,44 @@ console.log( "hotel13" );
         Object.freeze( d_hotel13_r13_adj_bot );
     };;
     //:==========================:ADJACENT_ROOMS_LOOKUP_TABLE://
+    //:HELPER_FUNCTION_SECTION_I_GUESS:==================://
 
+        const   F_TOG = function 
+        PRIVATE_F_TOG(
+        
+            i_sam //: stand_alone_main object ://
+        ,   i_nam //: name of value to toggle ://
+        ){
+            if( !!( i_sam[ i_nam ] ) ){
+                    i_sam[ i_nam ]=( 0 );
+            }else{  i_sam[ i_nam ]=( 1 ); };
+            
+            var dbg_val = i_sam[ i_nam ];
+            console.log( "[dbg_val]:" , dbg_val );
+        };;
+        
+        const   F_HOTEL13_GXY_YES = function
+        PRIVATE_F_HOTEL13_GXY_YES(
+        
+            i_g_x //: GridCell X ://
+        ,   i_g_y //: GridCell Y ://
+        ){
+            var o_yes =( 0 );
+            if( i_g_x < 0 || i_g_x >(5-1) 
+            ||  i_g_y < 0 || i_g_y >(5-1)
+            ){
+                o_yes =( 0 );
+            }else{
+                var g25 =( i_g_x + ( i_g_y * 5 ) );
+                var r13 = d_hotel13_g25_r13[ g25 ] ;
+                if( r13 >=( 0 ) ){ o_yes =( 1 ); };
+                if( r13 <=(0-1) ){ o_yes =( 0 ); };
+            };;
+        
+            return( o_yes );
+        };;
 
-
-    
+    //:==================:HELPER_FUNCTION_SECTION_I_GUESS://    
 
                 
     const F_HOTEL13_EXP = "[FIX:F_HOTEL13_DET]" ;
@@ -649,8 +715,25 @@ console.log( "hotel13" );
     ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY| d7,d8 | 09,10 | ://
     ){               //:       @d1_d2_d3_d4_d5_d6_d7_d8@ ://
         if( d_bug ){
+            if(  512 == i_san ){
+            
+                ASS( 0 == i_c_x );
+                ASS( 0 == i_c_y );
+            }else
+            if( 2048 == i_san ){
+            
+                ASS( 1 == i_c_x , "[SEE:#DIA_CITY_2048#]" );
+                ASS( 1 == i_c_y , "[SEE:#DIA_CITY_2048#]" );
+            }else{
+                ERR("[unsupported:i_san]");
+            };;
+        
             if( i_t_x < 0 || i_t_y < 0  ){ ERR("[x_y]"); };
             if( i_te7 < 0 || i_te7 >= 7 ){ ERR("[te7]"); };
+            
+            var txy_m_i = ( d_hotel13_te7_lat[ i_te7 ] - 1 );
+            if( i_t_x > txy_m_i ){ ERR("[OOB:i_t_x]" ); };
+            if( i_t_y > txy_m_i ){ ERR("[OOB:i_t_y]" ); };
         };;
     
         var o_di1 =( 0 ); //:Output:I coord://
@@ -702,6 +785,42 @@ console.log( "hotel13" );
     ,   i_u32        //:<--VALU:TileVAL| tv    | 11,12 | ://
                      
     ){
+        if( d_bug >= 1 ){
+            //:------------------------------------------://
+            //: Try not to bog down code with debug      ://
+            //: checks like this. Try to only write      ://
+            //: these types of paranoid checks when      ://
+            //: code is __NOT__ working. But don't       ://
+            //: do heavy checks like this preemptively.  ://
+            //:------------------------------------------://
+            ASS( 11 == arguments.length            ,"[A1]");
+            
+            if( i_pix.length ==(2048*2048*4) ){
+            
+                ASS( 2048 == i_san );
+            }else
+            if( i_pix.length ==( 512*512*4) ){
+            
+                ASS( 2048 == i_san );
+            }else{
+                ERR("[unsupported_pix_size]");
+            };;
+            
+            if( i_san != 2048
+            &&  i_san !=  512
+            ){
+                ERR("[Bad_Input_Span]");
+            };;
+            
+            ASS( i_c_x >= 0 && i_c_x <= (3-1)      ,"[A3]");
+            ASS( i_c_y >= 0 && i_c_y <= (3-1)      ,"[A4]");
+            ASS( i_h_x >= 0 && i_h_x <= (4-1)      ,"[A5]");
+            ASS( i_h_y >= 0 && i_h_y <= (4-1)      ,"[A6]");
+            ASS( i_te7 >= 0 && i_te7 <= (7-1)      ,"[A7]");
+            ASS( i_t_x >= 0 && i_t_x <= (64-1)     ,"[A8]");
+            ASS( i_t_y >= 0 && i_t_y <= (64-1)     ,"[A9]");
+            ASS( i_u32 >= 0 && i_u32 <=(0xFFFFFFFF),"[AA]");   
+        };;
     
         //: If put operation would go out of bounds,
         //: skip without crashing. No crash because 
@@ -789,6 +908,8 @@ console.log( "hotel13" );
         //:------------------:FIND_DATA_PIXEL_LOCATION_XY://
         //:SET_DATA_IN_PIXEL_BUFFER:---------------------://    
         if( !skipme ){
+        
+            ASS( di1 >= 0 && di1 < (2048*2048) , "[di1]" );
             
             i_pix[ (4*di1)+0 ]=( i_u32 >>> 24 )&(0xFF) ;
             i_pix[ (4*di1)+1 ]=( i_u32 >>> 16 )&(0xFF) ;
@@ -1695,14 +1816,14 @@ console.log( "hotel13" );
             if( sam.edi_te7 != te7 ){ clk =( 0 ); };
                  
             if( 0
-            ||   ( 1 == t_v ) //: Tile Exists?  ://
+            ||   ( t_v >= 1 ) //: Tile Exists?  ://
             ||   ( !!clk    ) //: Tile Clicked? ://
             ){ 
             
                 pog_t_x = ( o_x + ( t_x * t_w ) );
                 pog_t_y = ( o_y + ( t_y * t_h ) );
                 
-                if( !!clk ){
+                if( !!clk && (!(t_v>=1)) ){
                     ctx.fillStyle = "GREEN"   ;
                 }else{
                     ctx.fillStyle = "TAN"   ;
@@ -1807,9 +1928,15 @@ console.log( "hotel13" );
         F_HOTEL13_SAM_TIKLOOP(); //:LoopForever://
     };;
     
-    const   F_HOTEL13_SAM_MOU_CLK = function
-    PRIVATE_F_HOTEL13_SAM_MOU_CLK(
-        evt_clk
+    const   F_HOTEL13_SAM_EDI_CLK_G_X =(
+      "[FIX:F_HOTEL13_SAM_EDI_CLK_GXY]" );;
+    const   F_HOTEL13_SAM_EDI_CLK_G_Y =(
+      "[FIX:F_HOTEL13_SAM_EDI_CLK_GXY]" );;
+    const   F_HOTEL13_SAM_EDI_CLK_GXY = function
+    PRIVATE_F_HOTEL13_SAM_EDI_CLK_GXY(
+    
+        i_clk_p_x
+    ,   i_clk_p_y
     ){
         let sam = d_hotel13_sam ;
         
@@ -1819,8 +1946,137 @@ console.log( "hotel13" );
         var g_w =( can_wid / 5 ); //: GridCellWidth  ://
         var g_h =( can_hig / 5 ); //: GridCellHeight ://
         
-        sam.clk_p_x = evt_clk.offsetX ;
-        sam.clk_p_y = evt_clk.offsetY ;
+        var g_x =Math.floor( i_clk_p_x / g_w );
+        var g_y =Math.floor( i_clk_p_y / g_h );
+    
+        return( [ g_x , g_y ] );
+    };;
+    
+    window.alert( "[are we using : EDI_CLK_HIT : yet?]" );
+    
+    const   F_HOTEL13_EDI_CLK_HIT =(
+      "[FIX:F_HOTEL13_SAM_EDI_CLK_HIT]" );;
+    const   F_HOTEL13_SAM_EDI_CLK_HIT = function
+    PRIVATE_F_HOTEL13_SAM_EDI_CLK_HIT(
+                   //:-----------------------------------://
+        i_clk_p_x  //: [ATF]                             ://    
+    ,   i_clk_p_y  //: Return( 1 )if click position hits ://    
+    ,   i_la3      //: a non-zero tile value of ANY SIZE.://    
+    ){             //:-----------------------------------://
+        var o_hit =( 7066607 );
+        
+        var gxy = F_HOTEL13_SAM_EDI_CLK_GXY(
+                    i_clk_p_x , i_clk_p_y   );;
+        var g_x =( gxy[ 0 ] );
+        var g_y =( gxy[ 1 ] );
+                    
+        var g25 = ( g_x + ( g_y * 5 ) );
+        var h_x = d_hotel13_g25_h_x[ g25 ];
+        var h_y = d_hotel13_g25_h_y[ g25 ];
+        if( h_x < 0 && h_y < 0 ){
+        
+            alert("[OOOOOOOOOOOOOOOOOOB]" );
+        
+            o_hit =( 1 ); //:Undefined. We will say we   ://
+                          //:"hitting the void" because  ://
+                          //:nothing can be placed within://
+                          //:the void....................://
+        }else
+        if( h_x >=0 && h_y >= 0 ){
+        
+            window.alert( "[This formula isn't finished]" );
+            //: we need to check EVERY TILE under the 
+            //: potential tile we are about to set
+            //: for this check to be correct.
+        
+            o_hit =( 0 ); //:InnocentTillProvenGuilty://
+        
+            var dpx ; //:DataPixelX  ://
+            var dpy ; //:DataPixelY  ://
+            var dpi ; //:DataPixelINDEX ://
+            var dci ; //:DataComponentINDEX://
+            var te7 ; //:AllTileSizes://
+            var dia ; //:DiagonalOffset://
+            var lat ; //:LateralOffset ://
+            var lmx ; //:Lateral Move X ? ://
+            var lmy ; //:Lateral Move Y ? ://
+            /// peb ; //:PebbleSize       ://
+            var g_w ; //:GridCellWIDTH    ://
+            var g_h ; //:GridCellHEIGHT   ://
+            var t_x ; //:Tile X           ://
+            var t_y ; //:Tile Y           ://
+            
+            g_w = d_hotel13_sam.hot_can.width / 5 ;
+            g_h = d_hotel13_sam.hot_can.height/ 5 ;
+            
+            lmx =(          ( i_la3 % 2 ) );
+            lmy =(Math.floor( i_la3 / 2 ) );
+            
+            for( te7 = 0 ; te7 <=(7-1) ; te7 ++ ){
+            
+                dpx =( 512 )+( 128 * h_x );
+                dpy =( 512 )+( 128 * h_y );
+                
+                dia = d_hotel13_te7_dia[ te7 ];
+                lat = d_hotel13_te7_lat[ te7 ];
+                /// = d_hotel13_te7_peb[ te7 ];
+                
+                dpx += dia ;
+                dpy += dia ;
+                
+                dpx +=(lat * lmx);
+                dpy +=(lat * lmy);
+                
+                t_w = g_w / lat ; //: lat === ntx ://
+                t_h = g_h / lat ; //: lat === nty ://
+                
+                t_x = Math.floor( i_clk_p_x / t_w );
+                t_y = Math.floor( i_clk_p_y / t_h );
+                t_x = t_x % lat ;
+                t_y = t_y % lat ;
+                
+                dpx += t_x ;
+                dpy += t_y ;
+                
+                dpi = ( dpx + ( dpy * 2048 ) );
+                dci =( 4*dpi );
+                
+                if( 0
+                ||  d_pix2048[ dci+0 ] >= 0x1
+                ||  d_pix2048[ dci+1 ] >= 0x1
+                ||  d_pix2048[ dci+2 ] >= 0x1
+                ||  d_pix2048[ dci+3 ] >= 0x1
+                ){
+                
+                    o_hit =( 1 );
+                    break; //:exitloop://
+                };;
+            };;
+        }else{
+            ERR("[BAD_H_X_AND_H_Y_COMBO:2022]");
+        };;
+    
+        return( o_hit );
+    };;
+    
+    const   F_HOTEL13_SAM_EDI_CLK = function
+    PRIVATE_F_HOTEL13_SAM_EDI_CLK(
+    
+        i_clk_p_x //: Input - CLicK - Pixel.X  ://
+    ,   i_clk_p_y //: Input - CLicK - Pixel.Y  ://
+    ){
+        let sam = d_hotel13_sam ;
+        
+        var can_wid = sam.hot_can.width  ;
+        var can_hig = sam.hot_can.height ;
+        
+        var g_w =( can_wid / 5 ); //: GridCellWidth  ://
+        var g_h =( can_hig / 5 ); //: GridCellHeight ://
+        
+        var nov_hit =( 0 ); //:No_OVerlap...tile_HIT?://        
+        
+        sam.clk_p_x = i_clk_p_x ;
+        sam.clk_p_y = i_clk_p_y ;
         
         sam.clk_g_x =Math.floor( sam.clk_p_x / g_w );
         sam.clk_g_y =Math.floor( sam.clk_p_y / g_h );
@@ -1850,11 +2106,31 @@ console.log( "hotel13" );
             sam.te7_clk_t_y[ te7 ]= t_y ;
         };;
         
-        //:set_tile:-------------------------------------://
+        //:randomize_brush_size:-------------------------://
+        if( sam.edi_mod_ran >= 1 )
         {
-            you left off here make sure code looks
-            correct.
+            sam.edi_te7 = Math.floor( Math.random() * 7 );
         
+        
+        };;
+        //:-------------------------:randomize_brush_size://
+        //:NO_OVerlap_Tile_Setting_Mode:-----------------://
+        if( sam.edi_mod_nov >= 1 ){
+        
+            nov_hit=(
+                F_HOTEL13_SAM_EDI_CLK_HIT( 
+                    sam.clk_p_x
+                ,   sam.clk_p_y
+                ,   sam.edi_te7
+                ));;
+        };;
+        //:-----------------:NO_OVerlap_Tile_Setting_Mode://
+        //:set_tile:-------------------------------------://
+        //:put_tile:-------------------------------------://
+        if( F_HOTEL13_GXY_YES( sam.clk_g_x , sam.clk_g_y ))
+        {
+        if( nov_hit <= 0 /** Not Tile Blocked **/ )
+        {
             const g_x = sam.clk_g_x ;
             const g_y = sam.clk_g_y ;
             const te7 = sam.edi_te7 ;
@@ -1863,7 +2139,10 @@ console.log( "hotel13" );
             const la3_til =( 0 ); //: Tile Layer ://
             const la3_bom =( 1 ); //: Bomb Layer ://
             const la3_fad =( 2 ); //: Fada Layer ://
-            const la3 =( la3_til );
+            const la3 =( sam.edi_la3 );
+            if( la3_til == la3 ){ MSG("[setting:TILE]"); };
+            if( la3_bom == la3 ){ MSG("[setting:BOMB]"); };
+            if( la3_fad == la3 ){ MSG("[setting:FADA]"); };
             //:------------------------------------------://
             //: Cell coordinate of the level pack in     ://
             //: memory that corresponds to the one that  ://
@@ -1882,25 +2161,49 @@ console.log( "hotel13" );
             const t_y = sam.te7_clk_t_y[   te7 ];
             
             F_HOTEL13_U32_PUT_ANY(
-            ,   d_pix2048
+                d_pix2048
             ,        2048 
             ,   c_x , c_y        //:<--LOCA:CITYBLOCK
             ,   h_x , h_y        //:<--LOCA:HOTELROOM
             ,   te7 , la3        //:<--LOCA:EXPALAYER
             ,   t_x , t_y        //:<--LOCA:TILE__X_Y
-            
             ,   val              //:<--VALU:TILE__VAL
             );;
-        }
+            
+        };; //:Not Tile BLocked  ://
+        };; //:Valid Grid Cell ? ://
+        //:-------------------------------------:put_tile://
         //:-------------------------------------:set_tile://
+    
+    };;
+    
+    const   F_HOTEL13_SAM_MOU_CLK = function
+    PRIVATE_F_HOTEL13_SAM_MOU_CLK(
+        evt_clk
+    ){
+        var clk_p_x = evt_clk.offsetX ;
+        var clk_p_y = evt_clk.offsetY ;
         
+        F_HOTEL13_SAM_EDI_CLK(
+            clk_p_x
+        ,   clk_p_y
+        );;
+    
         console.log( "[evt_clk]:" , evt_clk );
     };;
     const   F_HOTEL13_SAM_MOU_MOV = function
     PRIVATE_F_HOTEL13_SAM_MOU_MOV(
         evt_mov
     ){
-        console.log( "[evt_mov]:" , evt_mov );
+        if( sam.edi_mod_hol >= 1 ){
+        
+            F_HOTEL13_SAM_EDI_CLK(
+                evt_mov.offsetX
+            ,   evt_mov.offsetY
+            );;
+        };;
+    
+        //////////////////console.log( "[evt_mov]:" , evt_mov );
     };;
     
     
@@ -1926,6 +2229,7 @@ console.log( "hotel13" );
     PRIVATE_F_HOTEL13_SAM_KEY_DOW(
         evt_key
     ){
+        let sam = d_hotel13_sam ;
         var asc = F_HOTEL13_EVT_ASC( evt_key );
         
         //:--------------------------------------://
@@ -1941,6 +2245,86 @@ console.log( "hotel13" );
         if( "5" == asc ){ sam.edi_te7 = 4 ; };
         if( "6" == asc ){ sam.edi_te7 = 5 ; };
         if( "7" == asc ){ sam.edi_te7 = 6 ; };
+        
+        //:set_tiles_bombs_or_fadas:---------------------://
+        //:                                              ://
+        //:  Tiles : Game Geometry                       ://
+        //:  Bombs : Proximity Mines On Timers           ://
+        //:  Fadas : Fire_Also_DAmage , Flames_Are_DAmage://
+        //:                                              ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        
+        var F_A_D =( 2 );
+        if( "T" == asc ){ sam.edi_la3 =(   0   ); };
+        if( "B" == asc ){ sam.edi_la3 =(   1   ); };
+        if( "D" == asc ){ sam.edi_la3 =( F_A_D ); };
+        if( "F" == asc ){ sam.edi_la3 =( F_A_D ); };
+        
+        //:herman_s_editor_modes:------------------------://
+        //:                                              ://
+        //: [H]e[R][M]an                                 ://
+        //:                                              ://
+        //: [H]: Hold down brush                         ://
+        //: [R]: Randomize Brush Size Every Click        ://
+        //: [M]: Mirror Brush Strokes.                   ://
+        //:                                              ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        
+        if( "H" == asc ){ F_TOG( sam,"edi_mod_hol" ); };
+        if( "R" == asc ){ F_TOG( sam,"edi_mod_ran" ); };
+        if( "M" == asc ){ F_TOG( sam,"edi_mod_mir" ); };
+        if( "N" == asc ){ F_TOG( sam,"edi_mod_nov" ); };
+        
+        if( "M" == asc ){
+            window.alert("[mirroring_not_implemented]");
+        };;
+        if( "O" == asc ){
+            window.alert(
+                "[did_you_mean:N:for:NoOverlapMode?]"
+            );;
+        };;
+        
+        //:DANGER_ZONE:----------------------------------:// 
+        //:                                              ://
+        //: You have to press the key 3 times because    ://
+        //: we don't want any accidents here.            ://
+        //: 3 in a row without any other keys between.   ://
+        //:                                              ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        if( "9" == asc ){
+                sam.edi_ask_fil ++ ;
+            if( sam.edi_ask_fil >= 3 ){
+                sam.edi_ask_fil =( 0 );
+                
+                window.alert( "[0xFF:FILLING]" );
+                
+                var mbi=( 2048*2048*4 )-1 ; //:@mbi@://
+                for( var fil = 0 ; fil <=(mbi) ; fil++ ){
+                
+                    d_pix2048[ fil ]=( 0xFF );
+                };;
+                var debugger_breakpoint_hack=(777);
+            };;
+        }else{
+            sam.edi_ask_fil=( 0 );
+        };;
+        if( "0" == asc ){
+                sam.edi_ask_emp ++ ;
+            if( sam.edi_ask_emp >= 3 ){
+                sam.edi_ask_emp =( 0 );
+                
+                window.alert( "[0x00:EMPTYING]" );
+                
+                var mbi=( 2048*2048*4 )-1 ; //:@mbi@;//
+                for( var emp = 0 ; emp <=(mbi) ; emp++ ){
+                
+                    d_pix2048[ emp ]=( 0x00 ); 
+                };;
+            };;
+        }else{
+            sam.edi_ask_emp=( 0 );
+        };;
+        //:----------------------------------:DANGER_ZONE://   
         
         console.log( "[key_dow]:" , evt_key );
     };;
@@ -1980,11 +2364,20 @@ console.log( "hotel13" );
         };;
         for( g25 = 0 ; g25 <=(25-1) ; g25++ ){
         
+            //:----------------------------------://
+            //: Not all 25 values map to a       ://
+            //: valid level map. Some map to     ://
+            //: "the void". Hence (r13>=0)check. ://
+            //:----------------------------------://
+        
             r13     = d_hotel13_g25_r13[ g25 ];
+            if( r13 >= 0 ){
             g25_got = d_hotel13_r13_g25[ r13 ];
             if( g25 != g25_got ){
+                LOG("[G25]"      , g25          );
+                LOG("[G25_GOT]"  , g25_got      );
                 ERR("[G25_R13_TABLE_BROKEN:002]");
-            };;
+            };;};;
         };;
         
         //:----------------------------------------------://
@@ -2575,6 +2968,40 @@ console.log( "hotel13" );
         
     @SAM@ : Stand_Alone_Mode
     @sam@ : Stand_Alone_Mode
+    
+    #DIA_CITY_2048# :
+    
+        |<--------- d_pix2048 --------->|
+        +--512--+--512--+--512--+--512--+   
+        |       |       |       |       | ACTIVE LEVEL PACK:
+        |hot_t_l|hot_top|hot_t_r|       | 
+        |       |       |       |       |   HOT_CEN
+        +-------+-------+-------+-------+
+        +--512--+--512--+--512--+--512--+
+        |       |edi_c_x|       |       | ADJACENT LEVEL PACK:
+        |hot_lef|HOT_CEN|hot_rig|       |
+        |       |edi_c_y|       |       |   HOT_LEF
+        +-------+-------+-------+-------+   HOT_RIG
+        +--512--+--512--+--512--+--512--+   HOT_TOP
+        |       |       |       |       |   HOT_BOT
+        |hot_b_l|hot_bot|hot_b_r|       |
+        |       |       |       |       | KITTY CORNER  
+        +-------+-------+-------+-------+       LEVEL PACK :
+        +--512--+--512--+--512--+--512--+
+        |       |       |       |       |   HOT_T_L
+        |       |       |       |       |   HOT_T_R
+        |       |       |       |       |   HOT_B_L
+        +-------+-------+-------+-------+   HOT_B_R
+        
+    @mbi@ : Max_Byte_Index ( of pixel array )
+    
+    @2022_07_06@ : If I die it is because gramps was
+                 : over-ambitious passing cars on
+                 : a 2-lane highway. 854PM.
+                 
+    @2022_07_06@ : If I die it's because gramps keeps
+                 : an unsafe following distance when
+                 : trying to pass cars.
     
 *** ******************************************************** **/
 /** DEVELOPER_TODO_NOTE ************************************ ***
