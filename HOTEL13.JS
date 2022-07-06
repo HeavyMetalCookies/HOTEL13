@@ -239,6 +239,8 @@ console.log( "hotel13" );
 
     //:MISC_HOTEL13_LOOKUP_TABLES:===========================://
     
+        //:TAG[ lookup tables | lookuptables ]://
+    
         //:------------------------------------------://
         //: Don't be redundant here. Lateral offset  ://
         //: is the size of current tilemap in tiles  ://
@@ -332,13 +334,42 @@ console.log( "hotel13" );
         ,               (g22) 
         ];;
         
+        var d_hotel13_r13_h_x =[
+                            (h_x_0) 
+        ,           (h_x_1),(h_x_2),(h_x_3) 
+        ,   (h_x_0),(h_x_1),(h_x_2),(h_x_3),(h_x_0)
+        ,           (h_x_1),(h_x_2),(h_x_3) 
+        ,                   (h_x_0) 
+        ];;
+        var d_hotel13_r13_h_y =[
+                            (h_y_0) 
+        ,           (h_y_0),(h_y_0),(h_y_0) 
+        ,   (h_y_1),(h_y_1),(h_y_1),(h_y_1),(h_y_2)
+        ,           (h_y_2),(h_y_2),(h_y_2) 
+        ,                   (h_y_3) 
+        ];;
+        
+        //:----------------------------------------------://
+        //: #IMPOSSIBLE_LOOKUP_TABLE#                    ://
+        //:                                              ://
+        //: You can't convert from axis position to      ://
+        //: axis position like these because :           ://
+        //: gxy[ 2,0 ] ===> hxy[ 0,0 ]                   ://
+        //: gxy[ 1,1 ] ===> hxy[ 0,1 ]                   ://
+        //: gxy[ 2,1 ] ===> hxy[ 0,2 ]                   ://
+        //:                                              ://
+        //: [ g_y==1 ] ===> h_y[ 1 || 2 ]                ://
+        //:----------------------------------------------://
+        
+        var d_hotel13_g_x_h_x = "[IMPOSSIBLE_LOOKUP_TABLE]";
+        var d_hotel13_g_y_h_y = "[IMPOSSIBLE_LOOKUP_TABLE]";
+        
         var d_hotel13_g25_h_x =[
             ( ___ ),( ___ ),(h_x_0),( ___ ),( ___ )
         ,   ( ___ ),(h_x_1),(h_x_2),(h_x_3),( ___ )
-        ,   (h_x_0),(h_x_1),(h_x_2),(h_x_3),(h_x_1)
-        ,   ( ___ ),(h_x_0),(h_x_1),(h_x_2),( ___ )
-        ,   ( ___ ),( ___ ),(h_x_3),( ___ ),( ___ )
-        
+        ,   (h_x_0),(h_x_1),(h_x_2),(h_x_3),(h_x_0)
+        ,   ( ___ ),(h_x_1),(h_x_2),(h_x_3),( ___ )
+        ,   ( ___ ),( ___ ),(h_x_0),( ___ ),( ___ )
         ];;
         var d_hotel13_g25_h_y =[
             ( ___ ),( ___ ),(h_y_0),( ___ ),( ___ )
@@ -1819,6 +1850,50 @@ console.log( "hotel13" );
             sam.te7_clk_t_y[ te7 ]= t_y ;
         };;
         
+        //:set_tile:-------------------------------------://
+        {
+            you left off here make sure code looks
+            correct.
+        
+            const g_x = sam.clk_g_x ;
+            const g_y = sam.clk_g_y ;
+            const te7 = sam.edi_te7 ;
+            const val = 0xFFFFFFFF  ;
+            
+            const la3_til =( 0 ); //: Tile Layer ://
+            const la3_bom =( 1 ); //: Bomb Layer ://
+            const la3_fad =( 2 ); //: Fada Layer ://
+            const la3 =( la3_til );
+            //:------------------------------------------://
+            //: Cell coordinate of the level pack in     ://
+            //: memory that corresponds to the one that  ://
+            //: active simulation runs on. The rest      ://
+            //: surrounding just lets you know what is   ://
+            //: adjacent to you.                         ://
+            //:------------------------------------------://
+            const c_x =( 1 /** Only Edit Active Level **/ );
+            const c_y =( 1 /** Only Edit Active Level **/ );
+            
+            const g25 = ( g_x + ( g_y * 5 ) );
+            const r13 = d_hotel13_g25_r13[ g25 ];
+            const h_x = d_hotel13_r13_h_x[ r13 ];
+            const h_y = d_hotel13_r13_h_y[ r13 ];
+            const t_x = sam.te7_clk_t_x[   te7 ];
+            const t_y = sam.te7_clk_t_y[   te7 ];
+            
+            F_HOTEL13_U32_PUT_ANY(
+            ,   d_pix2048
+            ,        2048 
+            ,   c_x , c_y        //:<--LOCA:CITYBLOCK
+            ,   h_x , h_y        //:<--LOCA:HOTELROOM
+            ,   te7 , la3        //:<--LOCA:EXPALAYER
+            ,   t_x , t_y        //:<--LOCA:TILE__X_Y
+            
+            ,   val              //:<--VALU:TILE__VAL
+            );;
+        }
+        //:-------------------------------------:set_tile://
+        
         console.log( "[evt_clk]:" , evt_clk );
     };;
     const   F_HOTEL13_SAM_MOU_MOV = function
@@ -1876,7 +1951,76 @@ console.log( "hotel13" );
         console.log( "[key_upp]:" , evt_key );
     };;
     
+    //:HOTEL13_UNIT_TEST:================================://
     
+    const   F_HOTEL13_UTM = function
+    PRIVATE_F_HOTEL13_UTM(
+    
+        /** NOARGS **/
+    ){
+        var r13     ;
+        var r13_got ;
+        
+        var g25     ;
+        var g25_got ;
+        
+        var got_h_x ;
+        var exp_h_x ;
+        
+        var got_h_y ;
+        var exp_h_y ;
+        
+        for( r13 = 0 ; r13 <=(13-1) ; r13++ ){
+        
+            g25     = d_hotel13_r13_g25[ r13 ];
+            r13_got = d_hotel13_g25_r13[ g25 ];
+            if( r13 != r13_got ){
+                ERR("[R13_G25_TABLE_BROKEN:001]");
+            };;
+        };;
+        for( g25 = 0 ; g25 <=(25-1) ; g25++ ){
+        
+            r13     = d_hotel13_g25_r13[ g25 ];
+            g25_got = d_hotel13_r13_g25[ r13 ];
+            if( g25 != g25_got ){
+                ERR("[G25_R13_TABLE_BROKEN:002]");
+            };;
+        };;
+        
+        //:----------------------------------------------://
+        //: #r13_hxy# : This is okay for a unit test     ://    
+        //: table. But this javascript dirtyness of      ://    
+        //: arrays of arrays and a STRING in my          ://    
+        //: number array... fuck that in production      ://    
+        //: code.                                        ://    
+        //:----------------------------------------------://
+        var r13_hxy =[
+            [ 0 , 0 ] , [ 1 , 0 ] , [ 2 , 0 ] , [ 3 , 0 ]
+        ,   [ 0 , 1 ] , [ 1 , 1 ] , [ 2 , 1 ] , [ 3 , 1 ]
+        ,   [ 0 , 2 ] , [ 1 , 2 ] , [ 2 , 2 ] , [ 3 , 2 ]
+        ,   [ 0 , 3 ] , [ "OOB" ] , [ "OOB" ] , [ "OOB" ]
+        ];;
+         
+        for( r13 = 0 ; r13 <=(13-1) ; r13++ ){
+        
+            got_h_x = d_hotel13_r13_h_x[ r13 ];
+            exp_h_x = r13_hxy[ r13 ][ 0 ];
+            if( got_h_x != exp_h_x ){
+            
+                ERR("[BROKEN_LUT:d_hotel13_r13_h_x]");
+            };;
+        };;
+        for( r13 = 0 ; r13 <=(13-1) ; r13++ ){
+        
+            got_h_y = d_hotel13_r13_h_y[ r13 ];
+            exp_h_y = r13_hxy[ r13 ][ 1 ];
+            if( got_h_x != exp_h_x ){
+            
+                ERR("[BROKEN_LUT:d_hotel13_r13_h_x]");
+            };;
+        };;
+    };;
+    //:================================:HOTEL13_UNIT_TEST://
     
     
     //:HOTEL13_STAND_ALONE_SETUP:========================://
@@ -1945,6 +2089,7 @@ console.log( "hotel13" );
         }
         //:-------------------------:add_keyboard_handler://
     
+        F_HOTEL13_UTM();  //:#WHY_UTM_ONLY_CALLED_HERE#??://
         F_HOTEL13_SAM_RUN();
     
     }else{
@@ -2419,6 +2564,17 @@ console.log( "hotel13" );
     @pog_t_y@ : Pixel_OriGin : Tile_Y
     
     #CHECKER_MODULO_SNIP# :  if( (t_x%2)==(t_y%2) ){ ... };;
+    
+    #WHY_UTM_ONLY_CALLED_HERE# :
+    
+        When I cut+paste HOTEL13 into server.js , I want
+        to give[ server.js ]the option as to whether
+        it wants to invoke HOTEL13 unit tests. Thus
+        unit tests only go off automatically when
+        HOTEL13 code detects it is in stand alone mode(SAM).
+        
+    @SAM@ : Stand_Alone_Mode
+    @sam@ : Stand_Alone_Mode
     
 *** ******************************************************** **/
 /** DEVELOPER_TODO_NOTE ************************************ ***
