@@ -1,13 +1,76 @@
 console.log( "hotel13" );
 
+    //:ITS_WRONG_CARL:===================================://
+    
+        const  ITS_WRONG_CARL = "[ITS_WRONG_CARL]"
+        ////
+        ,   d_hotel13_r13_rgx = "[FIX:d_hotel13_r13_g_x]"  
+        ,   d_hotel13_r13_rgy = "[FIX:d_hotel13_r13_g_y]"  
+        ////                                                 
+        ,   d_hotel13_rid_rgx = "[FIX:d_hotel13_r13_g_x]"  
+        ,   d_hotel13_rid_rgy = "[FIX:d_hotel13_r13_g_y]"  
+        ////                                                  
+        ,   d_hotel13_rid_g_x = "[FIX:d_hotel13_r13_g_x]"  
+        ,   d_hotel13_rid_g_y = "[FIX:d_hotel13_r13_g_y]"   
+        ////
+        ,   rid = "[FIX:r13:(r13==RoomID[0...12])]"
+        ,   r16 = "[FIX:r13:(THIRTEEN_NOT_SIXTEEN_IDIOT)]"
+        ,   gid = "[FIX:g25:(g25==GridID[0...24])]"
+        ////
+        ,   rgw = "[FIX:just_use:g_w(gridcell_width_)]"
+        ,   rgh = "[FIX:just_use:g_h(gridcell_height)]"
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    //:===================================:ITS_WRONG_CARL://
+
+
+    const d_hotel13_yes_aim =( 0
+    ||  (!( "undefined" === typeof notnode ))  
+    ||  (!( "undefined" === typeof yesnode ))  
+    );;
+    const d_hotel13_not_aim =( 
+        (!d_hotel13_yes_aim)  );;
+        
+    const d_hotel13_sam =( d_hotel13_not_aim ? 
+    {   laxcoma : "[HACK]"
+    
+    ,   hot_can : null  //: HOTel CANvas
+    ,   hot_con : null  //: HOTel CONtext
+    
+    ,   vis_til : (1)   //: VISIBLE: TILE(S)
+    ,   vis_bom : (1)   //: VISIBLE: BOMB(S)
+    ,   vis_fad : (1)   //: VISIBLE: FADA(S)
+    
+    ,   tik_fps : (1)   //: One Frame Per Second
+    ,   tik_num :(0-1)  //: AKA[ hot_tik ]
+    
+    ,   clk_p_x :(0-1)  //: Last Clicked Pixel X
+    ,   clk_p_y :(0-1)  //: Last Clicked Pixel Y
+    
+    ,   clk_g_x :(0-1)  //: Last Clicked Grid Cell X
+    ,   clk_g_y :(0-1)  //: Last Clicked Grid Cell Y
+    
+    } : { } );;
+    Object.seal( d_hotel13_sam );
+        
+
     const d_bugman_yes =( "[JUST_USE:d_bug]" );
     const d_bugdude_yes=( "[JUST_USE:d_bug]" );
     
     var d_bug =( 1 /**This Doesn't Need SYSTEM NAME**/ );
     
-    var d_tik ; //:Global Ticker, 30FPS ticker that keeps://    
-                //:counting up 1 every frame. Use as     ://
-                //:unsigned integer.                     ://
+    if( d_hotel13_yes_aim ){
+    
+        if( 0
+        ||  ( "undefined" == typeof d_tik )
+        ||  ( !( d_tik >= (0-1) ) )
+        ){
+            //:Global Ticker, 30FPS ticker that keeps://    
+            //:counting up 1 every frame. Use as     ://
+            //:unsigned integer.                     ://
+            
+            ERR("[WHERE_THE_FUCK_IS_MY_TICKER:2022]");
+        };;
+    };;
 
     //:DEV_NOTES:========================================://
     
@@ -42,6 +105,11 @@ console.log( "hotel13" );
 
     const c_opptrez =( 320 /**OnePixelPerTileRez**/ );
     ASS( 5 * 64 == 320 );
+    ASS(  64 == c_opptrez /  5 );
+    ASS(   5 == c_opptrez / 64 );
+    
+    const c_fiverez =( 1600 /** Five Pixels Per Tile **/ );
+    ASS(  c_fiverez / 5 == c_opptrez );
     
                              //:         BIG == BIG/LARGE://
     const c_tendbig =( 5 );  //:Reach Of BIG Bomb Tendril://
@@ -164,6 +232,23 @@ console.log( "hotel13" );
 
     //:MISC_HOTEL13_LOOKUP_TABLES:===========================://
     
+        //:------------------------------------------://
+        //: Don't be redundant here. Lateral offset  ://
+        //: is the size of current tilemap in tiles  ://
+        //: No need for[ san ]lookup table.          ://
+        //:------------------------------------------://
+        
+        const d_hotel13_te7_t_s = "[:::FIX:::te7_peb]" ;
+        const d_hotel13_te7_t_w = "[:::FIX:::te7_peb]" ;
+        const d_hotel13_te7_t_h = "[:::FIX:::te7_peb]" ;
+        const d_hotel13_te7_wid = "[te7_lat||te7_peb]" ;
+        const d_hotel13_te7_hig = "[te7_lat||te7_peb]" ;
+        const d_hotel13_te7_san = "[te7_lat:::FIX:::]" ;
+    
+        var d_hotel13_te7_peb =[
+              1 ,   2 ,   4 ,   8 ,  16 ,  32 ,  64
+        //: t_0 , t_1 , t_2 , t_3 , t_4 , t_5 , t_6  ://             
+        ];;
         var d_hotel13_te7_lat =[
              64 ,  32 ,  16 ,   8 ,   4 ,   2 ,   1
         //: t_0 , t_1 , t_2 , t_3 , t_4 , t_5 , t_6  ://
@@ -200,9 +285,9 @@ console.log( "hotel13" );
     //:           +---+          <>          +---+           ://    
     //:           |012|          <>          |r12|           ://    
     //:           +---+          <>          +---+           ://    
-    //:  Room_ID ( rid )         <> Room_ID ( rid )          ://
+    //:  Room_ID ( r13 )         <> Room_ID ( r13 )          ://
     //:- - - - - - - - - - - - - -- - - - - - - - - - - - - -://
-    //:  Grid_ID ( gid )         <> Grid_ID ( gid )          ://
+    //:  Grid_ID ( g25 )         <> Grid_ID ( g25 )          ://
     //:           +---+          <>          +---+           ://
     //:  000  001 |002| 003  004 <> g00  g01 |g02| g03  g04  ://
     //:           +---+          <>          +---+           ://
@@ -224,7 +309,7 @@ console.log( "hotel13" );
         let  _  =( 0-4040666 ) ;
         let ___ =( 0-333_666 ) ;
         
-        var d_hotel13_gid_rid =[ //: Grid_ID ==> Room_ID ://    
+        var d_hotel13_g25_r13 =[ //: Grid_ID ==> Room_ID ://    
             
             ( _ ),( _ ),(r00),( _ ),( _ )
         ,   ( _ ),(r01),(r02),(r03),( _ )
@@ -232,7 +317,7 @@ console.log( "hotel13" );
         ,   ( _ ),(r09),(r10),(r11),( _ )
         ,   ( _ ),( _ ),(r12),( _ ),( _ )
         ];;
-        var d_hotel13_rid_gid =[ //: Room_ID ==> Grid_ID ://    
+        var d_hotel13_r13_g25 =[ //: Room_ID ==> Grid_ID ://    
                         (g02) 
         ,         (g06),(g07),(g08) 
         ,   (g10),(g11),(g12),(g13),(g14)
@@ -240,7 +325,7 @@ console.log( "hotel13" );
         ,               (g22) 
         ];;
         
-        var d_hotel13_gid_h_x =[
+        var d_hotel13_g25_h_x =[
             ( ___ ),( ___ ),(h_x_0),( ___ ),( ___ )
         ,   ( ___ ),(h_x_1),(h_x_2),(h_x_3),( ___ )
         ,   (h_x_0),(h_x_1),(h_x_2),(h_x_3),(h_x_1)
@@ -248,7 +333,7 @@ console.log( "hotel13" );
         ,   ( ___ ),( ___ ),(h_x_3),( ___ ),( ___ )
         
         ];;
-        var d_hotel13_gid_h_y =[
+        var d_hotel13_g25_h_y =[
             ( ___ ),( ___ ),(h_y_0),( ___ ),( ___ )
         ,   ( ___ ),(h_y_0),(h_y_0),(h_y_0),( ___ )
         ,   (h_y_1),(h_y_1),(h_y_1),(h_y_1),(h_y_2)
@@ -282,19 +367,19 @@ console.log( "hotel13" );
     t=[ ___,___,r00,___,___,r01,r02,r03,___,r05,r06,r07,r10 ];
     b=[ r02,r05,r06,r07,___,r09,r10,r11,___,___,r12,___,___ ];
         
-        var d_hotel13_rid_adj_lef=( l ); //: rid ==> adj_lef ://
-        var d_hotel13_rid_adj_rig=( r ); //: rid ==> adj_rig ://
-        var d_hotel13_rid_adj_top=( t ); //: rid ==> adj_top ://
-        var d_hotel13_rid_adj_bot=( b ); //: rid ==> adj_bot ://
+        var d_hotel13_r13_adj_lef=( l ); //: r13 ==> adj_lef ://
+        var d_hotel13_r13_adj_rig=( r ); //: r13 ==> adj_rig ://
+        var d_hotel13_r13_adj_top=( t ); //: r13 ==> adj_top ://
+        var d_hotel13_r13_adj_bot=( b ); //: r13 ==> adj_bot ://
         
-        var d_hotel13_rid_g_x =[  //: RoomID ==> Grid_X ://
+        var d_hotel13_r13_g_x =[  //: RoomID ==> Grid_X ://
                             (g_x_2) 
         ,           (g_x_1),(g_x_2),(g_x_3) 
         ,   (g_x_0),(g_x_1),(g_x_2),(g_x_3),(g_x_4)
         ,           (g_x_1),(g_x_2),(g_x_3) 
         ,                   (g_x_2)
         ];;
-        var d_hotel13_rid_g_y =[  //: RoomID ==> Grid_Y ://
+        var d_hotel13_r13_g_y =[  //: RoomID ==> Grid_Y ://
                             (g_y_0) 
         ,           (g_y_1),(g_y_1),(g_y_1) 
         ,   (g_y_2),(g_y_2),(g_y_2),(g_y_2),(g_y_2)
@@ -332,20 +417,20 @@ console.log( "hotel13" );
     b_l=[ r01,r04,r05,r06,___,___,r09,r10,r11,___,___,r12,___ ];   
     b_r=[ r03,r06,r07,r08,r09,r10,r11,___,___,r12,___,___,___ ];   
  
-        d_hotel13_rid_kit_t_l =( t_l );      
-        d_hotel13_rid_kit_t_r =( t_r );      
-        d_hotel13_rid_kit_b_l =( b_l );      
-        d_hotel13_rid_kit_b_r =( b_r );      
+        d_hotel13_r13_kit_t_l =( t_l );      
+        d_hotel13_r13_kit_t_r =( t_r );      
+        d_hotel13_r13_kit_b_l =( b_l );      
+        d_hotel13_r13_kit_b_r =( b_r );      
                                                                   
         Object.freeze( d_hotel13_adj         );                       
         Object.freeze( d_hotel13_kit         );
-        Object.freeze( d_hotel13_gid_rid     );
-        Object.freeze( d_hotel13_rid_gid     );
+        Object.freeze( d_hotel13_g25_r13     );
+        Object.freeze( d_hotel13_r13_g25     );
         
-        Object.freeze( d_hotel13_rid_adj_lef );
-        Object.freeze( d_hotel13_rid_adj_rig );
-        Object.freeze( d_hotel13_rid_adj_top );
-        Object.freeze( d_hotel13_rid_adj_bot );
+        Object.freeze( d_hotel13_r13_adj_lef );
+        Object.freeze( d_hotel13_r13_adj_rig );
+        Object.freeze( d_hotel13_r13_adj_top );
+        Object.freeze( d_hotel13_r13_adj_bot );
     };;
     //:==========================:ADJACENT_ROOMS_LOOKUP_TABLE://
 
@@ -362,7 +447,7 @@ console.log( "hotel13" );
         for( let i_te7 = 0 ; i_te7 <=(7-1) ; i_te7++ ){
         
             //: Lateral Offset
-            var lat =( 1+( 0x3F >>> (i_te7) ) );
+            var lat =( 1+( 0x3F >>> (i_te7) ) );   //:#LATOS#://
             var chk =( d_hotel13_te7_lat[ i_te7 ] );
             if( lat != chk ){ ERR("[no_agree]"); };
             console.log( i_te7 , " ==> " , lat );
@@ -370,7 +455,7 @@ console.log( "hotel13" );
         console.log( " " );
         for( let i_te7 = 0 ; i_te7 <=(7-1) ; i_te7++ ){
         
-            //: Diagonal Offset
+            //: Diagonal Offset #DIAGOS#
             var dia =( 128 - Math.pow( 2 , (7-i_te7) ) );
             var chk =( d_hotel13_te7_dia[ i_te7 ] );
             if( dia != chk ){ ERR("[no_agree]" ); };
@@ -538,8 +623,8 @@ console.log( "hotel13" );
         var   l_x =( 0 ); //:Lateral X
         var   l_y =( 0 ); //:Lateral Y
         
-        dia = d_hotel13_te7_dia[ i_te7 ];
-        lat = d_hotel13_te7_lat[ i_te7 ];
+        dia =( d_hotel13_te7_dia[ i_te7 ] );   //:#DIAGO#://
+        lat =( d_hotel13_te7_lat[ i_te7 ] );   //:#LATOS#://
         
         l_x =          ( i_la3 % 2 );
         l_y =Math.floor( i_la3 / 2 );
@@ -792,35 +877,35 @@ console.log( "hotel13" );
         var coe_p_x = 512; //: @cen_of_exp_pix@ X ://    
         var coe_p_y = 512; //: @cen_of_exp_pix@ Y ://
         var coe_p_i ; //:centerofexplosionpixelindex://
-        var     h_i = "[USE:rid:room_id]" ;
-        var     gid ; //:Grid ID://
-        var     rid ; //:Room ID://
+        var     h_i = "[USE:r13:room_id]" ;
+        var     g25 ; //:Grid ID://
+        var     r13 ; //:Room ID://
         var     p_i ; //:pixelindex://
         var     c_i ; //:componentindex://
         
-        const   rid_kit =( "[FIX:kit_rid]" );
+        const   r13_kit =( "[FIX:kit_r13]" );
         
-        var     kit_rid ; //:kitty corner room id
+        var     kit_r13 ; //:kitty corner room id
         var     kit_g5x ; //:kitty gridcell x
         var     kit_g5y ; //:kitty gridcell y
         
-        var     adj_rid ; //:adjacent_room_id
+        var     adj_r13 ; //:adjacent_room_id
         var     adj_g5x ; //:adjacent_gridcell_x
         var     adj_g5y ; //:adjacent_gridcell_Y
         
         var     doe_x   ; //:Detonation_Overflow_Edge
         var     doe_y   ; //:Detonation_Overflow_Edge
         
-        gid = ( i_g5x + ( i_g5y * 5 ) );
-        rid = d_hotel13_gid_rid[ gid ];
-        h_x = d_hotel13_gid_h_x[ gid ];
-        h_y = d_hotel13_gid_h_y[ gid ];
-        ASS( rid >= 0 );
+        g25 = ( i_g5x + ( i_g5y * 5 ) );
+        r13 = d_hotel13_g25_r13[ g25 ];
+        h_x = d_hotel13_g25_h_x[ g25 ];
+        h_y = d_hotel13_g25_h_y[ g25 ];
+        ASS( r13 >= 0 );
         
         if( d_bug >= 1 ){
         
-            var chk_h_x =           ( rid % 4 );
-            var chk_h_y = Math.floor( rid / 4 );
+            var chk_h_x =           ( r13 % 4 );
+            var chk_h_y = Math.floor( r13 / 4 );
             
             if( chk_h_x <( 0 ) ){ERR("[h_x:NEG]");};    
             if( chk_h_y <( 0 ) ){ERR("[h_y:NEG]");};
@@ -839,8 +924,8 @@ console.log( "hotel13" );
         //: @coe_p_y@ : COE - Pixel Y       ://
         //:---------------------------------://
         
-        var dia =( 128 - Math.pow( 2 , (7-i_te7) ) );
-        var lat =( 0x3F >> (6-i_te7) );
+        var dia =(d_hotel13_te7_dia[ i_te7 ] );    //:#DIAGO#://
+        var lat =(d_hotel13_te7_lat[ i_te7 ] );    //:#LATOS#://
         
         coe_p_x +=( h_x * 128 );
         coe_p_y +=( h_y * 128 );
@@ -877,11 +962,11 @@ console.log( "hotel13" );
         
             if( lef <  (0) ){
             
-                adj_rid = d_hotel13_rid_adj_lef[ rid ];
+                adj_r13 = d_hotel13_r13_adj_lef[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_x =(F_HOTEL13_DOE_LEF( lat )           );
@@ -898,11 +983,11 @@ console.log( "hotel13" );
             };;};;
             if( rig >= lat ){
             
-                adj_rid = d_hotel13_rid_adj_rig[ rid ];
+                adj_r13 = d_hotel13_r13_adj_rig[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_x =(F_HOTEL13_DOE_RIG( lat )           );
@@ -919,12 +1004,12 @@ console.log( "hotel13" );
             };;};;
             if( top <  (0) ){
             
-                adj_rid = d_hotel13_rid_adj_top[ rid ];
+                adj_r13 = d_hotel13_r13_adj_top[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
                 adj_g5x =i_g5x ;
-                adj_g5y =d_hotel13_rid_g_y[ adj_rid ];
+                adj_g5y =d_hotel13_r13_g_y[ adj_r13 ];
                     
                 doe_y =(F_HOTEL13_DOE_TOP( lat )           );
                 rem_y =(REM_TOP( lat , i_dog_y , i_top_t ) );
@@ -940,12 +1025,12 @@ console.log( "hotel13" );
             };;};;
             if( bot >= lat ){
             
-                adj_rid = d_hotel13_rid_adj_bot[ rid ];
+                adj_r13 = d_hotel13_r13_adj_bot[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
                 adj_g5x =i_g5x ;
-                adj_g5y =d_hotel13_rid_g_y[ adj_rid ];
+                adj_g5y =d_hotel13_r13_g_y[ adj_r13 ];
                     
                 doe_y =(F_HOTEL13_DOE_BOT( lat )           );
                 rem_y =(REM_BOT( lat , i_dog_y , i_bot_t ) );
@@ -977,13 +1062,13 @@ console.log( "hotel13" );
             /////// LEF ////// TOP /////////////////////////////
             if( oob_lef && oob_top ){       //:OOB_CORNER:T_L://
             
-                kit_rid = d_hotel13_rid_kit_t_l[ rid ];
+                kit_r13 = d_hotel13_r13_kit_t_l[ r13 ];
                                         //: t_l == TOP+LEF   ://
             if(            
-                kit_rid >= 0 //: KIT_ROOM_EXISTS ://    
+                kit_r13 >= 0 //: KIT_ROOM_EXISTS ://    
             ){
-                kit_g5x =d_hotel13_rid_g_x[ kit_rid ];
-                kit_g5y =d_hotel13_rid_g_y[ kit_rid ];
+                kit_g5x =d_hotel13_r13_g_x[ kit_r13 ];
+                kit_g5y =d_hotel13_r13_g_y[ kit_r13 ];
                 
                 doe_x = F_HOTEL13_DOE_LEF( lat );
                 doe_y = F_HOTEL13_DOE_TOP( lat );
@@ -1003,13 +1088,13 @@ console.log( "hotel13" );
             /////// RIG ////// BOT /////////////////////////////
             if( oob_rig && oob_bot ){       //:OOB_CORNER:B_R://
             
-                kit_rid = d_hotel13_rid_kit_b_r[ rid ];
+                kit_r13 = d_hotel13_r13_kit_b_r[ r13 ];
                                         //: b_r ==BOT+RIG    ://
             if(            
-                kit_rid >= 0 //: KIT_ROOM_EXISTS ://    
+                kit_r13 >= 0 //: KIT_ROOM_EXISTS ://    
             ){
-                kit_g5x =d_hotel13_rid_g_x[ kit_rid ];
-                kit_g5y =d_hotel13_rid_g_y[ kit_rid ];
+                kit_g5x =d_hotel13_r13_g_x[ kit_r13 ];
+                kit_g5y =d_hotel13_r13_g_y[ kit_r13 ];
                 
                 doe_x = F_HOTEL13_DOE_RIG( lat );
                 doe_y = F_HOTEL13_DOE_BOT( lat );
@@ -1029,13 +1114,13 @@ console.log( "hotel13" );
             /////// RIG ////// TOP /////////////////////////////
             if( oob_rig && oob_top ){       //:OOB_CORNER:T_R://
             
-                kit_rid = d_hotel13_rid_kit_t_r[ rid ];
+                kit_r13 = d_hotel13_r13_kit_t_r[ r13 ];
                                         //: t_r ==TOP+RIG    ://
             if(            
-                kit_rid >= 0 //: KIT_ROOM_EXISTS ://    
+                kit_r13 >= 0 //: KIT_ROOM_EXISTS ://    
             ){
-                kit_g5x =d_hotel13_rid_g_x[ kit_rid ];
-                kit_g5y =d_hotel13_rid_g_y[ kit_rid ];
+                kit_g5x =d_hotel13_r13_g_x[ kit_r13 ];
+                kit_g5y =d_hotel13_r13_g_y[ kit_r13 ];
                 
                 doe_x = F_HOTEL13_DOE_RIG( lat );
                 doe_y = F_HOTEL13_DOE_TOP( lat );
@@ -1055,13 +1140,13 @@ console.log( "hotel13" );
             /////// LEF ////// BOT /////////////////////////////
             if( oob_lef && oob_bot ){       //:OOB_CORNER:B_L://
             
-                kit_rid = d_hotel13_rid_kit_b_l[ rid ];
+                kit_r13 = d_hotel13_r13_kit_b_l[ r13 ];
                                         //: b_l ==BOT+LEF    ://
             if(            
-                kit_rid >= 0 //: KIT_ROOM_EXISTS ://    
+                kit_r13 >= 0 //: KIT_ROOM_EXISTS ://    
             ){
-                kit_g5x =d_hotel13_rid_g_x[ kit_rid ];
-                kit_g5y =d_hotel13_rid_g_y[ kit_rid ];
+                kit_g5x =d_hotel13_r13_g_x[ kit_r13 ];
+                kit_g5y =d_hotel13_r13_g_y[ kit_r13 ];
                 
                 doe_x = F_HOTEL13_DOE_LEF( lat );
                 doe_y = F_HOTEL13_DOE_BOT( lat );
@@ -1081,11 +1166,11 @@ console.log( "hotel13" );
             
             if( oob_lef ){
             
-                adj_rid = d_hotel13_rid_adj_lef[ rid ];
+                adj_r13 = d_hotel13_r13_adj_lef[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_x =(F_HOTEL13_DOE_LEF( lat )           );
@@ -1103,11 +1188,11 @@ console.log( "hotel13" );
                 
             if( oob_rig ){
             
-                adj_rid = d_hotel13_rid_adj_rig[ rid ];
+                adj_r13 = d_hotel13_r13_adj_rig[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_x =(F_HOTEL13_DOE_RIG( lat )           );
@@ -1125,11 +1210,11 @@ console.log( "hotel13" );
             
             if( oob_top ){
             
-                adj_rid = d_hotel13_rid_adj_top[ rid ];
+                adj_r13 = d_hotel13_r13_adj_top[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_y =(F_HOTEL13_DOE_TOP( lat )          );
@@ -1146,11 +1231,11 @@ console.log( "hotel13" );
             };;};;
             if( oob_bot ){
             
-                adj_rid = d_hotel13_rid_adj_bot[ rid ];
+                adj_r13 = d_hotel13_r13_adj_bot[ r13 ];
                 
-            if( adj_rid>=( 0 )){ //:#_EMI_IF_ADJ_#://
+            if( adj_r13>=( 0 )){ //:#_EMI_IF_ADJ_#://
                     
-                adj_g5x =d_hotel13_rid_g_x[ adj_rid ];
+                adj_g5x =d_hotel13_r13_g_x[ adj_r13 ];
                 adj_g5y =i_g5y ;
                     
                 doe_y =(F_HOTEL13_DOE_BOT( lat )           );
@@ -1214,6 +1299,22 @@ console.log( "hotel13" );
             if( !(b_b>=(lat-1)) ){ ERR("[@PIS@:004]"); };
         };;
         //:---------------:ERROR_CHECKING_TRUNCATION_ZONE://
+        //:What_Ticker_Are_We_Using:---------------------://
+        {
+            var tik_bom =( 0 );
+            
+            if( d_hotel13_yes_aim ){
+            
+                tik_bom = d_tik ;//:Atomic_IVY_MMO:Ticker://
+            }else
+            if( d_hotel13_not_aim ){
+            
+                tik_bom = d_hotel13_sam.tik_num ;
+            }else{
+                ERR("[WTF:TICKER]");
+            };;
+        }
+        //:---------------------:What_Ticker_Are_We_Using://
         //:SET_FLAMES_ARE_DAMAGE_TIMESTAMPS:-------------://
         //:                                              ://    
         //: By this time, the explosion has been         ://    
@@ -1229,46 +1330,46 @@ console.log( "hotel13" );
         
             //:Center Explosion://
             p_i = coe_p_i;
-            pix[ (4*p_i)+0 ]=( (d_tik >>> 24)&(0xFF) );
-            pix[ (4*p_i)+1 ]=( (d_tik >>> 16)&(0xFF) );
-            pix[ (4*p_i)+2 ]=( (d_tik >>>  8)&(0xFF) );
-            pix[ (4*p_i)+3 ]=( (d_tik >>>  0)&(0xFF) );
+            pix[ (4*p_i)+0 ]=( (tik_bom >>> 24)&(0xFF) );
+            pix[ (4*p_i)+1 ]=( (tik_bom >>> 16)&(0xFF) );
+            pix[ (4*p_i)+2 ]=( (tik_bom >>>  8)&(0xFF) );
+            pix[ (4*p_i)+3 ]=( (tik_bom >>>  0)&(0xFF) );
             
             for( lef = 1 ; lef <= i_lef_t ; lef ++ ){
             
                 p_i = coe_p_i - lef ;
                 c_i =(4*p_i);
-                pix[ c_i+0 ]=( (d_tik >>> 24)&(0xFF) );
-                pix[ c_i+1 ]=( (d_tik >>> 16)&(0xFF) );
-                pix[ c_i+2 ]=( (d_tik >>>  8)&(0xFF) );
-                pix[ c_i+3 ]=( (d_tik >>>  0)&(0xFF) );
+                pix[ c_i+0 ]=( (tik_bom >>> 24)&(0xFF) );
+                pix[ c_i+1 ]=( (tik_bom >>> 16)&(0xFF) );
+                pix[ c_i+2 ]=( (tik_bom >>>  8)&(0xFF) );
+                pix[ c_i+3 ]=( (tik_bom >>>  0)&(0xFF) );
             };;
             for( rig = 1 ; rig <= i_rig_t ; rig ++ ){
             
                 p_i = coe_p_i + rig ;
                 c_i =(4*p_i);
-                pix[ c_i+0 ]=( (d_tik >>> 24)&(0xFF) );
-                pix[ c_i+1 ]=( (d_tik >>> 16)&(0xFF) );
-                pix[ c_i+2 ]=( (d_tik >>>  8)&(0xFF) );
-                pix[ c_i+3 ]=( (d_tik >>>  0)&(0xFF) );
+                pix[ c_i+0 ]=( (tik_bom >>> 24)&(0xFF) );
+                pix[ c_i+1 ]=( (tik_bom >>> 16)&(0xFF) );
+                pix[ c_i+2 ]=( (tik_bom >>>  8)&(0xFF) );
+                pix[ c_i+3 ]=( (tik_bom >>>  0)&(0xFF) );
             };;
             for( top = 1 ; top <= i_top_t ; top ++ ){
             
                 p_i = coe_p_i -(top*2048);
                 c_i =(4*p_i);
-                pix[ c_i+0 ]=( (d_tik >>> 24)&(0xFF) );
-                pix[ c_i+1 ]=( (d_tik >>> 16)&(0xFF) );
-                pix[ c_i+2 ]=( (d_tik >>>  8)&(0xFF) );
-                pix[ c_i+3 ]=( (d_tik >>>  0)&(0xFF) );
+                pix[ c_i+0 ]=( (tik_bom >>> 24)&(0xFF) );
+                pix[ c_i+1 ]=( (tik_bom >>> 16)&(0xFF) );
+                pix[ c_i+2 ]=( (tik_bom >>>  8)&(0xFF) );
+                pix[ c_i+3 ]=( (tik_bom >>>  0)&(0xFF) );
             };;
             for( bot = 1 ; bot <= i_bot_t ; bot ++ ){
             
                 p_i = coe_p_i +(bot*2048);
                 c_i =(4*p_i);
-                pix[ c_i+0 ]=( (d_tik >>> 24)&(0xFF) );
-                pix[ c_i+1 ]=( (d_tik >>> 16)&(0xFF) );
-                pix[ c_i+2 ]=( (d_tik >>>  8)&(0xFF) );
-                pix[ c_i+3 ]=( (d_tik >>>  0)&(0xFF) );
+                pix[ c_i+0 ]=( (tik_bom >>> 24)&(0xFF) );
+                pix[ c_i+1 ]=( (tik_bom >>> 16)&(0xFF) );
+                pix[ c_i+2 ]=( (tik_bom >>>  8)&(0xFF) );
+                pix[ c_i+3 ]=( (tik_bom >>>  0)&(0xFF) );
             };;
         }else
         if( i_explo_box >= 1 ){ //:Box Explosion://
@@ -1296,10 +1397,10 @@ console.log( "hotel13" );
             p_i +=(    1 );
             
                 c_i =(4*p_i);
-                pix[ c_i+0 ]=( (d_tik >>> 24)&(0xFF) );
-                pix[ c_i+1 ]=( (d_tik >>> 16)&(0xFF) );
-                pix[ c_i+2 ]=( (d_tik >>>  8)&(0xFF) );
-                pix[ c_i+3 ]=( (d_tik >>>  0)&(0xFF) ); 
+                pix[ c_i+0 ]=( (tik_bom >>> 24)&(0xFF) );
+                pix[ c_i+1 ]=( (tik_bom >>> 16)&(0xFF) );
+                pix[ c_i+2 ]=( (tik_bom >>>  8)&(0xFF) );
+                pix[ c_i+3 ]=( (tik_bom >>>  0)&(0xFF) ); 
             };;};;
         
         }else{
@@ -1355,7 +1456,7 @@ console.log( "hotel13" );
             h_x = ( r13 % 4 );
             h_y = Math.floor( r13 / 4 );
             
-            slfjlsfjlsjfldsk
+           // slfjlsfjlsjfldsk
             
         };;
         
@@ -1401,19 +1502,327 @@ console.log( "hotel13" );
         console.log("heyyyo");
     };;
     
-    function TEST_SIMULATION_PERFORMANCE( ){
+   ////////// function TEST_SIMULATION_PERFORMANCE( ){
+   ////////// 
+   //////////     F_HOTEL13_TIK();
+   //////////     
+   //////////     
+   //////////     window.setTimeout( 
+   //////////         TEST_SIMULATION_PERFORMANCE
+   //////////     ,  (1000 / 30) //:30FPS://
+   //////////     );;
+   ////////// 
+   ////////// };;
+   ////////// 
+   ////////// TEST_SIMULATION_PERFORMANCE();
     
-        F_HOTEL13_TIK();
-        
-        
-        window.setTimeout( 
-            TEST_SIMULATION_PERFORMANCE
-        ,  (1000 / 30) //:30FPS://
-        );;
     
+    
+    const   F_HOTEL13_DRAW_2D_TIL = function
+    PRIVATE_F_HOTEL13_DRAW_2D_TIL(
+    
+        /** NO ARGS **/
+    ){
+        console.log( "[TODO:DRAW_2D_TIL]" );
+        
+        //: Render Bigger Tiles First                    ://
+
+        let sam =( d_hotel13_sam         );    //:@MACRO@://
+        let ctx =( d_hotel13_sam.hot_con );    //:@MACRO@://
+        
+        var g_w =( sam.hot_can.width / 5 ); //:GridCell.W://
+        var g_h =( sam.hot_can.height/ 5 ); //:GridCell.H://
+        
+        var peb_m_x =( g_w / 64 );  //: peb multiplier x ://
+        var peb_m_y =( g_w / 64 );  //: peb multiplier y ://
+        
+        var dpx ; //: @dpx@ : Data Pixel X :-------------://
+        var dpy ; //: @dpy@ : Data Pixel Y :-------------://
+        
+        var dtx ; //: @dtx@ : Data TILE  X , extends(dpx)://
+        var dty ; //: @dty@ : Data TILE  Y , extends(dpy)://
+        var dti ; //: @dti@ : Data TILE  I , indexofdata ://
+        var dtu ; //: @dtu@ : Data TILE  Uint32 Value    ://
+        
+        var h4x ; //: @h4x@ : HotelRoomX (DATALAYOUT)    ://
+        var h4y ; //: @h4y@ : HotelRoomY (DATALAYOUT)    ://
+                                                         
+        var lat ; //: @lat@ : lateral  offset to data.   ://
+        var dia ; //: @dia@ : diagonal offset to data.   ://
+        var san ; //: @san@ : Span In Tiles (wid==hig)   ://
+        
+        var t_x ; //: @t_x@ : tile x ( @DATA_EQ_VIEW@ )  ://    
+        var t_y ; //: @t_y@ : tile y ( @DATA_EQ_VIEW@ )  ://   
+        var t_v ; //: @t_v@ : tile v ( v == VALUE/TYPE)  ://
+        var t_w ; //: @t_w@ : tile w ( WIDTH IN PIXELS)  ://
+        var t_h ; //: @t_h@ : tile h ( HEIGHT   PIXELS)  ://
+        /// t_s ; //: @t_s@ : tile s ( HEIGHT===WIDTH )  ://
+        var t_t ; //: @t_t@ : tile t ( TIK value )       ://
+        
+        var peb ; //: @peb@ : Size In Pebbles :----------://
+
+        var c_i ; //: @c_i@ : component index of pixel.  ://
+
+        for( var te7 =(7-1); te7 >=(  0 ) ; te7 -- ){
+        
+            peb = d_hotel13_te7_peb[ te7 ]
+            t_w = ( peb * peb_m_x );
+            t_h = ( peb * peb_m_y );
+        
+        for( var r13 =( 0 ); r13 <=(13-1) ; r13 ++ ){
+        
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: @g_x@ : Grid Cell Where Room Could Be X  ://
+            //: @g_y@ : Grid Cell Where Room Could Be Y  ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            var g_x = d_hotel13_r13_g_x[ r13 ];
+            var g_y = d_hotel13_r13_g_y[ r13 ];
+            ASS( g_x >= 0 );
+            ASS( g_y >= 0 );
+            
+            var o_x =( g_x * g_w );
+            var o_y =( g_y * g_h );
+            
+            if( sam.clk_g_x === g_x 
+            &&  sam.clk_g_y === g_y
+            ){
+                ctx.fillStyle = "ORANGE" ;
+            }else{
+                ctx.fillStyle = "BLACK"   ;
+            };;
+            ctx.fillRect(o_x, o_y, g_w, g_h); 
+            
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: Draw all tiles of given tile size.       ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            
+            dpx = 512 ;   //: Active Level Data Origin X ://
+            dpy = 512 ;   //: Active Level Data Origin Y ://
+            
+            h4x =(           ( r13 % 4 ) );  //:@r13_h4x@://
+            h4y =( Math.floor( r13 / 4 ) );  //:@r13_h4y@://
+            
+            lat = d_hotel13_te7_lat[ te7 ];
+            dia = d_hotel13_te7_dia[ te7 ];
+            
+            dpx += ( 128 * h4x ); //:Now in correct room ://
+            dpy += ( 128 * h4y ); //:of data to render   ://
+            
+            dpx += dia ; //: Now at correct[ te7 ]tile   ://
+            dpy += dia ; //: size of data to render.     ://
+            
+            san = lat ;  //: SPAN_IN_TILES == LATERAL_OS ://
+            
+        ctx.fillStyle = "TAN"   ;
+        for( t_y = 0 ; t_y <=(san-1) ; t_y ++ ){
+        for( t_x = 0 ; t_x <=(san-1) ; t_x ++ ){
+            
+            dtx = dpx + t_x ;
+            dty = dpy + t_y ;
+            dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
+            c_i =( 4*dti );
+            dtu =( 0x0
+            | ( d_pix2048[ c_i ] << 24 )
+            | ( d_pix2048[ c_i ] << 16 )
+            | ( d_pix2048[ c_i ] <<  8 )
+            | ( d_pix2048[ c_i ] <<  0 )
+            );;
+            
+            t_v =( dtu >>> 28 ); //:Tile Is 4Bit Number  ://
+            t_t =( dtu & 0x0FFFFFFF );
+            //:---------:0x12345678----------------------://
+            
+            if( 1 == t_v ){ //:DRAW_TILE://
+            
+                pog_t_x = ( o_x + ( t_x * t_w ) );
+                pog_t_y = ( o_y + ( t_y * t_h ) );
+                
+                ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h ); 
+ 
+            };;
+             
+        };;};;
+        };;};;
+    };;
+    const   F_HOTEL13_DRAW_2D_BOM = function
+    PRIVATE_F_HOTEL13_DRAW_2D_BOM(
+    
+        /** NO ARGS **/
+    ){
+        console.log("[TODO:DRAW_2D_BOM]");
+    };;
+    const   F_HOTEL13_DRAW_2D_FAD = function
+    PRIVATE_F_HOTEL13_DRAW_2D_FAD(
+    
+        /** NO ARGS **/
+    ){
+        console.log("[TODO:DRAW_2D_FAD]");
     };;
     
-    TEST_SIMULATION_PERFORMANCE();
+    const F_HOTEL13_DRAW_2D = function
+    PRIVATE_F_HOTEL13_DRAW_2D(
+    
+        /** No arguments **/
+    ){
+        let ctx = d_hotel13_sam.hot_con       ;
+        let wid = d_hotel13_sam.hot_can.width ;
+        let hig = d_hotel13_sam.hot_can.height;
+        let tik = d_hotel13_sam.tik_num       ;
+        
+        if( 0 == tik%2 ){
+            ctx.fillStyle = "DARKRED" ;
+        }else{
+            ctx.fillStyle = "#770000" ;
+        };;
+        ctx.fillRect(0, 0, wid, hig); //:320*5://
+    
+        if( d_hotel13_sam.vis_til != 0 ){    //:c_lay_til://
+        
+            F_HOTEL13_DRAW_2D_TIL();
+        };;
+        if( d_hotel13_sam.vis_bom != 0 ){    //:c_lay_bom://
+            
+            F_HOTEL13_DRAW_2D_BOM();
+        };;
+        if( d_hotel13_sam.vis_fad != 0 ){    //:c_lay_fad://    
+        
+            F_HOTEL13_DRAW_2D_FAD();
+        };;
+    };;
+    
+    const   F_HOTEL13_SAM_TIK = function
+    PRIVATE_F_HOTEL13_SAM_TIK(
+        /** NO ARGS **/
+    ){
+        //: ------------------------------------- ://
+        //: Only update this number in standalone ://
+        //: code. That is why it is here and not  ://
+        //: inside of[ F_HOTEL13_TIK ]            ://
+        //: ------------------------------------- ://
+        d_hotel13_sam.tik_num ++ ;
+    
+        F_HOTEL13_TIK();
+        F_HOTEL13_DRAW_2D();
+    };;
+    
+    const   F_HOTEL13_SAM_TIKLOOP = function
+    PRIVATE_F_HOTEL13_SAM_TIKLOOP(
+        /**NOARGS**/
+    ){
+        //:Core Logic , Decoupled from ://
+        //:ugly looper function.       ://
+        F_HOTEL13_SAM_TIK();
+    
+        //:Call yourself again://
+        var one_2nd =( 1000 /**MS in Second**/ );
+        window.setTimeout(
+            F_HOTEL13_SAM_TIKLOOP
+        ,   one_2nd / d_hotel13_sam.tik_fps
+        );;
+    };;
+        
+    const F_HOTEL13_SAM_RUN = function
+    PRIVATE_F_HOTEL13_SAM_RUN(
+        /** No Args **/
+    ){
+        //:----------------------------------------------://
+        //: Only when .js file is running as stand alone ://   
+        //: program. When part of[ server.js ]we use     ://
+        //: the WEBGL setup to render our data.          ://
+        //:----------------------------------------------://
+        if( d_hotel13_yes_aim ){ ERR("[StandAloneOnly]"); };    
+        if(!d_hotel13_not_aim ){ ERR("[SAMVARSPROBLEM]"); };
+    
+        F_HOTEL13_SAM_TIKLOOP(); //:LoopForever://
+    };;
+    
+    const   F_HOTEL13_SAM_MOU_CLK = function
+    PRIVATE_F_HOTEL13_SAM_MOU_CLK(
+        evt_clk
+    ){
+        let sam = d_hotel13_sam ;
+        
+        var can_wid = sam.hot_can.width  ;
+        var can_hig = sam.hot_can.height ;
+        
+        var g_w =( can_wid / 5 ); //:GridCellWidth ://
+        var g_h =( can_hig / 5 ); //:GridCellHeight://
+        
+        sam.clk_p_x = evt_clk.offsetX ;
+        sam.clk_p_y = evt_clk.offsetY ;
+        
+        sam.clk_g_x =Math.floor( sam.clk_p_x / g_w );
+        sam.clk_g_y =Math.floor( sam.clk_p_y / g_h );
+        
+        console.log( "[evt_clk]:" , evt_clk );
+    };;
+    const   F_HOTEL13_SAM_MOU_MOV = function
+    PRIVATE_F_HOTEL13_SAM_MOU_MOV(
+        evt_mov
+    ){
+        console.log( "[evt_mov]:" , evt_mov );
+    };;
+    
+    //:HOTEL13_STAND_ALONE_SETUP:========================://
+    //:                                                  ://
+    //:  If not integrated into main server.js for       ://
+    //:  our[ Atomic Ivy MMO ]( AIM )Then let's create   ://
+    //:  the cellular bomb-o-mata (bombomata) game       ://
+    //:  to make sure all of the mechanics work          ://
+    //:  properly.                                       ://
+    //:                                                  ://
+    //:- - - - - - - - - - - - -- - - - - - - - - - - - -://
+    
+    console.log( "[YES_AIM]:" , d_hotel13_yes_aim );
+    console.log( "[NOT_AIM]:" , d_hotel13_not_aim );
+    
+    if( d_hotel13_yes_aim ){
+    
+        console.log("[part_of_something_larger]");
+    }else
+    if( d_hotel13_not_aim ){
+    
+        console.log("[cellcularbombomata]");
+        
+        var sam = d_hotel13_sam ;
+    
+        const dom_roo = document.documentElement; 
+        var   dom_bod = document.body           ; 
+        if( (!dom_bod) ){
+            dom_bod = document.createElement( "body" );
+            document.body = dom_bod ;
+        };;
+        sam.hot_can = document.createElement( "canvas" );
+        sam.hot_can.width =( 1600 );
+        sam.hot_can.height=( 1600 );
+        ASS( 1600 == c_fiverez );
+        dom_bod.appendChild( sam.hot_can );
+    
+        sam.hot_con = sam.hot_can.getContext( "2d" );
+        
+        //:add_mouse_handler:----------------------------://
+        {
+            let sexycanvasfuntimes = sam.hot_can ;
+            
+            sexycanvasfuntimes.addEventListener(
+            
+                "mousemove"   //:EventType://
+            ,   F_HOTEL13_SAM_MOU_MOV 
+            );;
+            sexycanvasfuntimes.addEventListener(
+            
+                "click"   //:EventType://
+            ,   F_HOTEL13_SAM_MOU_CLK 
+            );;
+        }
+        //:----------------------------:add_mouse_handler://
+    
+        F_HOTEL13_SAM_RUN();
+    
+    }else{
+        ERR("[unexpectedcase:2022_07_05]");
+    };;
+    //:========================:HOTEL13_STAND_ALONE_SETUP://
 
 /** ******************************************************** ***
 
@@ -1789,6 +2198,99 @@ console.log( "hotel13" );
     @rig_t@ : explosion Tendrill length ) RIGHT
     @top_t@ : explosion Tendrill length ) TOP
     @bot_t@ : explosion Tendrill length ) BOTTOM
+    
+    #LATOS# : Lateral  Offset Formula For Quarkmap Structure
+    #DIAGOS#: Diagonal Offset Formula For Quarkmap Structure
+    #DIAGO# : #DIAGOS# without the S so same len as #LATOS#
+    
+    @tik_sec@ : You want[ tik_fps ]
+    
+    @tik_bom@ : Timestamp encoded into BOMB value.
+    @tik_fad@ : Timestamp encoded into FADA value.(Flame/Damage)
+    @tik_til@ : Timestamp encoded into TILE value.(MightNotNeed)
+    
+    #tik_til# : -------------------------------------------:
+    :                                                      :
+    :   We might not need to encode time values into tile  :
+    :   values. It would probably be better if we DIDNT    :
+    :   because then we will only get to have...           :
+    :                                                      :
+    :       TIMESTAMP                     TIMESTAMP        :
+    :       RERSERVED                     RERSERVED        :
+    :       NYBLE VAL                     NYBLE VAL        :
+    :       V                             V                :
+    :       0 1 2 3 4 5 6 7 8 9 A B C D E F                :
+    :         | | | | | | | | | | | | | |                  :
+    :         1 2 3 4 5 6 7 8 9 10  12  14 <--FOURTEEN(14) :
+    :                             11  13                   :
+    :                                                      :
+    :   We will only get to have 14 tile values because    :
+    :   the rest will be used to encoding tilestamp.       :
+    :                                                      :
+    :   How would that even work with auto tiling?         :
+    :                                                      :
+    :   Only 14 tile types would help limit me from        :
+    :   over-designing...                                  :
+    :                                                      :
+    :   0xF00000000 <-- Diagram is looking at the bits     :
+    :                   of the last nyble. Wait...         :
+    :                                                      :
+    :                   That is 4 bits.. not 8...          :
+    :                                                      :
+    :                   1111 === 15 in decimal.            :
+    :                                                      :
+    :                   No, that's correct.                :
+    :------------------------------------------------------:
+    
+    REFACTOR : [ rid ] ==>[ r13 ] ( 13 rooms in hotel )
+    REFACTOR : [ gid ] ==>[ g25 ] ( 25 grid slots in  )
+                                  ( which room may or )
+                                  ( may-not exist     )
+                                  
+    @rgw@ : RoomGrid WIDTH  (of one room cell) JUST_USE[ g_w ]   
+    @rgh@ : RoomGrid HEIGHT (of one room cell) JUST_USE[ g_h ]
+    
+    @rid@ : Room ID , use r13 because 13 of them.
+    @gid@ : Grid ID , use g25 because 25 of them.
+    
+    @r13@ : Room ID , 13 of them 0-to-12 so call r13
+    @g25@ : Grid ID , 25 of them 0-to-24 so call g25
+    
+    @dpx@ : Data_Pixel_X : Encodes [Tile|Bomb|Fada]
+    @dpy@ : Data_Pixel_Y : Encodes [Tile|Bomb|Fada
+    
+    @h_x@ : USE[ h4x ]HotelRoomX ( in terms of raw data layout )
+    @h_y@ : USE[ h4y ]HotelRoomY ( in terms of raw data layout )
+    
+    @h4x@ : Hotel(room)X : In terms of DATA layout , not VIEW.
+    @h4y@ : Hotel(room)Y : In terms of DATA layout , not VIEW.
+    
+    @r13_h4x@ : r13 ==to==> h4x
+    @r13_h4y@ : r13 ==to==> h4y
+    
+    @DATA_EQ_VIEW@ : Data Equals View , how the data is
+                   : packed is equal to how the data is
+                   : rendered. This is not always the case.
+                   :
+                   : Your mental conception of the physical
+                   : layout of the data should be the same
+                   : for this variable for both imagining
+                   : the FINAL RENDER and imagining how the
+                   : datapoint is fetched from PIX2048.
+                   
+    [LATERAL_OS]    : Lateral offset to data we want.
+    [SPAN_IN_TILES] : The tilemap [ WIDTH == HEIGHT ]
+                    : I use[ san ]when width is always
+                    : equal to height. Because it makes
+                    : [ wid ]and[ hig ]variables
+                    : redundant.
+                    
+    @dog@     : Detonation Origin
+    @pog@     : Pixel_Origin
+    @pog_t_x@ : Pixel_OriGin : Tile_X
+    @pog_t_y@ : Pixel_OriGin : Tile_Y
+    
+    #CHECKER_MODULO_SNIP# :  if( (t_x%2)==(t_y%2) ){ ... };;
     
 *** ******************************************************** **/
 /** DEVELOPER_TODO_NOTE ************************************ ***
