@@ -40,7 +40,7 @@ console.log( "hotel13" );
     ,   vis_bom : (1)   //: VISIBLE: BOMB(S)
     ,   vis_fad : (1)   //: VISIBLE: FADA(S)
     
-    ,   tik_fps : (1)   //: One Frame Per Second
+    ,   tik_fps : (30)   //: One Frame Per Second
     ,   tik_num :(0-1)  //: AKA[ hot_tik ]
     
     ,   clk_p_x :(0-1)  //: Last Clicked Pixel X
@@ -49,8 +49,15 @@ console.log( "hotel13" );
     ,   clk_g_x :(0-1)  //: Last Clicked Grid Cell X
     ,   clk_g_y :(0-1)  //: Last Clicked Grid Cell Y
     
+    ,   te7_clk_t_x : new Array( 7 )
+    ,   te7_clk_t_y : new Array( 7 )
+    
+    ,   edi_te7 :(5)  //: Editor Tile Size ://
+    
     } : { } );;
-    Object.seal( d_hotel13_sam );
+    //: Object.seal( d_hotel13_sam.te7_clk_t_x );
+    //: Object.seal( d_hotel13_sam.te7_clk_t_y );
+    Object.seal( d_hotel13_sam             );
         
 
     const d_bugman_yes =( "[JUST_USE:d_bug]" );
@@ -1562,12 +1569,20 @@ console.log( "hotel13" );
         var peb ; //: @peb@ : Size In Pebbles :----------://
 
         var c_i ; //: @c_i@ : component index of pixel.  ://
+        
+        var clk_t_x ; //:clicked tile , x coord.
+        var clk_t_y ; //:clicked tile , y coord.
+        
+        var clk     ; //:clicked? boolean://
 
         for( var te7 =(7-1); te7 >=(  0 ) ; te7 -- ){
         
             peb = d_hotel13_te7_peb[ te7 ]
             t_w = ( peb * peb_m_x );
             t_h = ( peb * peb_m_y );
+            
+            clk_t_x = sam.te7_clk_t_x[ te7 ];
+            clk_t_y = sam.te7_clk_t_y[ te7 ];
         
         for( var r13 =( 0 ); r13 <=(13-1) ; r13 ++ ){
         
@@ -1583,14 +1598,22 @@ console.log( "hotel13" );
             var o_x =( g_x * g_w );
             var o_y =( g_y * g_h );
             
-            if( sam.clk_g_x === g_x 
-            &&  sam.clk_g_y === g_y
-            ){
-                ctx.fillStyle = "ORANGE" ;
-            }else{
-                ctx.fillStyle = "BLACK"   ;
+            if( (7-1) == te7 ){
+            
+                //:------------------------------------://
+                //: only do for first te7 loop so that ://
+                //: we don't erase stuff further down. ://
+                //:------------------------------------://
+                
+                if( sam.clk_g_x === g_x 
+                &&  sam.clk_g_y === g_y
+                ){
+                    ctx.fillStyle = "ORANGE" ;
+                }else{
+                    ctx.fillStyle = "BLACK"   ;
+                };;
+                ctx.fillRect(o_x, o_y, g_w, g_h); 
             };;
-            ctx.fillRect(o_x, o_y, g_w, g_h); 
             
             //:- - - - - - - - - - -- - - - - - - - - - -://
             //: Draw all tiles of given tile size.       ://
@@ -1613,7 +1636,7 @@ console.log( "hotel13" );
             
             san = lat ;  //: SPAN_IN_TILES == LATERAL_OS ://
             
-        ctx.fillStyle = "TAN"   ;
+        
         for( t_y = 0 ; t_y <=(san-1) ; t_y ++ ){
         for( t_x = 0 ; t_x <=(san-1) ; t_x ++ ){
             
@@ -1632,15 +1655,32 @@ console.log( "hotel13" );
             t_t =( dtu & 0x0FFFFFFF );
             //:---------:0x12345678----------------------://
             
-            if( 1 == t_v ){ //:DRAW_TILE://
+            clk =(  clk_t_x === t_x 
+                 && clk_t_y === t_y );;
+                 
+            if( sam.clk_g_x != g_x ){ clk =( 0 ); };
+            if( sam.clk_g_y != g_y ){ clk =( 0 ); };
+            
+            if( sam.edi_te7 != te7 ){ clk =( 0 ); };
+                 
+            if( 0
+            ||   ( 1 == t_v ) //: Tile Exists?  ://
+            ||   ( !!clk    ) //: Tile Clicked? ://
+            ){ 
             
                 pog_t_x = ( o_x + ( t_x * t_w ) );
                 pog_t_y = ( o_y + ( t_y * t_h ) );
                 
+                if( !!clk ){
+                    ctx.fillStyle = "GREEN"   ;
+                }else{
+                    ctx.fillStyle = "TAN"   ;
+                };;
+                
                 ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h ); 
  
             };;
-             
+            
         };;};;
         };;};;
     };;
@@ -1745,14 +1785,39 @@ console.log( "hotel13" );
         var can_wid = sam.hot_can.width  ;
         var can_hig = sam.hot_can.height ;
         
-        var g_w =( can_wid / 5 ); //:GridCellWidth ://
-        var g_h =( can_hig / 5 ); //:GridCellHeight://
+        var g_w =( can_wid / 5 ); //: GridCellWidth  ://
+        var g_h =( can_hig / 5 ); //: GridCellHeight ://
         
         sam.clk_p_x = evt_clk.offsetX ;
         sam.clk_p_y = evt_clk.offsetY ;
         
         sam.clk_g_x =Math.floor( sam.clk_p_x / g_w );
         sam.clk_g_y =Math.floor( sam.clk_p_y / g_h );
+        
+        //:Collect all click positions for all tile  ://
+        //:sizes. For now, don't worry that this     ://
+        //:might show up in ALL ROOMS when rendering.://
+        //:[INTENTIONAL_BUG][BUG][HACK]              ://
+        for( var te7 = 0 ; te7 <=(7-1) ; te7++ ){
+        
+            //: Lateral Offset Is Also Level Span    ://
+            //: Measured In Tiles Of te7 size.       ://
+            
+            var lat = d_hotel13_te7_lat[ te7 ];
+            var t_w = ( g_w / lat );
+            var t_h = ( g_h / lat );
+            
+            let FLO = Math.floor ;
+            
+            var t_x = FLO( sam.clk_p_x / t_w );
+            var t_y = FLO( sam.clk_p_y / t_h );
+            
+            t_x = ( t_x % lat );
+            t_y = ( t_y % lat );
+            
+            sam.te7_clk_t_x[ te7 ]= t_x ;
+            sam.te7_clk_t_y[ te7 ]= t_y ;
+        };;
         
         console.log( "[evt_clk]:" , evt_clk );
     };;
