@@ -1828,6 +1828,57 @@ console.log( "hotel13" );
         console.log( "[evt_mov]:" , evt_mov );
     };;
     
+    
+    const   F_HOTEL13_EVT_ASC = function              
+    PRIVATE_F_HOTEL13_EVT_ASC(                        
+                                                      
+        i_evt_key //:( i_evt_key )=>( o_asc_key )        ://  
+    ){            //:COPY_PASTE_OF[ F_KEYMAST_EVT_ASC ]  ://                          
+        var o_asc_key =(                              
+            String.prototype.toUpperCase.call(        
+            String.fromCharCode(                      
+                                                      
+                i_evt_key.keyCode                     
+                                                      
+            )||"[nil][o_asc_key]" ));;                
+        return( o_asc_key );                          
+    };;                                               
+    
+    
+    
+    
+    const   F_HOTEL13_SAM_KEY_DOW = function
+    PRIVATE_F_HOTEL13_SAM_KEY_DOW(
+        evt_key
+    ){
+        var asc = F_HOTEL13_EVT_ASC( evt_key );
+        
+        //:--------------------------------------://
+        //: Offset by 1 because I think it would ://
+        //: be a bit weird to have artists refer ://
+        //: to "tile size ZERO"                  ://            
+        //:--------------------------------------://
+        
+        if( "1" == asc ){ sam.edi_te7 = 0 ; };
+        if( "2" == asc ){ sam.edi_te7 = 1 ; };
+        if( "3" == asc ){ sam.edi_te7 = 2 ; };
+        if( "4" == asc ){ sam.edi_te7 = 3 ; };
+        if( "5" == asc ){ sam.edi_te7 = 4 ; };
+        if( "6" == asc ){ sam.edi_te7 = 5 ; };
+        if( "7" == asc ){ sam.edi_te7 = 6 ; };
+        
+        console.log( "[key_dow]:" , evt_key );
+    };;
+    const   F_HOTEL13_SAM_KEY_UPP = function
+    PRIVATE_F_HOTEL13_SAM_KEY_UPP(
+        evt_key
+    ){
+        console.log( "[key_upp]:" , evt_key );
+    };;
+    
+    
+    
+    
     //:HOTEL13_STAND_ALONE_SETUP:========================://
     //:                                                  ://
     //:  If not integrated into main server.js for       ://
@@ -1881,6 +1932,18 @@ console.log( "hotel13" );
             );;
         }
         //:----------------------------:add_mouse_handler://
+        //:add_keyboard_handler:-------------------------://
+        {
+            document.addEventListener(
+                "keyup"  //:EVT_TYP://
+            ,   F_HOTEL13_SAM_KEY_UPP
+            );;
+            document.addEventListener(
+                "keydown"//:EVT_TYP://
+            ,    F_HOTEL13_SAM_KEY_DOW
+            );;
+        }
+        //:-------------------------:add_keyboard_handler://
     
         F_HOTEL13_SAM_RUN();
     
