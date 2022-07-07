@@ -285,7 +285,25 @@ console.log( "hotel13" );
         const d_hotel13_te7_wid = "[te7_lat||te7_peb]" ;
         const d_hotel13_te7_hig = "[te7_lat||te7_peb]" ;
         const d_hotel13_te7_san = "[te7_lat||te7_peb]" ;
-    
+
+        const d_hotel13_lat_l_x = "[MAYBE::::::la3_lmx]" ;
+        const d_hotel13_lat_l_y = "[MAYBE::::::la3_lmy]" ;
+        const d_hotel13_lat_lmx = "[MAYBE::::::la3_lmx]" ;
+        const d_hotel13_lat_lmy = "[MAYBE::::::la3_lmy]" ;
+        const d_hotel13_la3_l_x = "[DEFINITELY:la3_lmx]" ;
+        const d_hotel13_la3_l_y = "[DEFINITELY:la3_lmy]" ;
+
+        const d_hotel13_la3_dia = "[YOU_MEAN:te7_dia]" ;
+        const d_hotel13_la3_lat = "[YOU_MEAN:te7_lat]" ;
+
+        //:------------------------------------------://
+        //: @la3_lmx@ : layer_to_lateral_multiplier_x://
+        //: @la3_lmy@ : layer_to_lateral_multiplier_y://
+        //:------------------------------------------://
+  
+        var d_hotel13_la3_lmx =[ 0 , 1 , 0 ];//:@lmx@://
+        var d_hotel13_la3_lmy =[ 0 , 0 , 1 ];//:@lmy@://
+
         var d_hotel13_te7_peb =[
               1 ,   2 ,   4 ,   8 ,  16 ,  32 ,  64
         //: t_0 , t_1 , t_2 , t_3 , t_4 , t_5 , t_6  ://             
@@ -305,6 +323,7 @@ console.log( "hotel13" );
         ,   0 + 64 + 32 + 16 + 8 + 4 + 2     //: t_6 ://
         ];;
         
+        Object.freeze( d_hotel13_te7_peb );
         Object.freeze( d_hotel13_te7_lat );
         Object.freeze( d_hotel13_te7_dia );
         
@@ -540,7 +559,166 @@ console.log( "hotel13" );
             return( o_yes );
         };;
 
-    //:==================:HELPER_FUNCTION_SECTION_I_GUESS://    
+    //:==================:HELPER_FUNCTION_SECTION_I_GUESS://  
+    //:TILEMAP_QUERY_FUNCTIONS:==========================://
+
+        const   F_HOTEL13_HIT_R13_TE7_LA3_TI0 = function
+        PRIVATE_F_HOTEL13_HIT_R13_TE7_LA3_TI0(
+
+            i_r13  //: Room__Index , ENCODES[ h_x , h_y ]://
+        ,   i_te7  //: TileSizeEXP , ENCODES[ dia & lat ]://
+        ,   i_la3  //: Layer_Index , ENCODES[ lmx , lmy ]://
+        ,   i_ti0  //: Tile__Index , ENCODES[ t_x , t_y ]://   
+
+        ,   i_tik  //:#_FUTURE_TICKS_HIT_LATER_NOT_NOW_# ://
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //:   Returns true if the position we have   ://
+            //:   selected [ HIT[s]/collides/overlaps ]  ://
+            //:   with ANY SIZED TILE on the given layer.://
+            //:                                          ://
+            //:   Bomb system will need to use this      ://
+            //:   to make explosions of different        ://
+            //:   sizes detonate bombs of different      ://
+            //:   sizes. We currently are using this     ://
+            //:   in editor to help make a @NEXI_FLAKES@ ://
+            //:   style pattern generation.              ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            const h_x =(d_hotel13_r13_h_x[ i_r13 ] );
+            const h_y =(d_hotel13_r13_h_y[ i_r13 ] );
+
+            var   dia =(0-404);
+            const lat =(d_hotel13_te7_lat[ i_te7 ] );
+            
+            const lmx =(d_hotel13_la3_lmx[ i_la3 ] );
+            const lmy =(d_hotel13_la3_lmy[ i_la3 ] );
+
+            const t_x =(          ( i_ti0 % lat )  );
+            const t_y =(Math.floor( i_ti0 / lat )  );
+
+            var   peb_her ; //:Pebble Size Here://
+            var   peb_abo ; //:Pebble Size Above://
+            var   peb_bel ; //:Pebble Size Below://
+
+            ///   la3       ;
+            ///   dia       ; //: Diagonal @d_p@ Offset  ://
+            ///   lat       ; //: Lateral  @d_p@ Offset  ://
+            var   dpx       ; //: DataPixel     . X  :---://
+            var   dpy       ; //: DataPixel     . Y  :---://
+            var   dpi       ; //: DataPixel     . I  :---://
+            var   dci       ; //: DataComponent . I :----://
+            var   u32       ; //: Uint32 Pixel Value     ://
+            var   v16       ; //: TileValue[0-to-15]     ://
+            var   tik       ; //: Tick Value Of Tile     ://
+            var   te7       ; //: Tile Size Exponent     ://
+            var   atx       ; //: AboveTile . X
+            var   aty       ; //: AboveTile . Y
+            var   btx       ; //: BelowTile . X
+            var   bty       ; //: BelowTIle . Y
+            var o_hit =( 0 );
+
+            //:check__here:------------------------------://
+
+                dia = d_hotel13_te7_dia[ i_te7 ];
+                dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+t_x;
+                dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+t_y ;
+                dpi =( dpx + ( dpy * 2048 ) );
+                dci =( 4 * dpi );
+
+                //:almost_a_cutpaste:001_of_003:---------://
+
+                u32=(( 0x00
+                |   ( d_pix2048[ dci + 0 ] << 24 )
+                |   ( d_pix2048[ dci + 1 ] << 16 )
+                |   ( d_pix2048[ dci + 2 ] <<  8 )
+                |   ( d_pix2048[ dci + 3 ] <<  0 )
+                )>>> 0 );;
+                //:...u32.&.0x12345678...................://    
+                v16 =( u32 & 0xF0000000 ) >>>( 28 );
+                tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
+
+                if( tik >= i_tik   ){
+                if( v16 >(   0  )  ){
+
+                    //: Difference between[ 0x0FFFFFFF ] ://
+                    //:                AND[ 0x00000000 ]?:// 
+                    //: SEE[ #_DIFFERENT_ZEROS_# ]-------://
+
+                    o_hit =( 1 );
+
+                };;};;
+                //:---------:almost_a_cutpaste:001_of_003://
+
+            //:------------------------------:check__here://
+            //: ******** #_ABOVE_BEFORE_BELOW_# ******** :// 
+            //:check_above:------------------------------://
+            if( o_hit <= 0 ){
+
+                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){
+
+                    san = d_hotel13_te7_lat[ 6-(i_te7-te7) ];
+
+                    atx = Math.floor( t_x / san );
+                    aty = Math.floor( t_y / san );
+
+                    //:almost_a_cutpaste:002_of_003:---------://
+
+                    dia = d_hotel13_te7_dia[ te7 ];
+                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+atx;
+                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+aty ;
+                    dpi =( dpx + ( dpy * 2048 ) );
+                    dci =( 4 * dpi );
+
+                    u32=(( 0x00
+                    |   ( d_pix2048[ dci + 0 ] << 24 )
+                    |   ( d_pix2048[ dci + 1 ] << 16 )
+                    |   ( d_pix2048[ dci + 2 ] <<  8 )
+                    |   ( d_pix2048[ dci + 3 ] <<  0 )
+                    )>>> 0 );;
+                    //:...u32.&.0x12345678...................://    
+                    v16 =( u32 & 0xF0000000 ) >>>( 28 );
+                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
+
+                    if( tik >= i_tik   ){
+                    if( v16 >(   0  )  ){
+
+                        o_hit =( 1 );
+                    };;};;
+                    //:---------:almost_a_cutpaste:002_of_003://
+                };;
+            };;
+            //:------------------------------:check_above://
+            //:check_below:------------------------------://
+            if( o_hit <= 0 ){
+
+                for( te7 = i_te7-1 ; te7 >=( 0 ) ; te7-- ){
+
+                    tx0 = xxxxxxxxxxxxxxxxxxxxx ;
+                    ty0 = yyyyyyyyyyyyyyyyyyyyy ;
+
+                    tx1 = xxxxxxxxxxxxxxxxxxxxx ;
+                    ty1 = yyyyyyyyyyyyyyyyyyyyy ;
+
+                for( btx = tx0 ; btx <= tx1 ; btx ++ ){
+                for( bty = ty0 ; bty <= ty1 ; bty ++ ){
+
+                    xxxxxxxxxxxxflsjlfjlsdfjsjdfljsdf
+                    
+                    LEFT_OFF_HERE : 2022_07_07
+
+                };;};;};;
+            };;
+            //:------------------------------:check_below://
+
+            sljflsdjflsTODOFINISHTHIS
+
+            return( o_hit );
+        };;
+
+    //:==========================:TILEMAP_QUERY_FUNCTIONS://    
 
                 
     const F_HOTEL13_EXP = "[FIX:F_HOTEL13_DET]" ;
@@ -1963,6 +2141,8 @@ console.log( "hotel13" );
     ,   i_clk_p_y  //: Return( 1 )if click position hits ://    
     ,   i_la3      //: a non-zero tile value of ANY SIZE.://    
     ){             //:-----------------------------------://
+        let   sam = d_hotel13_sam ;
+
         var o_hit =( 7066607 );
         
         var gxy = F_HOTEL13_SAM_EDI_CLK_GXY(
@@ -1984,74 +2164,99 @@ console.log( "hotel13" );
         }else
         if( h_x >=0 && h_y >= 0 ){
         
-            window.alert( "[This formula isn't finished]" );
-            //: we need to check EVERY TILE under the 
-            //: potential tile we are about to set
-            //: for this check to be correct.
-        
-            o_hit =( 0 ); //:InnocentTillProvenGuilty://
-        
-            var dpx ; //:DataPixelX  ://
-            var dpy ; //:DataPixelY  ://
-            var dpi ; //:DataPixelINDEX ://
-            var dci ; //:DataComponentINDEX://
-            var te7 ; //:AllTileSizes://
-            var dia ; //:DiagonalOffset://
-            var lat ; //:LateralOffset ://
-            var lmx ; //:Lateral Move X ? ://
-            var lmy ; //:Lateral Move Y ? ://
-            /// peb ; //:PebbleSize       ://
-            var g_w ; //:GridCellWIDTH    ://
-            var g_h ; //:GridCellHEIGHT   ://
-            var t_x ; //:Tile X           ://
-            var t_y ; //:Tile Y           ://
-            
-            g_w = d_hotel13_sam.hot_can.width / 5 ;
-            g_h = d_hotel13_sam.hot_can.height/ 5 ;
-            
-            lmx =(          ( i_la3 % 2 ) );
-            lmy =(Math.floor( i_la3 / 2 ) );
-            
-            for( te7 = 0 ; te7 <=(7-1) ; te7 ++ ){
-            
-                dpx =( 512 )+( 128 * h_x );
-                dpy =( 512 )+( 128 * h_y );
-                
-                dia = d_hotel13_te7_dia[ te7 ];
-                lat = d_hotel13_te7_lat[ te7 ];
-                /// = d_hotel13_te7_peb[ te7 ];
-                
-                dpx += dia ;
-                dpy += dia ;
-                
-                dpx +=(lat * lmx);
-                dpy +=(lat * lmy);
-                
-                t_w = g_w / lat ; //: lat === ntx ://
-                t_h = g_h / lat ; //: lat === nty ://
-                
-                t_x = Math.floor( i_clk_p_x / t_w );
-                t_y = Math.floor( i_clk_p_y / t_h );
-                t_x = t_x % lat ;
-                t_y = t_y % lat ;
-                
-                dpx += t_x ;
-                dpy += t_y ;
-                
-                dpi = ( dpx + ( dpy * 2048 ) );
-                dci =( 4*dpi );
-                
-                if( 0
-                ||  d_pix2048[ dci+0 ] >= 0x1
-                ||  d_pix2048[ dci+1 ] >= 0x1
-                ||  d_pix2048[ dci+2 ] >= 0x1
-                ||  d_pix2048[ dci+3 ] >= 0x1
-                ){
-                
-                    o_hit =( 1 );
-                    break; //:exitloop://
-                };;
+            //: What tile are you trying to set?     ://
+
+            //:--------------------------------------://
+            //: How Big Is Each Cell That A Level    ://
+            //: May Or May Not Be In? AKA[ gcw,gch ] ://
+            //: ( measured screen canvas pixels )    ://
+            //:--------------------------------------://
+            var te7 = sam.edi_te7 ;
+            var lat = d_hotel13_te7_lat[ te7 ];
+            var caw = sam.hot_can.width ;    //:@caw@://
+            var cah = sam.hot_can.height;    //:@cah@://
+            var gcw =( caw / 5 );            //:@gcw@://
+            var gch =( cah / 5 );            //:@gch@://
+
+            //:--------------------------------------://
+            //: For the tile size( te7 )you are      ://
+            //: trying to set , how big is each      ://
+            //: tile in on-screen pixels?  @te7@     ://
+            //: lat == map width for given[ te7 ]    ://
+            //: lat == "lateral offset"    @lat@     ://
+            //:--------------------------------------://
+            var lat = d_hotel13_te7_lat[ te7 ];   //:://
+            var t_w = ( gcw / lat );         //:@t_w@://
+            var t_h = ( gch / lat );         //:@t_h@://
+
+            //:--------------------------------------://
+            //: Divide mouse click location on       ://
+            //: canvas by tile size to find tile xy  ://
+            //: we are trying to set.                ://
+            //:--------------------------------------://
+            var t_x =( i_clk_p_x / t_w )%( lat );
+            var t_y =( i_clk_p_y / t_h )%( lat );
+
+            //:--------------------------------------://
+            //: Do we have OVERLAP on any tile size  ://
+            //: for the layer we want to target?     ://
+            //: INCLUDING SELF!                      ://
+            //:--------------------------------------://
+
+            var r13 =( h_x + ( h_y * 4 ) ); //:#h_x#://
+                                            //:#h_y#://
+            var ti0 =( t_x + ( t_y *lat) ); //:@ti0@://
+
+            let la3 = i_la3 ;
+
+            //:--------------------------------------://
+            //: It's not a collision if the tile     ://        
+            //: value detected is in the future, so  ://
+            //: supplying tick value of[ 0xFFFFFFFF ]://
+            //: ensures __ALL__ tiles that exist were://
+            //: set in the __PAST__.                 ://
+            //: #_NO_ITS_NOT_A_TIME_TRAVEL_GAME_#    ://
+            //:--------------------------------------://
+            //:..................0x12345678..........://
+            const ANYTIME_HIT =( 0xFFFFFFFF );  //:..://
+            //:..................0x11223344..........://
+
+            var hit =( F_HOTEL13_HIT_R13_TE7_LA3_TI0(
+                                     r13,te7,la3,ti0 
+            ,                        ANYTIME_HIT 
+            ));;
+
+            if( hit >= 1 ){
+
+                //: Obstacle in the way, Don't set.  ://
+                window.alert( "[OBSTACLE_IN_THE_WAY]" );
+            }else
+            if( hit <= 0 ){
+
+                ERR( "[TODO: SET THE TILE]" );
+
+                //:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX://
+    
+            }else{
+                ERR("[@UEC@:IconOfCoil_PerfectSex]");
             };;
+
+            //:--------------------------------------://
+            //: Find Data Pixel, Only Overwrite      ://
+            //: if value is ZERO.                    ://
+            //: @dpx@ : Data_Pixel X (in U32 texture)://
+            //: @dpy@ : Data_Pixel Y (in U32 texture)://
+            //:--------------------------------------://
+
+        ////////////    var dia = d_hotel13_te7_dia[   te7 ];
+        ////////////    var lmx = d_hotel13_la3_lmx[ i_la3 ];
+        ////////////    var lmy = d_hotel13_la3_lmy[ i_la3 ];
+        ////////////
+        ////////////    var dpx =( 512 )+(128*h_x)+dia+(lat*lmx)+t_x;
+        ////////////    var dpy =( 512 )+(128*h_y)+dia+(lat*lmy)+t_y;
+            
+            
+ 
         }else{
             ERR("[BAD_H_X_AND_H_Y_COMBO:2022]");
         };;
@@ -3002,6 +3207,168 @@ console.log( "hotel13" );
     @2022_07_06@ : If I die it's because gramps keeps
                  : an unsafe following distance when
                  : trying to pass cars.
+
+    @caw@ : CAnvas_Width
+    @cah@ : CAnvas_Height
+
+    @gcw@ : Grid_Cell_Width ( AKA : g_w )
+    @gch@ : Grid_Cell_Height( AKA : g_h );
+
+    @lat@ : Lateral Offset In Data To Another Layer Of Data.
+          : ALSO the size of the tilemap for a given
+          : tile size exponent.
+          :
+          : if lat==64 , you are looking at te7==0 tile size.
+          : ( the "alice sized" tiles )
+          : ( or should I say... "Ivy sized tiles" now ? )
+
+    @lmx@ : Lateral_Multiplier_X ( HOTEL13 System )
+    @lmy@ : Lateral_Multiplier_Y ( HOTEL13 System )
+
+    #r_x# , #r_y# : Hotel13_Room_XY:[ [h_x,h_y] or [g_x,g_y] ]
+    @r_x@ , @r_y@ : Hotel13_Room_XY[ [h_x,h_y] or [g_x,g_y] ]
+
+    #h_x# , #h_y# , #g_x# , #g_y# :--------------------------::
+                                                             ::
+    |<----- render positions ---->|   |<--- data positions -->|
+    +-----+-----+-----+-----+-----+   +-----+-----+-----+-----+
+    |     |     | g_x |     |     |   | h_x | h_x | h_x | h_x |
+    |     |     | g_y |     |     |   | h_y | h_y | h_y | h_y |
+    +-----+-----+-----+-----+-----+   +-----+-----+-----+-----+
+    |     | g_x | g_x | g_x |     |   | h_x | h_x | h_x | h_x |
+    |     | g_y | g_y | g_y |     |   | h_y | h_y | h_y | h_y |
+    +-----+-----+-----+-----+-----+   +-----+-----+-----+-----+
+    | g_x | g_x | g_x | g_x | g_x |   | h_x | h_x | h_x | h_x |
+    | g_y | g_y | g_y | g_y | g_y |   | h_y | h_y | h_y | h_y |
+    +-----+-----+-----+-----+-----+   +-----+-----+-----+-----+
+    |     | g_x | g_x | g_x |     |   | h_x |     |     |     |
+    |     | g_y | g_y | g_y |     |   | h_y |     |     |     |
+    +-----+-----+-----+-----+-----+   +-----+-----+-----+-----+
+    |     |     | g_x |     |     |                          ::
+    |     |     | g_y |     |     |                          ::
+    +-----+-----+-----+-----+-----+                          ::
+    :                                                        ::
+    [ g_x , g_y ] is the cell coordinate of a given          ::
+    :             [ level / room / hotel room ]              ::
+    :             in __PHYSICAL_RENDER__ space.              ::
+    :                                                        ::
+    [ h_x , h_y ] is the cell coordinate of a given          ::
+    :             [ level / room / hotel room ]              ::
+    :             in ___TEXTURE_DATA___  space.              ::
+    :                                                        ::
+    :  @g25@== 1D index form of[ g_x , g_y ]                 ::
+    :  @r13@== 1D index form of[ g_x , g_y ]with the         ::
+    :          void-rooms removed.                           ::
+    :  @h16@: Hypothetically , the 1D index form             ::
+    :       : of[ h_x , h_y ], but we have never             ::
+    :       : needed this in any calculations.               ::
+    :       :                                                ::
+    :       : CORRECTION: h16 == r13 , AVOID @h16@           ::
+    :       : because we don't want synonymous               ::
+    :       : variables running around.                      ::
+    :                                                        ::
+    :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+    @ti0@ : 1D index form of [ t_x , t_y ].
+          : Because the number of valid values held
+          : varies depending on the tile size exponent(te7),
+          : we denote the capacity as ZERO( 0 )to
+          : signify variant.
+          :
+          : ti0 == [ ti1 , ti2 , ti4 , ti8 , t16 , t32 , t64 ]
+          : te7 == [   6 ,   5 ,   4 ,   3 ,   2 ,   1 ,   0 ]
+
+    @UEC@  : Un_Expected_Case            ( AKA: EDCL )
+    @EDCL@ : Expected_Dead_Code_Line     ( AKA : EUB )
+    @EUB@  : Expected_Unreachable_Branch ( AKA : EUC )
+    @EUC@  : Expected_Unreachable_Code ..(okayletsstopthis)
+
+    @NEXI_FLAKES@ : d3m0.herokuapp.com/not_inf/nexif_app.html
+
+    #_FUTURE_TICKS_HIT_LATER_NOT_NOW_# :
+
+        Tiles , Bombs , and Fada all encode timestamp
+        information in them. I don't know what good
+        timestamps in the TILES are for , but timestamps
+        in the other stuff makes it so we can correctly
+        animate the bombs and flames.
+
+        Hell, with all the timestamp info, we can 
+        "replay" the level destruction if we want.
+
+        We would just need to record player position
+        at given timestamps too.
+
+        How many positions can we record in a 512x512 ?
+        262144 if we need 2 pixels to encode XY position.
+        That is #FEATURE_CREEP#. Just keep it in mind.
+
+        DATE[ 2022_07_07 ]KANJICODER
+
+    #_NO_ITS_NOT_A_TIME_TRAVEL_GAME_# :
+
+        TAG[ not time travel ]
+
+        No, it's not a time travel game. We encode the
+        game ticker value as a timestamp in the tile 
+        value in order to optimize animations and
+        collisions with the bomb system.
+
+        By setting flames at least 2 frames in the future,
+        we don't have to do a 2-pass "set flames" then
+        "ignite bombs". We can "set flames" and 
+        "ignite bombs" in ONE PASS and not worry about
+        weird effects because of data visiting order.
+
+        Don't know what I mean? Try writing a BLURR 
+        filter that acts DIRECTLY on an RGBA byte 
+        array encoded image without a SWAP BUFFER.
+        You will end up with streaking based on the
+        scan-line order in which you visted each pixel.
+
+        The SIMULATION outcome of bomb system should not
+        change based on the order in which we visit
+        the data.
+
+        DATE[ 2022_07_07 ]KANJICODER@428ALMOSTBLAZEITPM
+
+    @d_p@ : DataPixel ( Means[ dpx , dpy ] )
+
+    @lax@ : YOU_MEAN[ @lmx@ ]( LAT - Multiplier X )
+    @lay@ : YOU_MEAN[ @lmy@ ]( LAT - Multiplier Y )
+
+    #lmx# : Lateral_Multipler_X
+          : The multiplier to apply to LAT (lateral offset)
+          : to select the correct layer of data in texture.
+
+    #lmy# : Lateral_Multipler_Y
+          : The multiplier to apply to LAT (lateral offset)
+          : to select the correct layer of data in texture.
+
+    #_DIFFERENT_ZEROS_# :
+
+        I am not certain what different ZERO values should
+        mean with different time stamps. I am thinking
+        we could use this as a way to animate empty space.
+
+        Give some type of atmospheric effect.
+
+        We could also animate auto-tiling if we wanted
+        to, to make the world feel alive. A lot of
+        potential with these timestamps.
+
+        Worry about the meaning after we have a 
+        first playable.
+
+    #_ABOVE_BEFORE_BELOW_# : 
+
+        If bombs are going off like crazy all over the place,
+        checking for intersection with BIGGER CELLS (above)
+        first is going to optimize the simulation speed
+        drastically.
+     
+
     
 *** ******************************************************** **/
 /** DEVELOPER_TODO_NOTE ************************************ ***
