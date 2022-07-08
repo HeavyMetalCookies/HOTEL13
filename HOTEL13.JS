@@ -2695,6 +2695,95 @@ console.log( "hotel13" );
     };;
     //:========================:HOTEL13_STAND_ALONE_SETUP://
 
+
+
+
+/** BOMB_LASER_ECHOBOX_SPARKPIN **************************** ***
+
+    DATE[ 2022_07_07 ]KANJICODER_CANT_SLEEP
+
+    BOMBS :
+        BOMB_VERTICAL
+        BOMB_HORIZONTAL
+        BOMB_FOURWAY   ( small blast , fuse bomb )
+        BOMB_SKULL     ( large 4way blast , instant detonation )
+
+    SPARKPIN :
+        Creates a 1x1 "spark" that doesn't hurt player.
+        INSTANTLY sparks when touched or triggered.
+        Spark is of "box bomb" shape, not a cross.
+        Rendered as a very small square with dashed lines
+        around the perimeter of the full tile size.
+
+    ECHOBOX : ( anti-matter bomb )
+        ECHOBOX_VERTICAL
+        ECHOBOX_HORIZONTAL    
+        ECHOBOX_FOURWAY   
+        ECHOBOX_SKULL   
+
+    
+    Note: Echobox used "squareblast" pattern , while
+          bombs use "crossblast" pattern.
+
+
+          [@]         [@]
+       [@][b][@]      [b]       [@][b][@]
+          [@]         [@]
+
+
+
+
+        [@][@][@]   [@][@][@]  [@][@][@][@][@][@][@][@][@]
+        [@][e][@]   [@][@][@]  [@][@][@][@][e][@][@][@][@]
+        [@][@][@]   [@][@][@]  [@][@][@][@][@][@][@][@][@]
+                    [@][@][@]
+                    [@][e][@]
+                    [@][@][@]
+                    [@][@][@]
+                    [@][@][@]
+                    [@][@][@]
+
+
+        LASERS : [>]   [<]   [^]   [v] 
+
+
+        [!][!][!]  Sparkbox, doesn't hurt you.
+        [!][s][!]  Immediately "sparks" when touched.
+        [!][!][!]  No timer like other things.
+
+
+*** **************************** BOMB_LASER_ECHOBOX_SPARKPIN **/
+/** DEVELOPER_TODO_NOTE ************************************ ***
+
+
+
+    #_MAKE_EXPLOSIVE_AUTOMATA_ON_E_Z_2D_CANVAS_# 
+    
+        Bomb system is basically just over-glorified
+        cellular atomata. Get this file to run standalone
+        using a simple CANVAS 2D context to render
+        enough info to help you debug behavior.
+        
+        Should be able to pause+play simulation
+        and SET BOMBS while simulation is paused.
+        
+        ----------------------------------------------------
+        
+        TODO: Explosive Atomata
+        
+            We randomly generate TILES & BOMBS
+            on the map and have fire blasts running
+            around the boarder of the 13 rooms diamond.
+            
+            Once a trail of bombs hits the edge,
+            detonation is inevitable once the rolling
+            fire makes its way to the boarder.
+            
+            We use this to TEST if all of our logic
+            is working before we move the code
+            into main game.
+            
+*** ************************************ DEVELOPER_TODO_NOTE **/
 /** ******************************************************** ***
 
               [ ]
@@ -3371,34 +3460,4 @@ console.log( "hotel13" );
 
     
 *** ******************************************************** **/
-/** DEVELOPER_TODO_NOTE ************************************ ***
 
-
-
-    #_MAKE_EXPLOSIVE_AUTOMATA_ON_E_Z_2D_CANVAS_# 
-    
-        Bomb system is basically just over-glorified
-        cellular atomata. Get this file to run standalone
-        using a simple CANVAS 2D context to render
-        enough info to help you debug behavior.
-        
-        Should be able to pause+play simulation
-        and SET BOMBS while simulation is paused.
-        
-        ----------------------------------------------------
-        
-        TODO: Explosive Atomata
-        
-            We randomly generate TILES & BOMBS
-            on the map and have fire blasts running
-            around the boarder of the 13 rooms diamond.
-            
-            Once a trail of bombs hits the edge,
-            detonation is inevitable once the rolling
-            fire makes its way to the boarder.
-            
-            We use this to TEST if all of our logic
-            is working before we move the code
-            into main game.
-            
-*** ************************************ DEVELOPER_TODO_NOTE **/
