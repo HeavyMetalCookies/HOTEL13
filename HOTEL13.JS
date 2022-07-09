@@ -88,9 +88,11 @@ console.log( "hotel13" );
 
         var d_hotel13_ren_bom =[
 
+            _0_ , _0_  //:<-- Nothingness Entry ://
+
         //: BOMB(S)    ://
 
-            CIR , VER
+        ,   CIR , VER
         ,   CIR , HOR
         ,   CIR , S4W
         ,   CIR , KIL
@@ -278,20 +280,20 @@ console.log( "hotel13" );
         //:               :                              ://
         //:------------------------:group_mouse_and_click://
     
-    ,   edi_v16     :(1)  //: Editor Tile Value   ://
-    ,   edi_te7     :(5)  //: Editor Tile Size    ://
-    ,   edi_la3     :(0)  //: Editor Target Layer ://
+    ,   edi_v16     :(13)  //: Editor Tile Value   ://
+    ,   edi_te7     :( 5)  //: Editor Tile Size    ://
+    ,   edi_la3     :( 1)  //: Editor Target Layer ://
 
-    ,   edi_te7_min :(0)  //: AKA[ edi_ran_max ]  ://
-    ,   edi_te7_max :(4)  //: AKA[ edi_ran_min ]  ://
+    ,   edi_te7_min :( 0)  //: AKA[ edi_ran_max ]  ://
+    ,   edi_te7_max :( 4)  //: AKA[ edi_ran_min ]  ://
     
-    ,   edi_mod_hol :(1)  //: Hold Brush Down     ://
-    ,   edi_mod_ran :(1)  //: Randomize Brush Size://
-    ,   edi_mod_mir :(0)  //: Mirror Brush Strokes://
-    ,   edi_mod_nov :(1)  //: NO-Overlap Mode     ://
+    ,   edi_mod_hol :( 1)  //: Hold Brush Down     ://
+    ,   edi_mod_ran :( 1)  //: Randomize Brush Size://
+    ,   edi_mod_mir :( 0)  //: Mirror Brush Strokes://
+    ,   edi_mod_nov :( 1)  //: NO-Overlap Mode     ://
 
-    ,   edi_ask_emp :(0)  //: Editor Ask To Empty ://
-    ,   edi_ask_fil :(0)  //: Editor Ask To Fill  ://
+    ,   edi_ask_emp :( 0)  //: Editor Ask To Empty ://
+    ,   edi_ask_fil :( 0)  //: Editor Ask To Fill  ://
     
     } : { } );;
     //: Object.seal( d_hotel13_sam.te7_clk_t_x );
