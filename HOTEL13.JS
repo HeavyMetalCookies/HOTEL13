@@ -24,6 +24,117 @@ console.log( "hotel13" );
         ,   rgh = "[FIX:just_use:g_h(gridcell_height)]"
         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     //:===================================:ITS_WRONG_CARL://
+    //:HOTEL13_COLOR_PALLET:=============================://    
+    var d_hotel13_hcp_til =[                     //:H_C_P://
+                                                 //:H_C_P://
+        //:@HCP@ : Hotel13_Color_Pallet ://      //:H_C_P://
+                                                 //:H_C_P://
+        "#000000"   //: "BLACK"                  //:H_C_P://
+                                                 //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+        //: Cut values in half to make       :// //:H_C_P://
+        //: them all darker.                 :// //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+                                                 //:H_C_P://
+        //: C3/2 ==> 61 DARK_VERSIONS ://        //:H_C_P://
+        //: FF/2 ==> 7F DARK_VERSIONS ://        //:H_C_P://
+        //: 88/2 ==> 44 DARK_VERSIONS ://        //:H_C_P://
+        //: 44/2 ==> 22 DARK_VERSIONS ://        //:H_C_P://
+                                                 //:H_C_P://
+
+        //: AVOID THIS TILE TYPE:
+        //:     "ANGLED TILE : Leaves Ladders"
+        //:      It will cause problems if angled
+        //:      tiles spawn ladders I think
+
+        //: Cube lights don't auto tile and you ://
+        //: break them 1 tile at a time. They   ://
+        //: leave ladders behind. The other     ://
+        //: light types do NOT leave ladders.   ://
+
+    //: HEAD BASHABLE :------------------------------://
+
+    //: Greens      ://
+    ,   "#00FF00"   //: Bauxite Leaving Ladders      ://   
+    ,   "#00FF44"   //: Dirt Leaving Nothing         ://
+                
+    //: Pastell     ://
+    ,   "#00FF66"   //: Glass_Light : CUBE           ://
+    ,   "#00FF88"   //: Glass_Light : VERTICAL       ://
+    ,   "#00FFFF"   //: Glass_Light : HORIZONTAL     ://
+
+    //: BOMBABLES ( all head bashable are bombable ) ://
+     
+    //: PURPLES:    ://
+    ,   "#8800FF"   //: SQUARE TILE : Leaves Ladders ://
+    ,   "#8844FF"   //: SQUARE TILE : Leaves Nothing :// 
+    ,   "#8888FF"   //: ANGLED TILE : Leaves Nothing ://  
+
+    //: INDESTRUCTABLES :----------------------------://
+                
+    //: GRAYS       ://
+    ,   "#995511"   //: Falling Iron   :-------------://
+    ,   "#995522"   //: Falling Marble :-------------://
+    ,   "#995533"   //: Falling Beam   :-------------:// 
+    ,   "#995544"   //: Vents          :-------------://
+    ,   "#995555"   //: Dragonite      :-------------://
+
+    //: SPECIAL_DO_NOT_RENDER :----------------------://
+    
+    ,   "#FFFFFF"   //: SPRITE_SPAWNER_REC:TOP_LEF   ://
+    ,   "#888888"   //: SPRITE_SPAWNER_REC:BOT_RIG   ://
+    ];;                                           
+    var d_hotel13_hcp_bom =[    //:PASTEL://     //:H_C_P://
+                                                 //:H_C_P://
+        "#000000"   //: "BLACK"                  //:H_C_P://
+                                                 //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+        //: All "00" channels got "99" to    :// //:H_C_P://
+        //: create pastel colors.            :// //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+                                                 //:H_C_P://
+    ,   "#C3FF99"   //: "ELECTRIC_LIME"          //:H_C_P://
+    ,   "#88FF99"   //: "LIME"                   //:H_C_P://
+    ,   "#44FF99"   //: "HARLEQUIN"              //:H_C_P://
+    ,   "#99FF99"   //: "GREEN"                  //:H_C_P://
+    ,   "#99FF44"   //: "ZOISITE"                //:H_C_P://
+    ,   "#99FF88"   //: "TEAL"                   //:H_C_P://
+    ,   "#99FFC3"   //: "VAPOR"                  //:H_C_P://
+    ,   "#99FFFF"   //: "CYAN"                   //:H_C_P://
+    ,   "#99C3FF"   //: "WATER"                  //:H_C_P://
+    ,   "#9988FF"   //: "SKY"                    //:H_C_P://
+    ,   "#9944FF"   //: "ARGON"                  //:H_C_P://
+    ,   "#9900FF"   //: "BLUE"                   //:H_C_P://
+    ,   "#4499FF"   //: "HAN_PURPLE"             //:H_C_P://
+    ,   "#8899FF"   //: "INDIGO"                 //:H_C_P://
+    ,   "#C399FF"   //: "PURPLE_LIGHTNING"       //:H_C_P://
+    ];;                                          //:H_C_P://
+    var d_hotel13_hcp_fad =[   //:FULLSAT://     //:H_C_P://
+                                                 //:H_C_P://
+        "#000000"   //: "BLACK"                  //:H_C_P://
+                                                 //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+        //: Some of the original atomic alice:// //:H_C_P://
+        //: colors from my notes.            :// //:H_C_P://
+        //:----------------------------------:// //:H_C_P://
+                                                 //:H_C_P://
+    ,   "#C3FF00"   //: "ELECTRIC_LIME"          //:H_C_P://
+    ,   "#88FF00"   //: "LIME"                   //:H_C_P://
+    ,   "#44FF00"   //: "HARLEQUIN"              //:H_C_P://
+    ,   "#00FF00"   //: "GREEN"                  //:H_C_P://
+    ,   "#00FF44"   //: "ZOISITE"                //:H_C_P://
+    ,   "#00FF88"   //: "TEAL"                   //:H_C_P://
+    ,   "#00FFC3"   //: "VAPOR"                  //:H_C_P://
+    ,   "#00FFFF"   //: "CYAN"                   //:H_C_P://
+    ,   "#00C3FF"   //: "WATER"                  //:H_C_P://
+    ,   "#0088FF"   //: "SKY"                    //:H_C_P://
+    ,   "#0044FF"   //: "ARGON"                  //:H_C_P://
+    ,   "#0000FF"   //: "BLUE"                   //:H_C_P://
+    ,   "#4400FF"   //: "HAN_PURPLE"             //:H_C_P://
+    ,   "#8800FF"   //: "INDIGO"                 //:H_C_P://
+    ,   "#C300FF"   //: "PURPLE_LIGHTNING"       //:H_C_P://
+    ];;                                          //:H_C_P://
+    //:=============================:HOTEL13_COLOR_PALLET://    
 
 
     const d_hotel13_yes_aim =( 0
@@ -46,23 +157,40 @@ console.log( "hotel13" );
     ,   tik_fps : (30)  //: One Frame Per Second
     ,   tik_num :(0-1)  //: AKA[ hot_tik ]
     
-    ,   clk_p_x :(0-1)  //: Last Clicked Pixel X
-    ,   clk_p_y :(0-1)  //: Last Clicked Pixel Y
+        //:group_mouse_and_click:------------------------://
+        //:                                              ://
+    ,   mou_p_x :(0-1)  //: Last_Mouse_Move      Pixel_Y ://    
+    ,   mou_p_y :(0-1)  //: Last_Mouse_Move      Pixel_X ://
+        //:               :                              ://
+    ,   clk_p_x :(0-1)  //: Last_Clicked         Pixel_X ://
+    ,   clk_p_y :(0-1)  //: Last_Clicked         Pixel_Y ://
+        //:               :                              ://
+    ,   mou_g_x :(0-1)  //: Last_Mouse_Move  Grid_Cell_X ://
+    ,   mou_g_y :(0-1)  //: Last_Mouse_Move  Grid_Cell_Y ://
+        //:               :                              ://
+    ,   clk_g_x :(0-1)  //: Last_Clicked     Grid_Cell_X ://
+    ,   clk_g_y :(0-1)  //: Last_Clicked     Grid_Cell_Y ://
+        //:               :                              ://
+    ,   te7_clk_t_x : new Array( 7 )  //:ALL:     Tile_X ://
+    ,   te7_clk_t_y : new Array( 7 )  //:ALL:     Tile_Y ://
+        //:               :                              ://
+    ,   te7_mou_t_x : new Array( 7 )  //:ALL:     Tile_X ://
+    ,   te7_mou_t_y : new Array( 7 )  //:ALL:     Tile_Y ://
+        //:               :                              ://
+        //:------------------------:group_mouse_and_click://
     
-    ,   clk_g_x :(0-1)  //: Last Clicked Grid Cell X
-    ,   clk_g_y :(0-1)  //: Last Clicked Grid Cell Y
-    
-    ,   te7_clk_t_x : new Array( 7 )
-    ,   te7_clk_t_y : new Array( 7 )
-    
+    ,   edi_v16     :(1)  //: Editor Tile Value   ://
     ,   edi_te7     :(5)  //: Editor Tile Size    ://
     ,   edi_la3     :(0)  //: Editor Target Layer ://
+
+    ,   edi_te7_min :(0)  //: AKA[ edi_ran_max ]  ://
+    ,   edi_te7_max :(4)  //: AKA[ edi_ran_min ]  ://
     
-    ,   edi_mod_hol :(0)  //: Hold Brush Down     ://
-    ,   edi_mod_ran :(0)  //: Randomize Brush Size://
+    ,   edi_mod_hol :(1)  //: Hold Brush Down     ://
+    ,   edi_mod_ran :(1)  //: Randomize Brush Size://
     ,   edi_mod_mir :(0)  //: Mirror Brush Strokes://
-    ,   edi_mod_nov :(0)  //: NO-Overlap Mode     ://
-    
+    ,   edi_mod_nov :(1)  //: NO-Overlap Mode     ://
+
     ,   edi_ask_emp :(0)  //: Editor Ask To Empty ://
     ,   edi_ask_fil :(0)  //: Editor Ask To Fill  ://
     
@@ -578,7 +706,6 @@ console.log( "hotel13" );
         ,   i_la3  //: Layer_Index , ENCODES[ lmx , lmy ]://
         ,   i_ti0  //: Tile__Index , ENCODES[ t_x , t_y ]://   
 
-        ,   i_tik  //:#_FUTURE_TICKS_HIT_LATER_NOT_NOW_# ://
         ){
             //:[ATF]:------------------------------------://
             //:                                          ://
@@ -594,6 +721,11 @@ console.log( "hotel13" );
             //:   style pattern generation.              ://
             //:                                          ://
             //:------------------------------------:[ATF]://
+
+            //:        #_FUTURE_TICKS_HIT_LATER_NOT_NOW_#  
+            const i_tik = "[#_I_TAKE_IT_BACK_2022_07_09_#]";
+            
+
             if( d_bug >= 1 ){
                
                 let max =( (64*64)-1 );
@@ -622,8 +754,17 @@ console.log( "hotel13" );
             const lmx =(d_hotel13_la3_lmx[ i_la3 ] );
             const lmy =(d_hotel13_la3_lmy[ i_la3 ] );
 
+                  lat =( d_hotel13_te7_lat[ i_te7 ]);
             const t_x =(          ( i_ti0 % lat )  );
             const t_y =(Math.floor( i_ti0 / lat )  );
+            if( d_bug >= 1 ){
+
+                if( (!( t_x >= 0 && t_x <=(64-1) ))
+                ||  (!( t_y >= 0 && t_y <=(64-1) ))
+                ){
+                    ERR("[OOB:t_x___orr___t_y]");
+                };;
+            };;
 
             ///   la3       ;
             ///   dia       ; //: Diagonal @d_p@ Offset  ://
@@ -637,11 +778,14 @@ console.log( "hotel13" );
             var   tik       ; //: Tick Value Of Tile     ://
             var   te7       ; //: Tile Size Exponent     ://
             var   chk       ; //: Check your work value. ://
+            var   chk_002   ; //: Check your work 002    ://
 
             var   dibamis         ; //:#dibamis#@dibamis@://
             var   tx0 , tx1 , ttx ; //: #tx0_tx1_ttx#    ://
             var   ty0 , ty1 , tty ; //: #ty0_ty1_tty#    ://
 
+            var ldx = ( 512 )+(128*h_x); //:@ldx@://
+            var ldy = ( 512 )+(128*h_y); //:@ldy@://
 
             var o_hit =( 0 );
 
@@ -651,12 +795,16 @@ console.log( "hotel13" );
                 dia = d_hotel13_te7_dia[ i_te7 ];
                 lat = d_hotel13_te7_lat[ i_te7 ];
 
-                //:NOLOOP:===================================://
+                //:  LOOP_DIRECTION[ NONE ] ------------ ://
+                for( te7 = i_te7 ;; ){
+                    
+                    dia = d_hotel13_te7_dia[ te7 ];
+                    lat = d_hotel13_te7_lat[ te7 ];
 
-                    //:almost_a_cutpaste:001_of_003:---------://
+                    //:almost_a_cutpaste:001_of_003:-----://
 
-                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+t_x;
-                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+t_y ;
+                    dpx =ldx+dia+(lmx*lat)+t_x;
+                    dpy =ldy+dia+(lmy*lat)+t_y ;
                     dpi =( dpx + ( dpy * 2048 ) );
                     dci =( 4 * dpi );
 
@@ -666,11 +814,10 @@ console.log( "hotel13" );
                     |   ( d_pix2048[ dci + 2 ] <<  8 )
                     |   ( d_pix2048[ dci + 3 ] <<  0 )
                     )>>> 0 );;
-                    //:...u32.&.0x12345678...................://    
+                    //:...u32.&.0x12345678...............://    
                     v16 =( u32 & 0xF0000000 ) >>>( 28 );
                     tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
 
-                    if( tik >= i_tik   ){
                     if( v16 >(   0  )  ){
 
                         //: Difference between[ 0x0FFFFFFF ] ://
@@ -679,71 +826,73 @@ console.log( "hotel13" );
 
                         o_hit =( 1 );
 
-                    };;};;
+                    };;
                     //:---------:almost_a_cutpaste:001_of_003://
-
-                //:===================================:NOLOOP://
+                
+                break ;
+                };;
             };;
             //:------------------------------:check__here://
             //: ******** #_BIGGER_TILES_FIRST_# ******** :// 
-            //:check_above:------------------------------://
-            if( o_hit <= 0 ){
-
-                //:#_DIBAMIS_DIV_#://
-
-                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){
-
-                    dia = d_hotel13_te7_dia[ te7 ];
-                    lat = d_hotel13_te7_lat[ te7 ];
-
-                    chk    =(d_hotel13_te7_lat[6-(i_te7-te7)]);
-                    dibamis=(d_hotel13_te7_peb[  (i_te7-te7)]);
-                    ASS( chk === dibamis );
-
-                    //: ttx == tx0 == tx1
-                    //: tty == ty0 == ty1
-                    ttx = Math.floor( t_x / dibamis );
-                    tty = Math.floor( t_y / dibamis );
-                     
-                //:NOLOOP:===================================://
-                //:NOLOOP:===================================://
-                
-                    //:almost_a_cutpaste:002_of_003:---------://
-
-                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+ttx ;
-                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+tty ;
-                    dpi =( dpx + ( dpy * 2048 ) );
-                    dci =( 4 * dpi );
-
-                    u32=(( 0x00
-                    |   ( d_pix2048[ dci + 0 ] << 24 )
-                    |   ( d_pix2048[ dci + 1 ] << 16 )
-                    |   ( d_pix2048[ dci + 2 ] <<  8 )
-                    |   ( d_pix2048[ dci + 3 ] <<  0 )
-                    )>>> 0 );;
-                    //:...u32.&.0x12345678...................://    
-                    v16 =( u32 & 0xF0000000 ) >>>( 28 );
-                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
-
-                    if( tik >= i_tik   ){
-                    if( v16 >(   0  )  ){
-
-                        o_hit =( 1 );
-                    };;};;
-                    //:---------:almost_a_cutpaste:002_of_003://
-
-                //:===================================:NOLOOP://
-                //:===================================:NOLOOP://
-                };;
-            };;
-            //:------------------------------:check_above://
+            //:check_above:------------------------------://    // [CAP_H13]
+            if( o_hit <= 0 ){                                   // [CAP_H13]
+                                                                // [CAP_H13]
+                //:#_DIBAMIS_DIV_#://                           // [CAP_H13]
+                                                                // [CAP_H13]
+                //:  LOOP_DIRECTION[ _UP_ ] ------------ ://    // [CAP_H13]
+                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){     // [CAP_H13]
+                                                                // [CAP_H13]
+                    dia = d_hotel13_te7_dia[ te7 ];             // [CAP_H13]
+                    lat = d_hotel13_te7_lat[ te7 ];             // [CAP_H13]
+                                                                // [CAP_H13]
+                    chk    =(d_hotel13_te7_lat[6-(te7-i_te7)]); // [CAP_H13]
+                    dibamis=(d_hotel13_te7_peb[  (te7-i_te7)]); // [CAP_H13]
+                    ASS( chk === dibamis );                     // [CAP_H13]
+                                                                // [CAP_H13]
+                    //: ttx == tx0 == tx1                       // [CAP_H13]
+                    //: tty == ty0 == ty1                       // [CAP_H13]
+                    ttx = Math.floor( t_x / dibamis );          // [CAP_H13]
+                    tty = Math.floor( t_y / dibamis );          // [CAP_H13]
+                                                                // [CAP_H13]
+                //:NOLOOP:===============================://    // [CAP_H13]
+                //:NOLOOP:===============================://    // [CAP_H13]
+                                                                // [CAP_H13]
+                    //:almost_a_cutpaste:002_of_003:-----://    // [CAP_H13]
+                                                                // [CAP_H13]
+                    dpx =ldx+dia+(lmx*lat)+ttx ;                // [CAP_H13]
+                    dpy =ldy+dia+(lmy*lat)+tty ;                // [CAP_H13]
+                    dpi =( dpx + ( dpy * 2048 ) );              // [CAP_H13]
+                    dci =( 4 * dpi );                           // [CAP_H13]
+                                                                // [CAP_H13]
+                    u32=(( 0x00                                 // [CAP_H13]
+                    |   ( d_pix2048[ dci + 0 ] << 24 )          // [CAP_H13]
+                    |   ( d_pix2048[ dci + 1 ] << 16 )          // [CAP_H13]
+                    |   ( d_pix2048[ dci + 2 ] <<  8 )          // [CAP_H13]
+                    |   ( d_pix2048[ dci + 3 ] <<  0 )          // [CAP_H13]
+                    )>>> 0 );;                                  // [CAP_H13]
+                    //:...u32.&.0x12345678...............://    // [CAP_H13]
+                    v16 =( u32 & 0xF0000000 ) >>>( 28 );        // [CAP_H13]
+                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );        // [CAP_H13]
+                                                                // [CAP_H13]
+                    if( v16 >(   0  )  ){                       // [CAP_H13]
+                                                                // [CAP_H13]
+                        o_hit =( 1 );                           // [CAP_H13]
+                    };;                                         // [CAP_H13]
+                    //:-----:almost_a_cutpaste:002_of_003://    // [CAP_H13]
+                                                                // [CAP_H13]
+                //:===============================:NOLOOP://    // [CAP_H13]
+                //:===============================:NOLOOP://    // [CAP_H13]
+                };;                                             // [CAP_H13]
+            };;                                                 // [CAP_H13]
+            //:------------------------------:check_above://    // [CAP_H13]
             //: ******** #_SMALLER_TILES_NEXT_# ******** :// 
             //:check_below:------------------------------://
             if( o_hit <= 0 ){
 
                 //:#_DIBAMIS_MUL_#://
 
-                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){
+                //:  LOOP_DIRECTION[ DOWN ] ------------ ://
+                for( te7 = i_te7-1 ; te7 >=( 0 ) ; te7-- ){
 
                     dia = d_hotel13_te7_dia[ te7 ];
                     lat = d_hotel13_te7_lat[ te7 ];
@@ -752,17 +901,29 @@ console.log( "hotel13" );
                     dibamis=(d_hotel13_te7_peb[  (i_te7-te7)]);
                     ASS( chk === dibamis );
 
-                    tx0 = ( t_x * dibamis );
-                    ty0 = ( t_y * dibamis );
-                    tx1 = ( tx0 + dibamis );
-                    ty1 = ( ty0 + dibamis );
+                    if( d_bug >= 1 ){
+    
+                        chk_002 =( 
+                            d_hotel13_te7_lat[   te7 ]  //:MORE_TILES://
+                            /                   
+                            d_hotel13_te7_lat[ i_te7 ]  //:LESS_TILES://
+                        );;
+                        ASS( chk == chk_002 , "[C2_A]");
+                        ASS( chk == dibamis , "[C2_B]");
+                    };;
+
+                    //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<FIX THIS FORMULA
+                    tx0 = ( t_x * dibamis     );
+                    ty0 = ( t_y * dibamis     );
+                    tx1 = ( tx0 +(dibamis)-1  );
+                    ty1 = ( ty0 +(dibamis)-1  );
 
                 for( tty = ty0 ; tty<=ty1 ; tty++ ){
                 for( ttx = tx0 ; ttx<=tx1 ; ttx++ ){
-                    //:almost_a_cutpaste:003_of_003:---------://
+                    //:almost_a_cutpaste:003_of_003:-----://
 
-                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+ttx ;
-                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+tty ;
+                    dpx =ldx+dia+(lmx*lat)+ttx ;
+                    dpy =ldy+dia+(lmy*lat)+tty ;
                     dpi =( dpx + ( dpy * 2048 ) );
                     dci =( 4 * dpi );
 
@@ -772,16 +933,15 @@ console.log( "hotel13" );
                     |   ( d_pix2048[ dci + 2 ] <<  8 )
                     |   ( d_pix2048[ dci + 3 ] <<  0 )
                     )>>> 0 );;
-                    //:...u32.&.0x12345678...................://    
+                    //:...u32.&.0x12345678...............://    
                     v16 =( u32 & 0xF0000000 ) >>>( 28 );
                     tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
 
-                    if( tik >= i_tik   ){
                     if( v16 >(   0  )  ){
 
                         o_hit =( 1 );
-                    };;};;
-                    //:---------:almost_a_cutpaste:003_of_003://
+                    };;
+                    //:-----:almost_a_cutpaste:003_of_003://
                 };; //:NEXT[ ttx ]://
                 };; //:NEXT[ tty ]://
                 };; //:NEXT[ te7 ]://
@@ -1973,10 +2133,17 @@ console.log( "hotel13" );
 
         var c_i ; //: @c_i@ : component index of pixel.  ://
         
-        var clk_t_x ; //:clicked tile , x coord.
-        var clk_t_y ; //:clicked tile , y coord.
+        var clk_t_x ; //: Clicked   Tile , x coord :-----://
+        var clk_t_y ; //: Clicked   Tile , y coord :-----://
+                                                   
+        var mou_t_x ; //: MouseMove Tile , x coord :-----://
+        var mou_t_y ; //: MouseMove Tile , y coord :-----://
         
         var clk     ; //:clicked? boolean://
+        var mou     ; //:moused ? boolean://
+
+        mou_t_x = sam.te7_mou_t_x[ sam.edi_te7 ];
+        mou_t_y = sam.te7_mou_t_y[ sam.edi_te7 ];
 
         for( var te7 =(7-1); te7 >=(  0 ) ; te7 -- ){
         
@@ -2011,7 +2178,7 @@ console.log( "hotel13" );
                 if( sam.clk_g_x === g_x 
                 &&  sam.clk_g_y === g_y
                 ){
-                    ctx.fillStyle = "ORANGE" ;
+                    ctx.fillStyle = "#111111" ; //:#GREY#://    
                 }else{
                     ctx.fillStyle = "BLACK"   ;
                 };;
@@ -2054,12 +2221,19 @@ console.log( "hotel13" );
             | ( d_pix2048[ c_i ] <<  0 )
             );;
             
-            t_v =( dtu >>> 28 ); //:Tile Is 4Bit Number  ://
+            t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
             t_t =( dtu & 0x0FFFFFFF );
             //:---------:0x12345678----------------------://
             
             clk =(  clk_t_x === t_x 
                  && clk_t_y === t_y );;
+
+            mou =(      mou_t_x === t_x
+                 &&     mou_t_y === t_y 
+                 && sam.edi_te7 === te7
+                 && sam.mou_g_x === g_x
+                 && sam.mou_g_y === g_y
+            );;
                  
             if( sam.clk_g_x != g_x ){ clk =( 0 ); };
             if( sam.clk_g_y != g_y ){ clk =( 0 ); };
@@ -2075,13 +2249,29 @@ console.log( "hotel13" );
                 pog_t_y = ( o_y + ( t_y * t_h ) );
                 
                 if( !!clk && (!(t_v>=1)) ){
-                    ctx.fillStyle = "GREEN"   ;
+                    ctx.strokeStyle = "GREEN"   ;
+                    ctx.strokeRect( pog_t_x, pog_t_y, t_w, t_h );
                 }else{
-                    ctx.fillStyle = "TAN"   ;
+                    ASS( t_v >=0 && t_v <=(16-1) );
+                    ctx.fillStyle=(
+                        d_hotel13_hcp_til[ t_v ] 
+                    );;
+                    ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h );
                 };;
                 
-                ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h ); 
+                 
  
+            }else{
+
+                if( !!mou && (!(t_v>=1)) ){
+        
+                    /** Draw Active Tile Cursor **/
+
+                    pog_t_x = ( o_x + ( t_x * t_w ) );
+                    pog_t_y = ( o_y + ( t_y * t_h ) );
+                    ctx.fillStyle = "BLUE"    
+                    ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h ); 
+                };;
             };;
             
         };;};;
@@ -2203,8 +2393,6 @@ console.log( "hotel13" );
         return( [ g_x , g_y ] );
     };;
     
-    window.alert( "[are we using : EDI_CLK_HIT : yet?]" );
-    
     const   F_HOTEL13_EDI_CLK_HIT =(
       "[FIX:F_HOTEL13_SAM_EDI_CLK_HIT]" );;
     const   F_HOTEL13_SAM_EDI_CLK_HIT = function
@@ -2243,21 +2431,38 @@ console.log( "hotel13" );
                     i_clk_p_x , i_clk_p_y   );;
         var g_x =( gxy[ 0 ] );
         var g_y =( gxy[ 1 ] );
+
+        ASS( g_x >= 0 && g_x <=( 5-1 ) );
+        ASS( g_y >= 0 && g_y <=( 5-1 ) );
+
+        var g25 , h_x , h_y ;
+
+        h_x =( 0-1 );
+        h_y =( 0-1 );
                     
-        var g25 = ( g_x + ( g_y * 5 ) );
-        var h_x = d_hotel13_g25_h_x[ g25 ];
-        var h_y = d_hotel13_g25_h_y[ g25 ];
-        if( h_x < 0 && h_y < 0 ){
-        
-            alert("[OOOOOOOOOOOOOOOOOOB]" );
-        
+        if(  (!( g_x >= 0 && g_x <=(5-1) ) )
+        ||   (!( g_y >= 0 && g_y <=(5-1) ) )
+        ){
             o_hit =( 1 ); //:Undefined. We will say we   ://
                           //:"hitting the void" because  ://
                           //:nothing can be placed within://
                           //:the void....................://
-        }else
-        if( h_x >=0 && h_y >= 0 ){
+        }else{
+            g25 = ( g_x + ( g_y * 5 ) );
+            h_x = d_hotel13_g25_h_x[ g25 ];
+            h_y = d_hotel13_g25_h_y[ g25 ];
+        };;
         
+        if( h_x >= 0 && h_x <=(4-1)
+        &&  h_y >= 0 && h_y <=(4-1)
+        ){
+
+            
+
+
+            ASS( h_x >= 0 && h_x <=(4-1) , "[ASS_H_X]" );
+            ASS( h_y >= 0 && h_y <=(4-1) , "[ASS_H_Y]" );
+
             //: What tile are you trying to set?     ://
 
             //:--------------------------------------://
@@ -2320,26 +2525,81 @@ console.log( "hotel13" );
 
             o_hit =( F_HOTEL13_HIT_R13_TE7_LA3_TI0(
                                    r13,te7,la3,ti0 
-            ,                      ANYTIME_HIT 
+                                
+                    /** ANYTIME_HIT                 **/
+                    /**#_I_TAKE_IT_BACK_2022_07_09_#**/
             ));;
 
             if( o_hit >= 1 ){
 
                 //: Obstacle in the way, Don't set.  ://
-                window.alert( "[OBSTACLE_IN_THE_WAY]" );
+                ///window.alert( "[OBSTACLE_IN_THE_WAY]" );
             }else
             if( o_hit <= 0 ){
 
-                window.alert( "[NOTHING_IN_THE_WAY]" );
+                ///window.alert( "[NOTHING_IN_THE_WAY]" );
             }else{
                 ERR("[@UEC@:IconOfCoil_PerfectSex]");
             };;
 
-        }else{
-            ERR("[BAD_H_X_AND_H_Y_COMBO:2022]");
         };;
     
         return( o_hit );
+    };;
+
+
+    const   F_HOTEL13_SAM_EDI_MOU = function
+    PRIVATE_F_HOTEL13_SAM_EDI_MOU(
+    
+        i_mou_p_x //: Input - MOUSE - Pixel.X  ://
+    ,   i_mou_p_y //: Input - MOUSE - Pixel.Y  ://
+    ){
+        //:[ATF]:--------------------------------------------://
+        //:                                                  ://
+        //: Cut+paste of [ SAM_EDI_CLK ] used to record      ://
+        //: what tiles the mouse is over when we have        ://
+        //: a mouse-move event. DATE[ 2022_07_09 ]           ://
+        //:                                                  ://
+        //:--------------------------------------------:[ATF]://
+
+        let sam = d_hotel13_sam ;
+        
+        var can_wid = sam.hot_can.width  ;
+        var can_hig = sam.hot_can.height ;
+        
+        var g_w =( can_wid / 5 ); //: GridCellWidth  ://
+        var g_h =( can_hig / 5 ); //: GridCellHeight ://
+             
+        sam.mou_p_x = i_mou_p_x ;
+        sam.mou_p_y = i_mou_p_y ;
+        
+        sam.mou_g_x =Math.floor( sam.mou_p_x / g_w );
+        sam.mou_g_y =Math.floor( sam.mou_p_y / g_h );
+        
+        //:Collect all MOUSE positions for all tile  ://
+        //:sizes. For now, don't worry that this     ://
+        //:might show up in ALL ROOMS when rendering.://
+        //:[INTENTIONAL_BUG][BUG][HACK]              ://
+        for( var te7 = 0 ; te7 <=(7-1) ; te7++ ){
+        
+            //: Lateral Offset Is Also Level Span    ://
+            //: Measured In Tiles Of te7 size.       ://
+            
+            var lat = d_hotel13_te7_lat[ te7 ];
+            var t_w = ( g_w / lat );
+            var t_h = ( g_h / lat );
+            
+            let FLO = Math.floor ;
+            
+            var t_x = FLO( sam.mou_p_x / t_w );
+            var t_y = FLO( sam.mou_p_y / t_h );
+            
+            t_x = ( t_x % lat );
+            t_y = ( t_y % lat );
+            
+            sam.te7_mou_t_x[ te7 ]= t_x ;
+            sam.te7_mou_t_y[ te7 ]= t_y ;
+        };;
     };;
     
     const   F_HOTEL13_SAM_EDI_CLK = function
@@ -2394,7 +2654,12 @@ console.log( "hotel13" );
         {
             sam.edi_te7 = Math.floor( Math.random() * 7 );
         
-        
+            if( sam.edi_te7 < sam.edi_te7_min ){
+                sam.edi_te7 = sam.edi_te7_min ;
+            };;
+            if( sam.edi_te7 > sam.edi_te7_max ){
+                sam.edi_te7 = sam.edi_te7_max ;
+            };;
         };;
         //:-------------------------:randomize_brush_size://
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
@@ -2428,7 +2693,23 @@ console.log( "hotel13" );
             const g_x = sam.clk_g_x ;
             const g_y = sam.clk_g_y ;
             const te7 = sam.edi_te7 ;
-            const val = 0xFFFFFFFF  ;
+            var   chk = (  0  );;;;;;
+            var   val = 0xFFFFFFFF  ;
+
+            val =(( 0x00
+            |        (  ( sam.edi_v16 ) << (  28) )
+            |        (  (  0x0FFFFFFF ) << (   0) )
+            )>>>0 ); //:(  0x12345678 )://
+            ASS( val >= 0 );
+            chk =(( val >>> (28) )&(0xF));
+            if( chk != sam.edi_v16 ){
+    
+                YEL( "[wanted]:" + sam.edi_v16
+                    +"[...got]:" + chk 
+                );;
+                ERR("[OHFUKNO2022]");
+            };;
+
             
             const la3_til =( 0 ); //: Tile Layer ://
             const la3_bom =( 1 ); //: Bomb Layer ://
@@ -2489,6 +2770,15 @@ console.log( "hotel13" );
     PRIVATE_F_HOTEL13_SAM_MOU_MOV(
         evt_mov
     ){
+        if( 1 == 1 /**Always**/  ){
+
+            /** Update Cursor Position **/
+
+            F_HOTEL13_SAM_EDI_MOU(
+                evt_mov.offsetX
+            ,   evt_mov.offsetY
+            );;
+        };;
         if( sam.edi_mod_hol >= 1 ){
         
             F_HOTEL13_SAM_EDI_CLK(
@@ -2505,15 +2795,25 @@ console.log( "hotel13" );
     PRIVATE_F_HOTEL13_EVT_ASC(                        
                                                       
         i_evt_key //:( i_evt_key )=>( o_asc_key )        ://  
-    ){            //:COPY_PASTE_OF[ F_KEYMAST_EVT_ASC ]  ://                          
+    ){            //:COPY_PASTE_OF[ F_KEYMAST_EVT_ASC ]  ://   
+
+        ///doesn't work for "+" and "-"
+        ///var o_asc_key =(                              
+        ///    String.prototype.toUpperCase.call(        
+        ///    String.fromCharCode(                      
+        ///                                              
+        ///        i_evt_key.keyCode                     
+        ///                                              
+        ///    )||"[nil][o_asc_key]" ));;                
+        ///return( o_asc_key );   
+
         var o_asc_key =(                              
             String.prototype.toUpperCase.call(        
-            String.fromCharCode(                      
-                                                      
-                i_evt_key.keyCode                     
-                                                      
+            (                                                      
+                i_evt_key.key                     
+                                                    
             )||"[nil][o_asc_key]" ));;                
-        return( o_asc_key );                          
+        return( o_asc_key );   
     };;                                               
     
     
@@ -2525,6 +2825,25 @@ console.log( "hotel13" );
     ){
         let sam = d_hotel13_sam ;
         var asc = F_HOTEL13_EVT_ASC( evt_key );
+
+        if( "-" == asc
+        ||  "_" == asc
+        ){
+            ///YEL( "[v16]--:" , sam.edi_v16 );
+            sam.edi_v16 -- ;
+            if( sam.edi_v16 <=(    1 ) ){
+                sam.edi_v16  =(    1 ) ;
+            };;
+        };;
+        if( "+" == asc
+        ||  "=" == asc
+        ){
+            ///YEL( "[v16]++:" , sam.edi_v16 );
+            sam.edi_v16 ++ ;
+            if( sam.edi_v16 >=( 16-1 ) ){
+                sam.edi_v16  =( 16-1 ) ;
+            };;
+        };;
         
         //:--------------------------------------://
         //: Offset by 1 because I think it would ://
@@ -2590,8 +2909,6 @@ console.log( "hotel13" );
             if( sam.edi_ask_fil >= 3 ){
                 sam.edi_ask_fil =( 0 );
                 
-                window.alert( "[0xFF:FILLING]" );
-                
                 var mbi=( 2048*2048*4 )-1 ; //:@mbi@://
                 for( var fil = 0 ; fil <=(mbi) ; fil++ ){
                 
@@ -2606,8 +2923,6 @@ console.log( "hotel13" );
                 sam.edi_ask_emp ++ ;
             if( sam.edi_ask_emp >= 3 ){
                 sam.edi_ask_emp =( 0 );
-                
-                window.alert( "[0x00:EMPTYING]" );
                 
                 var mbi=( 2048*2048*4 )-1 ; //:@mbi@;//
                 for( var emp = 0 ; emp <=(mbi) ; emp++ ){
@@ -2750,6 +3065,9 @@ console.log( "hotel13" );
         //:add_mouse_handler:----------------------------://
         {
             let sexycanvasfuntimes = sam.hot_can ;
+
+            //:TAG[ mouse move  ]://
+            //:TAG[ mouse click ]://
             
             sexycanvasfuntimes.addEventListener(
             
@@ -3464,52 +3782,92 @@ console.log( "hotel13" );
 
     @NEXI_FLAKES@ : d3m0.herokuapp.com/not_inf/nexif_app.html
 
-    #_FUTURE_TICKS_HIT_LATER_NOT_NOW_# :
+    #_FUTURE_TICKS_HIT_LATER_NOT_NOW_# :-----------------------:
+                                                               :
+        Original Comment :                                     :
+                                                               :
+            Tiles , Bombs , and Fada all encode timestamp      :
+            information in them. I don't know what good        :
+            timestamps in the TILES are for , but timestamps   :
+            in the other stuff makes it so we can correctly    :
+            animate the bombs and flames.                      :
+                                                               :
+            Hell, with all the timestamp info, we can          :
+            "replay" the level destruction if we want.         :
+                                                               :
+            We would just need to record player position       :
+            at given timestamps too.                           :
+                                                               :
+            How many positions can we record in a 512x512 ?    :
+            262144 if we need 2 pixels to encode XY position.  :
+            That is #FEATURE_CREEP#. Just keep it in mind.     :
+                                                               :
+            DATE[ 2022_07_07 ]KANJICODER                       :
+                                                               :
+        Pissed Off KanjiCoder Date[ 2022_07_09 ]               :
+                                                               :
+            That entire rant doesn't answer WHY or WHAT        :
+            "FUTURE_TICKS_HIT_LATER_NOT_NOW" means.            :
+                                                               :
+            I know if means that we ignore either older        :
+            or newer timestamps and DONT SET THE TILE          :
+            if so... but...                                    :
+                                                               :
+            1. Do we ignore older or newer timestamps?         :
+            2. Why do we ignore older or newer timestamps?     :
+                                                               :
+            DECISION: FUCK THIS... It is a source of bugs      :
+            right now, we don't remember our reasoning for     :
+            why one timestamp should have priority over        :
+            the other, and our reasoning is probably           :
+            PLANNING_TOO_FAR_AHEAD anyways.                    :
+                                                               :
+            Get rid of[ i_tik ]parameter in                    :
+            function[ F_HOTEL13_HIT_R13_TE7_LA3_TI0 ]          :
+                                                               :
+    :----------------------------------------------------------:
 
-        Tiles , Bombs , and Fada all encode timestamp
-        information in them. I don't know what good
-        timestamps in the TILES are for , but timestamps
-        in the other stuff makes it so we can correctly
-        animate the bombs and flames.
+    #_NO_ITS_NOT_A_TIME_TRAVEL_GAME_# :------------------------:
+                                                               :
+        TAG[ not time travel ]                                 :
+                                                               :
+        No, it's not a time travel game. We encode the         :
+        game ticker value as a timestamp in the tile           :
+        value in order to optimize animations and              :
+        collisions with the bomb system.                       :
+                                                               :
+        By setting flames at least 2 frames in the future,     :
+        we don't have to do a 2-pass "set flames" then         :
+        "ignite bombs". We can "set flames" and                :
+        "ignite bombs" in ONE PASS and not worry about         :
+        weird effects because of data visiting order.          :
+                                                               :
+        Don't know what I mean? Try writing a BLURR            :
+        filter that acts DIRECTLY on an RGBA byte              :
+        array encoded image without a SWAP BUFFER.             :
+        You will end up with streaking based on the            :
+        scan-line order in which you visted each pixel.        :
+                                                               :
+        The SIMULATION outcome of bomb system should not       :
+        change based on the order in which we visit            :
+        the data.                                              :
+                                                               :
+        DATE[ 2022_07_07 ]KANJICODER@428ALMOSTBLAZEITPM        :
+                                                               :
+    :----------------------------------------------------------:
 
-        Hell, with all the timestamp info, we can 
-        "replay" the level destruction if we want.
+    #_I_TAKE_IT_BACK_2022_07_09_# :----------------------------:
+                                                               :
+        Using timestamps to affect collision detection         :
+        and tile detection is a GOOD IDEA that could           :
+        be key to solving problems in the __FUTURE__           :
+        but not good for solving problems ___NOW___            :
+        so take the[ i_tik ]parameter out of any               :
+        tile setting functions that are using[ i_tik ]         :
+        exclusively for collision.                             :
+                                                               :
+    :----------------------------------------------------------:
 
-        We would just need to record player position
-        at given timestamps too.
-
-        How many positions can we record in a 512x512 ?
-        262144 if we need 2 pixels to encode XY position.
-        That is #FEATURE_CREEP#. Just keep it in mind.
-
-        DATE[ 2022_07_07 ]KANJICODER
-
-    #_NO_ITS_NOT_A_TIME_TRAVEL_GAME_# :
-
-        TAG[ not time travel ]
-
-        No, it's not a time travel game. We encode the
-        game ticker value as a timestamp in the tile 
-        value in order to optimize animations and
-        collisions with the bomb system.
-
-        By setting flames at least 2 frames in the future,
-        we don't have to do a 2-pass "set flames" then
-        "ignite bombs". We can "set flames" and 
-        "ignite bombs" in ONE PASS and not worry about
-        weird effects because of data visiting order.
-
-        Don't know what I mean? Try writing a BLURR 
-        filter that acts DIRECTLY on an RGBA byte 
-        array encoded image without a SWAP BUFFER.
-        You will end up with streaking based on the
-        scan-line order in which you visted each pixel.
-
-        The SIMULATION outcome of bomb system should not
-        change based on the order in which we visit
-        the data.
-
-        DATE[ 2022_07_07 ]KANJICODER@428ALMOSTBLAZEITPM
 
     @d_p@ : DataPixel ( Means[ dpx , dpy ] )
 
@@ -3682,6 +4040,10 @@ console.log( "hotel13" );
         the question of which variable is more general
         or specific than the other. KANJICODER[2022_07_09]
 
+    @ldx@ : Level_Data( origin ) - X
+    @ldy@ : Level_Data( origin ) - Y
+
+    [BSM] : Bit_Shift_Math
    
 *** ******************************************************** **/
 
