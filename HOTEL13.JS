@@ -24,6 +24,100 @@ console.log( "hotel13" );
         ,   rgh = "[FIX:just_use:g_h(gridcell_height)]"
         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     //:===================================:ITS_WRONG_CARL://
+    //:HOTEL13_CONSTANTS_LIKE_MACROS:====================://
+
+        const c_hotel13_bod_cir =( 1 );
+        const c_hotel13_bod_box =( 2 );
+
+        const c_hotel13_bod_lef =( 3 );
+        const c_hotel13_bod_rig =( 4 );
+        const c_hotel13_bod_top =( 5 );
+        const c_hotel13_bod_bot =( 6 );
+
+        const c_hotel13_bod_das =( 7 ); //:DAShed Boarder://
+
+
+    //:====================:HOTEL13_CONSTANTS_LIKE_MACROS://
+    //:HOTEL13_BOMB_LAYER_RENDER_SETTINGS:===============://
+    {
+        //:TAG[ bomb style | bombstyle | bomb-style ]    ://
+
+        //:----------------------------------------------://
+        //: At this time, we don't need render settings  ://
+        //: for "tile" (til) and "fada" (fad) layers.    ://
+        //: Only the bomb layer.                         ://
+        //:----------------------------------------------://    
+    
+        const d_hotel13_ren_til = "[no_need_at_this_time]";
+        const d_hotel13_ren_fad = "[no_need_at_this_time]";
+
+        const _0_ =( 0 );
+        
+        //:--------------------------------------://
+        //: Body Design :------------------------://
+        //:--------------------------------------://
+        const CIR =( 1 );
+        const BOX =( 2 );
+        const LEF =( 3 );
+        const RIG =( 4 );
+        const TOP =( 5 );
+        const BOT =( 6 );
+        const DAS =( 7 ); //:Dashed Boarder      ://
+
+        //:--------------------------------------://
+        //: Insignia Design :--------------------://
+        //:--------------------------------------://
+        const VER =( 1 );
+        const HOR =( 2 );
+        const S4W =( 3 ); //:Small CrossDesign   ://
+        const KIL =( 4 ); //:KILL  CrossDesign   ://
+        const PIN =( 5 ); //:Pin In Center Design://
+
+        if( (!( CIR === c_hotel13_bod_cir ))
+        ||  (!( BOX === c_hotel13_bod_box ))
+
+        ||  (!( LEF === c_hotel13_bod_lef ))
+        ||  (!( RIG === c_hotel13_bod_rig ))
+        ||  (!( TOP === c_hotel13_bod_top ))
+        ||  (!( BOT === c_hotel13_bod_bot ))
+
+        ||  (!( DAS === c_hotel13_bod_das ))
+        ){
+            YEL("[HOTEL13:BADCONST]");
+        };;
+
+        var d_hotel13_ren_bom =[
+
+        //: BOMB(S)    ://
+
+            CIR , VER
+        ,   CIR , HOR
+        ,   CIR , S4W
+        ,   CIR , KIL
+
+        //: ECHOBOX(S) ://
+
+        ,   BOX , VER
+        ,   BOX , HOR
+        ,   BOX , S4W
+        ,   BOX , KIL
+
+        //: LAZER(S)/LASER(S) ://
+
+        ,   LEF , HOR
+        ,   RIG , HOR
+        ,   TOP , VER
+        ,   BOT , VER
+
+        //: SPARKPINS ( immediately detonate when touched )
+        //:           ( they emit a 1x1 box blast pattern )
+        //:           ( but do __NOT__  hurt player       )
+        
+        ,   DAS , PIN
+        ];;
+
+    }
+    //:===============:HOTEL13_BOMB_LAYER_RENDER_SETTINGS://
     //:HOTEL13_COLOR_PALLET:=============================://    
     var d_hotel13_hcp_til =[                     //:H_C_P://
                                                  //:H_C_P://
@@ -92,22 +186,27 @@ console.log( "hotel13" );
         //: All "00" channels got "99" to    :// //:H_C_P://
         //: create pastel colors.            :// //:H_C_P://
         //:----------------------------------:// //:H_C_P://
-                                                 //:H_C_P://
-    ,   "#C3FF99"   //: "ELECTRIC_LIME"          //:H_C_P://
-    ,   "#88FF99"   //: "LIME"                   //:H_C_P://
-    ,   "#44FF99"   //: "HARLEQUIN"              //:H_C_P://
-    ,   "#99FF99"   //: "GREEN"                  //:H_C_P://
-    ,   "#99FF44"   //: "ZOISITE"                //:H_C_P://
-    ,   "#99FF88"   //: "TEAL"                   //:H_C_P://
-    ,   "#99FFC3"   //: "VAPOR"                  //:H_C_P://
-    ,   "#99FFFF"   //: "CYAN"                   //:H_C_P://
-    ,   "#99C3FF"   //: "WATER"                  //:H_C_P://
-    ,   "#9988FF"   //: "SKY"                    //:H_C_P://
-    ,   "#9944FF"   //: "ARGON"                  //:H_C_P://
-    ,   "#9900FF"   //: "BLUE"                   //:H_C_P://
-    ,   "#4499FF"   //: "HAN_PURPLE"             //:H_C_P://
-    ,   "#8899FF"   //: "INDIGO"                 //:H_C_P://
-    ,   "#C399FF"   //: "PURPLE_LIGHTNING"       //:H_C_P://
+    //:                           :          :// //:H_C_P://
+    ,   "#FF2200"  //: BOMB: VERT :          ://  
+    ,   "#FF2200"  //: BOMB: HORZ :          ://  
+    ,   "#FF2200"  //: BOMB: FOUR :          ://
+    ,   "#FF2200"  //: BOMB: SKUL :          ://
+    //:                           :          ://
+    ,   "#FF8800"  //: ECHO: VERT :          ://  
+    ,   "#FF8800"  //: ECHO: HORZ :          ://  
+    ,   "#FF8800"  //: ECHO: FOUR :          ://
+    ,   "#FF8800"  //: ECHO: SKUL :          ://
+    //:                           :          ://
+    ,   "#FFFF00"  //: LAZR: LEFT :          ://  
+    ,   "#FFFF00"  //: LAZR: RIGH :          ://  
+    ,   "#FFFF00"  //: LAZR: UPPP :          ://  
+    ,   "#FFFF00"  //: LAZR: DOWN :          ://
+    //:                           :          ://
+    ,   "#00FF00"  //: SPRK: PINN :          :// 
+    //:                           :          ://
+    ,   "#00FF00"  //: INFINITE PLASMA - SAFE://
+    ,   "#FF0088"  //: INFINITE FIRE   - KILL://
+    //:
     ];;                                          //:H_C_P://
     var d_hotel13_hcp_fad =[   //:FULLSAT://     //:H_C_P://
                                                  //:H_C_P://
@@ -279,12 +378,12 @@ console.log( "hotel13" );
 //:#_UN_NAMESPACED_GLOBALS_#:================================://
 
     const c_opptrez =( 320 /**OnePixelPerTileRez**/ );
-    ASS( 5 * 64 == 320 );
-    ASS(  64 == c_opptrez /  5 );
-    ASS(   5 == c_opptrez / 64 );
+    ASS( 5 * 64 == 320               , "[UNG:001]" );
+    ASS(  64 == c_opptrez /  5       , "[UNG:002]" );
+    ASS(   5 == c_opptrez / 64       , "[UNG:003]" );
     
     const c_fiverez =( 1600 /** Five Pixels Per Tile **/ );
-    ASS(  c_fiverez / 5 == c_opptrez );
+    ASS(  c_fiverez / 5 == c_opptrez , "[UNG:004]" );
     
                              //:         BIG == BIG/LARGE://
     const c_tendbig =( 5 );  //:Reach Of BIG Bomb Tendril://
@@ -847,7 +946,7 @@ console.log( "hotel13" );
                                                                 // [CAP_H13]
                     chk    =(d_hotel13_te7_lat[6-(te7-i_te7)]); // [CAP_H13]
                     dibamis=(d_hotel13_te7_peb[  (te7-i_te7)]); // [CAP_H13]
-                    ASS( chk === dibamis );                     // [CAP_H13]
+                    ASS( chk === dibamis , "[chk:dibamis]");    // [CAP_H13]
                                                                 // [CAP_H13]
                     //: ttx == tx0 == tx1                       // [CAP_H13]
                     //: tty == ty0 == ty1                       // [CAP_H13]
@@ -899,7 +998,7 @@ console.log( "hotel13" );
 
                     chk    =(d_hotel13_te7_lat[6-(i_te7-te7)]);
                     dibamis=(d_hotel13_te7_peb[  (i_te7-te7)]);
-                    ASS( chk === dibamis );
+                    ASS( chk === dibamis , "[c02_dibamis]" );
 
                     if( d_bug >= 1 ){
     
@@ -2085,8 +2184,58 @@ console.log( "hotel13" );
    ////////// };;
    ////////// 
    ////////// TEST_SIMULATION_PERFORMANCE();
+
+    //:TYPO:F_HOTEL13_DRAW_2D_REC://
+    const   F_HOTEL13_DRAW_2D_REC =(
+      "[FIX:F_HOTEL13_DRAW_2D_BOX]" );
+
+    const   F_HOTEL13_DRAW_2D_BOX = function
+    PRIVATE_F_HOTEL13_DRAW_2D_BOX(
+        inn_ctx //:input : context ://
+    ,   inn_x   //:input X
+    ,   inn_y   //:Input Y
+    ,   inn_w   //:Input Width
+    ,   inn_h   //:Input Height
+    ,   inn_r   //:Input Radius
+    ){
+        //: stackoverflow.com/questions/1255512 ://
+
+        var x = inn_x;
+        var y = inn_y;
+        var w = inn_w;
+        var h = inn_h;
+        var r = inn_r;
+        
+        if (w < 2 * r) r = w / 2;
+        if (h < 2 * r) r = h / 2;
+        inn_ctx.beginPath();
+        inn_ctx.moveTo(x+r, y);
+        inn_ctx.arcTo( x+w, y,   x+w, y+h, r);
+        inn_ctx.arcTo( x+w, y+h, x,   y+h, r);
+        inn_ctx.arcTo( x,   y+h, x,   y,   r);
+        inn_ctx.arcTo( x,   y,   x+w, y,   r);
+        inn_ctx.closePath();
+
+        inn_ctx.stroke();
+    }
     
-    
+    const   F_HOTEL13_DRAW_2D_CIR = function
+    PRIVATE_F_HOTEL13_DRAW_2D_CIR(
+        i_ctx //: Context  ://
+    ,   i_c_x //: Center.X ://
+    ,   i_c_y //: Center.Y ://
+    ,   i_dia //: DIAMETER ://
+    ){
+
+        var rad = ( i_dia / 2 );
+
+        i_ctx.beginPath();
+        i_ctx.arc( i_c_x , i_c_y 
+                 ,   rad , 0 , 2*Math.PI , false );;
+
+        i_ctx.lineWidth = 1;
+        i_ctx.stroke();
+    };;
     
     const   F_HOTEL13_DRAW_2D_TIL = function
     PRIVATE_F_HOTEL13_DRAW_2D_TIL(
@@ -2282,14 +2431,216 @@ console.log( "hotel13" );
     
         /** NO ARGS **/
     ){
-        console.log("[TODO:DRAW_2D_BOM]");
+        //:DRAW_2D:COMMON_VAR_HEADER:--------------------://
+                                                      //:://
+        let sam =( d_hotel13_sam         );           //:://
+        let ctx =( d_hotel13_sam.hot_con );           //:://
+                                                      //:://
+        var g_w =( sam.hot_can.width / 5 ); //:GridCell.W://
+        var g_h =( sam.hot_can.height/ 5 ); //:GridCell.H://
+                                                      //:://
+        var peb_m_x =( g_w / 64 );  //: peb multiplier x ://
+        var peb_m_y =( g_w / 64 );  //: peb multiplier y ://    
+                                                      //:://
+        //:----------------------------------://      //:://
+        //: SEE[ F_HOTEL13_DRAW_2D_TIL ]     ://      //:://
+        //: For variable descriptions.       ://      //:://
+        ////////////////////////////////////////      //:://
+        var lacoma                          ////      //:://
+        ,   dpx,dpy,dtx,dty,dti,dtu,c_i     ////      //:://
+        ,   h4x,h4y,lat,dia,san             ////      //:://
+        ,   t_x,t_y,t_v,t_w,t_h,t_t         ////      //:://
+        ,   peb                             ////      //:://
+        ,   clk , clk_t_x , clk_t_y         ////      //:://
+        ,   mou , mou_t_x , mou_t_y         ////      //:://
+        ////////////////////////////////////////      //:://
+        //:----------------------------------://      //:://
+        //:--------------------:DRAW_2D:COMMON_VAR_HEADER://
+
+
+
+
+        mou_t_x = sam.te7_mou_t_x[ sam.edi_te7 ];
+        mou_t_y = sam.te7_mou_t_y[ sam.edi_te7 ];
+
+        for( var te7 =(7-1); te7 >=(  0 ) ; te7 -- ){
+        
+            peb = d_hotel13_te7_peb[ te7 ]
+            t_w = ( peb * peb_m_x );
+            t_h = ( peb * peb_m_y );
+            
+            clk_t_x = sam.te7_clk_t_x[ te7 ];
+            clk_t_y = sam.te7_clk_t_y[ te7 ];
+        
+        for( var r13 =( 0 ); r13 <=(13-1) ; r13 ++ ){
+        
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: @g_x@ : Grid Cell Where Room Could Be X  ://
+            //: @g_y@ : Grid Cell Where Room Could Be Y  ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            var g_x = d_hotel13_r13_g_x[ r13 ];
+            var g_y = d_hotel13_r13_g_y[ r13 ];
+            ASS( g_x >= 0 );
+            ASS( g_y >= 0 );
+            
+            var o_x =( g_x * g_w );
+            var o_y =( g_y * g_h );
+            
+            if( (7-1) == te7 ){
+                
+                //:--------------------------------------://
+                //: This section only done in the        ://
+                //: tile loop, because it ERASES         ://
+                //: everything.                          ://
+                //:--------------------------------------://    
+            };;
+            
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: Draw all tiles of given tile size.       ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            
+            dpx = 512 ;   //: Active Level Data Origin X ://
+            dpy = 512 ;   //: Active Level Data Origin Y ://
+            
+            h4x =(           ( r13 % 4 ) );  //:@r13_h4x@://
+            h4y =( Math.floor( r13 / 4 ) );  //:@r13_h4y@://
+            
+            lat = d_hotel13_te7_lat[ te7 ];
+            dia = d_hotel13_te7_dia[ te7 ];
+            
+            dpx += ( 128 * h4x ); //:Now in correct room ://
+            dpy += ( 128 * h4y ); //:of data to render   ://
+            
+            dpx += dia ; //: Now at correct[ te7 ]tile   ://
+            dpy += dia ; //: size of data to render.     ://
+
+            dpx += lat ; //:Offset needed to reach the   ://
+            dpy += (0) ; //:bomb layer of our data.      ://
+            
+            san = lat ;  //: SPAN_IN_TILES == LATERAL_OS ://
+            
+        
+        for( t_y = 0 ; t_y <=(san-1) ; t_y ++ ){
+        for( t_x = 0 ; t_x <=(san-1) ; t_x ++ ){
+            
+            dtx = dpx + t_x ;
+            dty = dpy + t_y ;
+            dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
+            c_i =( 4*dti );
+            dtu =( 0x0
+            | ( d_pix2048[ c_i ] << 24 )
+            | ( d_pix2048[ c_i ] << 16 )
+            | ( d_pix2048[ c_i ] <<  8 )
+            | ( d_pix2048[ c_i ] <<  0 )
+            );;
+            
+            t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
+            t_t =( dtu & 0x0FFFFFFF );
+            //:---------:0x12345678----------------------://
+
+            if( t_v >= 1 && t_v <=(16-1) ){
+
+                pog_t_x = ( o_x + ( t_x * t_w ) );
+                pog_t_y = ( o_y + ( t_y * t_h ) );
+
+                ctx.strokeStyle=(
+                        d_hotel13_hcp_bom[ t_v ] 
+                );;
+                ctx.fillStyle=(
+                        d_hotel13_hcp_bom[ t_v ] 
+                );;
+
+                var bod = d_hotel13_ren_bom[ (2*t_v)+0 ];
+                var sig = d_hotel13_ren_bom[ (2*t_v)+1 ];
+
+                if( bod == c_hotel13_bod_cir ){
+
+                    F_HOTEL13_DRAW_2D_CIR(
+                        ctx
+                    ,   pog_t_x + (t_w/2)
+                    ,   pog_t_y + (t_h/2)
+                    ,   ( (t_w + t_h) / 2 )
+                    );;
+                }else
+                if( bod == c_hotel13_bod_box ){
+
+                    F_HOTEL13_DRAW_2D_BOX(
+                        ctx
+                    ,   pog_t_x
+                    ,   pog_t_y
+                    ,       t_w
+                    ,       t_h
+                    ,   (t_w+t_h)/2/4 
+                    );;
+
+                }else
+                if( bod == c_hotel13_bod_lef 
+                ||  bod == c_hotel13_bod_rig
+                ){
+
+                    F_HOTEL13_DRAW_2D_BOX(
+                        ctx
+                    ,   pog_t_x
+                    ,  (pog_t_y+(t_h/4))
+                    ,       t_w
+                    ,      (t_h/2)
+                    ,   (t_w+t_h)/2/4 
+                    );;
+                }else
+                if( bod == c_hotel13_bod_top
+                ||  bod == c_hotel13_bod_bot 
+                ){
+                    F_HOTEL13_DRAW_2D_BOX(
+                        ctx
+                    ,  (pog_t_x+(t_w/4))
+                    ,   pog_t_y
+                    ,      (t_w/2)
+                    ,       t_h
+                    ,   (t_w+t_h)/2/4 
+                    );;
+                }else
+                if( bod == c_hotel13_bod_das ){
+
+                    ctx.fillRect( 
+                       ( pog_t_x + ( t_w / 3 ) )
+                    ,  ( pog_t_y + ( t_h / 3 ) )
+                    ,  (     t_w / 3 )
+                    ,  (     t_h / 3 )
+                    );;
+
+                    ctx.strokeRect( 
+                       ( pog_t_x     )
+                    ,  ( pog_t_y     )
+                    ,  (     t_w     )
+                    ,  (     t_h     )
+                    );;
+           
+                }else{
+
+                    F_HOTEL13_DRAW_2D_CIR(
+                        ctx
+                    ,   pog_t_x + (t_w/2)
+                    ,   pog_t_y + (t_h/2)
+                    ,   ( (t_w + t_h) / 2 )
+                    );;
+                };;
+
+            };;
+
+        };;};;
+        };;};;
+
+
+
+
+
     };;
     const   F_HOTEL13_DRAW_2D_FAD = function
     PRIVATE_F_HOTEL13_DRAW_2D_FAD(
     
         /** NO ARGS **/
     ){
-        console.log("[TODO:DRAW_2D_FAD]");
+        YEL("[Get_Comb_Rendering_Working_First]");
     };;
     
     const F_HOTEL13_DRAW_2D = function
@@ -2319,7 +2670,7 @@ console.log( "hotel13" );
         };;
         if( d_hotel13_sam.vis_fad != 0 ){    //:c_lay_fad://    
         
-            F_HOTEL13_DRAW_2D_FAD();
+        ///////    F_HOTEL13_DRAW_2D_FAD(); <<<<<<<<<<<<<<<<<<<<<<< NOT YET
         };;
     };;
     
@@ -2393,8 +2744,10 @@ console.log( "hotel13" );
         return( [ g_x , g_y ] );
     };;
     
+    //:TYPO:F_HOTEL13_EDI_CLK_HIT://
     const   F_HOTEL13_EDI_CLK_HIT =(
       "[FIX:F_HOTEL13_SAM_EDI_CLK_HIT]" );;
+
     const   F_HOTEL13_SAM_EDI_CLK_HIT = function
     PRIVATE_F_HOTEL13_SAM_EDI_CLK_HIT(
                    //:-----------------------------------://
@@ -2432,8 +2785,8 @@ console.log( "hotel13" );
         var g_x =( gxy[ 0 ] );
         var g_y =( gxy[ 1 ] );
 
-        ASS( g_x >= 0 && g_x <=( 5-1 ) );
-        ASS( g_y >= 0 && g_y <=( 5-1 ) );
+        ASS( g_x >= 0 && g_x <=( 5-1 ) , "[AGX]" );
+        ASS( g_y >= 0 && g_y <=( 5-1 ) , "[AGY]" );
 
         var g25 , h_x , h_y ;
 
@@ -2496,8 +2849,8 @@ console.log( "hotel13" );
             let FLO = Math.floor ;
             var t_x =(FLO( i_clk_p_x / t_w ))%( lat );
             var t_y =(FLO( i_clk_p_y / t_h ))%( lat );
-            ASS( t_x >= 0 && t_x <=(64-1) );
-            ASS( t_y >= 0 && t_y <=(64-1) );
+            ASS( t_x >= 0 && t_x <=(64-1) , "[ATX]" );
+            ASS( t_y >= 0 && t_y <=(64-1) , "[ATY]" );
 
             //:--------------------------------------://
             //: Do we have OVERLAP on any tile size  ://
@@ -2665,14 +3018,13 @@ console.log( "hotel13" );
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
         if( sam.edi_mod_nov >= 1 ){
 
-            if( sam.edi_la3 != 0 ){
-
-                //:lets not worry about other layers of
-                //:data until we get tiles (edi_la3==0)
-                //:working first, then we can remove
-                //:this error message.
-                YEL( "[GET_TILES_WORKING_FIRST_THEN_REMOVE]" );
-                ERR( "[GET_TILES_WORKING_FIRST_THEN_REMOVE]" );
+            if( sam.edi_la3 != 0 
+            &&  sam.edi_la3 != 1
+            ){
+                //: Get bomb layer rendering , then we
+                //: can remove this error code.
+                YEL( "[GET_BOMBS_WORKING_FIRST_THEN_REMOVE]" );
+                ERR( "[GET_BOMBS_WORKING_FIRST_THEN_REMOVE]" );
             };;
         
             nov_hit=(
@@ -2700,7 +3052,7 @@ console.log( "hotel13" );
             |        (  ( sam.edi_v16 ) << (  28) )
             |        (  (  0x0FFFFFFF ) << (   0) )
             )>>>0 ); //:(  0x12345678 )://
-            ASS( val >= 0 );
+            ASS( val >= 0 , "[VAL_GT0]" );
             chk =(( val >>> (28) )&(0xF));
             if( chk != sam.edi_v16 ){
     
@@ -3057,7 +3409,7 @@ console.log( "hotel13" );
         sam.hot_can = document.createElement( "canvas" );
         sam.hot_can.width =( 1600 );
         sam.hot_can.height=( 1600 );
-        ASS( 1600 == c_fiverez );
+        ASS( 1600 == c_fiverez , "[c_fiverez]" );
         dom_bod.appendChild( sam.hot_can );
     
         sam.hot_con = sam.hot_can.getContext( "2d" );
@@ -3106,6 +3458,9 @@ console.log( "hotel13" );
 
 
 /** BOMB_LASER_ECHOBOX_SPARKPIN **************************** ***
+
+    TAG[ bomb-types | bomb types | types-of-bombs ]
+    TAG[ types of bombs ]
 
     DATE[ 2022_07_07 ]KANJICODER_CANT_SLEEP
 
