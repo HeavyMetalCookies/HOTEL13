@@ -43,7 +43,7 @@ console.log( "hotel13" );
     ,   vis_bom : (1)   //: VISIBLE: BOMB(S)
     ,   vis_fad : (1)   //: VISIBLE: FADA(S)
     
-    ,   tik_fps : (1)   //: One Frame Per Second
+    ,   tik_fps : (30)  //: One Frame Per Second
     ,   tik_num :(0-1)  //: AKA[ hot_tik ]
     
     ,   clk_p_x :(0-1)  //: Last Clicked Pixel X
@@ -123,10 +123,17 @@ console.log( "hotel13" );
                 "[HOTEL13_LOG](" + msg + ":" + val + ")"
             );;
         };;
+        function F_PRIVATE_HOTEL13_YEL( msg , val ){
+        
+            window.alert( 
+                "[HOTEL13_YEL](" + msg + ":" + val + ")"
+            );;
+        };;
         function F_PRIVATE_HOTEL13_MSG( msg ){
         
             console.log( "[HOTEL13_MSG]:" + msg );
         };;
+        
 
         if( !d_pix2048 ){
         
@@ -136,6 +143,7 @@ console.log( "hotel13" );
         if( !ERR ){ var ERR = F_PRIVATE_HOTEL13_ERR; };
         if( !ASS ){ var ASS = F_PRIVATE_HOTEL13_ASS; };
         if( !LOG ){ var LOG = F_PRIVATE_HOTEL13_LOG; };
+        if( !YEL ){ var YEL = F_PRIVATE_HOTEL13_YEL; };
         if( !MSG ){ var MSG = F_PRIVATE_HOTEL13_MSG; };
         
     //:==============================:SERVER_JS_POLYFILLS://
@@ -586,22 +594,36 @@ console.log( "hotel13" );
             //:   style pattern generation.              ://
             //:                                          ://
             //:------------------------------------:[ATF]://
+            if( d_bug >= 1 ){
+               
+                let max =( (64*64)-1 );
+                if(!(i_r13 >= 0 && i_r13 <= (13-1) )){
+
+                    LOG( "[i_r13]" , i_r13                );
+                    YEL( "[i_r13]" , i_r13                );
+                    ERR( "[r13.H][OOB_KANGA_DISSONANCE]"  );
+                };;
+                ASS( i_te7 >= 0 && i_te7 <= ( 7-1) ,"[te7.H]");
+                if(!(i_la3 >= 0 && i_la3 <= ( 3-1) )){
+
+                    LOG( "[i_la3]" , i_la3                );
+                    YEL( "[i_la3]" , i_la3                );
+                    ERR( "[la3.H][OOB_KANGA_VITAL_SIGNS]" );
+                };;
+                ASS( i_ti0 >= 0 && i_ti0 <= ( max) ,"[ti0.H]");
+            };;
 
             const h_x =(d_hotel13_r13_h_x[ i_r13 ] );
             const h_y =(d_hotel13_r13_h_y[ i_r13 ] );
 
             var   dia =(0-404);
-            const lat =(d_hotel13_te7_lat[ i_te7 ] );
+            var   lat =(0-606);
             
             const lmx =(d_hotel13_la3_lmx[ i_la3 ] );
             const lmy =(d_hotel13_la3_lmy[ i_la3 ] );
 
             const t_x =(          ( i_ti0 % lat )  );
             const t_y =(Math.floor( i_ti0 / lat )  );
-
-            var   peb_her ; //:Pebble Size Here://
-            var   peb_abo ; //:Pebble Size Above://
-            var   peb_bel ; //:Pebble Size Below://
 
             ///   la3       ;
             ///   dia       ; //: Diagonal @d_p@ Offset  ://
@@ -614,61 +636,82 @@ console.log( "hotel13" );
             var   v16       ; //: TileValue[0-to-15]     ://
             var   tik       ; //: Tick Value Of Tile     ://
             var   te7       ; //: Tile Size Exponent     ://
-            var   atx       ; //: AboveTile . X
-            var   aty       ; //: AboveTile . Y
-            var   btx       ; //: BelowTile . X
-            var   bty       ; //: BelowTIle . Y
+            var   chk       ; //: Check your work value. ://
+
+            var   dibamis         ; //:#dibamis#@dibamis@://
+            var   tx0 , tx1 , ttx ; //: #tx0_tx1_ttx#    ://
+            var   ty0 , ty1 , tty ; //: #ty0_ty1_tty#    ://
+
+
             var o_hit =( 0 );
 
             //:check__here:------------------------------://
+            if( o_hit <= 0 ){
 
                 dia = d_hotel13_te7_dia[ i_te7 ];
-                dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+t_x;
-                dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+t_y ;
-                dpi =( dpx + ( dpy * 2048 ) );
-                dci =( 4 * dpi );
+                lat = d_hotel13_te7_lat[ i_te7 ];
 
-                //:almost_a_cutpaste:001_of_003:---------://
+                //:NOLOOP:===================================://
 
-                u32=(( 0x00
-                |   ( d_pix2048[ dci + 0 ] << 24 )
-                |   ( d_pix2048[ dci + 1 ] << 16 )
-                |   ( d_pix2048[ dci + 2 ] <<  8 )
-                |   ( d_pix2048[ dci + 3 ] <<  0 )
-                )>>> 0 );;
-                //:...u32.&.0x12345678...................://    
-                v16 =( u32 & 0xF0000000 ) >>>( 28 );
-                tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
+                    //:almost_a_cutpaste:001_of_003:---------://
 
-                if( tik >= i_tik   ){
-                if( v16 >(   0  )  ){
+                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+t_x;
+                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+t_y ;
+                    dpi =( dpx + ( dpy * 2048 ) );
+                    dci =( 4 * dpi );
 
-                    //: Difference between[ 0x0FFFFFFF ] ://
-                    //:                AND[ 0x00000000 ]?:// 
-                    //: SEE[ #_DIFFERENT_ZEROS_# ]-------://
+                    u32=(( 0x00
+                    |   ( d_pix2048[ dci + 0 ] << 24 )
+                    |   ( d_pix2048[ dci + 1 ] << 16 )
+                    |   ( d_pix2048[ dci + 2 ] <<  8 )
+                    |   ( d_pix2048[ dci + 3 ] <<  0 )
+                    )>>> 0 );;
+                    //:...u32.&.0x12345678...................://    
+                    v16 =( u32 & 0xF0000000 ) >>>( 28 );
+                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
 
-                    o_hit =( 1 );
+                    if( tik >= i_tik   ){
+                    if( v16 >(   0  )  ){
 
-                };;};;
-                //:---------:almost_a_cutpaste:001_of_003://
+                        //: Difference between[ 0x0FFFFFFF ] ://
+                        //:                AND[ 0x00000000 ]?:// 
+                        //: SEE[ #_DIFFERENT_ZEROS_# ]-------://
 
+                        o_hit =( 1 );
+
+                    };;};;
+                    //:---------:almost_a_cutpaste:001_of_003://
+
+                //:===================================:NOLOOP://
+            };;
             //:------------------------------:check__here://
-            //: ******** #_ABOVE_BEFORE_BELOW_# ******** :// 
+            //: ******** #_BIGGER_TILES_FIRST_# ******** :// 
             //:check_above:------------------------------://
             if( o_hit <= 0 ){
 
+                //:#_DIBAMIS_DIV_#://
+
                 for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){
 
-                    san = d_hotel13_te7_lat[ 6-(i_te7-te7) ];
+                    dia = d_hotel13_te7_dia[ te7 ];
+                    lat = d_hotel13_te7_lat[ te7 ];
 
-                    atx = Math.floor( t_x / san );
-                    aty = Math.floor( t_y / san );
+                    chk    =(d_hotel13_te7_lat[6-(i_te7-te7)]);
+                    dibamis=(d_hotel13_te7_peb[  (i_te7-te7)]);
+                    ASS( chk === dibamis );
 
+                    //: ttx == tx0 == tx1
+                    //: tty == ty0 == ty1
+                    ttx = Math.floor( t_x / dibamis );
+                    tty = Math.floor( t_y / dibamis );
+                     
+                //:NOLOOP:===================================://
+                //:NOLOOP:===================================://
+                
                     //:almost_a_cutpaste:002_of_003:---------://
 
-                    dia = d_hotel13_te7_dia[ te7 ];
-                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+atx;
-                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+aty ;
+                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+ttx ;
+                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+tty ;
                     dpi =( dpx + ( dpy * 2048 ) );
                     dci =( 4 * dpi );
 
@@ -688,32 +731,62 @@ console.log( "hotel13" );
                         o_hit =( 1 );
                     };;};;
                     //:---------:almost_a_cutpaste:002_of_003://
+
+                //:===================================:NOLOOP://
+                //:===================================:NOLOOP://
                 };;
             };;
             //:------------------------------:check_above://
+            //: ******** #_SMALLER_TILES_NEXT_# ******** :// 
             //:check_below:------------------------------://
             if( o_hit <= 0 ){
 
-                for( te7 = i_te7-1 ; te7 >=( 0 ) ; te7-- ){
+                //:#_DIBAMIS_MUL_#://
 
-                    tx0 = xxxxxxxxxxxxxxxxxxxxx ;
-                    ty0 = yyyyyyyyyyyyyyyyyyyyy ;
+                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){
 
-                    tx1 = xxxxxxxxxxxxxxxxxxxxx ;
-                    ty1 = yyyyyyyyyyyyyyyyyyyyy ;
+                    dia = d_hotel13_te7_dia[ te7 ];
+                    lat = d_hotel13_te7_lat[ te7 ];
 
-                for( btx = tx0 ; btx <= tx1 ; btx ++ ){
-                for( bty = ty0 ; bty <= ty1 ; bty ++ ){
+                    chk    =(d_hotel13_te7_lat[6-(i_te7-te7)]);
+                    dibamis=(d_hotel13_te7_peb[  (i_te7-te7)]);
+                    ASS( chk === dibamis );
 
-                    xxxxxxxxxxxxflsjlfjlsdfjsjdfljsdf
-                    
-                    LEFT_OFF_HERE : 2022_07_07
+                    tx0 = ( t_x * dibamis );
+                    ty0 = ( t_y * dibamis );
+                    tx1 = ( tx0 + dibamis );
+                    ty1 = ( ty0 + dibamis );
 
-                };;};;};;
+                for( tty = ty0 ; tty<=ty1 ; tty++ ){
+                for( ttx = tx0 ; ttx<=tx1 ; ttx++ ){
+                    //:almost_a_cutpaste:003_of_003:---------://
+
+                    dpx =( 512 )+(128*h_x)+dia+(lmx*lat)+ttx ;
+                    dpy =( 512 )+(128*h_y)+dia+(lmy*lat)+tty ;
+                    dpi =( dpx + ( dpy * 2048 ) );
+                    dci =( 4 * dpi );
+
+                    u32=(( 0x00
+                    |   ( d_pix2048[ dci + 0 ] << 24 )
+                    |   ( d_pix2048[ dci + 1 ] << 16 )
+                    |   ( d_pix2048[ dci + 2 ] <<  8 )
+                    |   ( d_pix2048[ dci + 3 ] <<  0 )
+                    )>>> 0 );;
+                    //:...u32.&.0x12345678...................://    
+                    v16 =( u32 & 0xF0000000 ) >>>( 28 );
+                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );
+
+                    if( tik >= i_tik   ){
+                    if( v16 >(   0  )  ){
+
+                        o_hit =( 1 );
+                    };;};;
+                    //:---------:almost_a_cutpaste:003_of_003://
+                };; //:NEXT[ ttx ]://
+                };; //:NEXT[ tty ]://
+                };; //:NEXT[ te7 ]://
             };;
             //:------------------------------:check_below://
-
-            sljflsdjflsTODOFINISHTHIS
 
             return( o_hit );
         };;
@@ -2137,10 +2210,31 @@ console.log( "hotel13" );
     const   F_HOTEL13_SAM_EDI_CLK_HIT = function
     PRIVATE_F_HOTEL13_SAM_EDI_CLK_HIT(
                    //:-----------------------------------://
-        i_clk_p_x  //: [ATF]                             ://    
-    ,   i_clk_p_y  //: Return( 1 )if click position hits ://    
-    ,   i_la3      //: a non-zero tile value of ANY SIZE.://    
+        i_clk_p_x  //:  Canvas Pixel Click Y             ://
+    ,   i_clk_p_y  //:  Canvas Pixel Click X             ://
+    ,   i_te7      //:  Tile Size To Set                 ://
+    ,   i_la3      //:  Layer To Set Tile On.            ://
     ){             //:-----------------------------------://
+        //:[ATF]:----------------------------------------://
+        //:                                              ://
+        //:  Return( 1 )if click position where we would ://
+        //:  like to set a tile returns a non-zero tile  ://
+        //:  of ANY_SIZE within overlapping airspace of  ://
+        //:  potential tile we were about to set.        ://
+        //:                                              ://
+        //:----------------------------------------:[ATF]://
+
+        if( d_bug >= 1 ){
+
+            if(!( i_te7 >= 0 && i_te7 <=(7-1) )){
+                YEL("[KANGA:MACHINE][i_te7]", i_te7 );
+                ERR("[KANGA:MACHINE]"               );
+            };;
+            if(!( i_la3 >= 0 && i_la3 <=(3-1) )){
+                YEL("[KANGA:ANIMAL][i_la3]", i_la3 );
+                ERR("[KANGA:ANIMAL]"               );
+            };;
+        };;
         let   sam = d_hotel13_sam ;
 
         var o_hit =( 7066607 );
@@ -2171,7 +2265,7 @@ console.log( "hotel13" );
             //: May Or May Not Be In? AKA[ gcw,gch ] ://
             //: ( measured screen canvas pixels )    ://
             //:--------------------------------------://
-            var te7 = sam.edi_te7 ;
+            var te7 = i_te7 ; //- sam.edi_te7 ; -//
             var lat = d_hotel13_te7_lat[ te7 ];
             var caw = sam.hot_can.width ;    //:@caw@://
             var cah = sam.hot_can.height;    //:@cah@://
@@ -2186,16 +2280,19 @@ console.log( "hotel13" );
             //: lat == "lateral offset"    @lat@     ://
             //:--------------------------------------://
             var lat = d_hotel13_te7_lat[ te7 ];   //:://
-            var t_w = ( gcw / lat );         //:@t_w@://
-            var t_h = ( gch / lat );         //:@t_h@://
+            var t_w =( gcw / lat );          //:@t_w@://
+            var t_h =( gch / lat );          //:@t_h@://
 
             //:--------------------------------------://
             //: Divide mouse click location on       ://
             //: canvas by tile size to find tile xy  ://
             //: we are trying to set.                ://
             //:--------------------------------------://
-            var t_x =( i_clk_p_x / t_w )%( lat );
-            var t_y =( i_clk_p_y / t_h )%( lat );
+            let FLO = Math.floor ;
+            var t_x =(FLO( i_clk_p_x / t_w ))%( lat );
+            var t_y =(FLO( i_clk_p_y / t_h ))%( lat );
+            ASS( t_x >= 0 && t_x <=(64-1) );
+            ASS( t_y >= 0 && t_y <=(64-1) );
 
             //:--------------------------------------://
             //: Do we have OVERLAP on any tile size  ://
@@ -2221,42 +2318,23 @@ console.log( "hotel13" );
             const ANYTIME_HIT =( 0xFFFFFFFF );  //:..://
             //:..................0x11223344..........://
 
-            var hit =( F_HOTEL13_HIT_R13_TE7_LA3_TI0(
-                                     r13,te7,la3,ti0 
-            ,                        ANYTIME_HIT 
+            o_hit =( F_HOTEL13_HIT_R13_TE7_LA3_TI0(
+                                   r13,te7,la3,ti0 
+            ,                      ANYTIME_HIT 
             ));;
 
-            if( hit >= 1 ){
+            if( o_hit >= 1 ){
 
                 //: Obstacle in the way, Don't set.  ://
                 window.alert( "[OBSTACLE_IN_THE_WAY]" );
             }else
-            if( hit <= 0 ){
+            if( o_hit <= 0 ){
 
-                ERR( "[TODO: SET THE TILE]" );
-
-                //:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX://
-    
+                window.alert( "[NOTHING_IN_THE_WAY]" );
             }else{
                 ERR("[@UEC@:IconOfCoil_PerfectSex]");
             };;
 
-            //:--------------------------------------://
-            //: Find Data Pixel, Only Overwrite      ://
-            //: if value is ZERO.                    ://
-            //: @dpx@ : Data_Pixel X (in U32 texture)://
-            //: @dpy@ : Data_Pixel Y (in U32 texture)://
-            //:--------------------------------------://
-
-        ////////////    var dia = d_hotel13_te7_dia[   te7 ];
-        ////////////    var lmx = d_hotel13_la3_lmx[ i_la3 ];
-        ////////////    var lmy = d_hotel13_la3_lmy[ i_la3 ];
-        ////////////
-        ////////////    var dpx =( 512 )+(128*h_x)+dia+(lat*lmx)+t_x;
-        ////////////    var dpy =( 512 )+(128*h_y)+dia+(lat*lmy)+t_y;
-            
-            
- 
         }else{
             ERR("[BAD_H_X_AND_H_Y_COMBO:2022]");
         };;
@@ -2321,12 +2399,23 @@ console.log( "hotel13" );
         //:-------------------------:randomize_brush_size://
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
         if( sam.edi_mod_nov >= 1 ){
+
+            if( sam.edi_la3 != 0 ){
+
+                //:lets not worry about other layers of
+                //:data until we get tiles (edi_la3==0)
+                //:working first, then we can remove
+                //:this error message.
+                YEL( "[GET_TILES_WORKING_FIRST_THEN_REMOVE]" );
+                ERR( "[GET_TILES_WORKING_FIRST_THEN_REMOVE]" );
+            };;
         
             nov_hit=(
                 F_HOTEL13_SAM_EDI_CLK_HIT( 
                     sam.clk_p_x
                 ,   sam.clk_p_y
-                ,   sam.edi_te7
+                ,   sam.edi_te7   //: #_TE7_BEFORE_LA3_# ://
+                ,   sam.edi_la3   //: #_LA3_AFTERR_TE7_# ://
                 ));;
         };;
         //:-----------------:NO_OVerlap_Tile_Setting_Mode://
@@ -3450,14 +3539,149 @@ console.log( "hotel13" );
         Worry about the meaning after we have a 
         first playable.
 
-    #_ABOVE_BEFORE_BELOW_# : 
+    #_BIGGER_TILES_FIRST_# :  ( less bigger  tiles )
+    #_SMALLER_TILES_NEXT_# :  ( more smaller tiles )
 
         If bombs are going off like crazy all over the place,
-        checking for intersection with BIGGER CELLS (above)
+        checking for intersection with BIGGER CELLS  
         first is going to optimize the simulation speed
         drastically.
-     
 
+    #_ABOVE_BEFORE_BELOW_# : See: #_BIGGER_TILES_FIRST_#
     
+        This phrase was confusing because bigger tiles are
+        higher[ te7 ]but they are LOWER in the render order.
+
+    #_BELOW_AFTERR_ABOVE_# : See: #_SMALLER_TILES_NEXT_#
+
+        This phrase was confusing because SMALLER tiles 
+        are lower[ te7 ]but they are HIGHER in the
+        render order.
+
+    @dibamis@ : DivideIfBigger _and_ MultiplyIfSmaller
+    @te7_cur@ : Current te7 value you are at.
+    @te7_big@ : A BIGGER  tile size you are targeting.
+    @te7_lit@ : A LITTLER tile size you are targeting.
+    @te7_tar@ : Generically[ te7_big -OR- te7_lit ]
+
+    #dibamis# : -----------------------------------------------:
+                                                               :
+        " A problem well defined is a problem half solved. "   :
+                                                               :
+        THUS: Have clear variable names. That doesn't mean     :
+              "pronounced like english" that means             :
+              "dibamis" has a very specific meaning in         :
+              my code.                                         :
+                                                               :
+        Problem Setup:                                         :
+    ////- - - - - - - - - - - - - - - - - - - - - - - - - -////:
+                                                               :
+            @ttx@ == @tar_t_x@ ( target t_x )                  :
+            @tty@ == @tar_t_y@ ( target t_y )                  :
+                                                               :
+           +------------+-----_B-----+                         :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|                         :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|                         :
+           |[ ][ ][ ][ ]|[A][ ][ ][ ]|                         :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|  A == [ 4 , 2 ]         :
+           +------------+------------+  t_x = 4                :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|  t_y = 2                :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|                         :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|  _B == [ 1 , 0 ]        :
+           |[ ][ ][ ][ ]|[ ][ ][ ][ ]|  tar_t_x = 1            :
+           +------------+------------+  tar_t_y = 0            :
+                                                               :
+                    [0] [1] [2] [3]  [4]  [5]  [6]             :
+                     |   |   |   |    |    |    |              :
+            te7_peb[ 1 , 2 , 4 , 8 , 16 , 32 , 64 ];           :
+                                                               :
+        Target is LARGER Tile :  #_DIBAMIS_DIV_# ( A --> _B )  : 
+    ////- - - - - - - - - - - - - - - - - - - - - - - - - -////:
+                                                               :
+           te7_cur =( 0 );                                     :
+           te7_tar =( 2 );                                     :
+           dibamis = d_hotel13_te7_peb[ (te7_tar-te7_cur) ];   :
+    ttx    tar_t_x =( t_x / dibamis );                         :
+    tty    tar_t_y =( t_y / dibamis );                         :
+                                                               :
+           dibamis = 4                                         :
+    ttx    tar_t_x =( 4 / 4 ) == 1                             :
+    tty    tar_t_y =( 2 / 4 ) == 0                             :
+                                                               :
+        Target is SMALLER Tile : #_DIBAMIS_MUL_# ( _B --> A )  :
+    ////- - - - - - - - - - - - - - - - - - - - - - - - - -////:
+                                                               :
+            te7_cur =( 2 ); //: _B ://                         :
+            te7_tar =( 0 ); //:  A ://                         :
+            dibamis = d_hotel13_te7_peb[ (te7_cur-te7_tar) ];  :
+    ttx     tar_t_x =( t_x * dibamis );                        :
+    tty     tar_t_y =( t_y * dibamis );                        :
+                                                               :
+            dibamis = 4                                        :
+    ttx     tar_t_x =( 1 * 4 ) == 4                            :
+    tty     tar_t_y =( 0 * 4 ) == 0                            :
+                                                               :
+        :------------------------------------------------------:
+
+    @bidamis@ : Mis-spelling of[ dibamis ]
+
+    #tx0_tx1_ttx# :
+        
+        @tx0@ : Starting[ ttx ]value. ( ttx === t_x , but loop )
+        @tx1@ : Ending[   ttx ]value. ( ttx === t_x , but loop )
+
+    #ty0_ty1_tty# :
+        
+        @ty0@ : Starting[ tty ]value. ( tty === t_y , but loop )
+        @ty1@ : Ending[   tty ]value. ( tty === t_y , but loop )
+
+    JUST_RUN_THE_DAMN_CODE:-----------------------------------:
+                                                              :
+        .... I am a bit stuck here.... Let's just run         :
+        .... the code and see if it works. ..........         :
+                                                              :
+        |<==================== te7 == 6 ===================>| :
+        |<========= te7 == 5 ====>|                           :
+        |<= te7= 4 =>|                                        :
+        +------------+------------+------------+------------+ :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        +------------+------------+------------+------------+ :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[B][ ][ ][ ]| :     
+        +------------+------------+------------+------------+ :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        +------------+------------+------------+------------+ :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :
+        |[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]|[ ][ ][ ][ ]| :     
+        +------------+------------+------------+------------+ :
+                                                              :
+    :---------------------------------------------------------:
+
+    @dibomis@ : Mis_Spelling of [ dibamis ]
+              : NOT[ dib  or  mis ]
+              : YES[ dib and  mis ]
+
+    @edi_fps@ : You mean[ tik_fps ]
+
+    #_TE7_BEFORE_LA3_# : TE7 is more general  , thus 1st.
+    #_LA3_AFTERR_TE7_# : LA3 is more specific , thus 2nd.
+
+        When thinking about the data layout and how we
+        access the [ dpx , dpy ], we need to know TE7
+        before we need to know LA3. Thus, this solves
+        the question of which variable is more general
+        or specific than the other. KANJICODER[2022_07_09]
+
+   
 *** ******************************************************** **/
 
