@@ -361,10 +361,19 @@ console.log( "hotel13" );
             console.log( "[HOTEL13_MSG]:" + msg );
         };;
         
-
+        //:----------------------------------------------://
+        //:  d_pix2048 : Master Game Memory :------------://
+        //:----------------------------------------------://
+        //:  d_pix0512 : Static Temp Buffer to avoid the ://    
+        //:  --------- : evils of the garbage collector. ://
+        //:----------------------------------------------://
         if( !d_pix2048 ){
         
             var d_pix2048 = new Uint8Array( 2048*2048*4 );
+        };;
+        if( !d_pix0512 ){
+
+            var d_pix0512 = new Uint8Array(   512*512*4 );
         };;
 
         if( !ERR ){ var ERR = F_PRIVATE_HOTEL13_ERR; };
