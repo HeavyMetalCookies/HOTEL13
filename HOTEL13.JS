@@ -38,6 +38,317 @@ console.log( "hotel13" );
 
 
     //:====================:HOTEL13_CONSTANTS_LIKE_MACROS://
+    //:HOTEL13_BOMB_INNER_DECALS:========================://
+    //:                                                  ://    
+    //: 000 / ZEROOOO : Not A Bomb, Empty Space          ://    
+    //: TEN / TENDRIL : Tendrill Style Explosion         ://    
+    //: BOX / ECHOBLA : Box      Style Explosion         ://    
+    //: LAZ / LAZEBLA : Laser    Style Explosion         ://    
+    //: PIN / PINSPAR : SparkPIN Style Explosion         ://    
+    //:                                                  ://    
+    //:---------:---------:---------:---------:---------:://    
+    //: BOM_001 : BOM_005 : BOM_009 :         |         :://    
+    //: BOM_002 : BOM_006 : BOM_010 :         |         :://    
+    //: BOM_003 : BOM_007 : BOM_011 :         | BOM_014 :://    
+    //: BOM_004 : BOM_008 : BOM_012 : BOM_013 | BOM_015 :://    
+    //:---------:---------:---------:---------:---------:://    
+    //: TENDRIL : ECHOBLA : LAZEBLA : PINSPAR : unknown :://    
+    //:---------:---------:---------:---------:---------:://   
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+    //:HOTEL13_BOMB_INNER_DECALS:- - - - - - - - - - - - ://
+    //:                                                  ://
+    //: S4W: Short 4Way                                  ://
+    //: B4W: Big   4Way                                  ://
+    //: -----------------------------------------------  ://
+    //: VER:    001  005  |  LEF:    009  |           |  ://
+    //: HOR:    002  006  |  RIG:    010  |           |  ://
+    //: S4W:    003  007  |  TOP:    011  |           |  ://
+    //: B4W:    004  008  |  BOT:    012  |  B4W:013  |  ://
+    //: -----------------------------------------------  ://
+    //:         ...  ...             ...     ...         ://
+    //:         TEN  BOX             LAZ     PIN         ://
+    //:                                                  ://
+    //:HOTEL13_BOMB_INNER_DECALS:- - - - - - - - - - - - ://
+
+        //:----------------------------------------://
+        //: @pat@     : Pattern                    ://
+        //: @pat_bom@ : Pattern Of Bomb Layer Tile ://
+        //: @dec@     : Decal                      ://
+        //: @dec_bom@ : Decal   Of Bomb Layer Tile ://
+        //:----------------------------------------://
+
+        const d_hotel13_pat_bom_000 = "[USE:dec_bom_000]";
+        const d_hotel13_pat_bom_001 = "[USE:dec_bom_001]";
+        const d_hotel13_pat_bom_002 = "[USE:dec_bom_002]";
+        const d_hotel13_pat_bom_003 = "[USE:dec_bom_003]";
+        const d_hotel13_pat_bom_004 = "[USE:dec_bom_004]";
+        const d_hotel13_pat_bom_005 = "[USE:dec_bom_005]";
+        const d_hotel13_pat_bom_006 = "[USE:dec_bom_006]";
+        const d_hotel13_pat_bom_007 = "[USE:dec_bom_007]";
+        const d_hotel13_pat_bom_008 = "[USE:dec_bom_008]";
+        const d_hotel13_pat_bom_009 = "[USE:dec_bom_009]";
+        const d_hotel13_pat_bom_010 = "[USE:dec_bom_010]";
+        const d_hotel13_pat_bom_011 = "[USE:dec_bom_011]";
+        const d_hotel13_pat_bom_012 = "[USE:dec_bom_012]";
+        const d_hotel13_pat_bom_013 = "[USE:dec_bom_013]";
+        const d_hotel13_pat_bom_014 = "[USE:dec_bom_014]";
+        const d_hotel13_pat_bom_015 = "[USE:dec_bom_015]";
+
+        const d_hotel13_dec_bom_000 =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 05 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 06 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        const d_hotel13_dec_bom_001 =new Uint8Array([  
+
+                0,0,0,0,0,0,0,0,0   //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0   //: 02 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 04 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 05 :-: DEC_VER :-://                 
+        ,       0,0,0,0,1,0,0,0,0   //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0   //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0   //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_002 =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_HOR :-:// 
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_003 =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_S4W :-:// 
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_004 =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,1,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,1,0,1,1,1,0,1,0  //: 05 :-: DEC_KIL :-://
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        const d_hotel13_dec_bom_005 =( //:BOX_VER:-------://
+              d_hotel13_dec_bom_001    //:VERTICA:DEC_VER://    
+        );;
+        const d_hotel13_dec_bom_006 =( //:BOX_HOR:-------://
+              d_hotel13_dec_bom_002    //:HORIZON:DEC_HOR:// 
+        );;
+        const d_hotel13_dec_bom_007 =( //:BOX_CRO:-------://
+              d_hotel13_dec_bom_003    //:FOURWAY:DEC_S4W:// 
+        );;
+        const d_hotel13_dec_bom_008 =( //:BOX_KIL:-------://
+              d_hotel13_dec_bom_004    //:INSTKIL:DEC_KIL:// 
+        );;
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ _______ , _______ , _______ , _______ ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        const d_hotel13_dec_laz_lef =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       1,1,1,0,1,0,0,0,0  //: 05 :-: laz_lef :-://
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+        const d_hotel13_dec_laz_rig =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       0,0,0,0,1,0,1,1,1  //: 05 :-: laz_rig :-://
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+        const d_hotel13_dec_laz_top =new Uint8Array([
+ 
+                0,0,0,0,1,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,1,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 05 :-: laz_top :-://
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+        const d_hotel13_dec_laz_bot =new Uint8Array([
+ 
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 05 :-: laz_bot :-://
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+
+
+        const d_hotel13_dec_bom_009 =( //:LAZ_LEF:-------://
+              d_hotel13_dec_laz_lef    //:laz_hor:-------://
+        );;
+        const d_hotel13_dec_bom_010 =( //:LAZ_RIG:-------://
+              d_hotel13_dec_laz_rig    //:laz_hor:-------://
+        );;
+        const d_hotel13_dec_bom_011 =( //:LAZ_TOP:-------://
+              d_hotel13_dec_laz_top    //:laz_ver:-------://
+        );;
+        const d_hotel13_dec_bom_012 =( //:LAZ_BOT:-------://
+              d_hotel13_dec_laz_bot    //:laz_ver:-------://
+        );;
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ _______ , _______ , DEC_S4W , DEC_KIL ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        //:----------------------------------------------://
+        //: pinslow : doesn't kill. Small 4way explosion ://
+        //:         : style that is harmless to player.  ://
+        //:         :                                    ://
+        //:         : We want this so we can emulate     ://
+        //:         : a non-lethal version of Josh's     ://
+        //:         : checker pattern.                   ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: pinfast : doesn't kill. Fast Box Bomb        ://
+        //:         : explosion style that is harmless   ://
+        //:         : to the player.                     ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: pinring : doesn't kill. Toggles on/off.      ://
+        //:         : Emits A 5x5 emp pulse when first   ://
+        //:         : triggered on , then stabilizes with://
+        //:         : a 3x3 area with hole in the center ://
+        //:         : while staying on.                  ://
+        //:                                              ://
+        //:                                              ://
+        //:        [r]: pinring that is off.             ://
+        //:        [R]: pinrigh that is exploding.       ://
+        //:                                              ://
+        //:            1  2  3  4  5                     ://
+        //:        [ ][r][ ][R][ ][r][ ]  Initial Blast  ://
+        //:----------------------------------------------://
+
+        //:---------------------://
+        //: NON-LETHAL PATTERNS ://
+        //:---------------------://
+
+        const d_hotel13_dec_pinslow =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,0,0,1,1,1,0,0,0  //: 05 :-: pinslow :-://
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+        const d_hotel13_dec_pinfast =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: pinslow :-://
+        ,       0,0,1,1,1,1,1,0,0  //: 06 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+        const d_hotel13_dec_pinring =new Uint8Array([
+ 
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
+        ,       0,0,1,0,0,0,1,0,0  //: 04 :             ://
+        ,       0,0,1,0,1,0,1,0,0  //: 05 :-: pinring :-://
+        ,       0,0,1,0,0,0,1,0,0  //: 06 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;
+
+        const d_hotel13_dec_bom_013 =( //:-------:-------://
+              d_hotel13_dec_pinslow    //:pinslow:-------:// 
+        );;
+        const d_hotel13_dec_bom_014 =( //:-------:-------://
+              d_hotel13_dec_pinfast    //:pinfast:-------://
+        );;
+        const d_hotel13_dec_bom_015 =( //:-------:-------://
+              d_hotel13_dec_pinring    //:pinring:-------:// 
+        );;
+
+        const d_hotel13_dec_bom_all = new Array( 16 );
+        {;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+            let bom_all = d_hotel13_dec_bom_all ;
+
+                bom_all[  0 ]=( d_hotel13_dec_bom_000 );
+                bom_all[  1 ]=( d_hotel13_dec_bom_001 );
+                bom_all[  2 ]=( d_hotel13_dec_bom_002 );
+                bom_all[  3 ]=( d_hotel13_dec_bom_003 );
+                bom_all[  4 ]=( d_hotel13_dec_bom_004 );
+                bom_all[  5 ]=( d_hotel13_dec_bom_005 );
+                bom_all[  6 ]=( d_hotel13_dec_bom_006 );
+                bom_all[  7 ]=( d_hotel13_dec_bom_007 );
+                bom_all[  8 ]=( d_hotel13_dec_bom_008 );
+                bom_all[  9 ]=( d_hotel13_dec_bom_009 );
+                bom_all[ 10 ]=( d_hotel13_dec_bom_010 );
+                bom_all[ 11 ]=( d_hotel13_dec_bom_011 );
+                bom_all[ 12 ]=( d_hotel13_dec_bom_012 );
+                bom_all[ 13 ]=( d_hotel13_dec_bom_013 );
+                bom_all[ 14 ]=( d_hotel13_dec_bom_014 );
+                bom_all[ 15 ]=( d_hotel13_dec_bom_015 );
+        };;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    //:========================:HOTEL13_BOMB_INNER_DECALS://
     //:HOTEL13_BOMB_LAYER_RENDER_SETTINGS:===============://
     {
         //:TAG[ bomb style | bombstyle | bomb-style ]    ://
@@ -52,6 +363,7 @@ console.log( "hotel13" );
         const d_hotel13_ren_fad = "[no_need_at_this_time]";
 
         const _0_ =( 0 );
+        const ___ =( 0 ); //:    Unknown Slot    ://
         
         //:--------------------------------------://
         //: Body Design :------------------------://
@@ -92,30 +404,32 @@ console.log( "hotel13" );
 
         //: BOMB(S)    ://
 
-        ,   CIR , VER
-        ,   CIR , HOR
-        ,   CIR , S4W
-        ,   CIR , KIL
+        ,   CIR , VER  //: BOM_001 ://
+        ,   CIR , HOR  //: BOM_002 ://
+        ,   CIR , S4W  //: BOM_003 ://
+        ,   CIR , KIL  //: BOM_004 ://
 
         //: ECHOBOX(S) ://
 
-        ,   BOX , VER
-        ,   BOX , HOR
-        ,   BOX , S4W
-        ,   BOX , KIL
+        ,   BOX , VER  //: BOM_005 ://
+        ,   BOX , HOR  //: BOM_006 ://
+        ,   BOX , S4W  //: BOM_007 ://
+        ,   BOX , KIL  //: BOM_008 ://
 
         //: LAZER(S)/LASER(S) ://
 
-        ,   LEF , HOR
-        ,   RIG , HOR
-        ,   TOP , VER
-        ,   BOT , VER
+        ,   LEF , HOR  //: BOM_009 ://
+        ,   RIG , HOR  //: BOM_010 ://
+        ,   TOP , VER  //: BOM_011 ://
+        ,   BOT , VER  //: BOM_012 ://
 
         //: SPARKPINS ( immediately detonate when touched )
         //:           ( they emit a 1x1 box blast pattern )
         //:           ( but do __NOT__  hurt player       )
         
-        ,   DAS , PIN
+        ,   DAS , PIN //:  BOM_013 ://
+        ,   DAS , PIN //:  BOM_014 : #_NOPLASMA_HERE_#://
+        ,   DAS , PIN //:  BOM_015 : #_NOPLASMA_HERE_#://
         ];;
 
     }
@@ -204,10 +518,10 @@ console.log( "hotel13" );
     ,   "#FFFF00"  //: LAZR: UPPP :          ://  
     ,   "#FFFF00"  //: LAZR: DOWN :          ://
     //:                           :          ://
-    ,   "#00FF00"  //: SPRK: PINN :          :// 
+    ,   "#00FF00"  //: SPRK: FOUR :          :// 
     //:                           :          ://
-    ,   "#00FF00"  //: INFINITE PLASMA - SAFE://
-    ,   "#FF0088"  //: INFINITE FIRE   - KILL://
+    ,   "#00FF00"  //: SPRK: BOXX :          :// 
+    ,   "#00FF00"  //: SPRK: RING :          :// 
     //:
     ];;                                          //:H_C_P://
     var d_hotel13_hcp_fad =[   //:FULLSAT://     //:H_C_P://
@@ -287,8 +601,8 @@ console.log( "hotel13" );
     ,   edi_te7_min :( 0)  //: AKA[ edi_ran_max ]  ://
     ,   edi_te7_max :( 4)  //: AKA[ edi_ran_min ]  ://
     
-    ,   edi_mod_hol :( 1)  //: Hold Brush Down     ://
-    ,   edi_mod_ran :( 1)  //: Randomize Brush Size://
+    ,   edi_mod_hol :( 0)  //: Hold Brush Down     ://
+    ,   edi_mod_ran :( 0)  //: Randomize Brush Size://
     ,   edi_mod_mir :( 0)  //: Mirror Brush Strokes://
     ,   edi_mod_nov :( 1)  //: NO-Overlap Mode     ://
 
@@ -2585,39 +2899,55 @@ console.log( "hotel13" );
                     );;
 
                 }else
-                if( bod == c_hotel13_bod_lef 
-                ||  bod == c_hotel13_bod_rig
+
+                if( 0
+                ||  bod == c_hotel13_bod_lef  
+                ||  bod == c_hotel13_bod_rig  
+                ||  bod == c_hotel13_bod_top  
+                ||  bod == c_hotel13_bod_bot
                 ){
 
                     F_HOTEL13_DRAW_2D_BOX(
                         ctx
                     ,   pog_t_x
-                    ,  (pog_t_y+(t_h/4))
-                    ,       t_w
-                    ,      (t_h/2)
-                    ,   (t_w+t_h)/2/4 
-                    );;
-                }else
-                if( bod == c_hotel13_bod_top
-                ||  bod == c_hotel13_bod_bot 
-                ){
-                    F_HOTEL13_DRAW_2D_BOX(
-                        ctx
-                    ,  (pog_t_x+(t_w/4))
                     ,   pog_t_y
-                    ,      (t_w/2)
+                    ,       t_w
                     ,       t_h
                     ,   (t_w+t_h)/2/4 
                     );;
                 }else
-                if( bod == c_hotel13_bod_das ){
+    
+                //- ---------------------------- -//   
+                //+ #_PILL_SHAPE_LOOKS_UGLY_#    +//
+                //- ---------------------------- -//                        
+                //- if( bod == c_hotel13_bod_lef -//
+                //- ||  bod == c_hotel13_bod_rig -//
+                //- ){                           -//
+                //-                              -//
+                //-     F_HOTEL13_DRAW_2D_BOX(   -//
+                //-         ctx                  -//
+                //-     ,   pog_t_x              -//
+                //-     ,  (pog_t_y+(t_h/4))     -//
+                //-     ,       t_w              -//
+                //-     ,      (t_h/2)           -//
+                //-     ,   (t_w+t_h)/2/4        -//
+                //-     );;                      -//
+                //- }else                        -//
+                //- if( bod == c_hotel13_bod_top -//
+                //- ||  bod == c_hotel13_bod_bot -//
+                //- ){                           -//
+                //-     F_HOTEL13_DRAW_2D_BOX(   -//
+                //-         ctx                  -//
+                //-     ,  (pog_t_x+(t_w/4))     -//
+                //-     ,   pog_t_y              -//
+                //-     ,      (t_w/2)           -//
+                //-     ,       t_h              -//
+                //-     ,   (t_w+t_h)/2/4        -//
+                //-     );;                      -//
+                //- }else                        -//
+                //- ---------------------------- -// 
 
-                    ctx.fillRect( 
-                       ( pog_t_x + ( t_w / 3 ) )
-                    ,  ( pog_t_y + ( t_h / 3 ) )
-                    ,  (     t_w / 3 )
-                    ,  (     t_h / 3 )
-                    );;
+                if( bod == c_hotel13_bod_das ){
 
                     ctx.strokeRect( 
                        ( pog_t_x     )
@@ -2634,6 +2964,33 @@ console.log( "hotel13" );
                     ,   pog_t_y + (t_h/2)
                     ,   ( (t_w + t_h) / 2 )
                     );;
+                };;
+
+                if( sig ){ /**ItakeThisBack**/ };   
+                //: TAG[ sig_dec / dec_sig ]://
+                //: TAG[ tw9/t9w/th9/t9h   ]://
+                var sig_dec =( d_hotel13_dec_bom_all[ t_v ] );
+                
+                var tw9 =( t_w / 9 ); //:AKA[ t9w ]://
+                var th9 =( t_h / 9 ); //:AKA[ t9h ]://
+                var t81 ; //:AKA[             ti9 ]://
+                var tx9 ; //:AKA[             t9x ]://
+                var ty9 ; //:AKA[             t9y ]://
+
+                for( t81 = 0 ; t81 <=(81-1) ; t81++ ){
+
+                    if( sig_dec[ t81 ] >= 1 ){
+
+                        tx9 =(          ( t81 % 9 ) );
+                        ty9 =(Math.floor( t81 / 9 ) );
+        
+                        ctx.fillRect( 
+                           ( pog_t_x + ( tx9 * tw9 ) )
+                        ,  ( pog_t_y + ( ty9 * th9 ) )
+                        ,  (           (       tw9 ) )
+                        ,  (           (       th9 ) )
+                        );;
+                    };;
                 };;
 
             };;
@@ -3192,8 +3549,7 @@ console.log( "hotel13" );
         if( "-" == asc
         ||  "_" == asc
         ){
-            ///YEL( "[v16]--:" , sam.edi_v16 );
-            sam.edi_v16 -- ;
+                sam.edi_v16 -- ;
             if( sam.edi_v16 <=(    1 ) ){
                 sam.edi_v16  =(    1 ) ;
             };;
@@ -3201,10 +3557,25 @@ console.log( "hotel13" );
         if( "+" == asc
         ||  "=" == asc
         ){
-            ///YEL( "[v16]++:" , sam.edi_v16 );
-            sam.edi_v16 ++ ;
+                sam.edi_v16 ++ ;
             if( sam.edi_v16 >=( 16-1 ) ){
                 sam.edi_v16  =( 16-1 ) ;
+            };;
+        };;
+        if( "[" == asc 
+        ||  "{" == asc 
+        ){
+                sam.edi_te7 -- ;
+            if( sam.edi_te7 <=(    0 ) ){
+                sam.edi_te7  =(    0 ) ;
+            };;
+        };;
+        if( "]" == asc 
+        ||  "}" == asc 
+        ){
+                sam.edi_te7 ++ ;
+            if( sam.edi_te7 >=(  7-1 ) ){
+                sam.edi_te7  =(  7-1 ) ;
             };;
         };;
         
@@ -4410,6 +4781,25 @@ console.log( "hotel13" );
     @ldy@ : Level_Data( origin ) - Y
 
     [BSM] : Bit_Shift_Math
+
+    #_NOPLASMA_HERE_# :
+        I originally was thinking BOM_014 & BOM_015 slots
+        could be "Green_Plasma" and "Red_Plasma".
+        
+        I still like this idea. But don't put plasma in
+        the bomb layer. Plasma belongs in the "FADA"/"FAD"
+        layer.
+
+        If you put plasma in bomb layer than bombs can
+        never be layed on TOP of that plasma because they
+        occupy the same tile space.
+        
+        DATE[ 2022_07_10 ]KANJICODER
+
+    #_PILL_SHAPE_LOOKS_UGLY_# :
+
+        Pill shape for bombs was ugly. Change design 
+        to rounded box boarders.
    
 *** ******************************************************** **/
 
