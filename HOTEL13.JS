@@ -26,6 +26,13 @@ console.log( "hotel13" );
     //:===================================:ITS_WRONG_CARL://
     //:HOTEL13_CONSTANTS_LIKE_MACROS:====================://
 
+        //:----------------------------------------------://
+        //: @f30@ : 30FPS                                ://
+        //: At 30-FPS , how many frames should flames    ://
+        //: be visible for ?                             ://
+        //:----------------------------------------------://
+        const c_hotel13_f30_fad =( 8 );
+
         const c_hotel13_bod_cir =( 1 );
         const c_hotel13_bod_box =( 2 );
 
@@ -35,6 +42,49 @@ console.log( "hotel13" );
         const c_hotel13_bod_bot =( 6 );
 
         const c_hotel13_bod_das =( 7 ); //:DAShed Boarder://
+
+        //:----------------------------------------------:// 
+        //: @hexabaf@ : HEXA_for_Bombs_And_Fada          ://
+        //:           : Hex colors to use both for       ://
+        //:           : bombs and explosions. Have       ://
+        //:           : explosion color match the        ://
+        //:           : bomb color.                      ://
+        //:                                              ://
+        //: [B]: BOMB (normal style)    [V]:VERTICAL     ://
+        //: [E]: ECHO (square bomb )    [H]:HORIZONTAL   ://
+        //: [L]: LAZER/LASER            [F]:FOURWAY      ://
+        //: [S]: SPARKPIN               [K]:INSTAKILL_BIG://
+        //:                                              ://
+        //: [f]:sparkpin forway         [L]:LEFT         ://
+        //: [b]:sparkpin box            [R]:RIGHT        ://
+        //: [r]:sparkpin ring           [T]:TOP (upward) ://
+        //:                             [B]:BOT (down  ) ://
+        //:                                              ://
+        //:----------------------------------------------://    
+        
+        const hexabaf_laxcoma = "[hexabaf_laxcoma]"
+
+            c_hotel13_hexabaf_000= "#000000"   //:THEVOID://
+        ////
+        ,   c_hotel13_hexabaf_001= "#FF2200"   //:[B]:[V]://    
+        ,   c_hotel13_hexabaf_002= "#FF2200"   //:[B]:[H]://
+        ,   c_hotel13_hexabaf_003= "#FF2200"   //:[B]:[F]://
+        ,   c_hotel13_hexabaf_004= "#FF2200"   //:[B]:[K]://            
+        ////                                             
+        ,   c_hotel13_hexabaf_005= "#FF8800"   //:[E]:[V]://
+        ,   c_hotel13_hexabaf_006= "#FF8800"   //:[E]:[H]://
+        ,   c_hotel13_hexabaf_007= "#FF8800"   //:[E]:[F]://
+        ,   c_hotel13_hexabaf_008= "#FF8800"   //:[E]:[K]://
+        ////                                             
+        ,   c_hotel13_hexabaf_009= "#FFFF00"   //:[L]:[L]://
+        ,   c_hotel13_hexabaf_010= "#FFFF00"   //:[L]:[R]://
+        ,   c_hotel13_hexabaf_011= "#FFFF00"   //:[L]:[T]://
+        ,   c_hotel13_hexabaf_012= "#FFFF00"   //:[L]:[B]://
+        ////                                             
+        ,   c_hotel13_hexabaf_013= "#00FF00"   //:[S]:[f]://
+        ,   c_hotel13_hexabaf_014= "#00FF00"   //:[S]:[b]://
+        ,   c_hotel13_hexabaf_015= "#00FF00"   //:[S]:[r]://
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
     //:====================:HOTEL13_CONSTANTS_LIKE_MACROS://
@@ -496,58 +546,58 @@ console.log( "hotel13" );
     ];;                                           
     var d_hotel13_hcp_bom =[    //:PASTEL://     //:H_C_P://
                                                  //:H_C_P://
-        "#000000"   //: "BLACK"                  //:H_C_P://
+        c_hotel13_hexabaf_000   //: "BLACK"      //:H_C_P://
                                                  //:H_C_P://
         //:----------------------------------:// //:H_C_P://
         //: All "00" channels got "99" to    :// //:H_C_P://
         //: create pastel colors.            :// //:H_C_P://
         //:----------------------------------:// //:H_C_P://
     //:                           :          :// //:H_C_P://
-    ,   "#FF2200"  //: BOMB: VERT :          ://  
-    ,   "#FF2200"  //: BOMB: HORZ :          ://  
-    ,   "#FF2200"  //: BOMB: FOUR :          ://
-    ,   "#FF2200"  //: BOMB: SKUL :          ://
-    //:                           :          ://
-    ,   "#FF8800"  //: ECHO: VERT :          ://  
-    ,   "#FF8800"  //: ECHO: HORZ :          ://  
-    ,   "#FF8800"  //: ECHO: FOUR :          ://
-    ,   "#FF8800"  //: ECHO: SKUL :          ://
-    //:                           :          ://
-    ,   "#FFFF00"  //: LAZR: LEFT :          ://  
-    ,   "#FFFF00"  //: LAZR: RIGH :          ://  
-    ,   "#FFFF00"  //: LAZR: UPPP :          ://  
-    ,   "#FFFF00"  //: LAZR: DOWN :          ://
-    //:                           :          ://
-    ,   "#00FF00"  //: SPRK: FOUR :          :// 
-    //:                           :          ://
-    ,   "#00FF00"  //: SPRK: BOXX :          :// 
-    ,   "#00FF00"  //: SPRK: RING :          :// 
-    //:
+    ,   c_hotel13_hexabaf_001  //: BOMB: VERT :     H_C_P://  
+    ,   c_hotel13_hexabaf_002  //: BOMB: HORZ :     H_C_P://  
+    ,   c_hotel13_hexabaf_003  //: BOMB: FOUR :     H_C_P://
+    ,   c_hotel13_hexabaf_004  //: BOMB: SKUL :     H_C_P://
+    //:                                       :     H_C_P://
+    ,   c_hotel13_hexabaf_005  //: ECHO: VERT :     H_C_P://  
+    ,   c_hotel13_hexabaf_006  //: ECHO: HORZ :     H_C_P://  
+    ,   c_hotel13_hexabaf_007  //: ECHO: FOUR :     H_C_P://
+    ,   c_hotel13_hexabaf_008  //: ECHO: SKUL :     H_C_P://
+    //:                                       :     H_C_P://
+    ,   c_hotel13_hexabaf_009  //: LAZR: LEFT :     H_C_P://  
+    ,   c_hotel13_hexabaf_010  //: LAZR: RIGH :     H_C_P://  
+    ,   c_hotel13_hexabaf_011  //: LAZR: UPPP :     H_C_P://  
+    ,   c_hotel13_hexabaf_012  //: LAZR: DOWN :     H_C_P://
+    //:                                       :     H_C_P://
+    ,   c_hotel13_hexabaf_013  //: SPRK: FOUR :     H_C_P:// 
+    //:                                       :     H_C_P://
+    ,   c_hotel13_hexabaf_014  //: SPRK: BOXX :     H_C_P:// 
+    ,   c_hotel13_hexabaf_015  //: SPRK: RING :     H_C_P:// 
+    //:                                             H_C_P://
     ];;                                          //:H_C_P://
     var d_hotel13_hcp_fad =[   //:FULLSAT://     //:H_C_P://
                                                  //:H_C_P://
-        "#000000"   //: "BLACK"                  //:H_C_P://
+        c_hotel13_hexabaf_000  //: "BLACK"       //:H_C_P://
                                                  //:H_C_P://
         //:----------------------------------:// //:H_C_P://
         //: Some of the original atomic alice:// //:H_C_P://
         //: colors from my notes.            :// //:H_C_P://
         //:----------------------------------:// //:H_C_P://
                                                  //:H_C_P://
-    ,   "#C3FF00"   //: "ELECTRIC_LIME"          //:H_C_P://
-    ,   "#88FF00"   //: "LIME"                   //:H_C_P://
-    ,   "#44FF00"   //: "HARLEQUIN"              //:H_C_P://
-    ,   "#00FF00"   //: "GREEN"                  //:H_C_P://
-    ,   "#00FF44"   //: "ZOISITE"                //:H_C_P://
-    ,   "#00FF88"   //: "TEAL"                   //:H_C_P://
-    ,   "#00FFC3"   //: "VAPOR"                  //:H_C_P://
-    ,   "#00FFFF"   //: "CYAN"                   //:H_C_P://
-    ,   "#00C3FF"   //: "WATER"                  //:H_C_P://
-    ,   "#0088FF"   //: "SKY"                    //:H_C_P://
-    ,   "#0044FF"   //: "ARGON"                  //:H_C_P://
-    ,   "#0000FF"   //: "BLUE"                   //:H_C_P://
-    ,   "#4400FF"   //: "HAN_PURPLE"             //:H_C_P://
-    ,   "#8800FF"   //: "INDIGO"                 //:H_C_P://
-    ,   "#C300FF"   //: "PURPLE_LIGHTNING"       //:H_C_P://
+    ,   c_hotel13_hexabaf_001   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_002   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_003   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_004   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_005   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_006   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_007   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_008   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_009   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_010   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_011   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_012   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_013   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_014   //:              //:H_C_P://
+    ,   c_hotel13_hexabaf_015   //:              //:H_C_P://
     ];;                                          //:H_C_P://
     //:=============================:HOTEL13_COLOR_PALLET://    
 
@@ -1336,7 +1386,13 @@ console.log( "hotel13" );
                         ASS( chk == dibamis , "[C2_B]");
                     };;
 
-                    //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<FIX THIS FORMULA
+                    //:------------------------------://
+                    //: @PARANOID@ 2022_07_10        ://
+                    //: Pretty sure this formula is  ://
+                    //: correct. But had a note to   ://
+                    //: fix it. All testing seems to ://
+                    //: say it is correct.           ://
+                    //:------------------------------://
                     tx0 = ( t_x * dibamis     );
                     ty0 = ( t_y * dibamis     );
                     tx1 = ( tx0 +(dibamis)-1  );
@@ -1750,7 +1806,6 @@ console.log( "hotel13" );
             i_pix[ (4*di1)+1 ]=( i_u32 >>> 16 )&(0xFF) ;
             i_pix[ (4*di1)+2 ]=( i_u32 >>>  8 )&(0xFF) ;
             i_pix[ (4*di1)+3 ]=( i_u32 >>>  0 )&(0xFF) ;
-        
         };;
         //:---------------------:SET_DATA_IN_PIXEL_BUFFER://
     };;
@@ -2688,12 +2743,12 @@ console.log( "hotel13" );
             dty = dpy + t_y ;
             dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
             c_i =( 4*dti );
-            dtu =( 0x0
-            | ( d_pix2048[ c_i ] << 24 )
-            | ( d_pix2048[ c_i ] << 16 )
-            | ( d_pix2048[ c_i ] <<  8 )
-            | ( d_pix2048[ c_i ] <<  0 )
-            );;
+            dtu =(( 0x0
+            | ( d_pix2048[ c_i + 0 ] << 24 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 1 ] << 16 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 2 ] <<  8 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 3 ] <<  0 )    //:#GFDI0123#://
+            )>>>0);
             
             t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
             t_t =( dtu & 0x0FFFFFFF );
@@ -2852,12 +2907,12 @@ console.log( "hotel13" );
             dty = dpy + t_y ;
             dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
             c_i =( 4*dti );
-            dtu =( 0x0
-            | ( d_pix2048[ c_i ] << 24 )
-            | ( d_pix2048[ c_i ] << 16 )
-            | ( d_pix2048[ c_i ] <<  8 )
-            | ( d_pix2048[ c_i ] <<  0 )
-            );;
+            dtu =(( 0x0
+            | ( d_pix2048[ c_i + 0 ] << 24 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 1 ] << 16 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 2 ] <<  8 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i + 3 ] <<  0 )    //:#GFDI0123#://
+            )>>>0);
             
             t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
             t_t =( dtu & 0x0FFFFFFF );
@@ -3008,7 +3063,204 @@ console.log( "hotel13" );
     
         /** NO ARGS **/
     ){
-        YEL("[Get_Comb_Rendering_Working_First]");
+        //:DRAW_2D:COMMON_VAR_HEADER:--------------------://
+                                                      //:://
+        let sam =( d_hotel13_sam         );           //:://
+        let ctx =( d_hotel13_sam.hot_con );           //:://
+                                                      //:://
+        var g_w =( sam.hot_can.width / 5 ); //:GridCell.W://
+        var g_h =( sam.hot_can.height/ 5 ); //:GridCell.H://
+                                                      //:://
+        var peb_m_x =( g_w / 64 );  //: peb multiplier x ://
+        var peb_m_y =( g_w / 64 );  //: peb multiplier y ://    
+                                                      //:://
+        //:----------------------------------://      //:://
+        //: SEE[ F_HOTEL13_DRAW_2D_TIL ]     ://      //:://
+        //: For variable descriptions.       ://      //:://
+        ////////////////////////////////////////      //:://
+        var lacoma                          ////      //:://
+        ,   dpx,dpy,dtx,dty,dti,dtu,c_i     ////      //:://
+        ,   h4x,h4y,lat,dia,san             ////      //:://
+        ,   t_x,t_y,t_v,t_w,t_h,t_t         ////      //:://
+        ,   peb                             ////      //:://
+        ,   clk , clk_t_x , clk_t_y         ////      //:://
+        ,   mou , mou_t_x , mou_t_y         ////      //:://
+        ////////////////////////////////////////      //:://
+        //:----------------------------------://      //:://
+        //:--------------------:DRAW_2D:COMMON_VAR_HEADER://
+
+        mou_t_x = sam.te7_mou_t_x[ sam.edi_te7 ];
+        mou_t_y = sam.te7_mou_t_y[ sam.edi_te7 ];
+
+        for( var te7 =(7-1); te7 >=(  0 ) ; te7 -- ){
+        
+            peb = d_hotel13_te7_peb[ te7 ]
+            t_w = ( peb * peb_m_x );
+            t_h = ( peb * peb_m_y );
+            
+            clk_t_x = sam.te7_clk_t_x[ te7 ];
+            clk_t_y = sam.te7_clk_t_y[ te7 ];
+        
+        for( var r13 =( 0 ); r13 <=(13-1) ; r13 ++ ){
+        
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: @g_x@ : Grid Cell Where Room Could Be X  ://
+            //: @g_y@ : Grid Cell Where Room Could Be Y  ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            var g_x = d_hotel13_r13_g_x[ r13 ];
+            var g_y = d_hotel13_r13_g_y[ r13 ];
+            ASS( g_x >= 0 );
+            ASS( g_y >= 0 );
+            
+            var o_x =( g_x * g_w );
+            var o_y =( g_y * g_h );
+            
+            if( (7-1) == te7 ){
+                
+                //:--------------------------------------://
+                //: This section only done in the        ://
+                //: tile loop, because it ERASES         ://
+                //: everything.                          ://
+                //:--------------------------------------://    
+            };;
+            
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            //: Draw all tiles of given tile size.       ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
+            
+            dpx = 512 ;   //: Active Level Data Origin X ://
+            dpy = 512 ;   //: Active Level Data Origin Y ://
+            
+            h4x =(           ( r13 % 4 ) );  //:@r13_h4x@://
+            h4y =( Math.floor( r13 / 4 ) );  //:@r13_h4y@://
+            
+            lat = d_hotel13_te7_lat[ te7 ];
+            dia = d_hotel13_te7_dia[ te7 ];
+            
+            dpx += ( 128 * h4x ); //:Now in correct room ://
+            dpy += ( 128 * h4y ); //:of data to render   ://
+            
+            dpx += dia ; //: Now at correct[ te7 ]tile   ://
+            dpy += dia ; //: size of data to render.     ://
+
+            dpx += (0) ; //:Offset needed to reach the   ://
+            dpy += lat ; //:FADA layer of our data.      ://
+            
+            san = lat ;  //: SPAN_IN_TILES == LATERAL_OS ://
+        
+        for( t_y = 0 ; t_y <=(san-1) ; t_y ++ ){
+        for( t_x = 0 ; t_x <=(san-1) ; t_x ++ ){
+            
+            dtx = dpx + t_x ;
+            dty = dpy + t_y ;
+            dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
+            c_i =( 4*dti );
+            dtu =(( 0x0
+            | ( d_pix2048[ c_i + 0 ] << 24 )   //:#GFDI_0123#://
+            | ( d_pix2048[ c_i + 1 ] << 16 )   //:#GFDI_0123#://
+            | ( d_pix2048[ c_i + 2 ] <<  8 )   //:#GFDI_0123#://
+            | ( d_pix2048[ c_i + 3 ] <<  0 )   //:#GFDI_0123#://
+            )>>>0);
+            
+            t_t =( ( dtu & 0x0FFFFFFF ) >>> 0 );
+            t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
+            
+            //:-----------:0x12345678------------------------://
+
+            if( t_v >= 1 && t_v <=(16-1) ){
+
+                pog_t_x = ( o_x + ( t_x * t_w ) );
+                pog_t_y = ( o_y + ( t_y * t_h ) );
+
+                ctx.strokeStyle=(
+                        d_hotel13_hcp_fad[ t_v ] 
+                );;
+                ctx.fillStyle=(
+                        d_hotel13_hcp_fad[ t_v ] 
+                );;
+    
+                ASS( d_hotel13_sam.tik_num >= 0 ,"[FK242]");
+                ASS(                   t_t >= 0 ,"[FK242]");
+                if( d_hotel13_sam.tik_num < t_t ){
+                
+                    YEL( "[tik_num]:" , d_hotel13_sam.tik_num );
+                    YEL( "[....t_t]:" , t_t );
+                };;
+
+
+                var tikadel = (  //:AKA[ age ]://
+                    d_hotel13_sam.tik_num 
+                                    - t_t 
+                );; //:@tikadel@://
+
+                var fad_t_w ; //:FADA:til_wid://
+                var fad_t_h ; //:FADA:til_hig://
+                var fadshow ; //:ShowExplosionTile?://
+                var lim =( c_hotel13_f30_fad );
+
+                fadshow =( tikadel >= 0 && tikadel <= lim );
+
+                if( (!(fadshow)) ){
+
+                }else
+                if( ( (fadshow)) ){
+
+                    var per = ( (lim-tikadel) / lim );
+
+                    
+                    var fad_t_w =( t_w * per );
+                    var fad_t_h =( t_h * per );
+
+                    var fad_t_x =( pog_t_x + ((t_w-fad_t_w)/2) );
+                    var fad_t_y =( pog_t_y + ((t_h-fad_t_h)/2) );
+
+                    if( 0 === tikadel % 2 ){
+
+                        ctx.strokeRect( 
+                            ( fad_t_x     )
+                        ,   ( fad_t_y     )
+                        ,   ( fad_t_w     )
+                        ,   ( fad_t_h     )
+                        );;
+                        ctx.strokeRect( 
+                            ( fad_t_x     ) + (fad_t_w/3)
+                        ,   ( fad_t_y     ) + (fad_t_h/3)
+                        ,   ( fad_t_w/3   )  
+                        ,   ( fad_t_h/3   )  
+                        );;
+                        ctx.strokeRect( 
+                            ( fad_t_x     ) + (fad_t_w/6)
+                        ,   ( fad_t_y     ) + (fad_t_h/6)
+                        ,   ( fad_t_w*(4/6)   )  
+                        ,   ( fad_t_h*(4/6)   )  
+                        );;
+                    }else{
+                        ctx.strokeRect( 
+                            ( fad_t_x           ) + fad_t_w*(1/12)
+                        ,   ( fad_t_y           ) + fad_t_h*(1/12)
+                        ,   ( fad_t_w*(10/12)   )
+                        ,   ( fad_t_h*(10/12)   )
+                        );;
+                        ctx.strokeRect( 
+                            ( fad_t_x     ) + fad_t_w*(3/12)
+                        ,   ( fad_t_y     ) + fad_t_h*(3/12)
+                        ,   ( fad_t_w*(6/12)   )  
+                        ,   ( fad_t_h*(6/12)   )  
+                        );;
+                        ctx.strokeRect( 
+                            ( fad_t_x     ) + (fad_t_w*(8/18))
+                        ,   ( fad_t_y     ) + (fad_t_h*(8/18))
+                        ,   ( fad_t_w/3/3  )  
+                        ,   ( fad_t_h/3/3  )  
+                        );;
+                    };;
+                };;
+
+       
+
+            };;
+        };;};;
+        };;};;
     };;
     
     const F_HOTEL13_DRAW_2D = function
@@ -3038,7 +3290,7 @@ console.log( "hotel13" );
         };;
         if( d_hotel13_sam.vis_fad != 0 ){    //:c_lay_fad://    
         
-        ///////    F_HOTEL13_DRAW_2D_FAD(); <<<<<<<<<<<<<<<<<<<<<<< NOT YET
+            F_HOTEL13_DRAW_2D_FAD();  
         };;
     };;
     
@@ -3051,7 +3303,20 @@ console.log( "hotel13" );
         //: code. That is why it is here and not  ://
         //: inside of[ F_HOTEL13_TIK ]            ://
         //: ------------------------------------- ://
-        d_hotel13_sam.tik_num ++ ;
+           
+
+        if( d_hotel13_not_aim ){
+
+                d_hotel13_sam.tik_num ++ ; 
+
+            //- d_hotel13_sam.tik_num = ( 0x0 ); -//
+        }else
+        if( d_hotel13_yes_aim ){
+
+            d_hotel13_sam.tik_num =( d_tik );
+        }else{
+            ERR("[unknown_case_2022]");
+        };;
     
         F_HOTEL13_TIK();
         F_HOTEL13_DRAW_2D();
@@ -3384,17 +3649,10 @@ console.log( "hotel13" );
         };;
         //:-------------------------:randomize_brush_size://
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
-        if( sam.edi_mod_nov >= 1 ){
-
-            if( sam.edi_la3 != 0 
-            &&  sam.edi_la3 != 1
-            ){
-                //: Get bomb layer rendering , then we
-                //: can remove this error code.
-                YEL( "[GET_BOMBS_WORKING_FIRST_THEN_REMOVE]" );
-                ERR( "[GET_BOMBS_WORKING_FIRST_THEN_REMOVE]" );
-            };;
-        
+        if( 1
+        &&  ( sam.edi_mod_nov >= 1 )
+        &&  ( 2 != sam.edi_la3 /**Explosions Overwrite**/ )
+        ){
             nov_hit=(
                 F_HOTEL13_SAM_EDI_CLK_HIT( 
                     sam.clk_p_x
@@ -3410,18 +3668,25 @@ console.log( "hotel13" );
         {
         if( nov_hit <= 0 /** Not Tile Blocked **/ )
         {
-            const g_x = sam.clk_g_x ;
-            const g_y = sam.clk_g_y ;
-            const te7 = sam.edi_te7 ;
-            var   chk = (  0  );;;;;;
-            var   val = 0xFFFFFFFF  ;
+            let   tik = d_hotel13_sam.tik_num ;
+            let   v16 = d_hotel13_sam.edi_v16 ;
+            var   tik_chk ;
+            ASS(  tik <= 0x0FFFFFFF );
 
-            val =(( 0x00
-            |        (  ( sam.edi_v16 ) << (  28) )
-            |        (  (  0x0FFFFFFF ) << (   0) )
+            const g_x     = sam.clk_g_x ;
+            const g_y     = sam.clk_g_y ;
+            const te7     = sam.edi_te7 ;
+            var   chk     = (  0  );;;;;;
+            var   val_u32 = 0xFFFFFFFF  ;
+
+            //:#_PUT_TILE_SITE_OF_INTEREST_#:#PTSOI#://
+
+            val_u32 =(( 0x00
+            |        (  ( v16 & 0x0000000F ) << (  28) )
+            |        (  ( tik & 0x0FFFFFFF ) << (   0) )
             )>>>0 ); //:(  0x12345678 )://
-            ASS( val >= 0 , "[VAL_GT0]" );
-            chk =(( val >>> (28) )&(0xF));
+            ASS( val_u32 >= 0 , "[VAL_GT0]" );
+            chk =(( val_u32 >>> (28) )&(0xF));
             if( chk != sam.edi_v16 ){
     
                 YEL( "[wanted]:" + sam.edi_v16
@@ -3429,7 +3694,13 @@ console.log( "hotel13" );
                 );;
                 ERR("[OHFUKNO2022]");
             };;
-
+            tik_chk =( val_u32 >>>( 0 )&( 0x0FFFFFFF ) );
+            if( tik != tik_chk 
+            ||  tik != d_hotel13_sam.tik_num
+            ){
+                YEL("[TICKINFUCKED2022]");
+                ERR("[TICKINFUCKED2022]");
+            };;
             
             const la3_til =( 0 ); //: Tile Layer ://
             const la3_bom =( 1 ); //: Bomb Layer ://
@@ -3454,6 +3725,8 @@ console.log( "hotel13" );
             const h_y = d_hotel13_r13_h_y[ r13 ];
             const t_x = sam.te7_clk_t_x[   te7 ];
             const t_y = sam.te7_clk_t_y[   te7 ];
+
+            //:#_PUT_TILE_SITE_OF_INTEREST_#:#PTSOI#://
             
             F_HOTEL13_U32_PUT_ANY(
                 d_pix2048
@@ -3462,7 +3735,7 @@ console.log( "hotel13" );
             ,   h_x , h_y        //:<--LOCA:HOTELROOM
             ,   te7 , la3        //:<--LOCA:EXPALAYER
             ,   t_x , t_y        //:<--LOCA:TILE__X_Y
-            ,   val              //:<--VALU:TILE__VAL
+            ,   val_u32          //:<--VALU:TILE__VAL
             );;
             
         };; //:Not Tile BLocked  ://
@@ -4800,6 +5073,35 @@ console.log( "hotel13" );
 
         Pill shape for bombs was ugly. Change design 
         to rounded box boarders.
+
+    @edi_t16@ : YOU_MEAN[ edi_v16 ]
+    @edi_v16@ : Editor Tile Value 0-to-15 inclusive.
+    
+    @tikadel@ : Ticker Delta between game ticker and
+              : time value in the tile.
+
+
+    #_PUT_TILE_SITE_OF_INTEREST_#  / #PTSOI# :
+
+        This tag is used for areas for "set tile"
+        code is happening. For places I should be
+        looking if I am interest in that logic.
+
+        TAG[ set tile | set_tile | settile ]==>[#PTSOI#]
+        TAG[ put tile | put_tile | puttile ]==>[#PTSOI#]
+    
+    @edi_tik@ : You mean[ d_hotel13_sam.tik_num ]
+    @edi_tim@ : You mean[ d_hotel13_sam.tik_num ]
+
+    #GFDI0123# : GOD_FUCKING_DAMNI_IT_0123
+
+        You forgot the +0,+1,+2,+3 in your fucking bit
+        shifting. Why is it so easy for me to fuck this
+        simple shit up and then not see it when I am
+        inspecting it?
+
+    @PARANOID@ : Something that makes me scared my code
+               : is wrong.
    
 *** ******************************************************** **/
 
