@@ -1,4 +1,8 @@
-console.log( "hotel13" );
+
+    window.alert( "[Make FADA Hide Tiles]" );
+    window.alert( "[setting tile must remove fada]" );
+    window.alert( "[Create OBE : fractal_OBliteratE_Tile]" );
+    window.alert( "[make laser propegantion _DET function first]"    );
 
     //:ITS_WRONG_CARL:===================================://
     
@@ -33,15 +37,24 @@ console.log( "hotel13" );
         //:----------------------------------------------://
         const c_hotel13_f30_fad =( 8 );
 
-        const c_hotel13_bod_cir =( 1 );
-        const c_hotel13_bod_box =( 2 );
+            
+        //:Bomb_Body_Style_Enums:------------------------://
 
-        const c_hotel13_bod_lef =( 3 );
-        const c_hotel13_bod_rig =( 4 );
-        const c_hotel13_bod_top =( 5 );
-        const c_hotel13_bod_bot =( 6 );
+        //: #SAB_DAM# ://
 
-        const c_hotel13_bod_das =( 7 ); //:DAShed Boarder://
+        const c_hotel13_bod_das =( 1 ); //:DAShed Boarder://
+
+        const c_hotel13_bod_lef =( 2 ); //:LaserDiode:LEF://
+        const c_hotel13_bod_rig =( 3 ); //:LaserDiode:RIG://
+        const c_hotel13_bod_top =( 4 ); //:LaserDiode:TOP://
+        const c_hotel13_bod_bot =( 5 ); //:LaserDiode:BOT://
+
+        const c_hotel13_bod_cir =( 6 ); //:Circle_Bomb   ://
+        const c_hotel13_bod_box =( 7 ); //:Boxxxy_Bomb   ://
+
+        //:------------------------:Bomb_Body_Style_Enums://
+
+
 
         //:----------------------------------------------:// 
         //: @hexabaf@ : HEXA_for_Bombs_And_Fada          ://
@@ -63,31 +76,108 @@ console.log( "hotel13" );
         //:----------------------------------------------://    
         
         const hexabaf_laxcoma = "[hexabaf_laxcoma]"
-
+        //// 
             c_hotel13_hexabaf_000= "#000000"   //:THEVOID://
+        //// 
+        //: DAMAGE_NONE : SPARKPIN(S) : #SAB_DAM#        ://
+        //// 
+        ,   c_hotel13_hexabaf_001= "#00FF00"   //:[S]:[f]://
+        ,   c_hotel13_hexabaf_002= "#00FF00"   //:[S]:[b]://
+        ,   c_hotel13_hexabaf_003= "#00FF00"   //:[S]:[r]://
+        //// 
+        //: DAMAGE_LOWE : LAZERBOX(S) : #SAB_DAM#        ://
+        //// 
+        ,   c_hotel13_hexabaf_004= "#FFFF00"   //:[L]:[L]://
+        ,   c_hotel13_hexabaf_005= "#FFFF00"   //:[L]:[R]://
+        ,   c_hotel13_hexabaf_006= "#FFFF00"   //:[L]:[T]://
+        ,   c_hotel13_hexabaf_007= "#FFFF00"   //:[L]:[B]://
+        //// 
+        //: DAMAGE_MEDI : TENDRILB(S) : #SAB_DAM#        ://
+        //// 
+        ,   c_hotel13_hexabaf_008= "#FF8800"   //:[B]:[V]://    
+        ,   c_hotel13_hexabaf_009= "#FF8800"   //:[B]:[H]://
+        ,   c_hotel13_hexabaf_010= "#FF8800"   //:[B]:[F]://
+        ,   c_hotel13_hexabaf_011= "#FF8800"   //:[B]:[K]://            
+        ////                                 
+        //: DAMAGE_HIGH : ECHOBOMB(S) : #SAB_DAM#        ://
         ////
-        ,   c_hotel13_hexabaf_001= "#FF2200"   //:[B]:[V]://    
-        ,   c_hotel13_hexabaf_002= "#FF2200"   //:[B]:[H]://
-        ,   c_hotel13_hexabaf_003= "#FF2200"   //:[B]:[F]://
-        ,   c_hotel13_hexabaf_004= "#FF2200"   //:[B]:[K]://            
+        ,   c_hotel13_hexabaf_012= "#FF2200"   //:[E]:[V]://
+        ,   c_hotel13_hexabaf_013= "#FF2200"   //:[E]:[H]://
+        ,   c_hotel13_hexabaf_014= "#FF2200"   //:[E]:[F]://
+        ,   c_hotel13_hexabaf_015= "#FF2200"   //:[E]:[K]://
         ////                                             
-        ,   c_hotel13_hexabaf_005= "#FF8800"   //:[E]:[V]://
-        ,   c_hotel13_hexabaf_006= "#FF8800"   //:[E]:[H]://
-        ,   c_hotel13_hexabaf_007= "#FF8800"   //:[E]:[F]://
-        ,   c_hotel13_hexabaf_008= "#FF8800"   //:[E]:[K]://
-        ////                                             
-        ,   c_hotel13_hexabaf_009= "#FFFF00"   //:[L]:[L]://
-        ,   c_hotel13_hexabaf_010= "#FFFF00"   //:[L]:[R]://
-        ,   c_hotel13_hexabaf_011= "#FFFF00"   //:[L]:[T]://
-        ,   c_hotel13_hexabaf_012= "#FFFF00"   //:[L]:[B]://
-        ////                                             
-        ,   c_hotel13_hexabaf_013= "#00FF00"   //:[S]:[f]://
-        ,   c_hotel13_hexabaf_014= "#00FF00"   //:[S]:[b]://
-        ,   c_hotel13_hexabaf_015= "#00FF00"   //:[S]:[r]://
         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+        const exs_cro = "[YOU_MEAN[exs_ten]TENDRILSTYLE]" ;
 
+            /** **************************************** **/    
+            /** CRO makes me think of "cross" but this   **/
+            /** style is also used for classic vertical  **/
+            /** and horizontal explosions, so call it    **/
+            /** TEN for "tendrill style" because long    **/
+            /** thin tentacles of the explosion.         **/
+            /** **************************************** **/
+
+        //: #SAB_DAM# : Explosion styles ordered by the  ://
+        //: #-------# : strength of bomb they are to be  ://    
+        //: #-------# : used with.                       ://    
+                                                         
+        const exs_bad =( 0 ); //: invalidexplosionstyle  ://
+        const exs_rin =( 1 ); //: ring style explosion   ://
+        const exs_laz =( 2 ); //: lazer style            ://
+        const exs_ten =( 3 ); //: classic tendril style  ://
+        const exs_box =( 4 ); //: echo box style         ://
+       
     //:====================:HOTEL13_CONSTANTS_LIKE_MACROS://
+    //:EXS_EXPLOSION_STYLE:==============================://
+    {
+
+        //: #_320_BLAZE_IT_#  #SAB_DAM# ://
+
+        var d_bte_exs_lef_rig_top_bot = new Uint8Array([
+        ///
+            exs_bad ,(  0  ),(  0  ),(  0  ),(  0  )
+        ///
+        //: DAMAGE_NONE : SPARKPIN(S) : #SAB_DAM# :------://
+        ///
+        ,   exs_ten ,(  1  ),(  1  ),(  1  ),(  1  )   
+        ,   exs_box ,(  1  ),(  1  ),(  1  ),(  1  )   
+        ,   exs_rin ,(  1  ),(  1  ),(  1  ),(  1  ) 
+        /// EXS_RIN :[  2  ],[  2  ],[  2  ],[  2  ]
+        //: EXS_RIN :When first activated creates 5x5    ://
+        //:         :blast that can set off adjacent     ://
+        //:         :toggle sparkpins.                   ://
+        ///
+        //: DAMAGE_LOWE : LAZERBOX(S) : #SAB_DAM# :------://
+
+        ,   exs_laz ,( 320 ),(  0  ),(  0  ),(  0  ) //:L://      
+        ,   exs_laz ,(  0  ),( 320 ),(  0  ),(  0  ) //:R://
+        ,   exs_laz ,(  0  ),(  0  ),( 320 ),(  0  ) //:T://
+        ,   exs_laz ,(  0  ),(  0  ),(  0  ),( 320 ) //:B://
+        ///
+        //: DAMAGE_MEDI : TENDRILB(S) : #SAB_DAM# :------://
+        ///
+        ,   exs_ten ,(  0  ),(  0  ),(  5  ),(  5  ) 
+        ,   exs_ten ,(  5  ),(  5  ),(  0  ),(  0  ) 
+        ,   exs_ten ,(  1  ),(  1  ),(  1  ),(  1  ) 
+        ,   exs_ten ,(  2  ),(  2  ),(  2  ),(  2  ) 
+        ///
+        //: DAMAGE_HIGH : ECHOBOMB(S) : #SAB_DAM# :------://
+        ///
+        ,   exs_box ,(  1  ),(  1  ),(  5  ),(  5  ) 
+        ,   exs_box ,(  5  ),(  5  ),(  1  ),(  1  ) 
+        ,   exs_box ,(  1  ),(  1  ),(  1  ),(  1  ) 
+        ,   exs_box ,(  2  ),(  2  ),(  2  ),(  2  ) 
+        ///
+        ]);;
+        if( 80 != d_bte_exs_lef_rig_top_bot.length ){
+        var len = d_bte_exs_lef_rig_top_bot.length ;
+            console.log( "[len]:" , len );
+            window.alert( "[OH_FUCK_NO_2022]" );
+            throw(        "[OH_FUCK_NO_2022]" );
+        };;
+    }
+    //:==============================:EXS_EXPLOSION_STYLE://
     //:HOTEL13_BOMB_INNER_DECALS:========================://
     //:                                                  ://    
     //: 000 / ZEROOOO : Not A Bomb, Empty Space          ://    
@@ -96,27 +186,27 @@ console.log( "hotel13" );
     //: LAZ / LAZEBLA : Laser    Style Explosion         ://    
     //: PIN / PINSPAR : SparkPIN Style Explosion         ://    
     //:                                                  ://    
-    //:---------:---------:---------:---------:---------:://    
-    //: BOM_001 : BOM_005 : BOM_009 :         |         :://    
-    //: BOM_002 : BOM_006 : BOM_010 :         |         :://    
-    //: BOM_003 : BOM_007 : BOM_011 :         | BOM_014 :://    
-    //: BOM_004 : BOM_008 : BOM_012 : BOM_013 | BOM_015 :://    
-    //:---------:---------:---------:---------:---------:://    
-    //: TENDRIL : ECHOBLA : LAZEBLA : PINSPAR : unknown :://    
-    //:---------:---------:---------:---------:---------:://   
+    //:   :---------:---------:---------:---------:      ://    
+    //:   | BOM_001 : BOM_004 : BOM_008 : BOM_012 |      ://    
+    //:   | BOM_002 : BOM_005 : BOM_009 : BOM_013 |      ://    
+    //:   | BOM_003 : BOM_006 : BOM_010 : BOM_014 |      ://    
+    //:   |         : BOM_007 : BOM_011 : BOM_015 |      ://    
+    //:   :---------:---------:---------:---------:      ://    
+    //:   : PINSPAR : LAZEBLA : TENDRIL : ECHOBLA :      ://    
+    //:   :---------:---------:---------:---------:      ://   
     //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
     //:HOTEL13_BOMB_INNER_DECALS:- - - - - - - - - - - - ://
     //:                                                  ://
     //: S4W: Short 4Way                                  ://
     //: B4W: Big   4Way                                  ://
     //: -----------------------------------------------  ://
-    //: VER:    001  005  |  LEF:    009  |           |  ://
-    //: HOR:    002  006  |  RIG:    010  |           |  ://
-    //: S4W:    003  007  |  TOP:    011  |           |  ://
-    //: B4W:    004  008  |  BOT:    012  |  B4W:013  |  ://
+    //: VER:    008  012  |  LEF:    004  |           |  ://
+    //: HOR:    009  013  |  RIG:    005  |  S4W:001  |  ://
+    //: S4W:    010  014  |  TOP:    006  |  S4W:002  |  ://
+    //: B4W:    011  015  |  BOT:    007  |  ***:003  |  ://
     //: -----------------------------------------------  ://
-    //:         ...  ...             ...     ...         ://
-    //:         TEN  BOX             LAZ     PIN         ://
+    //:         ...  ...             ...         ...     ://
+    //:         TEN  BOX             LAZ         PIN     ://
     //:                                                  ://
     //:HOTEL13_BOMB_INNER_DECALS:- - - - - - - - - - - - ://
 
@@ -157,79 +247,62 @@ console.log( "hotel13" );
         ,       0,0,0,0,0,0,0,0,0  //: 09 ://
         ]);;//: 1 2 3 4 5 6 7 8 9
 
-        //:- - - - - - - - - - - -- - - - - - - - - - - -://
-        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
-        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //:---------------------:------------------------://
+        //: NON-LETHAL PATTERNS : #SAB_DAM# #SAB_DAM_DEC#://        
+        //:---------------------:------------------------://
 
-        const d_hotel13_dec_bom_001 =new Uint8Array([  
-
-                0,0,0,0,0,0,0,0,0   //: 01 ::::::::::::::://
-        ,       0,0,0,0,0,0,0,0,0   //: 02 :             ://
-        ,       0,0,0,0,1,0,0,0,0   //: 03 :             ://
-        ,       0,0,0,0,1,0,0,0,0   //: 04 :             ://
-        ,       0,0,0,0,1,0,0,0,0   //: 05 :-: DEC_VER :-://                 
-        ,       0,0,0,0,1,0,0,0,0   //: 06 :             ://
-        ,       0,0,0,0,1,0,0,0,0   //: 07 :             ://
-        ,       0,0,0,0,0,0,0,0,0   //: 08 :             ://
-        ,       0,0,0,0,0,0,0,0,0   //: 09 ::::::::::::::://
-        ]);;//: 1 2 3 4 5 6 7 8 9
-        const d_hotel13_dec_bom_002 =new Uint8Array([
+        const d_hotel13_dec_pinslow =new Uint8Array([
 
                 0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
         ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_HOR :-:// 
-        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,0,0,1,1,1,0,0,0  //: 05 :-: pinslow :-://
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;//: 1 2 3 4 5 6 7 8 9
-        const d_hotel13_dec_bom_003 =new Uint8Array([
+        ]);;
+        const d_hotel13_dec_pinfast =new Uint8Array([
 
                 0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
         ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 03 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_S4W :-:// 
-        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 07 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: pinslow :-://
+        ,       0,0,1,1,1,1,1,0,0  //: 06 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;//: 1 2 3 4 5 6 7 8 9
-        const d_hotel13_dec_bom_004 =new Uint8Array([
-
+        ]);;
+        const d_hotel13_dec_pinring =new Uint8Array([
+ 
                 0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
-        ,       0,0,0,0,1,0,0,0,0  //: 02 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
-        ,       0,1,0,1,1,1,0,1,0  //: 05 :-: DEC_KIL :-://
-        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
+        ,       0,0,1,0,0,0,1,0,0  //: 04 :             ://
+        ,       0,0,1,0,1,0,1,0,0  //: 05 :-: pinring :-://
+        ,       0,0,1,0,0,0,1,0,0  //: 06 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
         ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;//: 1 2 3 4 5 6 7 8 9
+        ]);;
 
-        //:- - - - - - - - - - - -- - - - - - - - - - - -://
-        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
-        //:- - - - - - - - - - - -- - - - - - - - - - - -://
-
-        const d_hotel13_dec_bom_005 =( //:BOX_VER:-------://
-              d_hotel13_dec_bom_001    //:VERTICA:DEC_VER://    
+        const d_hotel13_dec_bom_001 =( //:-------:-------://
+              d_hotel13_dec_pinslow    //:pinslow:-------:// 
         );;
-        const d_hotel13_dec_bom_006 =( //:BOX_HOR:-------://
-              d_hotel13_dec_bom_002    //:HORIZON:DEC_HOR:// 
+        const d_hotel13_dec_bom_002 =( //:-------:-------://
+              d_hotel13_dec_pinfast    //:pinfast:-------://
         );;
-        const d_hotel13_dec_bom_007 =( //:BOX_CRO:-------://
-              d_hotel13_dec_bom_003    //:FOURWAY:DEC_S4W:// 
-        );;
-        const d_hotel13_dec_bom_008 =( //:BOX_KIL:-------://
-              d_hotel13_dec_bom_004    //:INSTKIL:DEC_KIL:// 
+        const d_hotel13_dec_bom_003 =( //:-------:-------://
+              d_hotel13_dec_pinring    //:pinring:-------:// 
         );;
 
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
-        //: DEC[ _______ , _______ , _______ , _______ ] ://
+        //: DEC[ LAZ_LEF , LAZ_RIG , LAZ_TOP , LAZ_BOT ] ://
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        //: #SAB_DAM# #SAB_DAM_DEC# :--------------------://   
 
         const d_hotel13_dec_laz_lef =new Uint8Array([
 
@@ -280,23 +353,111 @@ console.log( "hotel13" );
         ,       0,0,0,0,1,0,0,0,0  //: 09 ::::::::::::::://
         ]);;
 
-
-        const d_hotel13_dec_bom_009 =( //:LAZ_LEF:-------://
+        const d_hotel13_dec_bom_004 =( //:LAZ_LEF:-------://
               d_hotel13_dec_laz_lef    //:laz_hor:-------://
         );;
-        const d_hotel13_dec_bom_010 =( //:LAZ_RIG:-------://
+        const d_hotel13_dec_bom_005 =( //:LAZ_RIG:-------://
               d_hotel13_dec_laz_rig    //:laz_hor:-------://
         );;
-        const d_hotel13_dec_bom_011 =( //:LAZ_TOP:-------://
+        const d_hotel13_dec_bom_006 =( //:LAZ_TOP:-------://
               d_hotel13_dec_laz_top    //:laz_ver:-------://
         );;
-        const d_hotel13_dec_bom_012 =( //:LAZ_BOT:-------://
+        const d_hotel13_dec_bom_007 =( //:LAZ_BOT:-------://
               d_hotel13_dec_laz_bot    //:laz_ver:-------://
+        );;
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        //: #SAB_DAM# #SAB_DAM_DEC# :--------------------://
+
+        const d_hotel13_dec_bom_ver =new Uint8Array([  
+
+                0,0,0,0,0,0,0,0,0   //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0   //: 02 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 04 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 05 :-: DEC_VER :-://                 
+        ,       0,0,0,0,1,0,0,0,0   //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0   //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0   //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0   //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_hor =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_HOR :-:// 
+        ,       0,0,0,0,0,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_s4w =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: DEC_S4W :-:// 
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+        const d_hotel13_dec_bom_kil =new Uint8Array([
+
+                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
+        ,       0,0,0,0,1,0,0,0,0  //: 02 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
+        ,       0,1,0,1,1,1,0,1,0  //: 05 :-: DEC_KIL :-://
+        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
+        ,       0,0,0,0,1,0,0,0,0  //: 08 :             ://
+        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
+        ]);;//: 1 2 3 4 5 6 7 8 9
+
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        //: DEC[ DEC_VER , DEC_HOR , DEC_S4W , DEC_KIL ] ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        //: #SAB_DAM# #SAB_DAM_DEC# :--------------------://
+
+        const d_hotel13_dec_bom_008 =( //:BOX_VER:-------://
+              d_hotel13_dec_bom_ver    //:VERTICA:DEC_VER://    
+        );;
+        const d_hotel13_dec_bom_009 =( //:BOX_HOR:-------://
+              d_hotel13_dec_bom_hor    //:HORIZON:DEC_HOR:// 
+        );;
+        const d_hotel13_dec_bom_010 =( //:BOX_CRO:-------://
+              d_hotel13_dec_bom_s4w  //:FOURWAY:DEC_S4W:// 
+        );;
+        const d_hotel13_dec_bom_011 =( //:BOX_KIL:-------://
+              d_hotel13_dec_bom_kil    //:INSTKIL:DEC_KIL:// 
+        );;
+
+        const d_hotel13_dec_bom_012 =( //:BOX_VER:-------://
+              d_hotel13_dec_bom_ver  //:VERTICA:DEC_VER://    
+        );;
+        const d_hotel13_dec_bom_013 =( //:BOX_HOR:-------://
+              d_hotel13_dec_bom_hor    //:HORIZON:DEC_HOR:// 
+        );;
+        const d_hotel13_dec_bom_014 =( //:BOX_CRO:-------://
+              d_hotel13_dec_bom_s4w    //:FOURWAY:DEC_S4W:// 
+        );;
+        const d_hotel13_dec_bom_015 =( //:BOX_KIL:-------://
+              d_hotel13_dec_bom_kil    //:INSTKIL:DEC_KIL:// 
         );;
 
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
         //: DEC[ _______ , _______ , DEC_S4W , DEC_KIL ] ://
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
+
+        //: #SAB_DAM# #SAB_DAM_DEC# :--------------------://
 
         //:----------------------------------------------://
         //: pinslow : doesn't kill. Small 4way explosion ://
@@ -324,74 +485,37 @@ console.log( "hotel13" );
         //:        [ ][r][ ][R][ ][r][ ]  Initial Blast  ://
         //:----------------------------------------------://
 
-        //:---------------------://
-        //: NON-LETHAL PATTERNS ://
-        //:---------------------://
-
-        const d_hotel13_dec_pinslow =new Uint8Array([
-
-                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
-        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 03 :             ://
-        ,       0,0,0,0,1,0,0,0,0  //: 04 :             ://
-        ,       0,0,0,1,1,1,0,0,0  //: 05 :-: pinslow :-://
-        ,       0,0,0,0,1,0,0,0,0  //: 06 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 07 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;
-        const d_hotel13_dec_pinfast =new Uint8Array([
-
-                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
-        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 04 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 05 :-: pinslow :-://
-        ,       0,0,1,1,1,1,1,0,0  //: 06 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;
-        const d_hotel13_dec_pinring =new Uint8Array([
- 
-                0,0,0,0,0,0,0,0,0  //: 01 ::::::::::::::://
-        ,       0,0,0,0,0,0,0,0,0  //: 02 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 03 :             ://
-        ,       0,0,1,0,0,0,1,0,0  //: 04 :             ://
-        ,       0,0,1,0,1,0,1,0,0  //: 05 :-: pinring :-://
-        ,       0,0,1,0,0,0,1,0,0  //: 06 :             ://
-        ,       0,0,1,1,1,1,1,0,0  //: 07 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 08 :             ://
-        ,       0,0,0,0,0,0,0,0,0  //: 09 ::::::::::::::://
-        ]);;
-
-        const d_hotel13_dec_bom_013 =( //:-------:-------://
-              d_hotel13_dec_pinslow    //:pinslow:-------:// 
-        );;
-        const d_hotel13_dec_bom_014 =( //:-------:-------://
-              d_hotel13_dec_pinfast    //:pinfast:-------://
-        );;
-        const d_hotel13_dec_bom_015 =( //:-------:-------://
-              d_hotel13_dec_pinring    //:pinring:-------:// 
-        );;
-
         const d_hotel13_dec_bom_all = new Array( 16 );
         {;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        //:#SAB_DAM# #SAB_DAM_DEC# :---------------------://    
 
             let bom_all = d_hotel13_dec_bom_all ;
 
                 bom_all[  0 ]=( d_hotel13_dec_bom_000 );
+        
+        //:DAMAGE_NONE : Sparkpins :---------------------://
+
                 bom_all[  1 ]=( d_hotel13_dec_bom_001 );
                 bom_all[  2 ]=( d_hotel13_dec_bom_002 );
                 bom_all[  3 ]=( d_hotel13_dec_bom_003 );
+
+        //:DAMAGE_LOWE : LaserBoxx :---------------------://
+
                 bom_all[  4 ]=( d_hotel13_dec_bom_004 );
                 bom_all[  5 ]=( d_hotel13_dec_bom_005 );
                 bom_all[  6 ]=( d_hotel13_dec_bom_006 );
                 bom_all[  7 ]=( d_hotel13_dec_bom_007 );
+
+        //:DAMAGE_MEDI : Classic   :---------------------://
+
                 bom_all[  8 ]=( d_hotel13_dec_bom_008 );
                 bom_all[  9 ]=( d_hotel13_dec_bom_009 );
                 bom_all[ 10 ]=( d_hotel13_dec_bom_010 );
                 bom_all[ 11 ]=( d_hotel13_dec_bom_011 );
+
+        //:DAMAGE_HIGH : ECHOBOX   :---------------------://
+
                 bom_all[ 12 ]=( d_hotel13_dec_bom_012 );
                 bom_all[ 13 ]=( d_hotel13_dec_bom_013 );
                 bom_all[ 14 ]=( d_hotel13_dec_bom_014 );
@@ -415,25 +539,29 @@ console.log( "hotel13" );
         const _0_ =( 0 );
         const ___ =( 0 ); //:    Unknown Slot    ://
         
-        //:--------------------------------------://
-        //: Body Design :------------------------://
-        //:--------------------------------------://
-        const CIR =( 1 );
-        const BOX =( 2 );
-        const LEF =( 3 );
-        const RIG =( 4 );
-        const TOP =( 5 );
-        const BOT =( 6 );
-        const DAS =( 7 ); //:Dashed Boarder      ://
+        //:------------------------------------------://
+        //: Body Design ::::: #SAB_DAM# #SAB_DAM_BOD#://    
+        //:------------------------------------------://
+        const DAS =( 1 ); //:Dashed Boarder          ://
 
-        //:--------------------------------------://
-        //: Insignia Design :--------------------://
-        //:--------------------------------------://
-        const VER =( 1 );
-        const HOR =( 2 );
-        const S4W =( 3 ); //:Small CrossDesign   ://
-        const KIL =( 4 ); //:KILL  CrossDesign   ://
-        const PIN =( 5 ); //:Pin In Center Design://
+        const LEF =( 2 ); //:Left   Pointing Laser   ://
+        const RIG =( 3 ); //:Right  Pointing Laser   ://
+        const TOP =( 4 ); //:Toppum Pointing Laser   ://
+        const BOT =( 5 ); //:Bottom Pointing Laser   ://
+
+        const CIR =( 6 ); //:Classic Circle Bomb Body://
+        const BOX =( 7 ); //:Echobox Bomb Body       ://
+
+
+        //:------------------------------------------://
+        //: Insignia Design : #SAB_DAM# #SAB_DAM_SIG#://
+        //:------------------------------------------://
+        const PIN =( 1 ); //:Pin In Center Design://
+        const S4W =( 2 ); //:Small CrossDesign   ://
+        const VER =( 3 );
+        const HOR =( 4 );
+        const KIL =( 5 ); //:KILL  CrossDesign   ://
+        
 
         if( (!( CIR === c_hotel13_bod_cir ))
         ||  (!( BOX === c_hotel13_bod_box ))
@@ -445,43 +573,51 @@ console.log( "hotel13" );
 
         ||  (!( DAS === c_hotel13_bod_das ))
         ){
-            YEL("[HOTEL13:BADCONST]");
+            window.alert("[HOTEL13:BADCONST:BODYSTYLE]");
+                   throw("[HOTEL13:BADCONST:BODYSTYLE]");
         };;
 
-        var d_hotel13_ren_bom =[
+        //:bomb_render_settings:-------------------------://
 
-            _0_ , _0_  //:<-- Nothingness Entry ://
+            var d_hotel13_ren_bom =[         //:#SAB_DAM#://
 
-        //: BOMB(S)    ://
+                _0_ , _0_  //:<-- Nothingness Entry ://
 
-        ,   CIR , VER  //: BOM_001 ://
-        ,   CIR , HOR  //: BOM_002 ://
-        ,   CIR , S4W  //: BOM_003 ://
-        ,   CIR , KIL  //: BOM_004 ://
+            //: #_SPARKPINS_#     :----:// //:DAMAGE_NONE://    
+            //: #_NOPLASMA_HERE_# :----:// //[SAB_DAM_REN]//
+            
+            ,   DAS , PIN //:  BOM_001 ://
+            ,   DAS , PIN //:  BOM_002 ://
+            ,   DAS , PIN //:  BOM_003 ://
 
-        //: ECHOBOX(S) ://
+            //: LAZER(S)/LASER(S) :----:// //:DAMAGE_LOWE://
+                                           //[SAB_DAM_REN]//
+            ,   LEF , HOR  //: BOM_004 ://
+            ,   RIG , HOR  //: BOM_005 ://
+            ,   TOP , VER  //: BOM_006 ://
+            ,   BOT , VER  //: BOM_007 ://
 
-        ,   BOX , VER  //: BOM_005 ://
-        ,   BOX , HOR  //: BOM_006 ://
-        ,   BOX , S4W  //: BOM_007 ://
-        ,   BOX , KIL  //: BOM_008 ://
+            //: BOMB(S) :--------------:// //:DAMAGE_MEDI://
+                                           //[SAB_DAM_REN]//
+            ,   CIR , VER  //: BOM_008 ://
+            ,   CIR , HOR  //: BOM_009 ://
+            ,   CIR , S4W  //: BOM_010 ://
+            ,   CIR , KIL  //: BOM_011 ://
 
-        //: LAZER(S)/LASER(S) ://
+            //: ECHOBOX(S) :-----------:// //:DAMAGE_HIGH://
+                                           //[SAB_DAM_REN]//
+            ,   BOX , VER  //: BOM_012 ://
+            ,   BOX , HOR  //: BOM_013 ://
+            ,   BOX , S4W  //: BOM_014 ://
+            ,   BOX , KIL  //: BOM_015 ://
+            ];;
 
-        ,   LEF , HOR  //: BOM_009 ://
-        ,   RIG , HOR  //: BOM_010 ://
-        ,   TOP , VER  //: BOM_011 ://
-        ,   BOT , VER  //: BOM_012 ://
-
-        //: SPARKPINS ( immediately detonate when touched )
-        //:           ( they emit a 1x1 box blast pattern )
-        //:           ( but do __NOT__  hurt player       )
-        
-        ,   DAS , PIN //:  BOM_013 ://
-        ,   DAS , PIN //:  BOM_014 : #_NOPLASMA_HERE_#://
-        ,   DAS , PIN //:  BOM_015 : #_NOPLASMA_HERE_#://
-        ];;
-
+            if( 32 != d_hotel13_ren_bom.length ){
+                
+                window.alert( "[REN_BOM_CHECKSUM]" );
+                       throw( "[REN_BOM_CHECKSUM]" );
+            };;
+        //:-------------------------:bomb_render_settings://
     }
     //:===============:HOTEL13_BOMB_LAYER_RENDER_SETTINGS://
     //:HOTEL13_COLOR_PALLET:=============================://    
@@ -514,64 +650,110 @@ console.log( "hotel13" );
 
     //: HEAD BASHABLE :------------------------------://
 
-    //: Greens      ://
-    ,   "#00FF00"   //: Bauxite Leaving Ladders      ://   
-    ,   "#00FF44"   //: Dirt Leaving Nothing         ://
-                
-    //: Pastell     ://
-    ,   "#00FF66"   //: Glass_Light : CUBE           ://
-    ,   "#00FF88"   //: Glass_Light : VERTICAL       ://
-    ,   "#00FFFF"   //: Glass_Light : HORIZONTAL     ://
+        //: #SAB_DAM# #SAB_DAM_HCP_TIL#       ://
+        //: #_LIGHT_FIXTURES_ARE_THE_WEAKEST_#://
 
+        //: Pastell     : STRENGTH_NONE :----------------://    
+
+        ,   "#00FF66"   //: Glass_Light : CUBE           ://
+        ,   "#00FF88"   //: Glass_Light : VERTICAL       ://
+        ,   "#00FFFF"   //: Glass_Light : HORIZONTAL     ://
+
+        //: Greens      : STRENGTH_LOWE :----------------://
+
+        ,   "#00FF00"   //: Dirt Leaving Nothing         :// 
+        ,   "#00FF44"   //: Bauxite Leaving Ladders      ://  
+                
     //: BOMBABLES ( all head bashable are bombable ) ://
      
-    //: PURPLES:    ://
-    ,   "#8800FF"   //: SQUARE TILE : Leaves Ladders ://
-    ,   "#8844FF"   //: SQUARE TILE : Leaves Nothing :// 
-    ,   "#8888FF"   //: ANGLED TILE : Leaves Nothing ://  
+        //: PURPLES:    : STRENGTH_MEDI :----------------://
 
+        ,   "#8800FF"   //: SQUARE TILE : Leaves Nothing :// 
+        ,   "#8844FF"   //: ANGLED TILE :#LEAVES_PARTIAL#:// 
+        ,   "#8888FF"   //: SQUARE TILE : Leaves Ladders :// 
+                    
     //: INDESTRUCTABLES :----------------------------://
                 
-    //: GRAYS       ://
-    ,   "#995511"   //: Falling Iron   :-------------://
-    ,   "#995522"   //: Falling Marble :-------------://
-    ,   "#995533"   //: Falling Beam   :-------------:// 
-    ,   "#995544"   //: Vents          :-------------://
-    ,   "#995555"   //: Dragonite      :-------------://
+        //: GRAYS       : STRENGTH_HIGH :----------------://
+
+            //: PROBABLY_MAKE_THEM_INDESTRUCTABLE :------://
+
+        ,       "#995511"   //: Falling Marble :---------:// 
+        ,       "#995522"   //: Falling Beam   :---------:// 
+        ,       "#995533"   //: Falling Iron   :---------://
+
+            //: INDESTRUCTABLE :-------------------------://
+
+        ,       "#995544"   //: Vents          :---------://
+        ,       "#995555"   //: Dragonite      :---------://
 
     //: SPECIAL_DO_NOT_RENDER :----------------------://
     
-    ,   "#FFFFFF"   //: SPRITE_SPAWNER_REC:TOP_LEF   ://
-    ,   "#888888"   //: SPRITE_SPAWNER_REC:BOT_RIG   ://
-    ];;                                           
+        //: COLORLESS   ://
+
+        ,   "#FFFFFF"   //: SPRITE_SPAWNER_REC:TOP_LEF   ://
+        ,   "#888888"   //: SPRITE_SPAWNER_REC:BOT_RIG   ://
+    ];;                   
+
+    var d_hotel13_hcp_til_dam =[
+
+        "#000000"
+    ////
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : CUBE  ://            
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : VERT  ://      
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : HORI  ://      
+    ////
+    ,   "#001100" //: DAMAGE_COLOR : DIRT    :-----------://
+    ,   "#001100" //: DAMAGE_COLOR : BAUXITE :-----------://
+    ////
+    ,   "#110022" //: DAMAGE_COLOR : SQUARE_LEAVE_NOTHING://
+    ,   "#110022" //: DAMAGE_COLOR : ANGLED_LEAVE_PARTIAL://
+    ,   "#110022" //: DAMAGE_COLOR : SQUARE_LEAVE_LADDERS://
+    ////
+        //: PROBABLY_MAKE_THEM_INDESTRUCTABLE :----------://
+    ////
+    ,   "#110500" //: DAMAGE_COLOR : FALLING_MARBLE      ://
+    ,   "#110500" //: DAMAGE_COLOR : FALLING_BEAM        ://
+    ,   "#110500" //: DAMAGE_COLOR : FALLING_IRON        ://
+    ////
+        //: INDESTRUCTABLE ://
+    ////
+    ,   "#110000" //: DAMAGE_COLOR : STRONGTILE_VENTS    ://
+    ,   "#110000" //: DAMAGE_COLOR : STRONGTILE_DRAGONITE://
+    ////
+    ,   "#222222"
+    ,   "#111111"
+    ];;
+
+                        
     var d_hotel13_hcp_bom =[    //:PASTEL://     //:H_C_P://
                                                  //:H_C_P://
         c_hotel13_hexabaf_000   //: "BLACK"      //:H_C_P://
                                                  //:H_C_P://
-        //:----------------------------------:// //:H_C_P://
-        //: All "00" channels got "99" to    :// //:H_C_P://
-        //: create pastel colors.            :// //:H_C_P://
-        //:----------------------------------:// //:H_C_P://
-    //:                           :          :// //:H_C_P://
-    ,   c_hotel13_hexabaf_001  //: BOMB: VERT :     H_C_P://  
-    ,   c_hotel13_hexabaf_002  //: BOMB: HORZ :     H_C_P://  
-    ,   c_hotel13_hexabaf_003  //: BOMB: FOUR :     H_C_P://
-    ,   c_hotel13_hexabaf_004  //: BOMB: SKUL :     H_C_P://
+        //:-----------------------------------:////:H_C_P://
+        //: All "00" channels got "99" to     :////:H_C_P://
+        //: create pastel colors.             :////:H_C_P://
+        //: #SAB_DAM# #SAB_DAM_HCP_BOM#       :////:H_C_P://
+        //:-----------------------------------:////:H_C_P://
+    //:                          :            :////:H_C_P://
+    ,   c_hotel13_hexabaf_001  //: SPRK: FOUR :     H_C_P:// 
+    ,   c_hotel13_hexabaf_002  //: SPRK: BOXX :     H_C_P:// 
+    ,   c_hotel13_hexabaf_003  //: SPRK: RING :     H_C_P:// 
     //:                                       :     H_C_P://
-    ,   c_hotel13_hexabaf_005  //: ECHO: VERT :     H_C_P://  
-    ,   c_hotel13_hexabaf_006  //: ECHO: HORZ :     H_C_P://  
-    ,   c_hotel13_hexabaf_007  //: ECHO: FOUR :     H_C_P://
-    ,   c_hotel13_hexabaf_008  //: ECHO: SKUL :     H_C_P://
+    ,   c_hotel13_hexabaf_004  //: LAZR: LEFT :     H_C_P://  
+    ,   c_hotel13_hexabaf_005  //: LAZR: RIGH :     H_C_P://  
+    ,   c_hotel13_hexabaf_006  //: LAZR: UPPP :     H_C_P://  
+    ,   c_hotel13_hexabaf_007  //: LAZR: DOWN :     H_C_P://
+    //:                                             H_C_P://
+    ,   c_hotel13_hexabaf_008  //: BOMB: VERT :     H_C_P://  
+    ,   c_hotel13_hexabaf_009  //: BOMB: HORZ :     H_C_P://  
+    ,   c_hotel13_hexabaf_010  //: BOMB: FOUR :     H_C_P://
+    ,   c_hotel13_hexabaf_011  //: BOMB: SKUL :     H_C_P://
     //:                                       :     H_C_P://
-    ,   c_hotel13_hexabaf_009  //: LAZR: LEFT :     H_C_P://  
-    ,   c_hotel13_hexabaf_010  //: LAZR: RIGH :     H_C_P://  
-    ,   c_hotel13_hexabaf_011  //: LAZR: UPPP :     H_C_P://  
-    ,   c_hotel13_hexabaf_012  //: LAZR: DOWN :     H_C_P://
-    //:                                       :     H_C_P://
-    ,   c_hotel13_hexabaf_013  //: SPRK: FOUR :     H_C_P:// 
-    //:                                       :     H_C_P://
-    ,   c_hotel13_hexabaf_014  //: SPRK: BOXX :     H_C_P:// 
-    ,   c_hotel13_hexabaf_015  //: SPRK: RING :     H_C_P:// 
+    ,   c_hotel13_hexabaf_012  //: ECHO: VERT :     H_C_P://  
+    ,   c_hotel13_hexabaf_013  //: ECHO: HORZ :     H_C_P://  
+    ,   c_hotel13_hexabaf_014  //: ECHO: FOUR :     H_C_P://
+    ,   c_hotel13_hexabaf_015  //: ECHO: SKUL :     H_C_P://
     //:                                             H_C_P://
     ];;                                          //:H_C_P://
     var d_hotel13_hcp_fad =[   //:FULLSAT://     //:H_C_P://
@@ -581,6 +763,7 @@ console.log( "hotel13" );
         //:----------------------------------:// //:H_C_P://
         //: Some of the original atomic alice:// //:H_C_P://
         //: colors from my notes.            :// //:H_C_P://
+        //: #SAB_DAM# #SAB_DAM_HCP_FAD#      :// //:H_C_P://
         //:----------------------------------:// //:H_C_P://
                                                  //:H_C_P://
     ,   c_hotel13_hexabaf_001   //:              //:H_C_P://
@@ -648,11 +831,14 @@ console.log( "hotel13" );
     ,   edi_te7     :( 5)  //: Editor Tile Size    ://
     ,   edi_la3     :( 1)  //: Editor Target Layer ://
 
-    ,   edi_te7_min :( 0)  //: AKA[ edi_ran_max ]  ://
-    ,   edi_te7_max :( 4)  //: AKA[ edi_ran_min ]  ://
+    ,   edi_v16_min :(   1)//: AKA[ edi_ran_min ]  ://
+    ,   edi_v16_max :(16-1)//: AKA[ edi_ran_max ]  ://
+
+    ,   edi_te7_min :( 0)  //: AKA[ edi_ran_min ]  ://
+    ,   edi_te7_max :( 4)  //: AKA[ edi_ran_max ]  ://
     
-    ,   edi_mod_hol :( 0)  //: Hold Brush Down     ://
-    ,   edi_mod_ran :( 0)  //: Randomize Brush Size://
+    ,   edi_mod_hol :( 1)  //: Hold Brush Down     ://
+    ,   edi_mod_ran :( 1)  //: Randomize Brush Size://
     ,   edi_mod_mir :( 0)  //: Mirror Brush Strokes://
     ,   edi_mod_nov :( 1)  //: NO-Overlap Mode     ://
 
@@ -726,6 +912,11 @@ console.log( "hotel13" );
         
             console.log( "[HOTEL13_MSG]:" + msg );
         };;
+        function F_PRIVATE_HOTEL13_NOP( i_ignore ){
+
+            //: a lazy way to comment out MSG & LOG :----://
+            //: @NOP@ : No OPeration :--------------:----://
+        };;
         
         //:----------------------------------------------://
         //:  d_pix2048 : Master Game Memory :------------://
@@ -747,6 +938,7 @@ console.log( "hotel13" );
         if( !LOG ){ var LOG = F_PRIVATE_HOTEL13_LOG; };
         if( !YEL ){ var YEL = F_PRIVATE_HOTEL13_YEL; };
         if( !MSG ){ var MSG = F_PRIVATE_HOTEL13_MSG; };
+        if( !NOP ){ var NOP = F_PRIVATE_HOTEL13_NOP; };
         
     //:==============================:SERVER_JS_POLYFILLS://
 
@@ -1168,6 +1360,53 @@ console.log( "hotel13" );
         
             return( o_yes );
         };;
+
+        const   F_HOTEL13_RANDINT = function
+        PRIVATE_F_HOTEL13_RANDINT(
+
+            i_bou /** Input Upper Bound **/
+        ){        //: #ATF_RANDINT#     ://
+            var o_i32 =(
+                Math.floor( 
+                    Math.random() * (i_bou+1) ));;
+
+            ASS( o_i32 >= 0     , "[o_i32:ASS_001]" );
+            ASS( o_i32 <= i_bou , "[o_i32:ASS_002]" );
+            return( o_i32 );
+        };;
+
+        const   F_MMR = function
+        PRIVATE_F_MMR( //: @MMR@ : Min_Max_RANDOM ://
+            i_bou_min
+        ,   i_bou_max
+        ){
+            ASS( i_bou_min <= i_bou_max , "[MIN_LT_MAX]" );
+            /// zer_min =( i_bou_min - i_bou_min );
+            var zer_max =( i_bou_max - i_bou_min );
+
+            var zer_got = F_HOTEL13_RANDINT( zer_max );
+
+            var o_i32 =( i_bou_min + zer_got );
+            return( o_i32 );
+        };;
+
+        const   F_MMC = function
+        PRIVATE_F_MMC( //: @MMC@ : Min_Max_Cap ://
+            i_sam
+        ,   i_str_key_val
+        ,   i_str_key_min
+        ,   i_str_key_max
+        ){
+            var val = i_sam[ i_str_key_val ];
+            var min = i_sam[ i_str_key_min ];
+            var max = i_sam[ i_str_key_max ];
+
+            if( val < min ){ val = min ; };
+            if( val > max ){ val = max ; };
+
+            i_sam[ i_str_key_val ]=( val );
+        };;
+                        
 
     //:==================:HELPER_FUNCTION_SECTION_I_GUESS://  
     //:TILEMAP_QUERY_FUNCTIONS:==========================://
@@ -1817,9 +2056,35 @@ console.log( "hotel13" );
     
     const   F_HOTEL13_U32_PUT_TIL = function
     PRIVATE_F_HOTEL13_U32_PUT_TIL(    /// TIL ///
-             a1,a2,a3,a4,a5,a6,a7,              tx,ty,tv
-    ){F_001( a1,a2,a3,a4,a5,a6,a7,  c_lay_til  ,tx,ty,tv );;
-    //:      01,02,03,04,05,06,07,        008  ,09,10,11 ://    
+
+            i_pix,i_san  //:<--DATA:PIXELS  :------------://
+        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
+        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
+        ,   i_te7        //:<--LOCA:EXPALAY :------------://
+        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
+        ,   i_u32        //:<--VALU:TileVAL :------------://
+    ){
+        //:REMOVE_BOMB_DAMAGE://
+
+        F_HOTEL13_U32_PUT_ANY(
+            i_pix,i_san  //:<--DATA:PIXELS  :------------://
+        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
+        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
+        ,   i_te7,( 2 )  //:<--LOCA:EXPALAY :------------://
+        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
+        ,   0x00000000   //:<--VALU:TileVAL :------------://
+        );;
+
+        //:PUT_THE_TILE_VALUE://
+        
+        F_HOTEL13_U32_PUT_ANY(
+            i_pix,i_san  //:<--DATA:PIXELS  :------------://
+        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
+        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
+        ,   i_te7,( 0 )  //:<--LOCA:EXPALAY :------------://
+        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
+        ,   i_u32        //:<--VALU:TileVAL :------------://
+        );;
     };; //:DATA__LOCA_______________________________VALU ://    
     
     const   F_HOTEL13_U32_PUT_BOM = function
@@ -1870,7 +2135,7 @@ console.log( "hotel13" );
     ){
         ERR( "[#_EXPAND_AFTER_1ST_PLAYABLE_#:PUT_FAD]" );
     };;
-    
+
     const   F_HOTEL13_DET = function
     PRIVATE_F_HOTEL13_DET(
     
@@ -1891,6 +2156,9 @@ console.log( "hotel13" );
                     //:function itself, needed to avoid
                     //:SFX being called more than once.
     ){
+        ERR( "[TODO: i_explo_box must be refactored into explosion style enum]" );
+
+
         if( d_bug >=1 ){
             if( i_g5x < 0 || i_g5x >= 4 ){ERR("[ihx]"); };
             if( i_g5y < 0 || i_g5y >= 4 ){ERR("[ihy]"); };
@@ -2456,7 +2724,51 @@ console.log( "hotel13" );
             ERR("[BADBOXFLAG]");
         };;
         //:-------------:SET_FLAMES_ARE_DAMAGE_TIMESTAMPS://
+    };; //:END[ F_HOTEL_DET ]::::::::::::::::::::::::::::://
+
+
+    const   F_HOTEL13_DET_BOM = function
+    PRIVATE_F_HOTEL13_DET_BOM(
+
+        i_g5x     //: GridCell Overlay X ://
+    ,   i_g5y     //: GridCell Overlay Y ://
+    ,   i_te7     //: What Tile Size Is The Bomb? ://
+    
+    ,   i_dog_x //:Detonation Point X (in room coords)
+    ,   i_dog_y //:Detonation Point Y (in room coords)
+
+    ,   i_bte     //: @bte@ : Bomb_Type_Enumeration ://
+    ){
+
+        let       lut = d_bte_exs_lef_rig_top_bot;
+
+        var exs = lut[ (i_bte*5)+0 ]; //:ExplosionStyle  ://
+        var lef = lut[ (i_bte*5)+1 ]; //:JUMPS_TO: LEFT  ://
+        var rig = lut[ (i_bte*5)+2 ]; //:JUMPS_TO: RIGHT ://
+        var top = lut[ (i_bte*5)+3 ]; //:JUMPS_TO: TOPPUM://
+        var bot = lut[ (i_bte*5)+4 ]; //:JUMPS_TO: BOTTOM://
+    
+        F_HOTEL13_DET(
+
+            i_g5x     //: GridCell Overlay X          :--://
+        ,   i_g5y     //: GridCell Overlay Y          :--://
+        ,   i_te7     //: What Tile Size Is The Bomb? :--://
+        
+        ,   i_dog_x   //: [DET] Point X (in room coords) ://
+        ,   i_dog_y   //: [DET] Point Y (in room coords) ://
+
+        ,     lef
+        ,     rig
+        ,     top
+        ,     bot
+        ,     exs     //: explosion style                ://
+
+        ,   (   0   ) //: call not result of recursion   ://
+        );;
     };;
+
+
+
 
     const   F_HOTEL13_TIK = function
     PRIVATE_F_HOTEL13_TIK(
@@ -2622,7 +2934,10 @@ console.log( "hotel13" );
     
         /** NO ARGS **/
     ){
-        console.log( "[TODO:DRAW_2D_TIL]" );
+        //:TAG[ render tile | rendertile | render_tile ] ://
+        //:TAG[ render-tile | drawtiles | draw-tiles   ] ://
+        //:TAG[ draw_tiles  | hide the fada tiles      ] ://
+        //:TAG[ dont draw tiles under fada             ] ://
         
         //: Render Bigger Tiles First                    ://
 
@@ -2642,6 +2957,18 @@ console.log( "hotel13" );
         var dty ; //: @dty@ : Data TILE  Y , extends(dpy)://
         var dti ; //: @dti@ : Data TILE  I , indexofdata ://
         var dtu ; //: @dtu@ : Data TILE  Uint32 Value    ://
+
+               
+            var dpx_fad ; //: #_HIDE_DAMAGED_TILES_# ://
+            var dpy_fad ; //: #_HIDE_DAMAGED_TILES_# :// 
+
+            var dtx_fad ; //: #_HIDE_DAMAGED_TILES_# ://
+            var dty_fad ; //: #_HIDE_DAMAGED_TILES_# :// 
+            var dti_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
+            var dtu_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
+
+            var t_v_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
+            var t_t_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
         
         var h4x ; //: @h4x@ : HotelRoomX (DATALAYOUT)    ://
         var h4y ; //: @h4y@ : HotelRoomY (DATALAYOUT)    ://
@@ -2707,11 +3034,20 @@ console.log( "hotel13" );
                 if( sam.clk_g_x === g_x 
                 &&  sam.clk_g_y === g_y
                 ){
-                    ctx.fillStyle = "#111111" ; //:#GREY#://    
+                    ctx.fillStyle = "BLACK" ;  
+                    ctx.fillRect(o_x, o_y, g_w, g_h); 
+
+                    //: Render boundry around level ://
+                    //: #_WHY_LINES_LOOK_UNEVEN_#   ://
+                    ctx.lineWidth =(  2 );
+                    ctx.strokeStyle = "#FFFFFF"  
+                    ctx.strokeRect(o_x, o_y, g_w, g_h); 
+                    ctx.lineWidth =(  1 );
                 }else{
                     ctx.fillStyle = "BLACK"   ;
+                    ctx.fillRect(o_x, o_y, g_w, g_h); 
                 };;
-                ctx.fillRect(o_x, o_y, g_w, g_h); 
+                
             };;
             
             //:- - - - - - - - - - -- - - - - - - - - - -://
@@ -2734,24 +3070,47 @@ console.log( "hotel13" );
             dpy += dia ; //: size of data to render.     ://
             
             san = lat ;  //: SPAN_IN_TILES == LATERAL_OS ://
-            
+
+            dpx_fad =( dpx + (0) ); //:tile render varies://
+            dpy_fad =( dpy + lat ); //:depending on FADA ://
+                                    //: +-----+-----+    ://
+                                    //: | TIL | BOM |    ://
+                                    //: +-----+-----+    ://
+                                    //: | FAD |     |    ://
+                                    //: +-----+-----+    ://
+                                    //:------------------://
         
         for( t_y = 0 ; t_y <=(san-1) ; t_y ++ ){
         for( t_x = 0 ; t_x <=(san-1) ; t_x ++ ){
             
-            dtx = dpx + t_x ;
-            dty = dpy + t_y ;
-            dti = ( dtx + ( dty * 2048 ) ); //:AKA[ p_i ]://    
-            c_i =( 4*dti );
+            dtx = dpx + t_x ; dtx_fad = dpx_fad + t_x ;
+            dty = dpy + t_y ; dty_fad = dpy_fad + t_y ;
+
+            dti     = ( dtx     + ( dty     * 2048 ) );  
+            dti_fad = ( dtx_fad + ( dty_fad * 2048 ) );
+  
+            c_i =(    4 * dti     ); //: @COMDEX@ : tile ://
+            c_i_fad=( 4 * dti_fad ); //: @COMDEX@ : fada ://
+
             dtu =(( 0x0
-            | ( d_pix2048[ c_i + 0 ] << 24 )    //:#GFDI0123#://
-            | ( d_pix2048[ c_i + 1 ] << 16 )    //:#GFDI0123#://
-            | ( d_pix2048[ c_i + 2 ] <<  8 )    //:#GFDI0123#://
-            | ( d_pix2048[ c_i + 3 ] <<  0 )    //:#GFDI0123#://
+            | ( d_pix2048[ c_i     + 0 ] << 24 )//:#GFDI0123#://
+            | ( d_pix2048[ c_i     + 1 ] << 16 )//:#GFDI0123#://
+            | ( d_pix2048[ c_i     + 2 ] <<  8 )//:#GFDI0123#://
+            | ( d_pix2048[ c_i     + 3 ] <<  0 )//:#GFDI0123#://
             )>>>0);
-            
-            t_v =( dtu >>> 28 )&(0xF); //:Tile Is 4Bit Number://
-            t_t =( dtu & 0x0FFFFFFF );
+
+            dtu_fad=(( 0x0
+            | ( d_pix2048[ c_i_fad + 0 ] << 24 )     
+            | ( d_pix2048[ c_i_fad + 1 ] << 16 )     
+            | ( d_pix2048[ c_i_fad + 2 ] <<  8 )     
+            | ( d_pix2048[ c_i_fad + 3 ] <<  0 )     
+            )>>>0);
+
+            t_v     =( dtu     >>> 28 )&(0xF);  //:#TV4B#://
+            t_t     =( dtu     & 0x0FFFFFFF );
+            //:---------:0x12345678----------------------://
+            t_v_fad =( dtu_fad >>> 28 )&(0xF);  //:#TV4B#://
+            t_t_fad =( dtu_fad & 0x0FFFFFFF );
             //:---------:0x12345678----------------------://
             
             clk =(  clk_t_x === t_x 
@@ -2782,9 +3141,19 @@ console.log( "hotel13" );
                     ctx.strokeRect( pog_t_x, pog_t_y, t_w, t_h );
                 }else{
                     ASS( t_v >=0 && t_v <=(16-1) );
-                    ctx.fillStyle=(
-                        d_hotel13_hcp_til[ t_v ] 
-                    );;
+
+                    if( 0 == t_v_fad ){
+                        ctx.fillStyle=(
+                            d_hotel13_hcp_til[     t_v ] 
+                        );;
+                    }else
+                    if( 1 <= t_v_fad ){
+                        ctx.fillStyle=(
+                            d_hotel13_hcp_til_dam[ t_v ] 
+                        );;
+                    }else{
+                        ERR("[BAD_T_V_FAD]");
+                    };;
                     ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h );
                 };;
                 
@@ -3634,24 +4003,30 @@ console.log( "hotel13" );
             sam.te7_clk_t_x[ te7 ]= t_x ;
             sam.te7_clk_t_y[ te7 ]= t_y ;
         };;
+
+
         
         //:randomize_brush_size:-------------------------://
         if( sam.edi_mod_ran >= 1 )
         {
-            sam.edi_te7 = Math.floor( Math.random() * 7 );
-        
-            if( sam.edi_te7 < sam.edi_te7_min ){
-                sam.edi_te7 = sam.edi_te7_min ;
-            };;
-            if( sam.edi_te7 > sam.edi_te7_max ){
-                sam.edi_te7 = sam.edi_te7_max ;
-            };;
+            let randint = F_HOTEL13_RANDINT ;
+
+            sam.edi_te7 = randint( 7-1 );
+            F_MMC( sam , "edi_te7" , "edi_te7_min"
+                                   , "edi_te7_max" );;
+
+            sam.edi_v16 = F_MMR( 1 , 16 );
+            F_MMC( sam , "edi_v16" , "edi_v16_min"
+                                   , "edi_v16_max" );;
         };;
         //:-------------------------:randomize_brush_size://
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
         if( 1
         &&  ( sam.edi_mod_nov >= 1 )
-        &&  ( 2 != sam.edi_la3 /**Explosions Overwrite**/ )
+        &&  (    0
+            ||   0 === sam.edi_la3  //:TILE(S)://
+            ||   1 === sam.edi_la3  //:BOMB(S)://
+            ) // 2 : _____________ NOT:FADA(S)://
         ){
             nov_hit=(
                 F_HOTEL13_SAM_EDI_CLK_HIT( 
@@ -3706,9 +4081,9 @@ console.log( "hotel13" );
             const la3_bom =( 1 ); //: Bomb Layer ://
             const la3_fad =( 2 ); //: Fada Layer ://
             const la3 =( sam.edi_la3 );
-            if( la3_til == la3 ){ MSG("[setting:TILE]"); };
-            if( la3_bom == la3 ){ MSG("[setting:BOMB]"); };
-            if( la3_fad == la3 ){ MSG("[setting:FADA]"); };
+            if( la3_til == la3 ){ NOP("[setting:TILE]"); };
+            if( la3_bom == la3 ){ NOP("[setting:BOMB]"); };
+            if( la3_fad == la3 ){ NOP("[setting:FADA]"); };
             //:------------------------------------------://
             //: Cell coordinate of the level pack in     ://
             //: memory that corresponds to the one that  ://
@@ -3726,17 +4101,43 @@ console.log( "hotel13" );
             const t_x = sam.te7_clk_t_x[   te7 ];
             const t_y = sam.te7_clk_t_y[   te7 ];
 
-            //:#_PUT_TILE_SITE_OF_INTEREST_#:#PTSOI#://
+            if( 0 === sam.edi_la3
+            ||  1 === sam.edi_la3
+            ||  2 === sam.edi_la3
+            ){
+                //:#_PUT_TILE_SITE_OF_INTEREST_#:#PTSOI# ://
+
+                if( 0 == sam.edi_la3 ){     //:TILE_LAYER://
             
-            F_HOTEL13_U32_PUT_ANY(
-                d_pix2048
-            ,        2048 
-            ,   c_x , c_y        //:<--LOCA:CITYBLOCK
-            ,   h_x , h_y        //:<--LOCA:HOTELROOM
-            ,   te7 , la3        //:<--LOCA:EXPALAYER
-            ,   t_x , t_y        //:<--LOCA:TILE__X_Y
-            ,   val_u32          //:<--VALU:TILE__VAL
-            );;
+                    ASS( 0 == la3 , "[zero_is_la3]" );
+
+                    F_HOTEL13_U32_PUT_TIL(
+                        d_pix2048
+                    ,        2048 
+                    ,   c_x , c_y   //:<--LOCA:CITYBLOCK ://
+                    ,   h_x , h_y   //:<--LOCA:HOTELROOM ://
+                    ,   te7         //:<--LOCA:EXPALAYER ://
+                    ,   t_x , t_y   //:<--LOCA:TILE__X_Y ://
+                    ,   val_u32     //:<--VALU:TILE__VAL ://
+                    );;
+                }else{                   //:BOMB_AND_FADA://
+
+                    ASS( 0 != la3 , "[zero_not_la3]" );
+
+                    F_HOTEL13_U32_PUT_ANY(
+                        d_pix2048
+                    ,        2048 
+                    ,   c_x , c_y   //:<--LOCA:CITYBLOCK ://
+                    ,   h_x , h_y   //:<--LOCA:HOTELROOM ://
+                    ,   te7 , la3   //:<--LOCA:EXPALAYER ://
+                    ,   t_x , t_y   //:<--LOCA:TILE__X_Y ://
+                    ,   val_u32     //:<--VALU:TILE__VAL ://
+                    );;
+                };;
+            }else{
+
+                YEL( "todo put explosion emit here" );
+            };;
             
         };; //:Not Tile BLocked  ://
         };; //:Valid Grid Cell ? ://
@@ -3879,6 +4280,8 @@ console.log( "hotel13" );
         if( "B" == asc ){ sam.edi_la3 =(   1   ); };
         if( "D" == asc ){ sam.edi_la3 =( F_A_D ); };
         if( "F" == asc ){ sam.edi_la3 =( F_A_D ); };
+
+        if( "E" == asc ){ sam.edi_la3 =(  0-1  ); };
         
         //:herman_s_editor_modes:------------------------://
         //:                                              ://
@@ -5102,6 +5505,107 @@ console.log( "hotel13" );
 
     @PARANOID@ : Something that makes me scared my code
                : is wrong.
+
+    #_320_BLAZE_IT_# :
+
+        320 tiles is the width of a level pack in
+        [alice/ivy]sized tiles. This is the blast length
+        we need to create an "infinite lazer" effect.
+
+        Laser stops at the first tile it hits. Unless the
+        tile is indestructable, the laser deletes that
+        tile. If laser pulses on+off or stays on, it 
+        will eventually drill to edge of level or be
+        stopped by indestructable material.
+
+        Also could be re-directed by laser diode.
+
+        Laser diode can be destroyed by bombs, but
+        laser diode will re-direct laser blasts.
+
+        ECHO BOX BOMB : High   Destructivity
+        CLASSIC BOMBS : Medium Destructivity
+        LAZER  BLASTS : Low    Destructivity
+        SPARKPINS     : ZERO   Destructivity (but can trip     )
+                                             (bomb fuses and   )
+                                             (cause lazer diode)
+                                             (to emit laser    )
+
++------------------------------------------+
+| NOW_DATE[ 2022_7_11 ]TIME[ 0223 ]PM      |
+| Try to add all comments to bottom of     |
+| file chronologically from now on.        |
++------------------------------------------+
+
+    #ATF_RANDINT# : RANDINT returns a random integer
+                  : between 0 and the inclusive upper
+                  : bound provided.
+
+    #SAB_DAM# : Sorted_Ascending_By _ DAMage level/strength
+
+    #SAB_DAM_BOD# : SAB_DAM , for Body Style Enums
+    #SAB_DAM_SIG# : SAD_DAM , for Insignia/Decal Style Enums
+
+    #_SPARKPINS_# :
+
+         ( immediately detonate when touched )
+         ( they emit a 1x1 box blast pattern )
+         ( but do __NOT__  hurt player       )
+
+    #SAB_DAM_REN# : SAB_DAM , for bomb render settings.
+
+    #SAB_DAM_DEC# : SAB_DAM , for decal bitmaps.
+
+    #_LIGHT_FIXTURES_ARE_THE_WEAKEST_#
+
+        Light fixtures are head bashable, it makes sense
+        to make them WEAKER than non-lights that are 
+        also head bashable.
+
+    #SAB_DAM_HCP_TIL# : SAB_DAM , for geometry tile pallet.
+    #SAB_DAM_HCP_BOM# : SAB_DAM , for bomb color pallet
+    #SAB_DAM_HCP_FAD# : SAB_DAM , for FADA color pallet
+
+    #_HIDE_DAMAGED_TILES_# / #_DONT_RENDER_DAMAGED_TILES_# :
+
+        If the tile we are trying to render exists over
+        FADA that exists in the present, do not render
+        the tile.
+
+    @dpx_fad@ : DataPixel_X : FADA information
+    @dpy_fad@ : DataPixel_Y : FADA information
+              : dpx_fad & dpy_fad is not the final tile
+              : value, but the origin of ALL FADA for
+              : the current tile size.
+
+    @dit_fad@ : You mean[ dti_fad ]
+
+    @COMDEX@  : component index ( pixel_index * 4 )
+
+    #TV4B# : TileValue is 4Bit number. ( BIN[1111]==0 to 15 )
+
+    #LEAVES_PARTIAL# : make angled tiles leave some ladders
+                     : but not all ladders. Only leaves 
+                     : ladders on the sections that rendered
+                     : as FULL BLOCKS , without angled
+                     : sections.
+
+    #_WHY_LINES_LOOK_UNEVEN_# :
+
+        Lines look uneven because the width of line
+        is not INSET INTO THE SQUARE , so the order
+        of draw calls that crate flat-black over each
+        level will end up chopping off the RIGHT 
+        and BOTTOM sections of the line around the
+        currently active level.
+
+        I AM NOT GOING TO FIX THIS. Just don't make 
+        the line so thick that this looks horribly
+        lop-sided and ugly. Line thickness of two
+        makes lopsided line, but the lopsidedness doesn't
+        look asthetically ugly.
+
+        NOW_DATE[ 2022_07_11 ]TIME[ 0548PM ]
    
 *** ******************************************************** **/
 
