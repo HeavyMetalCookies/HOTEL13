@@ -1,9 +1,19 @@
 
-    window.alert( "[Make FADA Hide Tiles]" );
-    window.alert( "[setting tile must remove fada]" );
+    window.alert( "[TODO:FLAME_TRIP_ADJUSTMENT]" );
+    window.alert( "[TRIPPED_BOMBS_MUST_ANIMATE_FIRST]" );
     window.alert( "[Create OBE : fractal_OBliteratE_Tile]" );
     window.alert( "[make laser propegantion _DET function first]"    );
 
+    //:HOTEL13_FRAMERATE_PERFORMANCE:====================://
+
+        var d_hotel13_t_0 =( 0 ); //: Old Timestamp      ://
+        var d_hotel13_t_1 =( 0 ); //: Current Timestamp  ://
+        var d_hotel13_mil =( 0 ); //: Elapsed Millisec   ://
+
+        var d_hotel13_tms =( 0 ); //: Target   Millisec  ://
+        var d_hotel13_ams =( 0 ); //: Adjusted Millisec  ://
+
+    //:====================:HOTEL13_FRAMERATE_PERFORMANCE://
     //:ITS_WRONG_CARL:===================================://
     
         const  ITS_WRONG_CARL = "[ITS_WRONG_CARL]"
@@ -233,6 +243,10 @@
         const d_hotel13_pat_bom_013 = "[USE:dec_bom_013]";
         const d_hotel13_pat_bom_014 = "[USE:dec_bom_014]";
         const d_hotel13_pat_bom_015 = "[USE:dec_bom_015]";
+
+        //: TAG[ bomb decals | bomb decal | bombdecals  ]://   
+        //: TAG[ decals | decal | bomb icons | bomb icon]:// 
+        //: TAG[ bombicon | bomicon | bomb patterns     ]://
 
         const d_hotel13_dec_bom_000 =new Uint8Array([
 
@@ -655,10 +669,10 @@
 
         //: Pastell     : STRENGTH_NONE :----------------://    
 
-        ,   "#00FF66"   //: Glass_Light : CUBE           ://
-        ,   "#00FF88"   //: Glass_Light : VERTICAL       ://
-        ,   "#00FFFF"   //: Glass_Light : HORIZONTAL     ://
-
+        ,   "#00FF66"   //: Glass_Light : VERTICAL       ://
+        ,   "#00FF88"   //: Glass_Light : HORIZONTAL     ://
+        ,   "#00FFFF"   //: Glass_Light : CUBE           ://
+                                        
         //: Greens      : STRENGTH_LOWE :----------------://
 
         ,   "#00FF00"   //: Dirt Leaving Nothing         :// 
@@ -678,9 +692,9 @@
 
             //: PROBABLY_MAKE_THEM_INDESTRUCTABLE :------://
 
-        ,       "#995511"   //: Falling Marble :---------:// 
-        ,       "#995522"   //: Falling Beam   :---------:// 
-        ,       "#995533"   //: Falling Iron   :---------://
+        ,       "#995511"   //: Falling Marble (fimar)   ://
+        ,       "#995522"   //: Falling Beam   (fibem)   ://
+        ,       "#995533"   //: Falling Iron   (firon)   ://
 
             //: INDESTRUCTABLE :-------------------------://
 
@@ -699,9 +713,9 @@
 
         "#000000"
     ////
-    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : CUBE  ://            
-    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : VERT  ://      
-    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : HORI  ://      
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : VERT  ://                
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : HORI  ://          
+    ,   "#001111" //: DAMAGE_COLOR : Glass_Light : CUBE  ://          
     ////
     ,   "#001100" //: DAMAGE_COLOR : DIRT    :-----------://
     ,   "#001100" //: DAMAGE_COLOR : BAUXITE :-----------://
@@ -802,8 +816,9 @@
     ,   vis_bom : (1)   //: VISIBLE: BOMB(S)
     ,   vis_fad : (1)   //: VISIBLE: FADA(S)
     
-    ,   tik_fps : (30)  //: One Frame Per Second
-    ,   tik_num :(0-1)  //: AKA[ hot_tik ]
+    //- tik_fps : (30        )  #_TIK_FPS_REMOVED_#      -//
+    //- tik_num : (60*60*1000)  #_TIME_NOSTART_ZERO_#    -//
+    //+                         #_TIK_NUM_REMOVED_#      +//
     
         //:group_mouse_and_click:------------------------://
         //:                                              ://
@@ -840,7 +855,9 @@
     ,   edi_mod_hol :( 1)  //: Hold Brush Down     ://
     ,   edi_mod_ran :( 1)  //: Randomize Brush Size://
     ,   edi_mod_mir :( 0)  //: Mirror Brush Strokes://
+    ,   edi_mod_act :( 0)  //: Set Bombs Activated?://
     ,   edi_mod_nov :( 1)  //: NO-Overlap Mode     ://
+    ,   edi_mod_obe :( 0)  //: OBLITERATION_MODE   ://
 
     ,   edi_ask_emp :( 0)  //: Editor Ask To Empty ://
     ,   edi_ask_fil :( 0)  //: Editor Ask To Fill  ://
@@ -1073,7 +1090,399 @@
 
     //:MISC_HOTEL13_LOOKUP_TABLES:===========================://
     
-        //:TAG[ lookup tables | lookuptables ]://
+        //:TAG[ lookup tables | lookuptables | lutsection   ]://
+        //:TAG[ lookup-tables | lookuptable  | lut-section  ]://
+        //:TAG[ lookup-table  | lookup table | lut_section  ]://
+        //:TAG[ lookuptablesection | tablesection           ]://
+        //:TAG[ lookup tables section | lut section         ]://
+
+        //:TTD_TIME_TILL_DETONATION:GENERALLY:-----------://
+        {
+            //:----------------------------------://
+            //: @triptik@ : Tripped  TIck frames ://
+            //: @flastik@ : Flashing TIck frames ://
+            //: SEE[ #TRIPTIK_AND_FLASTIK# ]     ://                        
+            //:----------------------------------://
+            //: @sparker@ : Times For Sparkpins  ://
+            //: @lazbeam@ : Times For Lasers     ://
+            //: @classic@ : Times For AA Bombs   ://
+            //: @echobox@ : Times For Box Bombs  ://
+            //: @instkil@ : Times For INSTANTKILL://
+            //:----------------------------------://
+
+            var d_hotel13_ttd_triptik_sparker =(   0 );
+            var d_hotel13_ttd_flastik_sparker =(   5 );
+
+            var d_hotel13_ttd_triptik_lazbeam =( 100 );
+            var d_hotel13_ttd_flastik_lazbeam =(  10 );
+
+            var d_hotel13_ttd_triptik_classic =( 100 );
+            var d_hotel13_ttd_flastik_classic =(  10 );
+
+            var d_hotel13_ttd_triptik_echobox =( 100 );
+            var d_hotel13_ttd_flastik_echobox =(  10 );
+
+            //: #_POSITIVE_LIVETIK_#   : : : : : : : ://                         
+            var d_hotel13_ttd_triptik_instkil =(   0 );
+            var d_hotel13_ttd_flastik_instkil =(   1 );
+
+            let codefor_fps =( 30 );
+
+            if( !d_fps ){ var d_fps =( codefor_fps ); };
+            if(  d_fps ){ ASS(d_fps>=1,"[FPSCHECK]"); };
+
+            d_hotel13_tms =( 1000 / d_fps );
+
+            if( 30 != d_fps ){
+            //:------------------------------------------://
+            //: If we speed up game, these tick stamps   ://   
+            //: will need to be adjusted. No adjusting   ://
+            //: FPS mid-game. That will break things.    ://        
+            //:------------------------------------------://
+                var t_m =( d_fps / codefor_fps );//:@t_m@://
+                
+                d_hotel13_ttd_triptik_sparker *=( t_m );
+                d_hotel13_ttd_flastik_sparker *=( t_m );
+                
+                d_hotel13_ttd_triptik_lazbeam *=( t_m );
+                d_hotel13_ttd_flastik_lazbeam *=( t_m );
+                
+                d_hotel13_ttd_triptik_classic *=( t_m );
+                d_hotel13_ttd_flastik_classic *=( t_m );
+                
+                d_hotel13_ttd_triptik_echobox *=( t_m );
+                d_hotel13_ttd_flastik_echobox *=( t_m );
+                
+                d_hotel13_ttd_triptik_instkil *=( t_m );
+                d_hotel13_ttd_flastik_instkil *=( t_m );
+            };;
+        }
+        //:-----------:TTD_TIME_TILL_DETONATION:GENERALLY://
+        //:TTD_TIME_TILL_DETONATION:LOOKUP_TABLES:-------://
+
+            var d_hotel13_ttd_triptik = new Uint8Array([
+            
+                //:--------------------------------------://
+                //: @triptik@ : How long does bomb stay  ://
+                //:           : "tripped" for ? This is  ://
+                //:           : meant to warn you that   ://
+                //:           : the bomb has been        ://
+                //:           : [ activated / turned on ]://
+                //:--------------------------------------://
+
+                0 //:INVALID_BOMB_VALUE://
+    
+            ,   d_hotel13_ttd_triptik_sparker //:SPARKPIN_S4W://
+            ,   d_hotel13_ttd_triptik_sparker //:SPARKPIN_BOX://
+            ,   d_hotel13_ttd_triptik_sparker //:SPARKPIN_RIN://
+
+            ,   d_hotel13_ttd_triptik_lazbeam //:LAZER_LEFT  ://
+            ,   d_hotel13_ttd_triptik_lazbeam //:LAZER_RIGHT ://
+            ,   d_hotel13_ttd_triptik_lazbeam //:LAZER_TOP   ://
+            ,   d_hotel13_ttd_triptik_lazbeam //:LAZER_BOTTOM://
+    
+            ,   d_hotel13_ttd_triptik_classic //:CLASSIC_VER ://
+            ,   d_hotel13_ttd_triptik_classic //:CLASSIC_HOR ://
+            ,   d_hotel13_ttd_triptik_classic //:CLASSIC_S4W ://
+            ,   d_hotel13_ttd_triptik_instkil //:CLASSIC_KIL ://
+
+            ,   d_hotel13_ttd_triptik_echobox //:ECHOBOX_VER ://
+            ,   d_hotel13_ttd_triptik_echobox //:ECHOBOX_HOR ://
+            ,   d_hotel13_ttd_triptik_echobox //:ECHOBOX_S4W ://
+            ,   d_hotel13_ttd_triptik_instkil //:ECHOBOX_KIL ://
+
+            ]);;
+            var d_hotel13_ttd_flastik = new Uint8Array([
+
+                //:--------------------------------------://
+                //: @flastik@ : Flash Tick .             ://
+                //:           : After a time, a turned on://
+                //:           : bomb will begin to flash.://
+                //:           : This signals to player   ://
+                //:           : that it is urgent to     ://
+                //:           : get away ASAP.           ://
+                //:--------------------------------------://
+
+                0 //:INVALID_BOMB_VALUE://
+
+            ,   d_hotel13_ttd_flastik_sparker //:SPARKPIN_S4W://
+            ,   d_hotel13_ttd_flastik_sparker //:SPARKPIN_BOX://
+            ,   d_hotel13_ttd_flastik_sparker //:SPARKPIN_RIN://
+                                             
+            ,   d_hotel13_ttd_flastik_lazbeam //:LAZER_LEFT  ://
+            ,   d_hotel13_ttd_flastik_lazbeam //:LAZER_RIGHT ://
+            ,   d_hotel13_ttd_flastik_lazbeam //:LAZER_TOP   ://
+            ,   d_hotel13_ttd_flastik_lazbeam //:LAZER_BOTTOM://
+                                             
+            ,   d_hotel13_ttd_flastik_classic //:CLASSIC_VER ://
+            ,   d_hotel13_ttd_flastik_classic //:CLASSIC_HOR ://
+            ,   d_hotel13_ttd_flastik_classic //:CLASSIC_S4W ://
+            ,   d_hotel13_ttd_flastik_instkil //:CLASSIC_KIL ://
+                                             
+            ,   d_hotel13_ttd_flastik_echobox //:ECHOBOX_VER ://
+            ,   d_hotel13_ttd_flastik_echobox //:ECHOBOX_HOR ://
+            ,   d_hotel13_ttd_flastik_echobox //:ECHOBOX_S4W ://
+            ,   d_hotel13_ttd_flastik_instkil //:ECHOBOX_KIL ://
+            ]);;
+            var d_hotel13_ttd_livetik = new Uint8Array([
+
+                //:------------------------------------------://
+                //:@livetik@ : Alive Ticks , how many frames ://
+                //:          : does the [bomb/mine]exist     ://
+                //:          : for before it is gone?        ://
+                //:------------------------------------------://
+
+                d_hotel13_ttd_triptik[ 0]     //:INVALID_BOMB://
+               +d_hotel13_ttd_flastik[ 0]
+            ,                          
+                d_hotel13_ttd_triptik[ 1]     //:SPARKPIN_S4W://
+               +d_hotel13_ttd_flastik[ 1]     //:SPARKPIN:S4W://     
+            ,                                 
+                d_hotel13_ttd_triptik[ 2]     //:SPARKPIN_BOX://
+               +d_hotel13_ttd_flastik[ 2]     //:SPARKPIN:BOX://    
+            ,                                 
+                d_hotel13_ttd_triptik[ 3]     //:SPARKPIN_RIN://
+               +d_hotel13_ttd_flastik[ 3]     //:SPARKPIN:RIN://     
+            ,                                 
+                d_hotel13_ttd_triptik[ 4]     //:LAZER_LEFT  ://
+               +d_hotel13_ttd_flastik[ 4]     //:LAZER:LEFT  ://     
+            ,                                 
+                d_hotel13_ttd_triptik[ 5]     //:LAZER_RIGHT ://
+               +d_hotel13_ttd_flastik[ 5]     //:LAZER:RIGHT ://    
+            ,                                 
+                d_hotel13_ttd_triptik[ 6]     //:LAZER_TOP   ://
+               +d_hotel13_ttd_flastik[ 6]     //:LAZER:TOP   ://    
+            ,                                 
+                d_hotel13_ttd_triptik[ 7]     //:LAZER_BOTTOM://
+               +d_hotel13_ttd_flastik[ 7]     //:LAZER:BOTTOM://     
+            ,                                 
+                d_hotel13_ttd_triptik[ 8]     //:CLASSIC_VER ://
+               +d_hotel13_ttd_flastik[ 8]     //:CLASSIC:VER ://     
+            ,                                 
+                d_hotel13_ttd_triptik[ 9]     //:CLASSIC_HOR ://
+               +d_hotel13_ttd_flastik[ 9]     //:CLASSIC:HOR ://     
+            ,                                 
+                d_hotel13_ttd_triptik[10]     //:CLASSIC_S4W ://
+               +d_hotel13_ttd_flastik[10]     //:CLASSIC:S4W ://     
+            ,                                 
+                d_hotel13_ttd_triptik[11]     //:CLASSIC_KIL ://
+               +d_hotel13_ttd_flastik[11]     //:CLASSIC:KIL ://     
+            ,                                 
+                d_hotel13_ttd_triptik[12]     //:ECHOBOX_VER ://
+               +d_hotel13_ttd_flastik[12]     //:ECHOBOX:VER ://
+            ,                                 
+                d_hotel13_ttd_triptik[13]     //:ECHOBOX_HOR ://
+               +d_hotel13_ttd_flastik[13]     //:ECHOBOX:HOR ://
+            ,                                 
+                d_hotel13_ttd_triptik[14]     //:ECHOBOX_S4W ://
+               +d_hotel13_ttd_flastik[14]     //:ECHOBOX:S4W ://
+            ,
+                d_hotel13_ttd_triptik[15]     //:ECHOBOX_KIL ://
+               +d_hotel13_ttd_flastik[15]     //:EHCOBOX:KIL ://
+            ]);;
+
+            console.log( "[d_hotel13_ttd_livetik__11_]:"
+                        ,  d_hotel13_ttd_livetik[ 11 ] );;
+
+            console.log( "[d_hotel13_ttd_livetik__15_]:"
+                        ,  d_hotel13_ttd_livetik[ 15 ] );;
+
+            //:#_POSITIVE_LIVETIK_#:---------------------://
+            for( var livetik_dex = 1 
+            ;        livetik_dex <=( 16 - 1 )
+            ;        livetik_dex ++
+            ){
+                var livetik =(
+                    d_hotel13_ttd_livetik[ livetik_dex ] );;
+                var triptik =( 
+                    d_hotel13_ttd_triptik[ livetik_dex ] );;
+
+                if( livetik <= 0 ){
+                    LOG("[livetik_dex]" , livetik_dex );
+                    LOG("[livetik____]" , livetik     );
+                    ERR("[livetik_must_be_positive]"  );
+                };;
+
+                LOG( "[triptik]:" , triptik );
+            };;
+            //:---------------------:#_POSITIVE_LIVETIK_#://
+        //:-------:TTD_TIME_TILL_DETONATION:LOOKUP_TABLES://    
+        //:SPARK_FADA:-----------------------------------://
+        //:                                              ://
+        //:  Went for walk and was thinking about        ://
+        //:  how the system could support falling        ://
+        //:  sparks using FADA layer. We can do so       ://
+        //:  by "cleverly" having TWO fada types         ://
+        //:  for each type of destruction possible.      ://
+        //:                                              ://
+        //:  type 1 : FADA destruction WITHOUT_SPARKS    ://
+        //:  type 2 : FADA destruction WITH____SPARKS    ://
+        //:                                              ://
+        //:  It is a clever hack... But we have limited  ://
+        //:  data to work with, so it will have to do.   ://
+        //:  Want to pump 100% of what I can get out     ://
+        //:  of the bits given to me.                    ://
+        //:                                              ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        {
+            let t_s ; //:TileFad  ==> SparkFad
+            let s_t ; //:SparkFad ==> TileFad
+
+            //:------------------------------------------://    
+            //:   DULL_FADA  |  SPARK_FADA | DESCRIPTION ://
+            //:--------------+-------------+-------------://
+            //:              +             +             ://
+            //:       1      |       5     | Spark_Box   ://
+            //:       2      |       6     | Lazer_Beam  ://
+            //:       3      |       7     | ClassicBomb ://
+            //:       4      |       8     | EchoboxBomb ://
+            //:--------------+-------------+-------------://
+    
+            let a = 10 , b = 11 , c = 12 ; 
+            let d = 13 , e = 14 , f = 15 ;
+            let u = 0xFF ; //:UNUSED       ://
+            let i = 0x00 ; //:Invalid Index://
+
+            //:INN:0 1 2 3 4 5 6 7 8 9 A B C D E F ://    
+            t_s =[ i,5,6,7,8,0,0,0,0,u,u,u,u,u,u,u ];
+            s_t =[ i,0,0,0,0,1,2,3,4,u,u,u,u,u,u,u ];
+            //:INN:0 1 2 3 4 5 6 7 8 9 A B C D E F ://  
+
+            var d_hotel13_tilefad_sparkfad =(
+                new Uint8Array( t_s )
+            );;
+            var d_hotel13_sparkfad_tilefad =(
+
+                new Uint8Array( s_t )
+            );;
+
+            if( 16 != d_hotel13_tilefad_sparkfad.length
+            ||  16 != d_hotel13_sparkfad_tilefad.length
+            ){
+                window.alert("[errin:t_s:orr:s_t]");
+                       throw("[errin:t_s:orr:s_t]");
+            };;
+        }
+        //:-----------------------------------:SPARK_FADA://
+        //:Durability_And_Power:-------------------------://
+
+        //: @dap_til_dur@ : TILe ==> DURability  value   ://
+        //: @dap_fad_pow@ : FADa ==> destruction POWer   ://
+        //: @dap_bom_fad@ : BOMb ==> FADa value to set   ://
+    
+        var d_hotel13_dap_til_dur = new Uint8Array([
+        //:::::::                                        ://
+            0 //: Invalid Tile Type : Zero               ://
+        //:::::::                                        ://
+        ,   1 //: Glass_Light : VERTICAL   Auto Tiles    ://    
+        ,   1 //: Glass_Light : Horizontal Auto Tiles    ://    
+        ,   1 //: Glass_Light : Glass Cube Auto Tiles    :// 
+        //:::::::                                        ://
+        ,   2 //: Head_Bashable : Leaves Nothing         ://
+        ,   2 //: Head_Bashable : Leaves Platforms       ://
+        //:::::::                                        ://
+        ,   3 //: Purple_Bombable #1                     ://
+        ,   3 //: Purple_Bombable #2                     ://
+        ,   3 //: Purple_Bombable #3                     ://
+        //:::::::                                        ://
+        ,   4 //: Falling_Type    #1                     ://
+        ,   4 //: Falling_Type    #2                     ://
+        ,   4 //: Falling_Type    #3                     ://
+        //:::::::                                        ://
+        ,   5 //: Vents                                  ://
+        ,   5 //: Dragonite                              ://
+        //:::::::                                        ://
+        ,   0 //: Sprite Spawner Rect Marker : TOP_LEF   ://
+        ,   0 //: Sprite Spawner Rect Marker : TOP_RIG   ://
+        ]);;
+        var d_hotel13_dap_fad_pow = new Uint8Array([
+
+            0 //: Invalid Fada Type : Zero
+        ,   1 //:----------------------------------------://
+        ,   2 //:                                        ://
+        ,   3 //: For now just keep a 1:1 relationship   ://
+        ,   4 //: between the FADA tile value and the    ://
+        ,   5 //: power (destructive force) it has.      ://
+        ,   6 //:                                        ://
+        ,   7 //: We can change this later if design     ://
+        ,   8 //: decisions require it. But for now      ://
+        ,   9 //: keep as simple as possible.            ://
+        ,  10 //:                                        ://
+        ,  11 //:                                        ://
+        ,  12 //:                                        ://
+        ,  13 //:                                        ://
+        ,  14 //:                                        ://
+        ,  15 //:----------------------------------------://
+        ]);;
+        var d_hotel13_dap_bom_fad = new Uint8Array([
+
+            0 //: Invalid Bomb Type : Zero ://
+
+        //:----------------------------------------------://
+        //: SparkBoxes : Cannot destroy anything, but    ://
+        //:              can be used to set off bombs    ://
+        //:              and lasers.                     ://
+        //:----------------------------------------------://
+        ,   1   //: SparkBox . Small Cross               ://
+        ,   1   //: SparkBox . Small Box                 ://
+        ,   1   //: SparkBox . Small Ring                ://
+        //:----------------------------------------------://
+        //: Lazer Boxes : Can only break things that     ://    
+        //: Alice & Ivy can also break with their head.  ://    
+        //:----------------------------------------------://
+        ,   2   //: Laser Diode . Left                   ://
+        ,   2   //: Laser Diode . Right                  ://
+        ,   2   //: Laser Diode . Top                    ://
+        ,   2   //: Laser Diode . Bottom                 ://
+        //:----------------------------------------------://
+        //: Classic Bombs : Can destroy everything       ://
+        //: except the "falling block types" ,           ://
+        //: "vents" and "dragonite".                     ://
+        //:----------------------------------------------://
+        ,   3   //: Classic Bomb : VERTICAL              ://
+        ,   3   //: Classic Bomb : HORIZONTAL            ://
+        ,   3   //: Classic Bomb : SMALL FOUR WAY        ://
+        ,   3   //: Classic Bomb : INSTANT KILL          ://
+        //:----------------------------------------------://
+        //: EchoBox Bombs : Can destroy everything       ://
+        //: except "vents" and "dragonite".              ://
+        //: Echo boxes can even destroy FIRON and        ://
+        //: other falling block types.                   ://
+        //:----------------------------------------------://
+        ,   4   //: Echobox Bomb : VERTICAL              ://
+        ,   4   //: Echobox Bomb : HORIZONTAL            ://
+        ,   4   //: Echobox Bomb : SMALL FOUR WAY        ://
+        ,   4   //: Echobox Bomb : INSTANT KILL          ://
+        //:----------------------------------------------://
+        ]);;
+
+            if( 16 != d_hotel13_dap_til_dur.length
+            ||  16 != d_hotel13_dap_fad_pow.length
+            ||  16 != d_hotel13_dap_bom_fad.length
+            ){
+                //:@DAP@:Durability_And_Power://
+                window.alert("[bad_array_size:DAP]");
+                       throw("[bad_array_size:DAP]");
+            };;
+        //:-------------------------:Durability_And_Power://
+        //:at4_tab:--------------------------------------://
+
+        //: @AT4@ : AutoTile_4_Sides_Check :             ://
+
+        //:  CHECK_LOOKUP_ORDER[ (LEF),(RIG),(TOP),(BOT) ]:::://   
+        var d_hotel13_at4_l_r =[ (0-1),(0+1),( 0 ),( 0 ) ];    
+        var d_hotel13_at4_t_b =[ ( 0 ),( 0 ),(0-1),(0+1) ];
+
+        //: D is for DIVIDE here, __NOT__ delta  :-------://
+        var d_hotel13_at4_d_x =[ (12 ),(12 ),( 1 ),( 1 ) ];
+        var d_hotel13_at4_d_y =[ ( 1 ),( 1 ),(12 ),(12 ) ];
+
+        //: T is tor TRANSLATE here, __NOT__ tile :------://
+        //: WHICH_GET_OFFSETTED[ (LEF),(RIG),(TOP),(BOT) ];
+        var d_hotel13_at4_atx =[ ( 0 ),( 1 ),( 0 ),( 0 ) ];
+        var d_hotel13_at4_aty =[ ( 0 ),( 0 ),( 0 ),( 1 ) ];
+
+        //:--------------------------------------:at4_tab://
     
         //:------------------------------------------://
         //: Don't be redundant here. Lateral offset  ://
@@ -1904,6 +2313,22 @@
         return( o_di1 );
     };;
 
+
+    const   F_HOTEL13_U32_GET_ANY = function
+    PRIVATE_F_HOTEL13_U32_GET_ANY(
+    
+        i_pix,i_san  //:<--DATA:PIXELS | a1,a2 | 01,02 | ://
+    ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO| a3,a4 | 03,04 | ://
+    ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO| a5,a6 | 05,06 | ://
+    ,   i_te7,i_la3  //:<--LOCA:EXPALAY| a7,tl | 07,008| ://
+    ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY| tx,ty | 09,10 | ://
+      
+    ){
+
+        ERR("[TODO:FINISH_GET_ANY]");
+
+    };;
+
     const   F_HOTEL13_U32_PUT_ANY = function
     PRIVATE_F_HOTEL13_U32_PUT_ANY(
     
@@ -1915,6 +2340,9 @@
     ,   i_u32        //:<--VALU:TileVAL| tv    | 11,12 | ://
                      
     ){
+        //: TAG[ put any | PUT ANY | any put | ANY PUT ] ://
+        //: TAG[ anyput | putany ]                       ://
+
         if( d_bug >= 1 ){
             //:------------------------------------------://
             //: Try not to bog down code with debug      ://
@@ -2085,14 +2513,89 @@
         ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
         ,   i_u32        //:<--VALU:TileVAL :------------://
         );;
-    };; //:DATA__LOCA_______________________________VALU ://    
-    
+    };; //:DATA__LOCA_______________________________VALU ://   
+
     const   F_HOTEL13_U32_PUT_BOM = function
     PRIVATE_F_HOTEL13_U32_PUT_BOM(    /// BOM ///
-             a1,a2,a3,a4,a5,a6,a7,              tx,ty,tv
-    ){F_001( a1,a2,a3,a4,a5,a6,a7,  c_lay_bom  ,tx,ty,tv );;
-    //:    01,02,03,04,05,06,07,          008  ,09,10,11 ://    
-    };; //:DATA__LOCA_______________________________VALU :// 
+
+            i_pix,i_san  //:<--DATA:PIXELS  :------------://
+        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
+        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
+        ,   i_te7        //:<--LOCA:EXPALAY :------------://
+        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
+
+        ,   i_b16        //:<--VALU:BombVAL :------------://
+        ,   i_ttd        //:<--VALU:T_T_D   :------------://
+    ){
+        ASS( i_b16 >= 0 && i_b16 <=(16-1)      ,"[B16]");
+        ASS( i_ttd >= 0 && i_ttd <=(0x0FFFFFFF),"[TTD]");
+        //:------------------------(0x12345678)----------://
+
+        //:TAG[ set bombs|set bomb  |set-bombs |set-bomb]://
+        //:TAG[ lay bombs|lay mines |laymines  |laymine ]://
+
+        var u32_tik ;
+        var u32_bom ; //: Bomb Value + Timestamp ://
+
+        if( 0 == i_ttd ){
+
+            u32_tik=( 0 );
+        }else{
+
+            //: #_TIME_TO_DIE_NOTES_# ://
+            
+            u32_tik =( d_tik );;;;; //+ CORRECT! + + +//
+        };;
+
+        u32_bom =(( 0x00
+        |    ((  (   i_b16 & 0x0000000F ) << (  28) )>>>0)
+        |    ((  ( u32_tik & 0x0FFFFFFF ) << (   0) )>>>0)
+        )>>>0 ); //:( i_var & 0x12345678 )://
+        ASS(    u32_bom >= 0 , "[VAL_GT0]" );
+        var chk_b16 =(( u32_bom >>> (28) )&(0xF));
+        var chk_ttd =(( u32_bom &( 0x0FFFFFFF )));
+        if( chk_b16 !=   i_b16 ){ ERR("[CHK_B16]"); };
+        if( chk_ttd != u32_tik ){ ERR("[U32_TIK]"); };
+
+        if( i_ttd != 0 ){
+        if( chk_ttd !=   d_tik ){ ERR("[NOTDTIK]"); };
+        };;
+
+        F_HOTEL13_U32_PUT_ANY(
+            i_pix,i_san  //:<--DATA:PIXELS  :------------://
+        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
+        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
+        ,   i_te7,( 1 )  //:<--LOCA:EXPALAY :------------://
+        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
+        ,   u32_bom      //:<--VALU:TileVAL :------------://
+        );;
+
+        //:check_that_correct_values_were_put:-----------://
+
+            var got_bom =(
+                F_HOTEL13_U32_GET_ANY(
+
+                    i_pix,i_san  //:<--DATA:PIXELS  :----://
+                ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :----://
+                ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :----://
+                ,   i_te7,( 1 )  //:<--LOCA:EXPALAY :----://
+                ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :----://
+                ));;
+
+            if( got_bom != u32_bom ){
+
+                ERR("[GET_PUT_FAILURE]");
+            };;
+        //:-----------:check_that_correct_values_were_put://
+
+    };;
+    
+/// const   F_HOTEL13_U32_PUT_BOM = function
+/// PRIVATE_F_HOTEL13_U32_PUT_BOM(    /// BOM ///
+///          a1,a2,a3,a4,a5,a6,a7,              tx,ty,tv
+/// ){F_001( a1,a2,a3,a4,a5,a6,a7,  c_lay_bom  ,tx,ty,tv );;
+/// //:    01,02,03,04,05,06,07,          008  ,09,10,11 ://    
+/// };; //:DATA__LOCA_______________________________VALU :// 
     
     const   F_HOTEL13_U32_PUT_FAD = function
     PRIVATE_F_HOTEL13_U32_PUT_FAD(    /// FAD ///
@@ -2135,6 +2638,165 @@
     ){
         ERR( "[#_EXPAND_AFTER_1ST_PLAYABLE_#:PUT_FAD]" );
     };;
+
+    //:OBLITERATE_TILE_FUNCTION:=========================://
+    //:                                                  ://
+    //:     Fractally obliterate a given tile.           ://
+    //:                                                  ://
+    //:     Change must propegate UP_AND_DOWN!!!         ://
+    //:                                                  ://
+    //:     PROPEGATE_UPWARD   : Fracture Bigger Tiles   ://
+    //:                        : Into smaller tiles.     ://
+    //:                                                  ://
+    //:     PROPEGATE_DOWNWARD : Emit smaller explosions ://
+    //:                        : on top of tiles found   ://
+    //:                        : under larger FADA tile  ://
+    //:                        : we emitted.             ://
+    //:                                                  ://
+    //:obliterate_tile_function:- - - - - - - - - - - - -:// 
+
+        const   F_HOTEL13_OBE = function    //:----------://
+        PRIVATE_F_HOTEL13_OBE(              //:----------://
+                                            //:----------://
+            i_pix,i_san  //: <--DATA:PIXELS              ://
+        ,   i_c_x,i_c_y  //: <--LOCA:CITYBLOCK           ://
+        ,   i_h_x,i_h_y  //: <--LOCA:HOTELROOM           ://
+        ,   i_te7        //: <--LOCA:EXPALAY             ://
+        ,   i_t_x,i_t_y  //: <--LOCA:Tile_XY             ://
+        ,   i_f16        //: <--VALU: FADA Damage Type   ://
+        ){
+            //:------------------------------------------://
+            //:                                          ://
+            //:   Going to be hard to verify upward      ://
+            //:   damage propegation without some        ://
+            //:   rudimentary auto-tiling in our         ://
+            //:   renderer. Finish this function         ://
+            //:   after that is implemented.             ://
+            //:                                          ://
+            //:------------------------------------------://
+            YEL( "[need_rudimentary_auto_tiling_first]" );
+            if( d_bug >= 1 ){
+                if(  512 == i_san ){
+                
+                    ASS( 0 == i_c_x , "[OBE_ICX:0512]" );
+                    ASS( 0 == i_c_y , "[OBE_ICY:0512]" );
+                }else
+                if( 2048 == i_san ){
+                
+                    ASS( 1 == i_c_x , "[OBE_ICX:2048]" );
+                    ASS( 1 == i_c_y , "[OBE_ICY:2048]" );
+                }else{
+                    ERR("[unsupported:i_san]");
+                };;
+            };;
+
+            //:DataPixel_Vars:---------------------------://
+    
+                //:@DatPix@ : Data_Pixel / Data Pixel ...://
+
+                var     dpx ; //: DatPix . X (x-coord  ) ://
+                var     dpy ; //: DatPix . Y (y-coord  ) ://
+                var     dpi ; //: DatPix . I (index    ) ://
+                var     dpc ; //: DatPix . C (component) ://
+                var     dpu ; //: DatPix . U (unsigned ) ://
+
+                var obe_dpx = new Uint8Array( 3 );
+                var obe_dpy = new Uint8Array( 3 );
+                var obe_dpi = new Uint8Array( 3 );
+                var obe_dpc = new Uint8Array( 3 );
+                var obe_dpu = new Uint8Array( 3 );
+
+            //:---------------------------:DataPixel_Vars://
+            //:Tile_Vars:--------------------------------://
+
+                //: til_o_x == obe_o_x[ 0 ]
+                //: til_o_y == obe_o_y[ 0 ]
+                //:
+                //: bom_o_x == obe_o_x[ 1 ]
+                //: bom_o_y == obe_o_y[ 1 ]
+                //:
+                //: fad_o_x == obe_o_x[ 2 ]
+                //: fad_o_y == obe_o_y[ 2 ]
+
+                //: til_v16 == obe_v16[ 0 ]
+                //: til_tik == obe_tik[ 0 ]
+                //:
+                //: bom_v16 == obe_v16[ 1 ]
+                //: bom_tik == obe_tik[ 1 ]
+                //:
+                //: fad_v16 == obe_v16[ 2 ]
+                //: fad_tik == obe_tik[ 2 ]
+
+                var obe_v16 = new Uint8Array( 3 );
+                var obe_tik = new Uint8Array( 3 );
+                var obe_o_x = new Uint8Array( 3 );
+                var obe_o_y = new Uint8Array( 3 );
+
+                var t_b_f ; //: t == 0 === tile ://
+                            //: b == 1 === bomb ://
+                            //: f == 2 === fada ://
+                            //: #_DIA_T_B_F_#   ://
+
+                //:------------:0x12345678 :-------------://
+                const msk_v16 = 0xF0000000 ;
+                const msk_tik = 0x0FFFFFFF ;
+                //:------------:0x12345678 :-------------://
+
+            //:--------------------------------:Tile_Vars://
+
+            var dia     = d_hotel13_te7_dia[ i_te7 ];
+            var lat     = d_hotel13_te7_lat[ i_te7 ];
+
+            var lev_o_x = ( 512*i_c_x)+(i_h_x*128) ;
+            var lev_o_x = ( 512*i_c_y)+(i_h_y*128) ;
+
+            //:       0   1   2
+            //:#_DIA_TIL_BOM_FAD_#://
+            //:      
+
+            //:TIL://
+            obe_o_x[0] =( 512*i_c_x)+(i_h_x*128)+dia+( 0 );
+            obe_o_y[0] =( 512*i_c_y)+(i_h_y*128)+dia+( 0 );
+
+            //:BOM://
+            obe_o_x[1] =( 512*i_c_x)+(i_h_x*128)+dia+(lat);
+            obe_o_y[1] =( 512*i_c_y)+(i_h_y*128)+dia+( 0 );
+
+            //:FAD://
+            obe_o_x[2] =( 512*i_c_x)+(i_h_x*128)+dia+( 0 );
+            obe_o_y[2] =( 512*i_c_y)+(i_h_y*128)+dia+(lat);
+
+            //:Current_Level:----------------------------://    
+            for( t_b_f = 0 ; t_b_f <=(3-1) ; t_b_f++ ){
+
+                dpx = obe_o_x[t_b_f] + i_t_x ;
+                dpy = obe_o_y[t_b_f] + i_t_y ;
+                dpi =( dpx + ( dpy * i_san ) );
+                dpc =( dpi * 4 );
+                dpu=(( 0x00
+                |   ( d_pix2048[ dpc + 0 ] << 24 )
+                |   ( d_pix2048[ dpc + 1 ] << 16 )
+                |   ( d_pix2048[ dpc + 2 ] <<  8 )
+                |   ( d_pix2048[ dpc + 3 ] <<  0 )
+                )>>> 0 );;
+                //:...u32.&.0x12345678...............://    
+                obe_v16[t_b_f] =( dpu & msk_v16 ) >>>( 28 );
+                obe_tik[t_b_f] =( dpu & msk_tik ) >>>(  0 );
+
+                obe_dpx[t_b_f] =( dpx );
+                obe_dpy[t_b_f] =( dpy );
+                obe_dpi[t_b_f] =( dpi );
+                obe_dpc[t_b_f] =( dpc );
+                obe_dpu[t_b_f] =( dpu );
+
+            };;
+            //:----------------------------:Current_Level://
+
+            //:TRIPPED_BOMBS_MUST_ANIMATE_FIRST://
+
+        };;
+
+    //:=========================:OBLITERATE_TILE_FUNCTION://
 
     const   F_HOTEL13_DET = function
     PRIVATE_F_HOTEL13_DET(
@@ -2618,18 +3280,20 @@
         //:---------------:ERROR_CHECKING_TRUNCATION_ZONE://
         //:What_Ticker_Are_We_Using:---------------------://
         {
-            var tik_bom =( 0 );
-            
-            if( d_hotel13_yes_aim ){
-            
-                tik_bom = d_tik ;//:Atomic_IVY_MMO:Ticker://
-            }else
-            if( d_hotel13_not_aim ){
-            
-                tik_bom = d_hotel13_sam.tik_num ;
-            }else{
-                ERR("[WTF:TICKER]");
-            };;
+            //: var tik_bom =( 0 );
+            //: 
+            //: if( d_hotel13_yes_aim ){
+            //: 
+            //:     tik_bom = d_tik ;//:Atomic_IVY_MMO:Ticker://
+            //: }else
+            //: if( d_hotel13_not_aim ){
+            //: 
+            //:     tik_bom = d_hotel13_sam.tik_num ;
+            //: }else{
+            //:     ERR("[WTF:TICKER]");
+            //: };;
+
+            tik_bom =( d_tik );
         }
         //:---------------------:What_Ticker_Are_We_Using://
         //:SET_FLAMES_ARE_DAMAGE_TIMESTAMPS:-------------://
@@ -2959,16 +3623,47 @@
         var dtu ; //: @dtu@ : Data TILE  Uint32 Value    ://
 
                
+            //:DAMAGE_RENDERING://
+
             var dpx_fad ; //: #_HIDE_DAMAGED_TILES_# ://
             var dpy_fad ; //: #_HIDE_DAMAGED_TILES_# :// 
 
             var dtx_fad ; //: #_HIDE_DAMAGED_TILES_# ://
             var dty_fad ; //: #_HIDE_DAMAGED_TILES_# :// 
-            var dti_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
+            var dti_fad ; //: #_HIDE_DAMAGED_TILES_# :// 
+            var c_i_fad ; //: #_HIDE_DAMAGED_TILES_# ://
             var dtu_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
 
             var t_v_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
             var t_t_fad ; //: #_HIDE_DAMAGED_TILES_# ://  
+
+
+            //:AUTO_TILE_RENDERING:TILE://
+
+            var dtx_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+            var dty_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+            var dti_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+            var c_i_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+            var dtu_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+                        
+            var t_v_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+            var t_t_ata ; //: #_SEE_FRACTAL_DAMAGE_# ://
+
+            //:AUTO_TILE_RENDERING:FADA://
+
+            var dtx_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+            var dty_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+            var dti_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+            var c_i_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+            var dtu_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+ 
+            var t_v_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+            var t_t_atf ; //: #_DONT_LATCH_TO_DAMAGED_#  ://
+
+            //:AUTO_TILE_RENDERING:5_BIT_TILE_VALUES:----://
+
+            var t32     ; //: 5 bit tile value           ://
+            var a32     ; //: 5 bit adjacent tile value  ://
         
         var h4x ; //: @h4x@ : HotelRoomX (DATALAYOUT)    ://
         var h4y ; //: @h4y@ : HotelRoomY (DATALAYOUT)    ://
@@ -3138,7 +3833,7 @@
                 
                 if( !!clk && (!(t_v>=1)) ){
                     ctx.strokeStyle = "GREEN"   ;
-                    ctx.strokeRect( pog_t_x, pog_t_y, t_w, t_h );
+                    ctx.strokeRect( pog_t_x, pog_t_y, t_w, t_h);
                 }else{
                     ASS( t_v >=0 && t_v <=(16-1) );
 
@@ -3155,6 +3850,79 @@
                         ERR("[BAD_T_V_FAD]");
                     };;
                     ctx.fillRect( pog_t_x, pog_t_y, t_w, t_h );
+
+                    //:apply_auto_tiling:--------------------://
+                    if( te7 >= 3 ){
+                    for( var at4 = 0 ; at4 <=(4-1) ; at4++ ){
+
+                        var l_r = d_hotel13_at4_l_r[ at4 ];
+                        var t_b = d_hotel13_at4_t_b[ at4 ];
+
+                        //:#ATA_TILE#:_______________________://
+
+                        dtx_ata = dpx + ( t_x + l_r );
+                        dty_ata = dpy + ( t_y + t_b );
+                        dti_ata= (dtx_ata + ( dty_ata* 2048 ) );
+                        c_i_ata=( 4 * dti_ata );  //:@COMDEX@://
+
+                        dtu_ata=(( 0x0
+                        | ( d_pix2048[ c_i_ata + 0 ] << 24 )     
+                        | ( d_pix2048[ c_i_ata + 1 ] << 16 )     
+                        | ( d_pix2048[ c_i_ata + 2 ] <<  8 )     
+                        | ( d_pix2048[ c_i_ata + 3 ] <<  0 )     
+                        )>>>0);
+
+                        t_v_ata =( dtu_ata >>> 28 )&(0xF);   
+                        t_t_ata =( dtu_ata & 0x0FFFFFFF );
+                        //:---------:0x12345678----------://
+
+                        //:#ATA_FADA#:_______________________://
+
+                        dtx_atf = dpx_fad + ( t_x + l_r );
+                        dty_atf = dpy_fad + ( t_y + t_b );
+                        dti_atf= (dtx_atf + ( dty_atf* 2048 ) );
+                        c_i_atf=( 4 * dti_atf );  //:@COMDEX@://
+
+                        dtu_atf=(( 0x0
+                        | ( d_pix2048[ c_i_atf + 0 ] << 24 )     
+                        | ( d_pix2048[ c_i_atf + 1 ] << 16 )     
+                        | ( d_pix2048[ c_i_atf + 2 ] <<  8 )     
+                        | ( d_pix2048[ c_i_atf + 3 ] <<  0 )     
+                        )>>>0);
+
+                        t_v_atf =( dtu_atf >>> 28 )&(0xF);   
+                        t_t_atf =( dtu_atf & 0x0FFFFFFF );
+                        //:---------:0x12345678----------://
+
+                        //:#_MAKE_5_BIT_TILE_VALUES_#://
+                        t32 =(t_v    |(( 0==t_v_fad?0:1)<<4));
+                        a32 =(t_v_ata|(( 0==t_v_atf?0:1)<<4));
+
+                    //: if( t_v != t_v_ata ){ ... };
+                        if( t32 != a32 ){
+    
+                            var d_x = d_hotel13_at4_d_x[ at4 ];
+                            var d_y = d_hotel13_at4_d_y[ at4 ];
+
+                            var atx = d_hotel13_at4_atx[ at4 ];
+                            var aty = d_hotel13_at4_aty[ at4 ];
+
+                            var aew =(t_w / d_x );
+                            var aeh =(t_h / d_y );
+
+                            ctx.fillStyle=( "#808080" );
+                            ctx.fillRect( 
+
+                               (pog_t_x)+(atx*(t_w-aew))  
+                            ,  (pog_t_y)+(aty*(t_h-aeh))
+                            ,  ( aew ) 
+                            ,  ( aeh ) 
+                            );;
+                        };;
+
+                    };;};;
+                    //:--------------------:apply_auto_tiling://
+
                 };;
                 
                  
@@ -3292,12 +4060,35 @@
                 pog_t_x = ( o_x + ( t_x * t_w ) );
                 pog_t_y = ( o_y + ( t_y * t_h ) );
 
-                ctx.strokeStyle=(
-                        d_hotel13_hcp_bom[ t_v ] 
-                );;
-                ctx.fillStyle=(
-                        d_hotel13_hcp_bom[ t_v ] 
-                );;
+                
+                //: #_TRIPPED_BOMBS_SHOULD_LOSE_COLOR_#://
+                if( t_t <= 0 ){
+                    let hcp_bom = d_hotel13_hcp_bom ;
+                    ctx.strokeStyle=( hcp_bom[ t_v ] );
+                    ctx.fillStyle  =( hcp_bom[ t_v ] );
+                }else{
+
+                    //: triptik:AKA:glowtik ://
+                    var triptik =(  
+                        d_hotel13_ttd_triptik[ t_v ] );;
+
+                    var bombage =( d_tik - t_t );
+
+                    if( bombage <= triptik ){
+
+                        //:KeepOnGlowing://
+                        ctx.strokeStyle=( "#88FFFF" );
+                        ctx.fillStyle  =( "#88FFFF" );
+                        
+                    }else{
+
+                        //:FlashingTime ://
+                        ctx.strokeStyle=( "#FF8888" );
+                        ctx.fillStyle  =( "#FF8888" );
+
+                    };;
+                };;
+ 
 
                 var bod = d_hotel13_ren_bom[ (2*t_v)+0 ];
                 var sig = d_hotel13_ren_bom[ (2*t_v)+1 ];
@@ -3548,19 +4339,16 @@
                         d_hotel13_hcp_fad[ t_v ] 
                 );;
     
-                ASS( d_hotel13_sam.tik_num >= 0 ,"[FK242]");
-                ASS(                   t_t >= 0 ,"[FK242]");
-                if( d_hotel13_sam.tik_num < t_t ){
+                ASS( d_tik >= 0 ,"[FK242]");
+                ASS(   t_t >= 0 ,"[FK242]");
+                if(  d_tik < t_t ){
                 
-                    YEL( "[tik_num]:" , d_hotel13_sam.tik_num );
-                    YEL( "[....t_t]:" , t_t );
+                    YEL( "[d_tik]:" , d_tik );
+                    YEL( "[..t_t]:" ,   t_t );
                 };;
 
-
-                var tikadel = (  //:AKA[ age ]://
-                    d_hotel13_sam.tik_num 
-                                    - t_t 
-                );; //:@tikadel@://
+                //:AKA[ age ]://
+                var tikadel = ( d_tik - t_t );   //:@tikadel@://
 
                 var fad_t_w ; //:FADA:til_wid://
                 var fad_t_h ; //:FADA:til_hig://
@@ -3640,7 +4428,7 @@
         let ctx = d_hotel13_sam.hot_con       ;
         let wid = d_hotel13_sam.hot_can.width ;
         let hig = d_hotel13_sam.hot_can.height;
-        let tik = d_hotel13_sam.tik_num       ;
+        let tik =( d_tik );
         
         if( 0 == tik%2 ){
             ctx.fillStyle = "DARKRED" ;
@@ -3667,28 +4455,60 @@
     PRIVATE_F_HOTEL13_SAM_TIK(
         /** NO ARGS **/
     ){
-        //: ------------------------------------- ://
-        //: Only update this number in standalone ://
-        //: code. That is why it is here and not  ://
-        //: inside of[ F_HOTEL13_TIK ]            ://
-        //: ------------------------------------- ://
-           
+        //:Update_Tick_Time:---------------------://            
 
         if( d_hotel13_not_aim ){
-
-                d_hotel13_sam.tik_num ++ ; 
-
-            //- d_hotel13_sam.tik_num = ( 0x0 ); -//
+        
+            d_tik ++ ; //:#[d_tik++]#://
         }else
         if( d_hotel13_yes_aim ){
-
-            d_hotel13_sam.tik_num =( d_tik );
+            //:----------------------------------://
+            //: Do nothing. Some other code is   ://
+            //: managing the ticker.             ://
+            //:----------------------------------://
         }else{
-            ERR("[unknown_case_2022]");
+            F_PRIVATE_HOTEL13_ERR(
+                "[UNKNOWNCASE_2022_07_12]"
+            );;
         };;
+        //:---------------------:Update_Tick_Time://
+        //:Do_Work_And_Adjust_Frame_Delay:-------://
+
+            d_hotel13_t_0 = performance.now();
+
+                F_HOTEL13_TIK();
+                F_HOTEL13_DRAW_2D();
+
+            d_hotel13_t_1 = performance.now();
+
+            d_hotel13_mil =(  d_hotel13_t_1
+                             -d_hotel13_t_0 );
+
+            d_hotel13_ams =(  d_hotel13_tms
+                            - d_hotel13_mil );
+
+        //:-------:Do_Work_And_Adjust_Frame_Delay://
+        //:Is_FPS_GOOD:--------------------------://
+        //:                                      ://
+        //: @d_hotel13_mil@ : used up  millisecs ://
+        //: @d_hotel13_tms@ : allotted millisecs ://
+        //:                                      ://
+        //:- - - - - - - - - -- - - - - - - - - -://
+
+            if( d_hotel13_mil <= d_hotel13_tms ){
+
+            //: console.log( "[TIME_TO_SPARE]"  );
+            }else{
+                console.log( "[YOU_BE_LAGGGIN]" );
+            };;
+        //:--------------------------:Is_FPS_GOOD://
+
+    //:   console.log("[d_hotel13_mil]:"
+    //:                ,d_hotel13_mil );;
+    //:   console.log("[d_hotel13_tms]:"
+    //:                ,d_hotel13_tms );;
     
-        F_HOTEL13_TIK();
-        F_HOTEL13_DRAW_2D();
+
     };;
     
     const   F_HOTEL13_SAM_TIKLOOP = function
@@ -3699,11 +4519,16 @@
         //:ugly looper function.       ://
         F_HOTEL13_SAM_TIK();
     
-        //:Call yourself again://
-        var one_2nd =( 1000 /**MS in Second**/ );
+        //:----------------------------------------------://
+        //: The timeout is __NOT__ target milliseconds   ://    
+        //: ( d_hotel13_tms )but rather the adjusted     ://    
+        //: milliseconds( d_hotel13_ams ). The amount    ://    
+        //: of milliseconds you have __LEFT__ after      ://    
+        //: doing your processing.                       ://    
+        //:----------------------------------------------://
         window.setTimeout(
-            F_HOTEL13_SAM_TIKLOOP
-        ,   one_2nd / d_hotel13_sam.tik_fps
+            ( F_HOTEL13_SAM_TIKLOOP )
+        ,   ( d_hotel13_ams         )    
         );;
     };;
         
@@ -3718,6 +4543,30 @@
         //:----------------------------------------------://
         if( d_hotel13_yes_aim ){ ERR("[StandAloneOnly]"); };    
         if(!d_hotel13_not_aim ){ ERR("[SAMVARSPROBLEM]"); };
+
+        //: TAG[ F_HOTEL13_SAM_INI | INITIALIZE_HOTEL  ] ://
+        //: TAG[ F_HOTEL13_INI     | INIT | INITIALIZE ] ://
+        
+        if( d_hotel13_not_aim ){
+            //:------------------------------------------://
+            //: Initialize tiker to 1 hour in the        ://    
+            //: future at 60FPS (      1000 == 1 second )://    
+            //:                 (   60*1000 == 1 minute )://    
+            //:                 (60*60*1000 == 1 hour   )://    
+            //:                                          ://    
+            //: We are GAURANTEED to be able to back-date://    
+            //: bomb-triggering by 1 hour. Should be more://    
+            //: than enough to manipulate timestamps in  ://    
+            //: bombs to make them detonate early.       ://    
+            //:                                          ://    
+            //:(we really only need maybe, 3 seconds max)://    
+            //:------------------------------------------://    
+            d_tik =( 60 * 60 * 1000 );  //:#TIMEWAVEZERO#://
+        }else{
+            PRIVATE_F_HOTEL13_ERR(
+                "[Code_Only_For_Standalone_Mode]"
+            );;
+        };;
     
         F_HOTEL13_SAM_TIKLOOP(); //:LoopForever://
     };;
@@ -4043,7 +4892,7 @@
         {
         if( nov_hit <= 0 /** Not Tile Blocked **/ )
         {
-            let   tik = d_hotel13_sam.tik_num ;
+            let   tik =(d_tik);
             let   v16 = d_hotel13_sam.edi_v16 ;
             var   tik_chk ;
             ASS(  tik <= 0x0FFFFFFF );
@@ -4071,7 +4920,7 @@
             };;
             tik_chk =( val_u32 >>>( 0 )&( 0x0FFFFFFF ) );
             if( tik != tik_chk 
-            ||  tik != d_hotel13_sam.tik_num
+            ||  tik !=   d_tik  
             ){
                 YEL("[TICKINFUCKED2022]");
                 ERR("[TICKINFUCKED2022]");
@@ -4120,7 +4969,35 @@
                     ,   t_x , t_y   //:<--LOCA:TILE__X_Y ://
                     ,   val_u32     //:<--VALU:TILE__VAL ://
                     );;
-                }else{                   //:BOMB_AND_FADA://
+
+                }else
+                if( 1 == sam.edi_la3 ){     //:BOMB_LAYER://
+
+                    var ttd =( 0 ); //:@ttd@://
+
+                    if( sam.edi_mod_act ){
+
+                        ttd =(d_hotel13_ttd_livetik[v16]);
+                        ASS( ttd <= 110 , "[ttd_110]" );
+                    };;
+
+                    //: ttd == 0 : Means NEVER detonate  ://
+                    //: ttd >= 1 : Ticks Till Detonation ://
+
+                    F_HOTEL13_U32_PUT_BOM(
+                        d_pix2048
+                    ,        2048 
+                    ,   c_x , c_y   //:<--LOCA:CITYBLOCK ://
+                    ,   h_x , h_y   //:<--LOCA:HOTELROOM ://
+                    ,   te7         //:<--LOCA:EXPALAYER ://
+                    ,   t_x , t_y   //:<--LOCA:TILE__X_Y ://
+
+                    ,   v16         //:<--VALU:TILE__VAL ://
+                    ,   ttd         //:TicksTill_Detonate://
+                    );;
+
+                }else
+                if( 2 == sam.edi_la3 ){     //:FADA_LAYER://    
 
                     ASS( 0 != la3 , "[zero_not_la3]" );
 
@@ -4132,6 +5009,10 @@
                     ,   te7 , la3   //:<--LOCA:EXPALAYER ://
                     ,   t_x , t_y   //:<--LOCA:TILE__X_Y ://
                     ,   val_u32     //:<--VALU:TILE__VAL ://
+                    );;
+                }else{
+                    F_PRIVATE_HOTEL13_ERR(
+                        "[Uknown_Editor_Layer]"
                     );;
                 };;
             }else{
@@ -4285,26 +5166,43 @@
         
         //:herman_s_editor_modes:------------------------://
         //:                                              ://
-        //: [H]e[R][M]an                                 ://
+        //: [H]e[R][M][A]n                               ://
         //:                                              ://
         //: [H]: Hold down brush                         ://
         //: [R]: Randomize Brush Size Every Click        ://
         //: [M]: Mirror Brush Strokes.                   ://
+        //: [A]: Set Down ACTIVATED/TRIPPED Bombs        ://
         //:                                              ://
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
         
         if( "H" == asc ){ F_TOG( sam,"edi_mod_hol" ); };
         if( "R" == asc ){ F_TOG( sam,"edi_mod_ran" ); };
         if( "M" == asc ){ F_TOG( sam,"edi_mod_mir" ); };
+        if( "A" == asc ){ F_TOG( sam,"edi_mod_act" ); };
         if( "N" == asc ){ F_TOG( sam,"edi_mod_nov" ); };
         
         if( "M" == asc ){
             window.alert("[mirroring_not_implemented]");
         };;
-        if( "O" == asc ){
-            window.alert(
-                "[did_you_mean:N:for:NoOverlapMode?]"
-            );;
+        if( "O" == asc ){ 
+
+            //:------------------------------------------://
+            //: Toggle OBLITERATION MODE on/off          ://
+            //: Instead of setting a tile of a given     ://
+            //: size, we destroy a tile of a given       ://
+            //: size on the grid. Destruction            ://
+            //: propegates downward to other tile        ://
+            //: sizes.                                   ://
+            //:                                          ://
+            //: Destruction also needs to propegate      ://
+            //: UPWARD and fractionate larger tiles      ://
+            //: into smaller chunks.                     ://
+            //:------------------------------------------://
+
+            F_TOG( sam,"edi_mod_obe" );
+
+             
+            YEL( "[FINISH_OBLITERATION_MODE]" );
         };;
         
         //:DANGER_ZONE:----------------------------------:// 
@@ -4983,7 +5881,7 @@
     #DIAGOS#: Diagonal Offset Formula For Quarkmap Structure
     #DIAGO# : #DIAGOS# without the S so same len as #LATOS#
     
-    @tik_sec@ : You want[ tik_fps ]
+    @tik_sec@ : You want[ d_tik ]
     
     @tik_bom@ : Timestamp encoded into BOMB value.
     @tik_fad@ : Timestamp encoded into FADA value.(Flame/Damage)
@@ -5442,7 +6340,7 @@
               : NOT[ dib  or  mis ]
               : YES[ dib and  mis ]
 
-    @edi_fps@ : You mean[ tik_fps ]
+    @edi_fps@ : You mean[ tik_fps ]but_you_need[ d_fps ]
 
     #_TE7_BEFORE_LA3_# : TE7 is more general  , thus 1st.
     #_LA3_AFTERR_TE7_# : LA3 is more specific , thus 2nd.
@@ -5606,6 +6504,277 @@
         look asthetically ugly.
 
         NOW_DATE[ 2022_07_11 ]TIME[ 0548PM ]
+
+    #_SEE_FRACTAL_DAMAGE_# :
+
+        We need basic auto tiling to observe the fractal
+        damage effects from the OBLITERATION( OBE )
+        function. I don't want to get too heavy into
+        render code, but we need the bare minimum to
+        observe what is happening to the tiles.
+
+        NOW_DATE[ 2022_07_11 ]TIME[ 0704PM ]
+
+        @dtx_ata@ : DataTileX : AutoTileAlgorithm
+        @dty_ata@ : DataTileY : AutoTileAlgorithm
+        @dti_ata@ : DataTileI : AutoTileAlgorithm
+        @c_i_ata@ : DataTileC : AutoTileAlgorithm
+        @dtu_ata@ : DataTileU : AutoTileAlgorithm
+               
+        @t_v_ata@ : TileValue : AutoTileAlgorithm
+        @t_t_ata@ : TileTime  : AutoTileAlgorithm
+
+        @ata@ : Auto_Tile_Algorithm
+
+        @at4@ : AutoTile_4 ( 4 numbers for 4 sides we   )
+                           ( can check when auto tiling )       
+                           ( at4 == 0 to 3 inclusive    )
+
+        @atx@ : Autotile_Translate : X 
+        @aty@ : Autotile_Translate : Y 
+
+        @aeh@ : Autotile_Edge : HEIGHT
+        @aew@ : Autotile_Edge : WIDTH
+
+    #ATA_TILE# : AutoTileAgorithm : TILE section
+
+        We need to get adjacent tile value for auto
+        tile agorithm rendering.
+
+    #ATA_FADA# : AutoTileAgorithm : FADA section
+    
+        Correct auto tiling also requires we know
+        the "FADA" value of a tile. If a value is
+        "destroyed" it is considered another 
+        type of tile. Destroyed tiles do not
+        auto-tile with intact tiles.
+
+    #_DONT_LATCH_TO_DAMAGED_# :
+
+        For auto tiling to render correctly we cannot
+        consider a DAMAGED tile of the same type to
+        be a "neighbor".
+
+        Say we have tile type "AYEBITCH" .
+
+        Intact    "AYEBITCH" tiles auto tile with each other.
+        Destroyed "AYEBITCH" tiles auto tile with each other.
+
+        But an Intact "AYEBITCH" will not tile with a
+        Destroyed "AYEBITCH" because they consider 
+        themselves two different tiles.
+
+        Or in other words, the financially ruined
+        "AYEBITCH" no longer gets to hang out with
+        her rich "AYEBITCH" tiles because while they
+        are both "AYEBITCH"s, they are two seperate
+        CLASSES/CATEGORIES now.
+
+        NOW_DATE[ 2022_07_11 ]TIME[ 808 ]PM 
+
+        @pixdex@  : Pixel data index
+        @comdex@  : Component of pixel index
+        @pixu32@  : Pixel uint32 value
+
+        @dtx_atf@ : DataTile - X - AutoTileFada
+        @dty_atf@ : DataTile - Y - AutoTileFada
+        @dti_atf@ : DataTile - I - AutoTileFada (@pixdex@)
+        @c_i_atf@ : DataTile - C - AutoTileFada (@comdex@)
+        @dtu_atf@ : DataTile - U - AutoTileFada (@pixu32@)
+                  
+        @t_v_atf@ : TileValue ---- AutoTileFada
+        @t_t_atf@ : Tile_Type ---- AutoTileFada
+
+        @t32@ : Tile Value 0 to 31 inclusive. ( 5 bits )
+        @a32@ : ADJACENT AUTO TILE NEIGHBOR TILE VALUE
+              : ( also 5 bits, 0 to 31 inclusive )
+
+    #_MAKE_5_BIT_TILE_VALUES_#
+
+        Use bitshifting to pack on a 1 bit to end of
+        4bit tile value if damage (FADA) exists in
+        the same space as the tile.
+
+        We are not going to create different kinds of
+        damaged tiles based on what kind of damage 
+        it is... Too many combinations AND it would
+        make it statistically unlikely to ever see
+        damaged tiles auto-tile with each other.
+
+    #_LETS_NOT_MAKE_THINGS_CATCH_FIRE_# :
+
+        The idea of a spreading fire sounds like a fun
+        feature. But too much complexity. Get a game
+        working first.
+
+    @fimar@ : Falling Iron MARble
+    @fibem@ : Falling Iron BEam ( horizontal beam )
+    @firon@ : Falling IRON (        vertical beam )
+
+    #_DIA_TIL_FAD_BOM_# : WRONG_FIX[ _DIA-TIL-BOM-FAD_ ]
+    #_DIA_BOM_FAD_TIL_# : WRONG_FIX[ _DIA-TIL-BOM-FAD_ ]
+    #_DIA_BOM_TIL_FAD_# : WRONG_FIX[ _DIA-TIL-BOM-FAD_ ]
+    #_DIA_FAD_BOM_TIL_# : WRONG_FIX[ _DIA-TIL-BOM-FAD_ ]
+    #_DIA_FAD_TIL_BOM_# : WRONG_FIX[ _DIA-TIL-BOM-FAD_ ]
+
+    #_DIA_TIL_BOM_FAD_# :--------------------------------------:
+    |                                                          :
+    |   Quarkmap Structure Holding Tile, Bomb and Fada         :
+    |   data at different lateral offsets.                     :
+    |                                                          :
+    |  [T]-------[B]--------+   [T]&t : [@til_o_x@,@til_o_y@]  :
+    |   |         |         |                                  :
+    |   |   TIL   |   BOM   |   [B]&b : [@bom_o_x@,@bom_o_y@]  :
+    |   |    0    |    1    |                                  :
+    |  [F]--------t----b----+   [F]&f : [@fad_o_x@,@fad_o_y@]  :
+    |   |         | til|fad |                                  :
+    |   |   FAD   f----+----+  <-- #_DIA_T_B_F_#               :
+    |   |    1    | bom|[][]                                   :
+    |   +---------+----+[]                                     :
+    |                                                          :
+    |   @c_lay_til@ : ZERO( 0 )  lmx=( 0 ) lmy=( 0 )           :
+    |   @c_lay_bom@ :  ONE( 1 )  lmx=( 1 ) lmy=( 0 )           :
+    |   @c_lay_fad@ :  TWO( 2 )  lmx=( 0 ) lmy=( 1 )           :
+    |                                                          :
+    |   @lmy@ : Lateral Multiplier Y ( final_lat_y = lat*lmy ) :
+    |   @lmx@ : Lateral Multiplier X ( final_lat_x = lat*lmx ) :
+    |                                                          :
+    :----------------------------------------------------------:
+
+    DAY_START[ 2022_07_12 ]TIME[ 121 PM ]
+
+        We need to get the obliterate( OBE )function
+        working. But before we can do that, we need 
+        enough feedback to visually verify the 
+        different bomb states.
+
+    #_TRIPPED_BOMBS_SHOULD_LOSE_COLOR_# :
+
+        Tripped bombs will lose their color.
+        A tripped bomb is any bomb with a non-zero
+        time value.
+
+    @hot_tik@ : YOU_MEAN[ tik_num ]
+
+    #_TIME_NOSTART_ZERO_# / #TIMEWAVEZERO# :
+
+        Ticker time starts at 1 hour in the future 
+        for 60FPS. That means if game is 30FPS the ticker
+        is 2 hours in the future.
+
+        Treat this as a guarantee that the ticker has
+        started 1 hour (not 2) in the future.
+
+        Q : WHY DO WE NEED THIS ?
+        A : If we want to manipulate the time it takes a
+          : bomb to trip depending on if touched by user
+          : or touched by flames, we will need to
+          : BACKDATE the tick time.
+          :
+          : Set the timecode in the bomb tile to an EARLIER
+          : time than what [ d_tik / tik_num ]actually is
+          : in order to cause quicker detonation.
+
+          NOW_DATE[ 2022_07_12 ]TIME[121]PM
+
+    #_TIK_NUM_REMOVED_# :
+        
+        We removed "tik_num" because I anticipate that
+        being a source of immense pain if we are to
+        cut+paste this code into the main code base
+        with zero problems. DATE[2022_07_12]TIME[143]PM
+
+    @ttd@ : Ticks_Till_Detonation
+          : A value of "ZERO" means "NEVER". The bomb is
+          : "un tripped"
+          :
+          : Could also think of it as "Time To Die"
+
+    @b16@ : Uint32 bomb value, 0 to 15 inclusive.
+          :(16 possible values)
+
+    @tdd@ : NO FUCKING TEST DRIVEN DEVELOPMENT HERE.
+          : Did you mean[ ttd ] ?
+
+    @i_t16@ : Did you mean[ i_ttd ]?
+
+    #TRIPTIK_AND_FLASTIK# :
+
+       @TRIPTIK@: Is the number of frames that the bomb
+                : stays "turned on" / "glowing" after you
+                : have passed by it.
+
+       @FLASTIK@: After the bomb is done glowing and 
+                : the time to detonation is even closer,
+                : the bomb begins to flash/strobe.
+                :
+                : FLASTIK is the number of frames this
+                : will happen for.
+
+    @t_m@ : Tick Multiplier. We design around 30FPS and
+          : [ scale / multiply ] some values if the
+          : frame rate of the game ends up something
+          : faster. Like 60FPS for instance.
+
+    #_POSITIVE_LIVETIK_# :
+        
+        Time To Die ( ttd ) values need to be non-zero
+        because 0 flags bomb ass "untripped" so even
+        instant kill bombs need at least 1 frame of
+        delay.
+
+        Put that 1 frame in the flashing time rather
+        than the tripping time.
+       
+    @bombage@ : BOMB_AGE ( how old is bomb since time it )
+                         ( was [activate/tripped] ?      )
+
+
+    #_TIK_FPS_REMOVED_# 
+        
+        Removing[ tik_fps ]and using[ d_fps ]so that we
+        don't run into weird problems after we cut+paste
+        this code into the main engine.
+        
+    @d_hotel13_targmil@ : USE[ d_hotel13_tms ]
+
+    @d_hotel13_tms@ : Target_Milli_Seconds
+
+    @d_hotel13_old@ : USE[ d_hotel13_t_0 ]
+    @d_hotel13_now@ : USE[ d_hotel13_t_1 ]
+
+    @d_hotel13_livetik@ : YOU_MEAN[ d_hotel13_ttd_livetik ]
+
+    #_TIME_TO_DIE_NOTES_# 
+
+        Original Notes :
+
+            //:------------------------------------------://
+            //-CurrentTime( d_tik )Plus TimeToDie(i_ttd) -//  
+            //-give us framesToLive( u32_tik ).          -//
+            //+ABOVE WRONG... That puts the bomb in the  +//
+            //+FUTURE!! We want a bomb set right NOW     +//
+            //-Must Add 1 because instant-kill bombs     -//
+            //-have ZERO DELAY. But if[ u32_tik ]is zero -//
+            //-that flags them as[ not tripped ].        -//
+            //+InstantKill's[ ttd ]must be at least 1.   +//
+            //:------------------------------------------://
+            
+            //- u32_tik =( d_tik + i_ttd ); WRONG        -//
+
+        More Notes :
+
+            Currently we need a way to adjust time to die
+            if we desire to speed up it's death because
+            was tripped by FLAME rather than ALICE/IVY.
+
+            [TODO:FLAME_TRIP_ADJUSTMENT]
+
+            To do this, we need to compare the inputted
+            [ i_ttd ]with the timespan of
+            [ d_hotel13_ttd_livetik ].
+
+        
    
 *** ******************************************************** **/
 
