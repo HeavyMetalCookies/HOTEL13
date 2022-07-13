@@ -853,6 +853,7 @@
     ,   edi_te7_max :( 4)  //: AKA[ edi_ran_max ]  ://
     
     ,   edi_mod_hol :( 1)  //: Hold Brush Down     ://
+    ,   edi_mod_era :( 0)  //: Eraser Mode         ://
     ,   edi_mod_ran :( 1)  //: Randomize Brush Size://
     ,   edi_mod_mir :( 0)  //: Mirror Brush Strokes://
     ,   edi_mod_act :( 0)  //: Set Bombs Activated?://
@@ -1096,6 +1097,35 @@
         //:TAG[ lookuptablesection | tablesection           ]://
         //:TAG[ lookup tables section | lut section         ]://
 
+        //:BAC_BOMB_ANIMATION_COLORS:--------------------://   
+        {
+            let __black__ =( "#000000" );
+            let __grey1__ =( "#222222" );
+            let __grey2__ =( "#444444" );
+            let __grey3__ =( "#666666" );
+            let __grey4__ =( "#888888" );
+
+            let __white__ =( "#FFFFFF" );
+            let __yello__ =( "#FFFF00" );
+            let __orang__ =( "#FF8800" );
+            let __reddo__ =( "#FF0000" );
+             
+
+            var d_hotel13_bac =([
+            //:  #123456
+                __white__  
+            ,               __black__  
+            ,   __white__  
+            ,               __grey1__  
+            ,   __yello__  
+            ,               __grey2__  
+            ,   __orang__  
+            ,               __grey3__  
+            ,   __reddo__  
+            ,               __grey4__     
+            ]);;
+        }
+        //:--------------------:BAC_BOMB_ANIMATION_COLORS://
         //:TTD_TIME_TILL_DETONATION:GENERALLY:-----------://
         {
             //:----------------------------------://
@@ -1110,16 +1140,18 @@
             //: @instkil@ : Times For INSTANTKILL://
             //:----------------------------------://
 
+            //:#_FRAME_DELAY_NOT_MSEC_DELAY_#://
+
             var d_hotel13_ttd_triptik_sparker =(   0 );
-            var d_hotel13_ttd_flastik_sparker =(   5 );
+            var d_hotel13_ttd_flastik_sparker =(   1 );
 
-            var d_hotel13_ttd_triptik_lazbeam =( 100 );
-            var d_hotel13_ttd_flastik_lazbeam =(  10 );
+            var d_hotel13_ttd_triptik_lazbeam =(   0 );
+            var d_hotel13_ttd_flastik_lazbeam =(   1 );
 
-            var d_hotel13_ttd_triptik_classic =( 100 );
+            var d_hotel13_ttd_triptik_classic =(  30 );
             var d_hotel13_ttd_flastik_classic =(  10 );
 
-            var d_hotel13_ttd_triptik_echobox =( 100 );
+            var d_hotel13_ttd_triptik_echobox =(  30 );
             var d_hotel13_ttd_flastik_echobox =(  10 );
 
             //: #_POSITIVE_LIVETIK_#   : : : : : : : ://                         
@@ -2324,9 +2356,127 @@
     ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY| tx,ty | 09,10 | ://
       
     ){
+        //:[ATF]:----------------------------------------://
+        //:                                              ://
+        //: This is a cut+paste and refactor of          ://
+        //: [ F_HOTEL13_U32_PUT_ANY ], modified          ://
+        //: to GET the tile value instead of PUT.        ://
+        //:                                              ://
+        //:----------------------------------------:[ATF]://
 
-        ERR("[TODO:FINISH_GET_ANY]");
+        var o_u32 =( 0 );      //:Output Value Is Zero If://
+                               //:We Go Out Of Bounds    ://
 
+        if( d_bug >= 1 ){
+            ASS( 10 == arguments.length            ,"[GA_A1]");
+            
+            if( i_pix.length ==(2048*2048*4) ){
+            
+                ASS( 2048 == i_san , "[GASAN:2048]" );
+            }else
+            if( i_pix.length ==( 512*512*4) ){
+            
+                ASS(  512 == i_san , "[GASAN:0512]" );
+            }else{
+                ERR("[GA:unsupported_pix_size]");
+            };;
+            
+            if( i_san != 2048
+            &&  i_san !=  512
+            ){
+                ERR("[GA:Bad_Input_Span]");
+            };;
+            
+            ASS( i_c_x >= 0 && i_c_x <= ( 3-1) , "[GA_A3]");        
+            ASS( i_c_y >= 0 && i_c_y <= ( 3-1) , "[GA_A4]");
+            ASS( i_h_x >= 0 && i_h_x <= ( 4-1) , "[GA_A5]");
+            ASS( i_h_y >= 0 && i_h_y <= ( 4-1) , "[GA_A6]");
+            ASS( i_te7 >= 0 && i_te7 <= ( 7-1) , "[GA_A7]");
+            ASS( i_t_x >= 0 && i_t_x <= (64-1) , "[GA_A8]");
+            ASS( i_t_y >= 0 && i_t_y <= (64-1) , "[GA_A9]");   
+        };;
+
+        var skipme =( 0 );
+        var di1    =(0-1); //:1D index of pixel data://
+
+        //:INVALID_SIZE_IS_A_CRASH:----------------------://
+        if( 512 != i_san && 2048 != i_san ){
+            skipme=( 1 );
+            ERR("[PU:DATA_IS_INVALID_SIZE:2022_07_12]");
+        };;
+        //:----------------------:INVALID_SIZE_IS_A_CRASH://
+        //:SKIP_IF_BAD_CITY_BLOCK:-----------------------://
+        //:                                              ://
+        //:  REFERENCE[ #_AIM_MASTER_MEMORY_LAYOUT_# ]   ://
+        //:                                              ://
+        //:- - - - - - - - - - - -- - - - - - - - - - - -://
+        if( 512 == i_san ){
+        
+            if( i_c_x != 0 ){ skipme = 1 ; };
+            if( i_c_y != 0 ){ skipme = 1 ; };
+        }else
+        if( 2048 == i_san ){
+
+            if( (!( 1 == i_c_x ) )
+            &&  (!( 1 == i_c_y ) )
+            ){
+                skipme = 1 ; //:NOT WITHIN CROSS://
+            }else
+            if( !( i_c_x >= 0 && i_c_x <=(3-1) )
+            ||  !( i_c_y >= 0 && i_c_y <=(3-1) )
+            ){
+                skipme = 1 ; //:NOT WITHIN 3X3 AREA://
+            };;
+                
+        }else{
+            skipme=( 1 );
+            ERR( "[PU:Designed_Only_For_These_Sizes]" );
+        };;
+        //:-----------------------:SKIP_IF_BAD_CITY_BLOCK://
+        //:CITYBLOCK_TO_1D_INDEX:------------------------://
+        if( (!skipme) && d_bug ){
+          
+            var chk = ( i_c_x + ( i_c_y * 4 ) );
+            if( 0
+            &&                chk != mm1 
+            &&  chk != mm4 && chk != mm5 && chk != mm6
+            &&                chk != mm9
+            ){
+                skipme=( 1 );
+                ERR("[PU:PROGRAMMER_ERROR:2022_07_12]");
+            };;
+        };;
+        //:------------------------:CITYBLOCK_TO_1D_INDEX://
+        //:FIND_DATA_PIXEL_LOCATION_XY:------------------://
+        if( !skipme ){
+        
+            di1 =( F_HOTEL13_DI8_DI1(
+                
+                i_san        //:<-- Pixel Span Of Data   ://
+                             
+            ,   i_c_x,i_c_y  //:<---CITYBLO| d1,d2 | --- ://
+            ,   i_h_x,i_h_y  //:<---HOTELRO| d3,d4 | --- ://
+            ,   i_te7,i_la3  //:<---EXPALAY| d5,d6 | --- ://
+            ,   i_t_x,i_t_y  //:<---Tile_XY| d7,d8 | --- ://
+            ));;             //:@d1_d2_d3_d4_d5_d6_d7_d8@://
+        };;
+        //:------------------:FIND_DATA_PIXEL_LOCATION_XY://
+        //:SET_DATA_IN_PIXEL_BUFFER:---------------------://    
+        if( !skipme ){
+        
+            ASS( di1 >= 0          , "[PUT_DI1:TOO_LOW]" );
+            ASS( di1 < (2048*2048) , "[PUT_DI1:TOO_HIG]" );
+
+            o_u32 =(( 0x00
+            |    ( ( i_pix[ (4*di1)+0 ] )<< 24 )
+            |    ( ( i_pix[ (4*di1)+1 ] )<< 16 )
+            |    ( ( i_pix[ (4*di1)+2 ] )<<  8 )
+            |    ( ( i_pix[ (4*di1)+3 ] )<<  0 )
+            ) >>> 0 );;
+        };;
+        //:---------------------:SET_DATA_IN_PIXEL_BUFFER://
+
+        return( o_u32 );
     };;
 
     const   F_HOTEL13_U32_PUT_ANY = function
@@ -2355,19 +2505,19 @@
             
             if( i_pix.length ==(2048*2048*4) ){
             
-                ASS( 2048 == i_san );
+                ASS( 2048 == i_san , "[PUSAN:2048]" );
             }else
             if( i_pix.length ==( 512*512*4) ){
             
-                ASS( 2048 == i_san );
+                ASS(  512 == i_san , "[PUSAN:0512]" );
             }else{
-                ERR("[unsupported_pix_size]");
+                ERR("[PU:unsupported_pix_size]");
             };;
             
             if( i_san != 2048
             &&  i_san !=  512
             ){
-                ERR("[Bad_Input_Span]");
+                ERR("[PU:Bad_Input_Span]");
             };;
             
             ASS( i_c_x >= 0 && i_c_x <= (3-1)      ,"[A3]");
@@ -2561,15 +2711,17 @@
         if( chk_ttd !=   d_tik ){ ERR("[NOTDTIK]"); };
         };;
 
-        F_HOTEL13_U32_PUT_ANY(
-            i_pix,i_san  //:<--DATA:PIXELS  :------------://
-        ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :------------://
-        ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :------------://
-        ,   i_te7,( 1 )  //:<--LOCA:EXPALAY :------------://
-        ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :------------://
-        ,   u32_bom      //:<--VALU:TileVAL :------------://
-        );;
+        //:lay_bomb_on_tilemap:--------------------------://
 
+            F_HOTEL13_U32_PUT_ANY(
+                i_pix,i_san  //:<--DATA:PIXELS  :--------://
+            ,   i_c_x,i_c_y  //:<--LOCA:CITYBLO :--------://
+            ,   i_h_x,i_h_y  //:<--LOCA:HOTELRO :--------://
+            ,   i_te7,( 1 )  //:<--LOCA:EXPALAY :--------://
+            ,   i_t_x,i_t_y  //:<--LOCA:Tile_XY :--------://
+            ,   u32_bom      //:<--VALU:TileVAL :--------://
+            );;
+        //:--------------------------:lay_bomb_on_tilemap://
         //:check_that_correct_values_were_put:-----------://
 
             var got_bom =(
@@ -4082,10 +4234,18 @@
                         
                     }else{
 
-                        //:FlashingTime ://
-                        ctx.strokeStyle=( "#FF8888" );
-                        ctx.fillStyle  =( "#FF8888" );
+                    ///    //:FlashingTime ://
+                    ///    if( bombage%4  <=(2-1) ){
+                    ///        ctx.strokeStyle=( "#888888" );
+                    ///        ctx.fillStyle  =( "#888888" );
+                    ///    }else{
+                    ///        ctx.strokeStyle=( "#FFFF00" );
+                    ///        ctx.fillStyle  =( "#FFFF00" );
+                    ///    };;
 
+                        var rgb=( d_hotel13_bac[ bombage%10 ] );
+                        ctx.strokeStyle=( rgb );
+                        ctx.fillStyle  =( rgb );
                     };;
                 };;
  
@@ -4872,6 +5032,7 @@
         //:NO_OVerlap_Tile_Setting_Mode:-----------------://
         if( 1
         &&  ( sam.edi_mod_nov >= 1 )
+        &&  ( sam.edi_mod_era <= 0 ) //: #_D_B_T_ERASER# ://
         &&  (    0
             ||   0 === sam.edi_la3  //:TILE(S)://
             ||   1 === sam.edi_la3  //:BOMB(S)://
@@ -4950,6 +5111,26 @@
             const t_x = sam.te7_clk_t_x[   te7 ];
             const t_y = sam.te7_clk_t_y[   te7 ];
 
+            if( 1
+            &&  ( sam.edi_mod_era >=( 1 ) )
+            &&  ( sam.edi_la3     >=( 0 ) )
+            &&  ( sam.edi_la3     <=(3-1) )
+            ){
+
+                //:ERASE_CURRENT_LAYER_TILE_TYPE://
+
+                //:YEL("[eraser_for_layer:la3]:",la3);
+
+                F_HOTEL13_U32_PUT_ANY(
+                    d_pix2048
+                ,        2048 
+                ,   c_x , c_y     //:<--LOCA :-------://
+                ,   h_x , h_y     //:<--LOCA :-------://
+                ,   te7 , la3     //:<--LOCA :-------://
+                ,   t_x , t_y     //:<--LOCA :-------://
+                ,   ( 0x00000000 )//:<--VALU :-------://
+                );;
+            }else
             if( 0 === sam.edi_la3
             ||  1 === sam.edi_la3
             ||  2 === sam.edi_la3
@@ -4978,7 +5159,7 @@
                     if( sam.edi_mod_act ){
 
                         ttd =(d_hotel13_ttd_livetik[v16]);
-                        ASS( ttd <= 110 , "[ttd_110]" );
+                    //: ASS( ttd <= 110 , "[ttd_110]" );
                     };;
 
                     //: ttd == 0 : Means NEVER detonate  ://
@@ -5161,14 +5342,13 @@
         if( "B" == asc ){ sam.edi_la3 =(   1   ); };
         if( "D" == asc ){ sam.edi_la3 =( F_A_D ); };
         if( "F" == asc ){ sam.edi_la3 =( F_A_D ); };
-
-        if( "E" == asc ){ sam.edi_la3 =(  0-1  ); };
         
         //:herman_s_editor_modes:------------------------://
         //:                                              ://
-        //: [H]e[R][M][A]n                               ://
+        //: [H][E][R][M][A]n                             ://
         //:                                              ://
         //: [H]: Hold down brush                         ://
+        //: [E]: Eraser                                  ://
         //: [R]: Randomize Brush Size Every Click        ://
         //: [M]: Mirror Brush Strokes.                   ://
         //: [A]: Set Down ACTIVATED/TRIPPED Bombs        ://
@@ -5176,6 +5356,7 @@
         //:- - - - - - - - - - - -- - - - - - - - - - - -://
         
         if( "H" == asc ){ F_TOG( sam,"edi_mod_hol" ); };
+        if( "E" == asc ){ F_TOG( sam,"edi_mod_era" ); };
         if( "R" == asc ){ F_TOG( sam,"edi_mod_ran" ); };
         if( "M" == asc ){ F_TOG( sam,"edi_mod_mir" ); };
         if( "A" == asc ){ F_TOG( sam,"edi_mod_act" ); };
@@ -6774,7 +6955,20 @@
             [ i_ttd ]with the timespan of
             [ d_hotel13_ttd_livetik ].
 
+    [FINISH_GET_ANY] : WHERE THE FUCK IS THIS TEXT?
         
+    #_D_B_T_ERASER_# : Dont block the eraser.
+
+    #_FRAME_DELAY_NOT_MSEC_DELAY_# :
+
+        I am being an idiot. The[ ttd ]values are
+        ____FRAME____ delays. ( not millisecond delays ).
+
+        A value of 100 at 30fps is 3.33 seconds.
+
+        So... The code __IS__ working properly.
+
+        NOW_DATE[ 2022_07_12 ]TIME[ 633 ]PM
    
 *** ******************************************************** **/
 
