@@ -7020,6 +7020,177 @@
             For the same reason I worked on making bombs
             render correctly before deciding I was ready
             to work on the tile-obliteration logic.
+
+    #_HOW_DO_GIANT_FALLING_TILES_WORK_# :----------------------:
+    |                                                          |
+    |   Giant falling tiles DONT FALL , they must be           |
+    |   fractionated by blasts first. Though invincible        |
+    |   type, they can be cracked. Once cracked into           |
+    |   game sized tiles, they will fall.                      |
+    |                                                          |
+    |                                                          |
+    |   #_FALLING_CLEAVAGE_#                                   |
+    |                                                          |
+    |       16x16 grid of alice sized tiles :                  |
+    |                                                          |
+    |       [0][1][2][3][4][5][6][7][8][9][A][B][C][D][E][F]   |
+    |       [1][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [2][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [3][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [4][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [5][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [6][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [7][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [8][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [9][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [A][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [B][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [C][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [D][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [E][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |       [F][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |                                                          |
+    |       Giant 16 pebble sized tile ( te7==4 ) :            |
+    |        ______________________________________________    |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [      Q:                                      ]   |
+    |       [      Giant Falling Horizontal Beam Block     ]   |
+    |       [      What happens when hit by tiny bomb?     ]   |
+    |       [                                              ]   |
+    |       [      A:                                      ]   |
+    |       [      The material will cleave and visually   ]   |
+    |       [      appear as seen in 1st diagram below.    ]   |
+    |       [                                              ]   |
+    |       [      The actual block replacement is seen    ]   |
+    |       [      in the 2nd diagram below.               ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [______________________________________________]   |
+    |                                                          |
+    |   This giant tile gets hit by a bomb, taking             |
+    |   out an ALICE sized tile chunk , this is what           |
+    |   HORIZONTAL BEAM block looks like after taking          |
+    |   a blast ( WITH auto_tiling applied )                   |
+    |        ______________________________________________    |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [______________________________________________]__ |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [                                              ]   |
+    |       [______________________________________________]__ |
+    |       [                                              ]   |
+    |       [______________________________________________]__ |
+    |       [______________________________________________]__ |
+    | [B]> > > [___________________________________________]__ |
+    |                                                          |
+    |         :--------------------------------------------:   |
+    |   BELOW : What different fractionation patterns look :   |
+    |         : like WITHOUT their auto_tiling methods     :   |
+    |         : applied to the materials.                  :   |
+    |         :--------------------------------------------:   |
+    |                                                          |
+    |   FALLING HORIZONTAL CLEAVAGE PATTERN :                  |
+    |   #_FALLING_CLEAVAGE_# : HORBEAM (autotiles horizontal)  |
+    |        ______________________  ______________________    |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [______________________][______________________]   |
+    |       [          ][          ][          ][          ]   |
+    |       [          ][          ][          ][          ]   |
+    |       [          ][          ][          ][          ]   |
+    |       [__________][__________][__________][__________]   |
+    |       [    ][    ][    ][    ][    ][    ][    ][    ]   |
+    |       [____][____][____][____][____][____][____][____]   |
+    |       [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    | [B]> > > [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]   |
+    |                                                          |
+    |   FALLING VERTICAL CLEAVAGE PATTERN :                    |
+    |   #_FALLING_CLEAVAGE_# : VERBEAM (autotiles vertically)  |
+    |        _  _  ____  __________  ______________________    |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][          ][                      ]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][__________][                      ]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][          ][                      ]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][__________][______________________]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][          ][                      ]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][__________][                      ]   |
+    |       [ ][ ][    ][          ][                      ]   |
+    |       [ ][ ][____][          ][                      ]   |
+    |       [_][ ][    ][          ][                      ]   |
+    | [B]> > > [_][____][__________][______________________]   |
+    |                                                          |
+    |                                                          |
+    |   FALLING MARBLE CLEAVAGE PATTERN :                      |
+    |   #_FALLING_CLEAVAGE_# : MARBEAM (autotiles __NEVER__)   |
+    |        ______________________  ______________________    |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [                      ][                      ]   |
+    |       [______________________][______________________]   |
+    |       [          ][          ][                      ]   |
+    |       [          ][          ][                      ]   |
+    |       [          ][          ][                      ]   |
+    |       [__________][__________][                      ]   |
+    |       [    ][    ][          ][                      ]   |
+    |       [____][____][          ][                      ]   |
+    |       [E][_][    ][          ][                      ]   |
+    |          [_][____][__________][______________________]   |
+    |                                                          |
+    |   NON_MOVING TILE FRACTIONATION PATTERN :                |
+    |                                                          |
+    |       ************************************************   |
+    |       *                                              *   |
+    |       *     Same as MARBEAM pattern.                 *   |
+    |       *                                              *   |
+    |       ************************************************   |
+    |                                                          |
+    |   #_WHY_NOT_ANIMATE_GIANT_FALLING_TILES_# :              |
+    |                                                          |
+    |       If we animate a giant tile falling, it doesn't     |
+    |       collide with anything until it snapps into the     |
+    |       next tile position for that tile size.             |
+    |                                                          |
+    |       When in the inbetween state... The whole tile      |
+    |       flashes. That could be a giant flashing danger     |
+    |       area the size of a level with a big enough         |
+    |       falling tile... That will look horrible.           |
+    |                                                          |
+    |       Also... Does it slip behind ALICE sized tiles or   |
+    |       does it fractionate when it hits ALICE sized tiles |
+    |       like an iceburg hitting spikes?                    |
+    |                                                          |
+    |       All of these rules seem :                          |
+    |                                                          |
+    |           1. Weird to look at.                           |
+    |                                                          |
+    |           2. Logically strange.                          |
+    |                                                          |
+    |           3. Hard to impliment.                          |
+    |                                                          |
+    |       Instead , we should just do #_FALLING_CLEAVAGE_#   |
+    :----------------------------------------------------------:
    
 *** ******************************************************** **/
 
