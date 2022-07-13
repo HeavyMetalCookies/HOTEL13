@@ -1,4 +1,6 @@
 
+    window.alert( "[ d_fps ==> c_fps ]" );
+    window.alert( "[#_TILE_EXTRA_BITS_RENDER_#]" );
     window.alert( "[TODO:FLAME_TRIP_ADJUSTMENT]" );
     window.alert( "[TRIPPED_BOMBS_MUST_ANIMATE_FIRST]" );
     window.alert( "[Create OBE : fractal_OBliteratE_Tile]" );
@@ -6969,6 +6971,55 @@
         So... The code __IS__ working properly.
 
         NOW_DATE[ 2022_07_12 ]TIME[ 633 ]PM
+
+    #_SPARKS_CANT_BE_FADA_# :
+
+        If we want to be able to have sparks over destroyed
+        materials, the sparks  CANNOT be "FADA" they need
+        to be something else.
+
+        If we want sparks and flames to exist on same tile
+        simultaniously, sparks CANNOT be "FADA".
+
+        Solution? We need to break up the bits of geom tile's
+        uint32 a bit more.
+        
+        |<------- RED CHANNEL ------>|<- G ->|<- B ->|<- A ->|
+        |  v16  | tb1  tb2  tb3  tb4 | 8_BIT | 8_BIT | 8_BIT |
+        | 11 11 |  1    1    1    1  |                       |
+                |<--SPK-->||<--FAL-->|<-ANI->|<-ANI->|<-ANI->|
+                                     |<-SPK->|<-SPK->|<-FAL->|
+                                     |<-ta1->|<-ta2->|<-ta3->|
+
+        tb1 : TileBit #1 : Is there a "static spark" here ?
+        tb2 : TileBit #2 : Is there a "fallingspark" here ?
+        tb3 : TileBit #3 : Is this TOP of falling tile    ?
+        tb4 : TileBit #4 : Is this BOT of falling tile    ?
+
+        ta1 : TileAnimation 1 : 255 frames for "static spark"
+        ta2 : TileAnimation 2 : 255 frames for "fallin spark"
+        ta3 : TileAnimation 3 : 255 frames for "falling tile"
+
+        #_HOW_DO_BIG_TILES_FALL_# ???
+
+            I was thinking about not allowing bigger tiles
+            to fall, but it wrecks consistency of simulation.
+
+            Instead... If a tile is __NOT__ snapped to grid
+            because it is falling, it animates as flashing
+            and transparent. You have until it locks into
+            place to get away.
+
+        #_TILE_EXTRA_BITS_RENDER_# :
+
+            A note to myself that I need to implement
+            correct rendering of these extra bits in
+            a tile __BEFORE__ I work on the
+            obliterate ( OBE ) function.
+
+            For the same reason I worked on making bombs
+            render correctly before deciding I was ready
+            to work on the tile-obliteration logic.
    
 *** ******************************************************** **/
 
