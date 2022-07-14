@@ -6882,7 +6882,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
             });;
         }else{
-            h13.m_giv.end( "[HOTEL13:UNKNOWN_URL_PATH]" );
+            var h13_webpage =( "" //:----------------://
+            +'      <!DOCTYPE HTML><head>              '
+            +'      <meta charset="utf-8"><title>      '
+            +'          [AIM]                          '
+            +'      </title>                           '
+            +'          <script                        '
+            +'              src    ="./HOTEL13"        '
+            +'              charset="UTF-8">           '
+            +'          </script>                      '
+            +'      </head>                            '
+            );; //:----------------------------------://
+
+            h13.m_giv.writeHead(   200 ,  d_htm  );
+            h13.m_giv.end( h13_webpage , "utf-8" );
         };;
 
     }).listen(process.env.PORT); };; //:=================://
