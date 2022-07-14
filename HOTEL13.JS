@@ -6877,8 +6877,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 if(i_err){
                     i_cof = "[we messed up]" ;
                 }else{
-                    sob.m_giv.writeHead( 200 , d_js );
-                    sob.m_giv.end( i_cof  , "utf-8" );
+                    h13.m_giv.writeHead( 200 , d_js );
+                    h13.m_giv.end( i_cof  , "utf-8" );
                 };;
             });;
         }else{
