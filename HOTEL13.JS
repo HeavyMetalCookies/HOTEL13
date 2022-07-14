@@ -8071,10 +8071,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
-        if( 2 == m_seg.length ){
+        if( 2 == h13.m_seg.length ){
 
-            var obj_x = F_HOTEL13_TRYATOI( m_seg[ 0 ] );
-            var obj_y = F_HOTEL13_TRYATOI( m_seg[ 1 ] );
+            var obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 0 ] );
+            var obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
 
             if( obj_x.m_has && obj_y.m_has ){
 
