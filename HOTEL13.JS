@@ -4,8 +4,8 @@
     {
         let yes =( "undefined" === typeof window );               
         let not =( "undefined"  != typeof window ); 
-        var d_hotel13_yesnode =( yes );
-        var d_hotel13_notnode =( not );
+        var d_hotel13_yesnode =( yes ? 0 : 1 );
+        var d_hotel13_notnode =( not ? 1 : 0 );
     }
     //:====================:HOTEL13_ENVIORNMENT_DETECTION://
     //:HOTEL13_ARE_YOU_ALONE:============================://
