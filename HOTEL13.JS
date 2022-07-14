@@ -8023,7 +8023,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 o_obj.m_i32 =( 0 );
             }else{
 
-                o_obj.m_has =(  0 );
+                o_obj.m_has =(  1  );
                 o_obj.m_i32 =( res );
             };;
 
