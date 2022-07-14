@@ -8078,9 +8078,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             if( obj_x.m_has && obj_y.m_has ){
 
+                let _ =( " " ); //:Space://
+                let c =( "," ); //:Comma://
+
                 var seg_x =( obj_x.m_i32 );
                 var seg_y =( obj_y.m_i32 );
-
+            
+                h13.m_giv.writeHead( 200 , d_txt );
+                h13.m_giv.write( "("+_+seg_x+_+c+_+seg_y+")" );
                 h13.m_giv.end("[I_Understand_You]");
             }else{
 
