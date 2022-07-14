@@ -6832,6 +6832,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var l_fs  = require( "fs"               );   
         var l_url = require( "url"              );   
         var l_qs  = require( "node:querystring" );   
+
+        let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
+        var d_jso = { [c_t]: "application/json"         } ;
+        var d_txt = { [c_t]: "text/plain"               } ;
+        var d_png = { [c_t]: "image/png"                } ;
+        var d_htm = { [c_t]: "text/html"                } ;
+        var d_js  = { [c_t]: "text/javascript"          } ;
+        var d_exe = { [c_t]: "application/x-msdownload" } ;
+        var d_css = { [c_t]: "text/css"                 } ;
+
     };;
     if( d_hotel13_h13node ){ require("http").createServer(( 
 
@@ -6859,8 +6869,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( h13.m_url == "/HELLO" ){
 
             h13.m_giv.end( "[!WORLD!]" );
+        }else
+        if( h13.m_url == "/HOTEL13" ){
+
+            l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
+
+                if(i_err){
+                    i_cof = "[we messed up]" ;
+                }else{
+                    sob.m_giv.writeHead( 200 , d_js );
+                    sob.m_giv.end( i_cof  , "utf-8" );
+                };;
+            });;
         }else{
-            h13.m_giv.end( "[HOTEL13]" );
+            h13.m_giv.end( "[HOTEL13:UNKNOWN_URL_PATH]" );
         };;
 
     }).listen(process.env.PORT); };; //:=================://
@@ -8472,6 +8494,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         "segment markers" to remind us where we are
         in the file.
         DATE[2022_07_13]KANJICODER ( 714PM )
+
+    #JS_DYNA_KEY# : https://stackoverflow.com/questions/6500573
+
+        How to make dyamic/computed properties in
+        Javascript object literal.
    
 *** ******************************************************** **/
 
