@@ -1,11 +1,51 @@
 
-    window.alert( "[ d_fps ==> c_fps ]" );
-    window.alert( "[#_TILE_EXTRA_BITS_RENDER_#]" );
-    window.alert( "[TODO:FLAME_TRIP_ADJUSTMENT]" );
-    window.alert( "[TRIPPED_BOMBS_MUST_ANIMATE_FIRST]" );
-    window.alert( "[Create OBE : fractal_OBliteratE_Tile]" );
-    window.alert( "[make laser propegantion _DET function first]"  );
 
+    //:HOTEL13_ENVIORNMENT_DETECTION:====================://
+    {
+        let yes =( "undefined" === typeof window );               
+        let not =( "undefined"  != typeof window ); 
+        var d_hotel13_yesnode =( yes );
+        var d_hotel13_notnode =( not );
+    }
+    //:====================:HOTEL13_ENVIORNMENT_DETECTION://
+    //:HOTEL13_ARE_YOU_ALONE:============================://
+    //:                                                  ://
+    //:    Is this code currently a part of our          ://
+    //:    [ Atomic Ivy MMO ]AKA[ BOOM MMO ] ?           ://
+    //:    SEE[ www.tinyurl.com/BOMB-GAME-TUTORIAL ]     ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        //: Hotel13 Integrated Into Larger Project ? :- -://
+
+            const d_hotel13_yes_aim =( 0
+            ||  (!( "undefined" === typeof notnode ))  
+            ||  (!( "undefined" === typeof yesnode ))  
+            );;
+            const d_hotel13_not_aim =( 
+                (!d_hotel13_yes_aim)  );;
+
+        
+        //: Hotel13 as stand alone server ?  :- - - - - -://
+
+            const d_hotel13_h13node =( 1
+            &&    d_hotel13_not_aim
+            &&    d_hotel13_yesnode
+            );;
+    //:============================:HOTEL13_ARE_YOU_ALONE://
+    //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
+    if( d_hotel13_notnode >= 1 ){
+    
+        let w_a =( window.alert );
+    
+        w_a( "[ d_fps ==> c_fps ]"                      );
+        w_a( "[#_TILE_EXTRA_BITS_RENDER_#]"             );
+        w_a( "[TODO:FLAME_TRIP_ADJUSTMENT]"             );
+        w_a( "[TRIPPED_BOMBS_MUST_ANIMATE_FIRST]"       );
+        w_a( "[Create OBE : fractal_OBliteratE_Tile]"   );
+        w_a( "[make laser propegantion _DET func 1st]"  );
+    };;
+    //:====================:HOTEL13_CLIENT_SIDE_TODO_LIST://
     //:000_3RD:UPNG_LIB:=================================://
     //:                                                  ://
     //: WEB_URL : github.com/photopea/UPNG.js            ://
@@ -1916,12 +1956,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:=============================:HOTEL13_COLOR_PALLET://    
 
 
-    const d_hotel13_yes_aim =( 0
-    ||  (!( "undefined" === typeof notnode ))  
-    ||  (!( "undefined" === typeof yesnode ))  
-    );;
-    const d_hotel13_not_aim =( 
-        (!d_hotel13_yes_aim)  );;
+
         
     const d_hotel13_sam =( d_hotel13_not_aim ? 
     {   laxcoma : "[HACK]"
@@ -3105,57 +3140,57 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
             //:------------------------------:check__here://
             //: ******** #_BIGGER_TILES_FIRST_# ******** :// 
-            //:check_above:------------------------------://    // [CAP_H13]
-            if( o_hit <= 0 ){                                   // [CAP_H13]
-                                                                // [CAP_H13]
-                //:#_DIBAMIS_DIV_#://                           // [CAP_H13]
-                                                                // [CAP_H13]
-                //:  LOOP_DIRECTION[ _UP_ ] ------------ ://    // [CAP_H13]
-                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){     // [CAP_H13]
-                                                                // [CAP_H13]
-                    dia = d_hotel13_te7_dia[ te7 ];             // [CAP_H13]
-                    lat = d_hotel13_te7_lat[ te7 ];             // [CAP_H13]
-                                                                // [CAP_H13]
-                    chk    =(d_hotel13_te7_lat[6-(te7-i_te7)]); // [CAP_H13]
-                    dibamis=(d_hotel13_te7_peb[  (te7-i_te7)]); // [CAP_H13]
-                    ASS( chk === dibamis , "[chk:dibamis]");    // [CAP_H13]
-                                                                // [CAP_H13]
-                    //: ttx == tx0 == tx1                       // [CAP_H13]
-                    //: tty == ty0 == ty1                       // [CAP_H13]
-                    ttx = Math.floor( t_x / dibamis );          // [CAP_H13]
-                    tty = Math.floor( t_y / dibamis );          // [CAP_H13]
-                                                                // [CAP_H13]
-                //:NOLOOP:===============================://    // [CAP_H13]
-                //:NOLOOP:===============================://    // [CAP_H13]
-                                                                // [CAP_H13]
-                    //:almost_a_cutpaste:002_of_003:-----://    // [CAP_H13]
-                                                                // [CAP_H13]
-                    dpx =ldx+dia+(lmx*lat)+ttx ;                // [CAP_H13]
-                    dpy =ldy+dia+(lmy*lat)+tty ;                // [CAP_H13]
-                    dpi =( dpx + ( dpy * 2048 ) );              // [CAP_H13]
-                    dci =( 4 * dpi );                           // [CAP_H13]
-                                                                // [CAP_H13]
-                    u32=(( 0x00                                 // [CAP_H13]
-                    |   ( d_pix2048[ dci + 0 ] << 24 )          // [CAP_H13]
-                    |   ( d_pix2048[ dci + 1 ] << 16 )          // [CAP_H13]
-                    |   ( d_pix2048[ dci + 2 ] <<  8 )          // [CAP_H13]
-                    |   ( d_pix2048[ dci + 3 ] <<  0 )          // [CAP_H13]
-                    )>>> 0 );;                                  // [CAP_H13]
-                    //:...u32.&.0x12345678...............://    // [CAP_H13]
-                    v16 =( u32 & 0xF0000000 ) >>>( 28 );        // [CAP_H13]
-                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );        // [CAP_H13]
-                                                                // [CAP_H13]
-                    if( v16 >(   0  )  ){                       // [CAP_H13]
-                                                                // [CAP_H13]
-                        o_hit =( 1 );                           // [CAP_H13]
-                    };;                                         // [CAP_H13]
-                    //:-----:almost_a_cutpaste:002_of_003://    // [CAP_H13]
-                                                                // [CAP_H13]
-                //:===============================:NOLOOP://    // [CAP_H13]
-                //:===============================:NOLOOP://    // [CAP_H13]
-                };;                                             // [CAP_H13]
-            };;                                                 // [CAP_H13]
-            //:------------------------------:check_above://    // [CAP_H13]
+            //:check_above:------------------------------://    // [H_1_3]
+            if( o_hit <= 0 ){                                   // [H_1_3]
+                                                                // [H_1_3]
+                //:#_DIBAMIS_DIV_#://                           // [H_1_3]
+                                                                // [H_1_3]
+                //:  LOOP_DIRECTION[ _UP_ ] ------------ ://    // [H_1_3]
+                for( te7 = i_te7+1 ; te7 <=(7-1) ; te7++ ){     // [H_1_3]
+                                                                // [H_1_3]
+                    dia = d_hotel13_te7_dia[ te7 ];             // [H_1_3]
+                    lat = d_hotel13_te7_lat[ te7 ];             // [H_1_3]
+                                                                // [H_1_3]
+                    chk    =(d_hotel13_te7_lat[6-(te7-i_te7)]); // [H_1_3]
+                    dibamis=(d_hotel13_te7_peb[  (te7-i_te7)]); // [H_1_3]
+                    ASS( chk === dibamis , "[chk:dibamis]");    // [H_1_3]
+                                                                // [H_1_3]
+                    //: ttx == tx0 == tx1                       // [H_1_3]
+                    //: tty == ty0 == ty1                       // [H_1_3]
+                    ttx = Math.floor( t_x / dibamis );          // [H_1_3]
+                    tty = Math.floor( t_y / dibamis );          // [H_1_3]
+                                                                // [H_1_3]
+                //:NOLOOP:===============================://    // [H_1_3]
+                //:NOLOOP:===============================://    // [H_1_3]
+                                                                // [H_1_3]
+                    //:almost_a_cutpaste:002_of_003:-----://    // [H_1_3]
+                                                                // [H_1_3]
+                    dpx =ldx+dia+(lmx*lat)+ttx ;                // [H_1_3]
+                    dpy =ldy+dia+(lmy*lat)+tty ;                // [H_1_3]
+                    dpi =( dpx + ( dpy * 2048 ) );              // [H_1_3]
+                    dci =( 4 * dpi );                           // [H_1_3]
+                                                                // [H_1_3]
+                    u32=(( 0x00                                 // [H_1_3]
+                    |   ( d_pix2048[ dci + 0 ] << 24 )          // [H_1_3]
+                    |   ( d_pix2048[ dci + 1 ] << 16 )          // [H_1_3]
+                    |   ( d_pix2048[ dci + 2 ] <<  8 )          // [H_1_3]
+                    |   ( d_pix2048[ dci + 3 ] <<  0 )          // [H_1_3]
+                    )>>> 0 );;                                  // [H_1_3]
+                    //:...u32.&.0x12345678...............://    // [H_1_3]
+                    v16 =( u32 & 0xF0000000 ) >>>( 28 );        // [H_1_3]
+                    tik =( u32 & 0x0FFFFFFF ) >>>(  0 );        // [H_1_3]
+                                                                // [H_1_3]
+                    if( v16 >(   0  )  ){                       // [H_1_3]
+                                                                // [H_1_3]
+                        o_hit =( 1 );                           // [H_1_3]
+                    };;                                         // [H_1_3]
+                    //:-----:almost_a_cutpaste:002_of_003://    // [H_1_3]
+                                                                // [H_1_3]
+                //:===============================:NOLOOP://    // [H_1_3]
+                //:===============================:NOLOOP://    // [H_1_3]
+                };;                                             // [H_1_3]
+            };;                                                 // [H_1_3]
+            //:------------------------------:check_above://    // [H_1_3]
             //: ******** #_SMALLER_TILES_NEXT_# ******** :// 
             //:check_below:------------------------------://
             if( o_hit <= 0 ){
@@ -6721,7 +6756,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
         console.log("[part_of_something_larger]");
     }else
-    if( d_hotel13_not_aim ){
+    if( 1                  //:---------------------------://
+    &&  d_hotel13_not_aim  //: <-- STANDALONE APP ?      ://
+    &&  d_hotel13_notnode  //: <-- CLIENT    SIDE ?      ://
+    ){                     //:---------------------------://
     
         console.log("[cellcularbombomata]");
         
@@ -6776,11 +6814,50 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         F_HOTEL13_UTM();  //:#WHY_UTM_ONLY_CALLED_HERE#??://
         F_HOTEL13_SAM_RUN();
     
+    }else
+    if( 1                  //:---------------------------://
+    &&  d_hotel13_not_aim  //: <-- STANDALONE APP ?      ://
+    &&  d_hotel13_yesnode  //: <-- SERVER    SIDE ?      ://
+    ){                     //:---------------------------://
+
+        console.log( "[hotel13_running_as_server]" );
     }else{
         ERR("[unexpectedcase:2022_07_05]");
     };;
     //:========================:HOTEL13_STAND_ALONE_SETUP://
+    //:HOTEL13_SERVER_MODE:==============================://
+    if( d_hotel13_h13node ){ require("http").createServer(( 
 
+        i_ask  //:AKA[ req / request  ]://
+    ,   i_giv  //:AKA[ res / response ]://
+    )=>{
+
+        //:----------------------------------------------://
+        //:  @h13@ : The state object bundle(sob)        ://
+        //:        : for hotel13's server. __NOT__       ://
+        //:        : named "sob" to avoid confusion      ://
+        //:        : with main[ AIM / BOOM ]server.      ://
+        //:----------------------------------------------://
+
+        var   h13 ={  laxcoma : "[laxcoma_hack]"
+        ,   m_ask : i_ask                                     
+        ,   m_giv : i_giv                                     
+        ,   m_url : l_url.parse( i_ask.url , 1 ).pathname     
+        ,   m_pam : l_qs .parse( i_ask.url , 1 ).query        
+        ,   m_seg : [ "URLPATH_SEGMENTS_NOT_LOADED]" ]        
+        };;
+        h13.m_url =( h13.m_url.toUpperCase()             );      
+        h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
+
+        if( h13.m_url == "/HELLO" ){
+
+            h13.m_giv.end( "[!WORLD!]" );
+        }else{
+            h13.m_giv.end( "[HOTEL13]" );
+        };;
+
+    }).listen(process.env.PORT); };; //:=================://
+    //:HOTEL13_SERVER_MODE:==============================://
 
 
 
