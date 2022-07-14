@@ -35,6 +35,8 @@
     //:============================:HOTEL13_ARE_YOU_ALONE://
     //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
     if( d_hotel13_notnode >= 1 ){
+
+        console.log( "[HOTEL13_SAYS:isnt_node_js_env]" );
     
         let w_a =( window.alert );
     
@@ -2050,8 +2052,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:SERVER_JS_POLYFILLS:==============================://
     
         function F_PRIVATE_HOTEL13_ERR( msg ){ 
-                alert( "[err:msg]:" + msg );
-                throw( "[err:msg]:" + msg );
+
+            if( d_hotel13_notnode ){
+                alert(       "[err:msg]:" + msg );
+                throw(       "[err:msg]:" + msg );
+            }else{
+                console.log( "[err:msg]:" + msg );
+                      throw( "[err:msg]:" + msg );
+            };;
         };;
         function F_PRIVATE_HOTEL13_ASS( t_f , i_msg ){
             
