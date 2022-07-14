@@ -28,10 +28,10 @@
         
         //: Hotel13 as stand alone server ?  :- - - - - -://
 
-            const d_hotel13_h13node =( 1
+            const d_hotel13_h13node =(( 1
             &&    d_hotel13_not_aim
             &&    d_hotel13_yesnode
-            );;
+            ) ? 1 : 0 );;
     //:============================:HOTEL13_ARE_YOU_ALONE://
     //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
     if( d_hotel13_notnode >= 1 ){
