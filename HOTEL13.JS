@@ -5824,32 +5824,46 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_FUNCS:NODESYSTEM_SAVE:====================://
     //:HOTEL13_FUNCS:NODESYSTEM_LOAD:====================://
 
-        const   F_HOTEL13_NODESYS_SAV = function
-        PRIVATE_F_HOTEL13_NODESYS_SAV(
-
-            /** VOID **/
+        const   EXECUTO_F_HOTEL13_NODESYS_SAV = function
+        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_SAV(
+            o_k_yes                                     
+        ,   wontsay     
         ){
             var o_k =( 1 );
-
+            
             F_HOTEL13_2048_0512( 1 , 1 );
-
+            
             LOG(  "[UPNG.encode]" , "[BEG]" );
             d_png = UPNG.encode( 
-
+            
                 [d_pix0512] //:ArrayOf_Frames://
             ,   512         //:Width_InPixels://
             ,   512         //:HeightInPixels://
             ,   (0)         //:ZERO==LOSSLESS://
             );;
             LOG(  "[UPNG.encode]" , "[END]" );
-
+            
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
+                
+            o_k_yes( "[TODO:NODEJS_STUFF]" );  
         };;
-    
-        const   F_HOTEL13_NODESYS_LOD = function
-        PRIVATE_F_HOTEL13_NODESYS_LOD(
+
+        const   F_HOTEL13_NODESYS_SAV = function
+        PRIVATE_F_HOTEL13_NODESYS_SAV(
 
             /** VOID **/
+        ){
+            var o_promise =( new Promise( 
+            
+                EXECUTO_F_HOTEL13_NODESYS_SAV
+            ));;
+            return( o_promise );                      
+        };;
+
+        const   EXECUTO_F_HOTEL13_NODESYS_LOD = function
+        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_LOD(
+            o_k_yes                                     
+        ,   wontsay  
         ){
             var o_k =( 1 );
             
@@ -5925,6 +5939,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             }else{
                 YEL( "[NODESYS_LOD:FAILURE]" );
             };;
+        };;
+    
+        const   F_HOTEL13_NODESYS_LOD = function
+        PRIVATE_F_HOTEL13_NODESYS_LOD(
+
+            /** VOID **/
+        ){
+            var o_promise =( new Promise(
+
+                EXECUTO_F_HOTEL13_NODESYS_LOD
+            ));;
+
+            return( o_promise );
         };;
     //:====================:HOTEL13_FUNCS:NODESYSTEM_SAVE://
     //:====================:HOTEL13_FUNCS:NODESYSTEM_LOAD://
@@ -7922,6 +7949,87 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ERR("[unexpectedcase:2022_07_05]");
     };;
     //:========================:HOTEL13_STAND_ALONE_SETUP://
+    //:TRY_TO_PARSE_INTEGER:=============================://
+    //:                                                  ://
+    //:    Used so that we can detect what levelpack     ://
+    //:    X/Y room is being requested by client.        ://
+    //:                                                  ://
+    //:    EXAMPLE:  www.myserver.com/000/000            ://
+    //:           :  Is LevelPack [ 0 , 0 ]              ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        const   F_HOTEL13_TRYATOI = function
+        PRIVATE_F_HOTEL13_TRYATOI(
+
+            i_str
+        ){
+            var o_obj ={ laxcoma:"[HACK]"
+
+            ,   m_has : 0 //: m_i32 exists ?      ://
+            ,   m_i32 : 0 //: boxed integer value ://
+            };;
+
+            var dex     ;
+            var s09 = ""; //:@s09@:String:Only0T09://
+            var nlz = ""; //:@nlz@:NoLeadingZeros ://
+            var c_p =(1); //:@c_p@:CollectionPhase://
+
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: Remove anything but "0" to "9" ascii     ://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+
+            var arr =( i_str.split("").filter( ( c )=>{
+
+                var o_yes =( 0
+                ||  "0" == c
+                ||  "1" == c
+                ||  "2" == c
+                ||  "3" == c
+                ||  "4" == c
+                ||  "5" == c
+                ||  "6" == c
+                ||  "7" == c
+                ||  "8" == c
+                ||  "9" == c
+                );;
+                return( o_yes );
+            }));;
+            var s09 = arr.join("");
+            
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: Removing leading zeros.: : : : : : : : : ://
+            //: "001" ==> "1"          : : : : : : : : : ://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+
+            for(dex = 0 ; dex <=(s09.length-1) ; dex++){    
+
+                if( 1 == c_p ){
+                    if( "0" != nlz[ dex ] ){
+
+                        c_p=( 2 );
+                    };;
+                };;
+
+                if( 2 == c_p ){
+                    nlz += s09[ dex ];
+                };;
+            };;
+    
+            var res = Number.parseInt( nlz , 10 );
+            if( Number.isNaN( res ) ){
+
+                o_obj.m_has =( 0 );
+                o_obj.m_i32 =( 0 );
+            }else{
+
+                o_obj.m_has =(  0 );
+                o_obj.m_i32 =( res );
+            };;
+
+            return( o_obj );
+        };;
+    //:=============================:TRY_TO_PARSE_INTEGER://
     //:HOTEL13_SERVER_MODE:==============================://
     if( d_hotel13_h13node ){
 
@@ -7963,6 +8071,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( 2 == m_seg.length ){
+
+            var obj_x = F_HOTEL13_TRYATOI( m_seg[ 0 ] );
+            var obj_y = F_HOTEL13_TRYATOI( m_seg[ 1 ] );
+
+            if( obj_x.m_has && obj_y.m_has ){
+
+                var seg_x =( obj_x.m_i32 );
+                var seg_y =( obj_y.m_i32 );
+
+                h13.m_giv.end("[I_Understand_You]");
+            }else{
+
+                h13.m_giv.end("[Room_XY_Is_BS]");
+            };;
+        }else
         if( h13.m_url == "/HELLO" ){
 
             h13.m_giv.end( "[!WORLD!]" );
@@ -9618,6 +9742,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         of memory in cell[ 1 , 1 ]of[ d_pix2048 ].
 
         CURRENT_DATE[ 2022_07_14 ]
+
+    @buf_3pc@ : buffer:3rd_party_code 
+    @img_3pc@ : image::3rd_party_code 
+
+    @obj_x@ : Object that MIGHT contain X coordinate.
+    @obj_y@ : Object that MIGHT contain Y coordinate.
+
+    @seg_x@ : URL segment integer containing X axis value.
+    @seg_y@ : URL segment integer containing Y axis value.
+
+
+
+
    
 *** ******************************************************** **/
 
