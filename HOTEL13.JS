@@ -6826,6 +6826,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     };;
     //:========================:HOTEL13_STAND_ALONE_SETUP://
     //:HOTEL13_SERVER_MODE:==============================://
+    if( d_hotel13_h13node ){
+
+        /// l_pg  = require( "pg"               );   
+        var l_fs  = require( "fs"               );   
+        var l_url = require( "url"              );   
+        var l_qs  = require( "node:querystring" );   
+    };;
     if( d_hotel13_h13node ){ require("http").createServer(( 
 
         i_ask  //:AKA[ req / request  ]://
