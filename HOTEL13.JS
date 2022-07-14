@@ -4813,9 +4813,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_FUNCS:FILESYSTEM_SAVE:====================://
     //:HOTEL13_FUNCS:FILESYSTEM_LOAD:====================://
 
+        const F_HOTEL13_FILESYS_SAVE = "[FIX:FILESYS_SAV]" ;
+        const F_HOTEL13_FILESYS_LOAD = "[FIX:FILESYS_LOD]" ;
+        const F_HOTEL13_FILESYS_LOA  = "[FIX:FILESYS_LOD]" ;
     
-        //:sfjlsdjfsjflks://
+        const F_HOTEL13_FILESYS_SAV = function
+        PRIVATE_HOTEL13_FILESYS_SAV(
 
+            /** Args? **/
+        ){
+
+            window.showOpenFilePicker();
+
+        };;
+    
+        const F_HOTEL13_FILESYS_LOD = function
+        PRIVATE_HOTEL13_FILESYS_LOD(
+
+            /** Args? **/
+        ){
+
+            window.showOpenFilePicker();
+
+        };;
     //:====================:HOTEL13_FUNCS:FILESYSTEM_SAVE://
     //:====================:HOTEL13_FUNCS:FILESYSTEM_LOAD://
     //:HOTEL13_FUNCS:ALL_RENDER_CODE:====================://
@@ -6433,6 +6453,23 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     ){
         let sam = d_hotel13_sam ;
         var asc = F_HOTEL13_EVT_ASC( evt_key );
+
+        //:levelpack_save:-------------------------------://
+        //:levelpack_load:-------------------------------://
+    
+            if( "S" == asc ){ F_HOTEL13_FILESYS_SAV();    };
+            if( "L" == asc ){ F_HOTEL13_FILESYS_LOD();    };
+            if( "O" == asc ){ /** OBLITERATE NOT OPEN **/ };
+
+            //:------------------------------------------://
+            //:                                          ://
+            //: Will only work from a webserver it seems ://
+            //:                                          ://
+            //: stackoverflow.com/questions/69591311     ://
+            //:------------------------------------------://
+
+        //:-------------------------------:levelpack_save://
+        //:-------------------------------:levelpack_load://
 
         if( "-" == asc
         ||  "_" == asc
