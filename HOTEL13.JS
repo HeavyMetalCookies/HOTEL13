@@ -18,14 +18,14 @@
 
         //: Hotel13 Integrated Into Larger Project ? :- -://
 
-            const d_hotel13_yes_aim =( 0
+            const d_hotel13_yes_aim =(( 0
             ||  (!( "undefined" === typeof notnode ))  
             ||  (!( "undefined" === typeof yesnode ))  
-            );;
-            const d_hotel13_not_aim =( 
-                (!d_hotel13_yes_aim)  );;
-
-        
+            ) ? 1 : 0 );;
+            const d_hotel13_not_aim =((
+                (!d_hotel13_yes_aim)  
+            ) ? 1 : 0 );;
+            
         //: Hotel13 as stand alone server ?  :- - - - - -://
 
             const d_hotel13_h13node =(( 1
