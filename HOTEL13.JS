@@ -8084,10 +8084,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_giv.end("[I_Understand_You]");
             }else{
 
-                h13.m_giv.write( "[m_seg[0]]:" , m_seg[ 0 ] );
-                h13.m_giv.write( "\n"                       );
-                h13.m_giv.write( "[m_seg[1]]:" , m_seg[ 1 ] );
-                h13.m_giv.write( "\n"                       );
+                let seg = h13.m_seg ;
+                h13.m_giv.write( "[m_seg[0]]:" , seg[ 0 ] );
+                h13.m_giv.write( "\n"                     );
+                h13.m_giv.write( "[m_seg[1]]:" , seg[ 1 ] );
+                h13.m_giv.write( "\n"                     );
                 h13.m_giv.end("[Room_XY_Is_BS]");
             };;
         }else
