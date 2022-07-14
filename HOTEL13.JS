@@ -7982,16 +7982,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var arr =( i_str.split("").filter( ( c )=>{
 
                 var o_yes =( 0
-                ||  "0" == c
-                ||  "1" == c
-                ||  "2" == c
-                ||  "3" == c
-                ||  "4" == c
-                ||  "5" == c
-                ||  "6" == c
-                ||  "7" == c
-                ||  "8" == c
-                ||  "9" == c
+                ||  "0" === c
+                ||  "1" === c
+                ||  "2" === c
+                ||  "3" === c
+                ||  "4" === c
+                ||  "5" === c
+                ||  "6" === c
+                ||  "7" === c
+                ||  "8" === c
+                ||  "9" === c
                 );;
                 return( o_yes );
             }));;
@@ -8084,6 +8084,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_giv.end("[I_Understand_You]");
             }else{
 
+                h13.m_giv.write( "[m_seg[0]]:" , m_seg[ 0 ] );
+                h13.m_giv.write( "\n"                       );
+                h13.m_giv.write( "[m_seg[1]]:" , m_seg[ 1 ] );
+                h13.m_giv.write( "\n"                       );
                 h13.m_giv.end("[Room_XY_Is_BS]");
             };;
         }else
