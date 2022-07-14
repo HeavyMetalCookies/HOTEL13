@@ -6830,6 +6830,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         console.log( "[hotel13_running_as_server]" );
     }else{
+
+        console.log( "[d_hotel13_yes_aim]:"
+                    ,  d_hotel13_yes_aim );;
+
+        console.log( "[d_hotel13_not_aim]:" 
+                    ,  d_hotel13_not_aim );;
+
+        console.log( "[d_hotel13_yesnode]:" 
+                    ,  d_hotel13_yesnode );;
+
+        console.log( "[d_hotel13_notnode]:" 
+                    ,  d_hotel13_notnode );;
+
         ERR("[unexpectedcase:2022_07_05]");
     };;
     //:========================:HOTEL13_STAND_ALONE_SETUP://
