@@ -4853,31 +4853,162 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
    ////////// 
    ////////// TEST_SIMULATION_PERFORMANCE();
 
+    //:GET_READY_TO_SAVE_LEVEL:==========================://
+    //:                                                  ://
+    //:     d_pix2048 ==> d_pix0512                      ://
+    //:     ( @SRC@ )     ( @DST@ )                      ://
+    //:- - - - - - - - - - - - -- - - - - - - - - - - - -://         
+
+        const   F_HOTEL13_2048_0512 = function
+        PRIVATE_F_HOTEL13_2048_0512( 
+
+            i_mcx //: Mastermemory_Cell_X ( READ__FROM ) ://   
+        ,   i_mcy //: Mastermemory_Cell_Y ( READ__FROM ) ://
+        ){
+            var i5h_x ; //:@i5h_x@ : index_5Hundred__x  ://
+            var i5h_y ; //:@i5h_y@ : index_5Hundred__y  ://
+            var i5h_i ; //:@i5h_i@ : index_5Hundred__i  ://
+            var i2k_x ; //:@i2k_x@ : index_2THOUSAND_x  ://
+            var i2k_y ; //:@i2k_y@ : index_2THOUSAND_y  ://
+            var i2k_i ; //:@i2k_i@ : index_2THOUSAND_i  ://
+ 
+            for(i5h_y = 0 ; i5h_y <=(512-1) ; i5h_y++ ){
+            for(i5h_x = 0 ; i5h_x <=(512-1) ; i5h_x++ ){
+
+                i2k_x =( (i_mcx*512) + i5h_x );
+                i2k_y =( (i_mcy*512) + i5h_y );
+
+                i5h_i =( i5h_x + ( i5h_y * 512 ) );
+                i2k_i =( i2k_x + ( i2k_y *2048 ) );
+
+                let p5h = d_pix0512 ; //:@DST@://
+                let p2k = d_pix2048 ; //:@SRC@://
+                p5h[ (4*i5h_i)+0 ]=p2k[ (4*i2k_i)+0 ];
+                p5h[ (4*i5h_i)+1 ]=p2k[ (4*i2k_i)+1 ];
+                p5h[ (4*i5h_i)+2 ]=p2k[ (4*i2k_i)+2 ];
+                p5h[ (4*i5h_i)+3 ]=p2k[ (4*i2k_i)+3 ];
+
+            };;};;
+        };;
+    //:==========================:GET_READY_TO_SAVE_LEVEL://
+    //:GET_READY_TO_LOAD_LEVEL:==========================://
+    //:                                                  ://
+    //:     d_pix0512 ==> d_pix2048                      ://
+    //:     ( @SRC@ )     ( @DST@ )                      ://
+    //:- - - - - - - - - - - - -- - - - - - - - - - - - -://   
+
+        const   F_HOTEL13_0512_2048 = function
+        PRIVATE_F_HOTEL13_0512_2048( 
+
+            i_mcx //: Mastermemory_Cell_X ( WRITE___TO ) ://
+        ,   i_mcy //: Mastermemory_Cell_Y ( WRITE___TO ) ://    
+        ){
+            var i5h_x ; //:@i5h_x@ : index_5Hundred__x  ://
+            var i5h_y ; //:@i5h_y@ : index_5Hundred__y  ://
+            var i5h_i ; //:@i5h_i@ : index_5Hundred__i  ://
+            var i2k_x ; //:@i2k_x@ : index_2THOUSAND_x  ://
+            var i2k_y ; //:@i2k_y@ : index_2THOUSAND_y  ://
+            var i2k_i ; //:@i2k_i@ : index_2THOUSAND_i  ://
+ 
+            for(i5h_y = 0 ; i5h_y <=(512-1) ; i5h_y++ ){
+            for(i5h_x = 0 ; i5h_x <=(512-1) ; i5h_x++ ){
+
+                i2k_x =( (i_mcx*512) + i5h_x );
+                i2k_y =( (i_mcy*512) + i5h_y );
+
+                i5h_i =( i5h_x + ( i5h_y * 512 ) );
+                i2k_i =( i2k_x + ( i2k_y *2048 ) );
+
+                let p5h = d_pix0512 ; //:@SRC@://
+                let p2k = d_pix2048 ; //:@DST@://
+                p2k[ (4*i2k_i)+0 ] = p5h[ (4*i5h_i)+0 ];
+                p2k[ (4*i2k_i)+1 ] = p5h[ (4*i5h_i)+1 ];
+                p2k[ (4*i2k_i)+2 ] = p5h[ (4*i5h_i)+2 ];
+                p2k[ (4*i2k_i)+3 ] = p5h[ (4*i5h_i)+3 ];
+
+            };;};;
+        };;
+    //:==========================:GET_READY_TO_LOAD_LEVEL://
+    //:SAVE_FILE_INDEX:==================================://
+    //:LOAD_FILE_INDEX:==================================://
+    //:                                                  ://
+    //:   IMGUR_SAVE  ::::::::::: F_HOTEL13_IMGURAP_SAV  ://
+    //:   IMGUR_LOAD  ::::::::::: F_HOTEL13_IMGURAP_LOD  ://
+    //:                                                  ://
+    //:   HEROKU_SAVE ::::::::::: F_HOTEL13_NODESYS_SAV  ://
+    //:   HEROKU_LOAD ::::::::::: F_HOTEL13_NODESYS_LOD  ://
+    //:                                                  ://
+    //:   FILE_SAVE / SAVE_FILE : F_HOTEL13_FILESYS_SAV  ://
+    //:   FILE_LOAD / LOAD_FILE : F_HOTEL13_FILESYS_LOD  ://
+    //:                                                  ://
+    //:==================================:SAVE_FILE_INDEX://
+    //:==================================:LOAD_FILE_INDEX://
+    //:HOTEL13_FUNCS:IMGUR_API_SAVE:=====================://
+    //:HOTEL13_FUNCS:IMGUR_API_LOAD:=====================://
+
+        const   F_HOTEL13_IMGURAP_SAV = function
+        PRIVATE_F_HOTEL13_IMGURAP_SAV(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+        };;
+    
+        const   F_HOTEL13_IMGURAP_LOD = function
+        PRIVATE_F_HOTEL13_IMGURAP_LOD(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+        };;
+    //:=====================:HOTEL13_FUNCS:IMGUR_API_SAVE://
+    //:=====================:HOTEL13_FUNCS:IMGUR_API_LOAD://
+    //:HOTEL13_FUNCS:NODESYSTEM_SAVE:====================://
+    //:HOTEL13_FUNCS:NODESYSTEM_LOAD:====================://
+
+        const   F_HOTEL13_NODESYS_SAV = function
+        PRIVATE_F_HOTEL13_NODESYS_SAV(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+        };;
+    
+        const   F_HOTEL13_NODESYS_LOD = function
+        PRIVATE_F_HOTEL13_NODESYS_LOD(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+        };;
+    //:====================:HOTEL13_FUNCS:NODESYSTEM_SAVE://
+    //:====================:HOTEL13_FUNCS:NODESYSTEM_LOAD://
     //:HOTEL13_FUNCS:FILESYSTEM_SAVE:====================://
     //:HOTEL13_FUNCS:FILESYSTEM_LOAD:====================://
+    //:                                                  ://
+    //:   Security concerns make this impossible.        ://
+    //:   Use heroku server or imgur only.               ://
+    //:                                                  ://
+    //:- - - - - - - - - - - - -- - - - - - - - - - - - -://
 
         const F_HOTEL13_FILESYS_SAVE = "[FIX:FILESYS_SAV]" ;
         const F_HOTEL13_FILESYS_LOAD = "[FIX:FILESYS_LOD]" ;
         const F_HOTEL13_FILESYS_LOA  = "[FIX:FILESYS_LOD]" ;
     
-        const F_HOTEL13_FILESYS_SAV = function
-        PRIVATE_HOTEL13_FILESYS_SAV(
+        const   F_HOTEL13_FILESYS_SAV = function
+        PRIVATE_F_HOTEL13_FILESYS_SAV(
 
-            /** Args? **/
+            /** VOID **/
         ){
-
-            window.showOpenFilePicker();
-
+            window.alert( "[IT_AINT_HAPPENIN]" );
         };;
     
-        const F_HOTEL13_FILESYS_LOD = function
-        PRIVATE_HOTEL13_FILESYS_LOD(
+        const   F_HOTEL13_FILESYS_LOD = function
+        PRIVATE_F_HOTEL13_FILESYS_LOD(
 
-            /** Args? **/
+            /** VOID **/
         ){
-
-            window.showOpenFilePicker();
-
+            window.alert( "[IT_AINT_HAPPENIN]" );
         };;
     //:====================:HOTEL13_FUNCS:FILESYSTEM_SAVE://
     //:====================:HOTEL13_FUNCS:FILESYSTEM_LOAD://
