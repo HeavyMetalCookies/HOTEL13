@@ -8926,6 +8926,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      </head>                            '
             );; //:----------------------------------://
 
+            h13.m_giv.writeHead(   200 ,  d_htm  );
+            h13.m_giv.end( h13_webpage , "utf-8" );
+
         //:----------------------------:aim_routepair_htm://
         }else
         //:2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2::AIM_ROUTEPAIR://    
