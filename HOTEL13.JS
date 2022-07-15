@@ -33,6 +33,17 @@
             &&    d_hotel13_yesnode
             ) ? 1 : 0 );;
     //:============================:HOTEL13_ARE_YOU_ALONE://
+    //:HOTEL13_PHONE_HOME:===============================://
+    //:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK:===============://
+
+        var               d_hotel13_urlsite    =(                                 
+            "[BLACK_MAGIC:d_hotel13_urlsite]"                    
+        );;                                              
+        var               d_hotel13_urlsite_o_k=(                              
+            "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"                
+        );;                                              
+    //:===============:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK://
+    //:===============================:HOTEL13_PHONE_HOME://
     //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
     if( d_hotel13_notnode >= 1 ){
 
