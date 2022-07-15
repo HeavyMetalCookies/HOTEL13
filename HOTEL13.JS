@@ -8088,6 +8088,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         if( "UPLOAD" == h13.m_seg[ 0 ] ){
 
+            //:@uro@ : Upload_Response_Object://
+            var uro ={ laxcoma:"[HACK]"
+            ,  m_log : [ ] //:ArrayOfLoggingInfo://
+            ,  m_o_k : (0) //:Everything_Ok?
+            };;
+
             //////////////////////////////////
             var             early_exit =( 5 );
 
@@ -8111,7 +8117,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var rel ; //:@rel@ : RelativeFilePath://
             var f_s ; //:@f_s@ : FileStream Inst ://
 
-            h13.m_giv.writeHead( 200 , d_txt );
+            h13.m_giv.writeHead( 200 , d_jso );
             
             if( (o_k >= 1) && (early_exit >= exi_ee1) ){
 
@@ -8124,10 +8130,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     world_y =( obj_y.m_i32 );
                     
                     o_k =( 0+777 );
-                    h13.m_giv.write("[o_k:COORDS_GIVEN]\n");
+                //:h13.m_giv.write("[o_k:COORDS_GIVEN]\n");
+                    uro.m_log.push( "[o_k:COORDS_GIVEN]" );
                 }else{
                     o_k =( 0-666 );
-                    h13.m_giv.write("[bad:No_Coords]\n");
+                    //: h13.m_giv.write("[bad:No_Coords]\n");
+                    uro.m_log.push( "[bad:No_Coords]" );
                 };;
             };;
             if( (o_k >= 1) && (early_exit >= exi_ee2) ){
@@ -8137,10 +8145,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 if( "POST" != met ){
     
-                    h13.m_giv.write( "[bad:nota_post]\n" );
+                    //h13.m_giv.write( "[bad:nota_post]\n" );
+                    uro.m_log.push( "[bad:nota_post]" );
                     o_k =( 0-666 );
                 }else{
-                    h13.m_giv.write( "[o_k:Is_A_Post]\n" );
+                    //h13.m_giv.write( "[o_k:Is_A_Post]\n" );
+                    uro.m_log.push( "[o_k:Is_A_Post]" );
                     o_k =( 0+777 );
                 };;
             };;
@@ -8151,16 +8161,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ]);;
 
                 if( Number.isNaN( c_l ) || c_l <= 0 ){
-                    h13.m_giv.write( "[bad:c_l:nan]\n" );
+                    //h13.m_giv.write( "[bad:c_l:nan]\n" );
+                    uro.m_log.push( "[bad:c_l:nan]" );
                     o_k =( 0-1 );
                 }else{
-                    h13.m_giv.write( "[o_k:not:nan]\n" );
+                    //h13.m_giv.write( "[o_k:not:nan]\n" );
+                    uro.m_log.push( "[o_k:not:nan]" );
                     o_k =( 0+777 );
                 };;
             };;
             if( (o_k >= 1) && (early_exit >= exi_ee4) ){
 
-                h13.m_giv.write("[o_k:beg:ee4]\n");
+                //h13.m_giv.write("[o_k:beg:ee4]\n");
+                uro.m_log.push( "[o_k:beg:ee4]" );
 
                 f_n = h13.m_ask.headers[ "filename" ];
                 if( 0
@@ -8180,8 +8193,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 f_s = l_fs.createWriteStream( "./" + f_n );
                 f_s.on( "error" , (i_err)=>{
 
-                    console.log("[OH_FUCK_NO_2022]");
-                    h13.m_giv.end();
+                    console.log(    "[OHFUKNO_2022]" );
+                    uro.m_log.push( "[OHFUKNO_2022]" );
+                    h13.m_giv.end( JSON.stringify( uro ));
                 });;
 
                 h13.i_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
@@ -8189,21 +8203,25 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     f_s.close( ()=>{
 
-                        h13.m_giv.end( "[SUCCESS]\n" );
+                        uro.m_log.push( "[SUCCESS]" );
+                        uro.m_o_k =( 200 );
+                        h13.m_giv.end( JSON.stringify( uro ));
                     });;
                 });;
 
-                h13.m_giv.write("[o_k:end:ee4]\n");
+                //h13.m_giv.write("[o_k:end:ee4]\n");
+                uro.m_log.push( "[o_k:end:ee4]" );
             };;
 
             if( doing_some_async_stuff <= 0 ){
     
                 if( early_exit < last_exit ){
 
-                    h13.m_giv.write("[warning:earlyexit]\n");
+                    //h13.m_giv.write("[warning:earlyexit]\n");
+                    uro.m_log.push( "[warning:earlyexit]" );
                 };;
 
-                h13.m_giv.end();
+                h13.m_giv.end( JSON.stringify( uro ));
             };;
         }else
         if( 2 == h13.m_seg.length ){
