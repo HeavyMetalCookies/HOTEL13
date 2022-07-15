@@ -8608,6 +8608,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         }else{
 
             var back_up = "./" ;
+            arr_back_up=[
+                "./"
+            ,   "../"
+            ,   "../../"
+            ,   "../../../"
+            ,   "../../../../"
+            ];;
+            if( h13.m_seg.length <= arr_back_up.length ){
+
+                back_up = arr_back_up[ 
+                    h13.m_seg.length
+                ];;
+            };;
 
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
