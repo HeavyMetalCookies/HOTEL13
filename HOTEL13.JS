@@ -109,6 +109,56 @@
         };;                                               //
     //:======================:FUNC_XML_HTTP_REQUEST:[061]://
     //:=================================:STOLENFROM:#BGT#://
+    //:HOTEL13_XML_POST:=================================://
+
+        const   F_HOTEL13_XHR_POST = function                   
+        PRIVATE_F_HOTEL13_XHR_POST(                                          
+        ,   i_urlpath  /** @urlpath@  **/   
+        ,   i_payload  /** @payload@  **/
+        ){                                                 
+            var o_promise = new Promise( function          
+            EXECUTO_F_HOTEL13_XHR_POST(                    
+                o_k_yes                                    
+            ,   wontsay                                    
+            ){                                                                                     
+                var emp , urlfull , xhr_ask ;              
+                                                           
+                    emp = "" ; /**EmptyString**/           
+                urlfull = "[REQUEST_URL_NOT_SET]" ;        
+                                                           
+                if( "/" != i_urlpath[ 0 ] ){               
+                                                           
+                    urlfull = d_url + "/" + i_urlpath ;    
+                }else{                                     
+                    urlfull = d_url + emp + i_urlpath ;    
+                };;                                        
+                                                           
+                xhr_ask = new XMLHttpRequest();            
+                xhr_ask.open( "POST" , urlfull );   
+
+                //:#set_request_header#:-----------------://
+
+                    xhr_ask.setRequestHeader(
+
+                        "filename"
+                    ,   "000_000_000.PNG"
+                    );;
+                //:-----------------:#set_request_header#://        
+    
+                xhr_ask.send( i_payload );   
+                         
+                xhr_ask.onreadystatechange=(evt_xhr)=>{    
+                if( xhr_ask.readyState === 4 ){            
+                                                           
+                    console.log("DONE");                   
+                    o_k_yes( xhr_ask.responseText );       
+                                                           
+                };;};;                                     
+                                                           
+            });; return( o_promise );                      
+        };;                                                
+
+    //:=================================:HOTEL13_XML_POST://
     //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
     if( d_hotel13_notnode >= 1 ){
 
@@ -5926,8 +5976,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
-            F_HOTEL13_XHR( "POST" , "UPLOAD/100/100" )  
-            .then((i_saywhat)=>{                        
+            F_HOTEL13_XHR_POST( 
+
+                "UPLOAD/100/100" 
+            ,    d_png
+
+            ).then((i_saywhat)=>{                        
                                                         
                 console.log( "[what?]:" + i_saywhat );  
     
@@ -10337,6 +10391,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
 
     #BGT# : www.tinyurl.com/BOMB-GAME-TUTORIAL
+
+    @i_urlpath@ : website address path to API endpoint.
+    @i_payload@ : The data to send. I don't know it's format
+                : at the time of writing. I'll figure it
+                : out.
+
+    #set_request_header# :
+
+        "you must call it after calling open() , "
+        "but before calling send()               "
+
+        -Developer Mozilla Org , Circa 2022
+        
  
 *** ******************************************************** **/
 
