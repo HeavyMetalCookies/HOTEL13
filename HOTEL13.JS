@@ -8295,10 +8295,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         if( !i_str ){ i_str = "" ; };
         var arr = ( i_str.split( "_" ).filter(n=>n) );
-        if( arr.length < 1 ){ arr[ 0 ] = "000" ; };
-        if( arr.length < 2 ){ arr[ 1 ] = "000" ; };
-        if( arr.length < 3 ){ arr[ 2 ] = "000" ; };
+        var dex ;
+        if( arr.length < 3 ){
+            var  d_0 =( arr.length );
+            var  d_1 =(   3-1      );
+            for( dex = d_0 ; dex <= d_1 ; dex++ ){
 
+                arr[ dex ]=( "000" );
+            };;
+        };;
         var num_obj =new Array( 3 );
             num_obj[ 0 ] = F_HOTEL13_TRYATOI( arr[ 0 ] );
             num_obj[ 1 ] = F_HOTEL13_TRYATOI( arr[ 1 ] );
