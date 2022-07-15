@@ -8294,6 +8294,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         Object.seal( o_obj );
 
         if( !i_str ){ i_str = "" ; };
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: "000/000" is a different route , so      ://
+        //: do not replaceAll( "/" , "_" ).          ://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        i_str = i_str.replaceAll( "," , "_" );
+        i_str = i_str.replaceAll( "." , "_" );
+        i_str = i_str.replaceAll( "X" , "_" );
+        i_str = i_str.replaceAll( "!" , "_" );
+        i_str = i_str.replaceAll( "+" , "_" );
+        i_str = i_str.replaceAll( "-" , "_" );
+
         var arr = ( i_str.split( "_" ).filter(n=>n) );
         var dex ;
         if( arr.length < 3 ){
