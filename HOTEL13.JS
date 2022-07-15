@@ -5839,8 +5839,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var o_pngname =( "TODO.PNG" );
 
 
-            console.log( "[window.location.href]"
-                          ,window.location.href );;
+            console.log( "[window.location.href]"    //:<<<<<<<<<<<<<<<<<<<<< TODO
+                          ,window.location.href );;  //:<<<<<<<<<<<<<<<<<<<<< TODO
 
 
 
@@ -8612,7 +8612,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'          [AIM]                          '
             +'      </title>                           '
             +'          <script                        '
-            +'              src    ="./HOTEL13"        '
+            +'              src    ="../../../HOTEL13"        '
             +'              charset="UTF-8">           '
             +'          </script>                      '
             +'      </head>                            '
