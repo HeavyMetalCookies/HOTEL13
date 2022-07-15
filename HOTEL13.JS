@@ -2952,6 +2952,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
 //:#_UN_NAMESPACED_GLOBALS_#:================================://
 
+    //:TAG[ un namespaced globals | un-namespaced-globals ..]://
+    //:TAG[ unnamespaacedglobals | no-name | no-namespace ..]://
+
     const c_opptrez =( 320 /**OnePixelPerTileRez**/ );
     ASS( 5 * 64 == 320               , "[UNG:001]" );
     ASS(  64 == c_opptrez /  5       , "[UNG:002]" );
@@ -9707,6 +9710,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         Solution? We need to break up the bits of geom tile's
         uint32 a bit more.
         
+        |<-----------#_STANDARD_TILE_BIT_LAYOUT_#----------->|
+        |                                                    |
         |<------- RED CHANNEL ------>|<- G ->|<- B ->|<- A ->|
         |  v16  | tb1  tb2  tb3  tb4 | 8_BIT | 8_BIT | 8_BIT |
         | 11 11 |  1    1    1    1  |                       |
@@ -10050,6 +10055,157 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     #_W_D_A_I_C_# : Write_Data_As_It_Comes
                     W_____D____A__I__C
-   
+
+    #_WHAT_DO_ZERO_TILES_DO_# :--------------------------------:
+    :                                                          :
+    :   I guess sitting in bed for 5 hours without going       :
+    :   to sleep has some benifit. Manic caffiene induced      :
+    :   insomiac creativity.                                   :
+    :   NOW_DATE[ 2022_07_15 ]TIME[ 6:23 ]AM                   :
+    :                                                          :
+    :  :-------------------------------------------------------:
+    :                                                          :
+    :   Zero tiles are STATIC BACKGROUND AND FOREGROUND!!!     :
+    :                                                          :
+    :   You can pass through them, no need to modify           :
+    :   engine to give special case for them because           :
+    :   they are already "zero tiles".                         :
+    :                                                          :
+    :                                                          :
+    :   |<-----------#_STANDARD_TILE_BIT_LAYOUT_#----------->| :
+    :   |                                                    | :
+    :   |<------- RED CHANNEL ------>|<- G ->|<- B ->|<- A ->| :
+    :   |  v16  | tb1  tb2  tb3  tb4 | 8_BIT | 8_BIT | 8_BIT | :
+    :   | 11 11 |  1    1    1    1  |                       | :
+    :           |<--SPK-->||<--FAL-->|<-ANI->|<-ANI->|<-ANI->| :
+    :                                |<-SPK->|<-SPK->|<-FAL->| :
+    :                                |<-ta1->|<-ta2->|<-ta3->| :
+    :                                                          :
+    :                                                          :
+    :   |<-------------#_ZERO_TILE_BIT_LAYOUT_#------------->| :
+    :   |                                                    | :
+    :   |<------- RED CHANNEL ------>|<- G ->|<- B ->|<- A ->| :
+    :   |  v16  | tb1  tb2  tb3  tb4 | 8_BIT | 8_BIT | 8_BIT | :
+    :   | 11 11 |  1    1    1    1  |                       | :
+    :           |<--B_G-->||<--F_G-->|<-???->|<-B_G->|<-F_G->| :
+    :                                |<-tm1->|<-tm2->|<-tm3->| :
+    :                                                          :
+    :   tb1 : TileBit  #1 : B_G : TRANSPARENT_GLASS ?          :
+    :   tb2 : TileBit  #2 : B_G : One of two accent colors.    :
+    :   tb3 : TileBit  #3 : F_G : TRANSPARENT_GLASS ?          :
+    :   tb4 : TileBit  #4 : F_G : One of two accent colors.    :
+    :                                                          :
+    :   tm1 : TileMisc #1 : UNKNOWN DATA , FREE SPACE!         :
+    :   tm2 : TileMisc #2 : ASCII_LETTER Or GEOM_TEXTURE       :
+    :   tm3 : TileMisc #3 : ASCII_LETTER Or GEOM_TEXTURE       :
+    :                                                          :
+    :   | 0 | 111 1111 | === ASCII_LETTER                      :
+    :   | 1 | 111 1111 | === GEOM_TEXTURE ( no color info )    :
+    :                                                          :
+    :   | 0 | ### #### | === ASCII_LETTER                      :
+    :   | 1 | ### #### | === GEOM_TEXTURE ( no color info )    :
+    :                                                          :
+    :----------------------------------------------------------:
+
+    #_PARALLAX_THOUGHTS_# :------------------------------------:
+    |                                                          :
+    |   NOW_DATE[ 2022_07_15 ]TIME[ 0641 ]AM                   :
+    |                                                          :
+    |   THESE ARE JUST THOUGHTS!!! RESERVE                     :
+    |   [ PAR ]block of[ LEVELPACK ]for this , but             :
+    |   _DO_NOT_WRITE_ANY_CODE_ for it until you have.         :
+    |                                                          :
+    |   1. A working game.                                     :
+    |                                                          :
+    |   2. People playing it.                                  :
+    |                                                          :
+    |   3. Shown it on Kyootbot's show.                        :
+    |                                                          :
+    |   |<--------------0512-------------->|                   :
+    |   |<-----0256----->||<-----0256----->|                   :
+    |   +--128--++--128--++--128--++--128--+                   :
+    |   |       ||       ||       ||       |                   :
+    |   |  r00  ||  r01  ||  r02  ||  r03  |                   :
+    |   |       ||       ||       ||       |                   :
+    |   +-------++-------++-------++-------+                   :
+    |   +--128--++--128--++--128--++--128--+                   :
+    |   |       ||       ||       ||       |                   :
+    |   |  r04  ||  r05  ||  r06  ||  r07  |                   :
+    |   |       ||       ||       ||       |                   :
+    |   +-------++-------++-------++-------+                   :
+    |   +--128--++--128--++--128--++--128--+                   :
+    |   |       ||       ||       ||       |                   :
+    |   |  r08  ||  r09  ||  r10  ||  r11  |                   :
+    |   |       ||       ||       ||       |                   :
+    |   +-------++-------++-------++-------+                   :
+    |   +--128--++--128--++--128--++--128--+                   :
+    |   |       ||       ||       ||       |                   :
+    |   |  r12  || [PAR] || [ANY] || [ANY] |                   :
+    |   |       ||   |   ||       ||       |                   :
+    |   +-------++---|---++-------++-------+                   :
+    |                |                                         :
+    |                |                                         :
+    |   Sparse Parallax Scaffold Tiles.                        :
+    |   For Background and foreground.                         :
+    |                                                          :
+    |   +------------------------+                             :
+    |   |Dense TileMap:          |                             :
+    |   +------------------------+                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   |[ ][ ][ ][ ][ ][ ][ ][ ]|                             :
+    |   +------------------------+                             :
+    |   |Sparse TileMap:         |                             :
+    |   +------------------------+                             :
+    |   |[ ]      [ ][ ]      [ ]|                             :
+    |   |                        |                             :
+    |   |                        |                             :
+    |   |[ ]      [ ][ ]      [ ]|                             :
+    |   |[ ]      [ ][ ]      [ ]|                             :
+    |   |                        |                             :
+    |   |                        |                             :
+    |   |[ ]      [ ][ ]      [ ]|                             :
+    |   +------------------------+                             :
+    |   |Sparse TileMap:(Render) |                             :
+    |   +------------------------+                             :
+    |   |[ ]------[ ][ ]------[ ]|                             :
+    |   | |sudopan |  |sudopan | |                             :
+    |   | |        |  |        | |                             :
+    |   |[ ]------[ ][ ]------[ ]|                             :
+    |   |[ ]------[ ][ ]------[ ]|                             :
+    |   | |sudopan |  |sudopan | |                             :
+    |   | |        |  |        | |                             :
+    |   |[ ]------[ ][ ]------[ ]|                             :
+    |   +------------------------+                             :
+    |                                                          :
+    |   sudopan : A panel created by connecting tiles          :
+    |           : with rods in the renderer.                   :
+    |                                                          :
+    |   Now, lets say some of these sparse tiles               :
+    |   are [ zero / off ]and others are [ one / on ]...       :
+    |                                                          :
+    |   +------------------------+                             :
+    |   |Sparse TileMap:(Render2)|                             :
+    |   +------------------------+                             :
+    |   |[1]------[1][1]------[1]|                             :
+    |   | |sudopan |  |sudopan | |                             :
+    |   | |        |  |        | |                             :
+    |   |[1]------[1][1]------[1]|                             :
+    |   |[1]------[1][0]      [0]|                             :
+    |   | |      /               |                             :
+    |   | |   //                 |                             :
+    |   |[1]/     [0][0]      [0]|                             :
+    |   +------------------------+                             :
+    |                                                          :
+    :----------------------------------------------------------:
+                                                                
+
+ 
 *** ******************************************************** **/
 
