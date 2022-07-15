@@ -8089,7 +8089,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( "UPLOAD" == h13.m_seg[ 0 ] ){
 
             //////////////////////////////////
-            var             early_exit =( exi_ee3 );
+            var             early_exit =( 1 );
 
             var                exi_ee1 =( 1 ); //:OK://
             var                exi_ee2 =( 2 );
