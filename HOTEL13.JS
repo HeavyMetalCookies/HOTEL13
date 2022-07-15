@@ -8120,9 +8120,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     world_y =( obj_y.m_i32 );
                     
                     o_k =( 0+777 );
+                    h13.m_giv.write("[o_k:COORDS_GIVEN]\n");
                 }else{
                     o_k =( 0-666 );
-                    h13.m_giv.write("[Must_Supply_Coords]");
+                    h13.m_giv.write("[bad:No_Coords]\n");
                 };;
             };;
             if( o_k >= 1 && early_exit == ee2 ){
@@ -8132,8 +8133,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 if( "POST" != met ){
     
-                    h13.m_giv.write( "[___NOT_AA_POST___]" );
+                    h13.m_giv.write( "[bad:nota_post]\n" );
                     o_k =( 0-666 );
+                }else{
+                    h13.m_giv.write( "[o_k:Is_A_Post]\n" );
+                    o_k =( 0+777 );
                 };;
             };;
             if( o_k >= 1 && early_exit == ee3 ){
@@ -8143,11 +8147,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ]);;
 
                 if( Number.isNaN( c_l ) || c_l <= 0 ){
-                    h13.m_giv.write( "[c_l:is_nan]" );
+                    h13.m_giv.write( "[bad:c_l:nan]\n" );
                     o_k =( 0-1 );
+                }else{
+                    h13.m_giv.write( "[o_k:not:nan]\n" );
+                    o_k =( 0+777 );
                 };;
             };;
             if( o_k >= 1 && early_exit == ee4 ){
+
+                h13.m_giv.write("[o_k:beg:ee4]\n");
 
                 f_n = h13.m_ask.headers[ "filename" ];
                 if( 0
@@ -8176,16 +8185,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     f_s.close( ()=>{
 
-                        h13.m_giv.end( "[SUCCESS]" );
+                        h13.m_giv.end( "[SUCCESS]\n" );
                     });;
                 });;
+
+                h13.m_giv.write("[o_k:end:ee4]\n");
             };;
 
             if( !doing_some_async_stuff ){
     
                 if( early_exit < last_exit ){
 
-                    h13.m_giv.write("[early_exit_debug]");
+                    h13.m_giv.write("[warning:earlyexit]\n");
                 };;
 
                 h13.m_giv.end();
