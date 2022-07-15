@@ -33,17 +33,81 @@
             &&    d_hotel13_yesnode
             ) ? 1 : 0 );;
     //:============================:HOTEL13_ARE_YOU_ALONE://
-    //:HOTEL13_PHONE_HOME:===============================://
     //:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK:===============://
+    //:HOTEL13_PHONE_HOME:===============================://
+    //:                                                  ://
+    //:    [TODO]: Make it so  HOTEL13's server          ://
+    //:          : MERGES with AIM's server when         ://
+    //:          : HOTEL13's code pasted into either     ://
+    //:          : top or bottom of file.                ://
+    //:          : (not sure which one yet)              ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+    {
+        if(!d_url){ var d_url = "[DURLNOTSET]" ; };
 
         var               d_hotel13_urlsite    =(                                 
             "[BLACK_MAGIC:d_hotel13_urlsite]"                    
         );;                                              
         var               d_hotel13_urlsite_o_k=(                              
             "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"                
-        );;                                              
-    //:===============:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK://
+        );;                                  
+
+        if( "[YES_O_K]" == d_hotel13_urlsite_o_k ){
+
+            d_url =( d_hotel13_urlsite );
+        }else
+        if( "[NOT_O_K]" == d_hotel13_urlsite_o_k 
+        &&  "[YES_O_K]" ==         d_urlsite_o_k
+        ){
+            d_url =(         d_urlsite );
+        }else{
+
+            F_PRIVATE_HOTEL13_ERR(
+                "[HOTEL13_CANT_PHONE_HOME]" 
+            );;
+        };;
+    }
     //:===============================:HOTEL13_PHONE_HOME://
+    //:===============:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK://
+    //:STOLENFROM:#BGT#:=================================://
+    //:FUNC_XML_HTTP_REQUEST:[061]:======================://
+                                                          //
+        const   F_HOTEL13_XHR = function                  //
+        PRIVATE_F_HOTEL13_XHR(                            //
+            i_asktype  /** @asktype@  **/                 //
+        ,   i_urlpath  /** @urlpath@  **/                 //
+        ){                                                //
+            var o_promise = new Promise( function         //
+            EXECUTO_F_XHR( o_k_yes , wontsay ){           //
+                                                          //
+                var emp , urlfull , xhr_ask ;             //
+                                                          //
+                    emp = "" ; /**EmptyString**/          //
+                urlfull = "[REQUEST_URL_NOT_SET]" ;       //
+                                                          //
+                if( "/" != i_urlpath[ 0 ] ){              //
+                                                          //
+                    urlfull = d_url + "/" + i_urlpath ;   //
+                }else{                                    //
+                    urlfull = d_url + emp + i_urlpath ;   //
+                };;                                       //
+                                                          //
+                xhr_ask = new XMLHttpRequest();           //
+                xhr_ask.open( i_asktype , urlfull );      //
+                xhr_ask.send();                           //
+                xhr_ask.onreadystatechange=(evt_xhr)=>{   //
+                if( xhr_ask.readyState === 4 ){           //
+                                                          //
+                    console.log("DONE");                  //
+                    o_k_yes( xhr_ask.responseText );      //
+                                                          //
+                };;};;                                    //
+                                                          //
+            });; return( o_promise );                     //
+        };;                                               //
+    //:======================:FUNC_XML_HTTP_REQUEST:[061]://
+    //:=================================:STOLENFROM:#BGT#://
     //:HOTEL13_CLIENT_SIDE_TODO_LIST:====================://    
     if( d_hotel13_notnode >= 1 ){
 
@@ -10250,7 +10314,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     69TH COMMIT , NICE . 2022_07_15 , 644 AM 
                                                  
 
-    #_HEROKU_APP_NAME_# :
+    #_HEROKU_APP_NAME_# : / #HEROKU_APP_NAME# :
 
         You need to run special heroku command in
         terminal on your heroku project for this
