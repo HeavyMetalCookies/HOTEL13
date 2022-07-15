@@ -8361,7 +8361,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //: but this is javascript land.                 ://
         //:::::::::::::::::::::::::::::::::::::::::::::::://
         var obj_xyz = F_HOTEL13_ICH_TRY( i_str );
-        if( obj_xyz.has ){
+        if( obj_xyz.m_has ){
 
             o_yes =( 1 );
         };;
