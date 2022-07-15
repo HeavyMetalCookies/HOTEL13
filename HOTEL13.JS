@@ -6046,7 +6046,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
 
-                "UPLOAD/100/100" 
+                "UPLOAD/100/100"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
             ,    d_pngfile
 
             ).then((i_saywhat)=>{                        
@@ -8666,7 +8666,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
                 obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
 
-                if( obj_x.m_has && obj_y.m_has ){
+                if( obj_x.m_has && obj_y.m_has ){ //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI ( needs Z axis )
 
                     world_x =( obj_x.m_i32 );
                     world_y =( obj_y.m_i32 );
@@ -8878,7 +8878,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   wmc_i_y 
             ,   wmc_i_z  
             );;
-
         //:-----------------------------:aim_routepair_js://
         }else
         if( 1 
