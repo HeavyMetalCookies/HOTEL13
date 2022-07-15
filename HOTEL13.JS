@@ -8606,13 +8606,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
             );;
         }else{
+
+            var back_up = "./" ;
+
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
             +'      <meta charset="utf-8"><title>      '
             +'          [AIM]                          '
             +'      </title>                           '
             +'          <script                        '
-            +'              src    ="../../../HOTEL13"        '
+            +`              src    ="${back_up}HOTEL13"`
             +'              charset="UTF-8">           '
             +'          </script>                      '
             +'      </head>                            '
