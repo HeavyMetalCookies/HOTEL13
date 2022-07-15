@@ -7117,8 +7117,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var g_x =( gxy[ 0 ] );
         var g_y =( gxy[ 1 ] );
 
-        ASS( g_x >= 0 && g_x <=( 5-1 ) , "[AGX]" );
-        ASS( g_y >= 0 && g_y <=( 5-1 ) , "[AGY]" );
+        if( 0
+        ||  (!( g_x >= 0 && g_x <=( 5-1 ) ))
+        ||  (!( g_y >= 0 && g_y <=( 5-1 ) ))
+        ){
+            YEL( "[g_x]:" , g_x       );
+            YEL( "[g_y]:" , g_y       );
+            YEL( "[p_x]:" , i_clk_p_x );
+            YEL( "[p_y]:" , i_clk_p_y );
+
+            ERR( "[g_x_orr_g_y:OOB]"  );
+        };;
 
         var g25 , h_x , h_y ;
 
