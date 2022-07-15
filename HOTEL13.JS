@@ -8061,6 +8061,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:        : with main[ AIM / BOOM ]server.      ://
         //:----------------------------------------------://
 
+        var o_k =( 1 );
+
         var   h13 ={  laxcoma : "[laxcoma_hack]"
         ,   m_ask : i_ask                                     
         ,   m_giv : i_giv                                     
@@ -8071,6 +8073,95 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "UPLOAD" == h13.m_seg[ 0 ] ){
+    
+            var obj_x   ; //:Object Holding X WorldCoord ://
+            var obj_y   ; //:Object Holding Y WorldCoord ://
+            var world_x ; //:Worldmap . X LevelPack      ://    
+            var world_y ; //:Worldmap . Y LevelPack      ://    
+
+            var met ; //:@met@ : Method          ://
+            var c_l ; //:@c_l@ : Content Length  ://
+            var f_n ; //:@f_n@ : File Name       ://
+            var rel ; //:@rel@ : RelativeFilePath://
+            var f_s ; //:@f_s@ : FileStream Inst ://
+
+            h13.m_giv.writeHead( 200 , d_txt );
+            
+            if( o_k >= 1 ){
+
+                obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
+                obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
+
+                if( obj_x.m_has && obj_y.m_has ){
+
+                    world_x =( obj_x.m_i32 );
+                    world_y =( obj_y.m_i32 );
+                    
+                    o_k =( 0+777 );
+                }else{
+                    o_k =( 0-666 );
+                    h13.m_giv.write("[Must_Supply_Coords]");
+                    h13.m_giv.end(  );
+                };;
+            };;
+            if( o_k >= 1 ){
+
+                met = String.prototype.toUpperCase.call(
+                            h13.m_ask.method );;
+
+                if( "POST" != met ){
+    
+                    h13.m_giv.write( "[___NOT_AA_POST___]" );
+                    h13.m_giv.end(   "[USE_POSTMAN_OR_JS]" );
+                    o_k =( 0-666 );
+                };;
+            };;
+            if( o_k >= 1 ){
+                c_l = parseInt( h13.m_ask.headers[
+
+                    "content-length"
+                ]);;
+
+                if( Number.isNaN( c_l ) || c_l <= 0 ){
+                    h13.m_giv.end( "[c_l:is_nan]" );
+                    o_k =( 0-1 );
+                };;
+            };;
+            if( o_k >= 1 ){
+
+                f_n = h13.m_ask.headers[ "filename" ];
+                if( 0
+                ||  ( null == f_n )
+                ||  (  ""  == f_n )
+                ||  (        !f_n )
+                ){
+                    var wtf =(
+                        m_ask.headers[ "content-type" ]
+                        .split("/")[1]
+                    );;
+                    f_n =( "file." + wtf );
+                };;
+
+                rel =( "./" + f_n );
+                f_s = l_fs.createWriteStream( "./" + f_n );
+
+                f_s.on( "error" , (i_err)=>{
+
+                    console.log("[OH_FUCK_NO_2022]");
+                    h13.m_giv.end();
+                });;
+            
+                h13.i_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
+                h13.i_ask.on( "end" , ()=>{
+
+                    f_s.close( ()=>{
+
+                        m_giv.end( "[SUCCESS]" );
+                    });;
+                });;
+            };;
+        }else
         if( 2 == h13.m_seg.length ){
 
             var obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 0 ] );
@@ -9763,9 +9854,109 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @seg_x@ : URL segment integer containing X axis value.
     @seg_y@ : URL segment integer containing Y axis value.
 
+    
+    #_BILLBOARD_OR_SPRITE_UNION_# :  
+
+        WRITTEN_DATE[2022_07_14]TIME[ 830PM ]KANJICODER
+
+        Materials 14 and 15 ( v16 == 14 && v16 == 15 )
+        should be used for __BOTH__
+
+        1. Static Environment Sprites
+        2. Billboard Text
+
+        KEY:
+            t16   : Tile value. Only 14 & 15 valid here.
+            tos   : text_or_sprite flag
+            co7   : COlor of text or type of enemy. 7 values.
+            l15_x : Local Coord X ( 0 to 15 )
+            l15_y : Local Coord Y ( 0 to 15 )
+
+        |  NIB  |    NIB    | l15_x  l15_y| @MISC_STATE_INFO@ |
+        | 11 11 |  1  | 111 | 1111 | 1111 | 11111111|11111111 |
+        |  t16  | tos | co7 |             | msi_lef | msi_rig |
+
+    @MISC_STATE_INFO@ :
+
+        WRITTEN_DATE[2022_07_14]TIME[ 830PM ]KANJICODER
+
+        TAG[ flame piston | flamepiston | flame_piston ]
+        TAG[ flame-piston ]
+        
+        [MISC_STATE_INFO] bits represent whatever is needed
+         to get the job done. For example , if this is a 
+        flame piston, [MISC_STATE_INFO] could encode the 
+        timestamp of when the flame piston was last activated.
+
+        co7 could be co-opted a bit.
+    
+        |<-------co7-------->|
+        |  co7_rgb  co7_tob  |
+        |     11       1     |
+
+        co7_rgb : White , Red, Green or Blue Piston Color?
+
+        co7_tob : Is this the body of the piston or
+                : the moving button of the piston?
+
+    @NG@ : www.newgrounds.com
+
+    #l15_x# :
+    #l15_y# :
+
+        This means that static environment sprites can
+        be no bigger that 16x16 tiles in size. Which is
+        __PLENTY__ . ( from experience : Atomic Alice @NG@ )
+
+    #_FLAME_PISTON_MISC_DATA_# :
+
+        WRITTEN_DATE[2022_07_14]TIME[ 850PM ]KANJICODER
+
+        |     msi_lef   |
+        | 11  11 | 1111 |
+        | fd  sc | flen |
+
+        @fd@ : Flamepiston direction facing?
+             : 00 : LEF
+             : 01 : RIG
+             : 10 : TOP
+             : 11 : BOG
+        
+        @sc@ : Size Class of flame piston.
+
+             : 00 : 2x2 : Classic 2X2
+             : 01 : 3x2 : Classic 3X2
+             : 10 : 1x3 : Cattle_Prod_Trip_Rod
+             : 11 : 1x6 : Cattle_Prod_Trip_Rod
 
 
+             [S][1][2] //: <------: Cattle_Prod_Trip_Rod: 1x3
 
+             [S][1][2][3][4][5] //: Cattle_Prod_Trip_Rod: 1x6
+
+             Works like a flame piston , but stays on as
+             long as you are touching the rod part.
+
+             The [S] part of the tile emits spark like
+             the[ sparkpin ]bombs, with a 1x1 box explosion
+             style around it's perimeter.
+
+        |  msi_rig  |
+        | 1111 1111 |
+        | TIMESTAMP |
+
+            msi_rig on flamepiston holds a short last
+            activated timestamp used to animate it's 
+            motion and actions.
+
+            8 bits == 0 to 255 , so no more than 256
+            unique frames of animation/behavior.
+
+    @msi_lef@ : Misc_State_Info : LEFt  byte
+    @msi_rig@ : Misc_State_Info : RIGht byte
+
+    #_W_D_A_I_C_# : Write_Data_As_It_Comes
+                    W_____D____A__I__C
    
 *** ******************************************************** **/
 
