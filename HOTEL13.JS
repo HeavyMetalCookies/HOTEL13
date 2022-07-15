@@ -8247,6 +8247,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var d_css = { [c_t]: "text/css"                 } ;
 
     };;
+
+    //:SERVE_THIS_CODE_AS_HTML_FILE:=====================://
+    if( d_hotel13_h13node ){
+    const   F_HOTEL13_SERVEME = function
+    PRIVATE_F_HOTEL13_SERVEME(
+
+        i_h13 //: Hotel13's StateObjectBundle( sob )://
+              //: [ i_h13 ]AKA[ i_sob / sob ]       ://
+    ){
+
+        /******** TODO ***********/
+
+    };;};;
+    //:===================:SERVE_THIS_CODE_AS_HTML_FILE://
     if( d_hotel13_h13node ){ require("http").createServer(( 
 
         i_ask  //:AKA[ req / request  ]://
