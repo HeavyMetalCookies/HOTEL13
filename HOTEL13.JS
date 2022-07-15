@@ -8361,8 +8361,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     h13.m_giv.end( JSON.stringify( uro ));
                 });;
 
-                h13.i_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
-                h13.i_ask.on( "end" , ()=>{
+                h13.m_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
+                h13.m_ask.on( "end" , ()=>{
 
                     f_s.close( ()=>{
 
