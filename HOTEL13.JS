@@ -43,6 +43,7 @@
     //:          : (not sure which one yet)              ://
     //:                                                  ://
     //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+    if( d_hotel13_notnode /**ClientSideOnly**/ )
     {
         if(!d_url){ var d_url = "[DURLNOTSET]" ; };
 
