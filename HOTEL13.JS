@@ -10256,6 +10256,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         terminal on your heroku project for this
         environment variable to be available.
 
+        USE:
+        heroku labs:enable  runtime-dyno-metadata --app APPNAME
+    
+
 
     #BGT# : www.tinyurl.com/BOMB-GAME-TUTORIAL
  
