@@ -8617,6 +8617,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         }else
         if( 2 == h13.m_seg.length ){
 
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: Serve .HTM Page That Is Kind Of Like ://
+            //: A Youtube Video URL, but for game    ://
+            //: world map [coords/levelpacks].       ://
+            //:::::::::::::::::::::::::::::::::::::::://
+
             let TRYATOI = F_HOTEL13_TRYATOI ;
             var obj_x = TRYATOI( h13.m_seg[ 0 ] );
             var obj_y = TRYATOI( h13.m_seg[ 1 ] );
