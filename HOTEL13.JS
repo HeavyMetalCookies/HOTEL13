@@ -140,8 +140,8 @@
 
                     xhr_ask.setRequestHeader(
 
-                        "filename"
-                    ,   "000_000_000.PNG"
+                        "nsh_pngname" //:@nsh_pngname@://
+                    ,   "001_001_001.PNG"
                     );;
                 //:-----------------:#set_request_header#://        
     
@@ -8338,7 +8338,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //h13.m_giv.write("[o_k:beg:ee4]\n");
                 uro.m_log.push( "[o_k:beg:ee4]" );
 
-                f_n = h13.m_ask.headers[ "filename" ];
+                f_n = h13.m_ask.headers[ "nsh_pngname" ];
                 if( 0
                 ||  ( null == f_n )
                 ||  (  ""  == f_n )
@@ -10404,6 +10404,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         -Developer Mozilla Org , Circa 2022
         
+    @nsh_pngname@ : Non_Standard_Header____PNG_Name
+    #nsh_pngname# :
+        
+        Using a prefix to let me know that this header
+        is something I( KANJICODER )made up and not some
+        type of standard with XMLHTTPREQUEST.
  
 *** ******************************************************** **/
 
