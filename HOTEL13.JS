@@ -43,6 +43,15 @@
     //:          : (not sure which one yet)              ://
     //:                                                  ://
     //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        const d_hotel13_wcx_i_x_def = "[wmc:NOT:wcx]" ;
+        const d_hotel13_wcy_i_y_def = "[wmc:NOT:wcy]" ;
+        const d_hotel13_wcx_i_x     = "[wmc:NOT:wcx]" ;
+        const d_hotel13_wcy_i_y     = "[wmc:NOT:wcy]" ;
+        const d_hotel13_wcx_s_x     = "[wmc:NOT:wcx]" ;
+        const d_hotel13_wcy_s_y     = "[wmc:NOT:wcy]" ;
+
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
     if( d_hotel13_notnode /**ClientSideOnly**/ )
     {
         if(!d_url){ var d_url = "[DURLNOTSET]" ; };
@@ -8605,6 +8614,39 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   d_hotel13_wmc_i_x_def //:AKA[wmc_i_x]://
             ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
             );;
+        }else
+        if( 2 == h13.m_seg.length ){
+
+            let TRYATOI = F_HOTEL13_TRYATOI ;
+            var obj_x = TRYATOI( h13.m_seg[ 0 ] );
+            var obj_y = TRYATOI( h13.m_seg[ 1 ] );
+            var   w_x = d_hotel13_wmc_i_x_def ;
+            var   w_y = d_hotel13_wmc_i_y_def ;
+
+            if( obj_x.m_has && obj_y.m_has ){
+
+                w_x = obj_x.m_i32 ;
+                w_y = obj_y.m_i32 ;
+            };;
+
+            var h13_webpage =( "" //:----------------://
+            +'      <!DOCTYPE HTML><head>              '
+            +'      <meta charset="utf-8"><title>      '
+            ////////////////////////////////////////////
+            +`          [BOOM]( ${w_x} , ${w_y} )      `
+            ////////////////////////////////////////////
+            +'      </title>                           '
+            +'          <script                        '
+            ////////////////////////////////////////////
+            +`       src ="../../H13_J_S/${w_y}/${w_x}"`
+            ////////////////////////////////////////////
+            +'              charset="UTF-8">           '
+            +'          </script>                      '
+            +'      </head>                            '
+            );; //:----------------------------------://
+            
+            h13.m_giv.writeHead(   200 ,  d_htm  );
+            h13.m_giv.end( h13_webpage , "utf-8" );
         }else{
 
             var back_up = "./" ;
