@@ -74,12 +74,17 @@
         //:::::::::::::::::::::::::::::::::::::::://
         var d_hotel13_wmc_i_x_def =(   0     );
         var d_hotel13_wmc_i_y_def =(   0     );
+        var d_hotel13_wmc_i_z_def =(   0     );
         var d_hotel13_wmc_i_x     =( 0 - 404 );
         var d_hotel13_wmc_i_y     =( 0 - 404 );
+        var d_hotel13_wmc_i_z     =( 0 - 404 );
+
         var               d_hotel13_wmc_s_x =(
             "[BLACK_MAGIC:d_hotel13_wmc_s_x]" );;
         var               d_hotel13_wmc_s_y =(
             "[BLACK_MAGIC:d_hotel13_wmc_s_y]" );;
+        var               d_hotel13_wmc_s_z =(
+            "[BLACK_MAGIC:d_hotel13_wmc_s_z]" );;
         var               d_hotel13_wmc_o_k =(
             "[BLACK_MAGIC:d_hotel13_wmc_o_k]" );;
         if( "[YES_O_K]" ==d_hotel13_wmc_o_k ){
@@ -89,6 +94,9 @@
 
             d_hotel13_wmc_i_y =( Number.parseInt( 
             d_hotel13_wmc_s_y ));;
+
+            d_hotel13_wmc_i_z =( Number.parseInt( 
+            d_hotel13_wmc_s_z ));;
         };;
 
         if( "[YES_O_K]" == d_hotel13_urlsite_o_k ){
@@ -8498,6 +8506,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                   //: [ i_h13 ]AKA[ i_sob / sob ]        ://
     ,   i_wmc_i_x //:Input: WorldMapCoord . X  : : : : : ://
     ,   i_wmc_i_y //:Input: WorldMapCoord . Y  : : : : : ://
+    ,   i_wmc_i_z //:Input: WorldMapCoord . Z  : : : : : ://    
     ){
 
         l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
@@ -8549,6 +8558,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:SetWorldMapCoords:--------------------://
             if( (!(i_wmc_i_x >= 0 ))
             &&  (!(i_wmc_i_y >= 0 ))
+            &&  (!(i_wmc_i_z >= 0 ))
             ){
                 d_hotel13_wmc_o_k = "[NOT_O_K]" ;
             }else{
@@ -8564,18 +8574,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             }else
             if( d_hotel13_wmc_o_k==="[YES_O_K]" ){
 
-                i_cof = i_cof.replaceAll(            
-                                                    
+                i_cof = i_cof.replaceAll(                                          
                 "[BLACK_MAGIC:d_hotel13_wmc_s_x]"        
                 ,                  ""+i_wmc_i_x+""       
                 );;                                  
                 i_cof = i_cof.replaceAll( 
-            
                 "[BLACK_MAGIC:d_hotel13_wmc_s_y]"    
                 ,                  ""+i_wmc_i_y+""       
-                );;       
+                );;
                 i_cof = i_cof.replaceAll( 
-            
+                "[BLACK_MAGIC:d_hotel13_wmc_s_z]"    
+                ,                  ""+i_wmc_i_z+""       
+                );;             
+                i_cof = i_cof.replaceAll( 
                 "[BLACK_MAGIC:d_hotel13_wmc_o_k]"    
                 ,             d_hotel13_wmc_o_k      
                 );;   
@@ -8756,29 +8767,35 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
         }else
         if( 1
-        &&  ( 4         == h13.m_seg.length )
-        &&  ( "H13_J_S" == h13.m_seg[ 0 ]   )
-        &&  (  "H13.JS" == h13.m_seg[ 3 ]   )
+        &&  ( 5         == h13.m_seg.length )
+        &&  ( "H13_J_S" == h13.m_seg[ 0 ]   )  //::PREFIX://
+        &&  (  "H13.JS" == h13.m_seg[ 4 ]   )  //:POSTFIX://
         ){
             //:::::::::::::::::::::::::::::::::::::::::::://
             //: Serve as custom taylored client side     ://    
             //: javascript library by going to url :     ://    
             //:                                          ://    
-            //: www.app.com/H13_J_S/001/002/APP          ://    
-            //: www.app.com/H13_J_S/###/###/APP          ://    
+            //: www.app.com/H13_J_S/001/002/003/H13.JS   ://    
+            //: www.app.com/H13_J_S/###/###/###/H13.JS   ://    
             //:                                          ://    
             //:::::::::::::::::::::::::::::::::::::::::::://
 
             var obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
             var obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
+            var obj_z = F_HOTEL13_TRYATOI( h13.m_seg[ 3 ] );
 
-            if( obj_x.m_has && obj_y.m_has ){
+            if( 1
+            && obj_x.m_has 
+            && obj_y.m_has
+            && obj_z.m_has
+            ){
 
                 let _ =( " " ); //:Space://
                 let c =( "," ); //:Comma://
 
                 var seg_x =( obj_x.m_i32 );
                 var seg_y =( obj_y.m_i32 );
+                var seg_z =( obj_z.m_i32 );
             
             //////////////////    h13.m_giv.writeHead( 200 , d_txt );
             //////////////////    h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
@@ -8786,9 +8803,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 let wmc_i_x =( seg_x );
                 let wmc_i_y =( seg_y );
-                F_HOTEL13_SERVEME( h13 , wmc_i_x , wmc_i_y );
-
-
+                let wmc_i_z =( seg_z );
+                F_HOTEL13_SERVEME( 
+                        h13 
+                ,   wmc_i_x 
+                ,   wmc_i_y 
+                ,   wmc_i_z
+                );;
             }else{
 
                 let seg = h13.m_seg ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -8819,6 +8840,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13
             ,   d_hotel13_wmc_i_x_def //:AKA[wmc_i_x]://
             ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
+            ,   d_hotel13_wmc_i_z_def //:AKA[wmc_i_z]://
             );;
         }else
         //:AIM_ROUTEPAIR::2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2://
@@ -8854,7 +8876,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13 
             ,   wmc_i_x 
             ,   wmc_i_y 
-            ,   wmc_i_z  //: <--- TODO ////////////////////////////// NOTICE_ME_SENPAI
+            ,   wmc_i_z  
             );;
 
         //:-----------------------------:aim_routepair_js://
@@ -8896,7 +8918,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      </title>                           '
             +'          <script                        '
             ////////////////////////////////////////////
-            +`src ="../../AIM/${w_y}_${w_x}_${w_z}.JS"`
+            +`src ="../../AIM_${w_y}_${w_x}_${w_z}.JS" `
+            ///////"../../AIM___001____002____003_.JS"//
             ////////////////////////////////////////////
             +'              charset="UTF-8">           '
             +'          </script>                      '
@@ -8906,37 +8929,49 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:----------------------------:aim_routepair_htm://
         }else
         //:2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2::AIM_ROUTEPAIR://    
-        if( 2 == h13.m_seg.length ){     //:#_X_SLASH_Y_#://
+        if( 3 == h13.m_seg.length ){     //:#_SLASH_XYZ_#://
+        //:----------------------------------------------://    
+        //:                                              ://
+        //: Example Path :                               ://
+        //:                                              ://
+        //:     www.app.com/H13_J_S/001/002/003/H13.JS   ://
+        //:                                              ://
+        //:----------------------------------------------://
 
-            //:::::::::::::::::::::::::::::::::::::::://
-            //: Serve .HTM Page That Is Kind Of Like ://
-            //: A Youtube Video URL, but for game    ://
-            //: world map [coords/levelpacks].       ://
-            //:::::::::::::::::::::::::::::::::::::::://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: Serve .HTM Page That Is Kind Of Like     ://
+            //: A Youtube Video URL, but for game        ://
+            //: world map [coords/levelpacks].           ://
+            //:::::::::::::::::::::::::::::::::::::::::::://
 
             let TRYATOI = F_HOTEL13_TRYATOI ;
-            var obj_x = TRYATOI( h13.m_seg[ 0 ] );
+            var obj_x = TRYATOI( h13.m_seg[ 0 ] );                
             var obj_y = TRYATOI( h13.m_seg[ 1 ] );
+            var obj_z = TRYATOI( h13.m_seg[ 2 ] );
             var   w_x = d_hotel13_wmc_i_x_def ;
             var   w_y = d_hotel13_wmc_i_y_def ;
+            var   w_z = d_hotel13_wmc_i_z_def ;
 
-            if( obj_x.m_has && obj_y.m_has ){
-
+            if( obj_x.m_has 
+            &&  obj_y.m_has
+            &&  obj_z.m_has
+            ){
                 w_x = obj_x.m_i32 ;
                 w_y = obj_y.m_i32 ;
+                w_z = obj_z.m_i32 ;
             };;
 
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
             +'      <meta charset="utf-8"><title>      '
             ////////////////////////////////////////////
-            +`          [BOOM]( ${w_x} , ${w_y} )      `
+            +`   [BOOM]( ${w_x} , ${w_y} , ${w_z} )    `
             ////////////////////////////////////////////
             +'      </title>                           '
             +'          <script                        '
-            ////////////////////////////////////////////
-            +`src ="../../H13_J_S/${w_y}/${w_x}/H13.JS"`
-            ////////////////////////////////////////////
+        ////////////////////////////////////////////////////
+        +`src ="../../H13_J_S/${w_y}/${w_x}/${w_z}/H13.JS"`
+        ////////////////////////////////////////////////////
             +'              charset="UTF-8">           '
             +'          </script>                      '
             +'      </head>                            '
@@ -10906,7 +10941,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                : window.location.href is the address
                : bar url.
 
-    #_X_SLASH_Y_# :
+    #_SLASH_XYZ_# / #_X_SLASH_Y_# :
 
         //:::::::::::::::::::::::::::::::::::::::://
         //:  [_X_SLASH_Y_] url sceme looks too   ://
