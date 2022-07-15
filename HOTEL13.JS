@@ -8076,6 +8076,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( "UPLOAD" == h13.m_seg[ 0 ] ){
 
             var             early_exit =( 1 );
+            var                    ee1 =( 1 );
+            var                    ee2 =( 2 );
+            var                    ee3 =( 3 );
+            var                    ee4 =( 4 );
+            var              last_exit =( 5 );
             var doing_some_async_stuff =( 0 );
     
             var obj_x   ; //:Object Holding X WorldCoord ://
@@ -8091,7 +8096,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             h13.m_giv.writeHead( 200 , d_txt );
             
-            if( o_k >= 1 && early_exit > 1 ){
+            if( o_k >= 1 && early_exit == ee1 ){
 
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
                 obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
@@ -8108,7 +8113,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     h13.m_giv.end(  );
                 };;
             };;
-            if( o_k >= 1 && early_exit > 2 ){
+            if( o_k >= 1 && early_exit == ee2 ){
 
                 met = String.prototype.toUpperCase.call(
                             h13.m_ask.method );;
@@ -8120,7 +8125,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0-666 );
                 };;
             };;
-            if( o_k >= 1 && early_exit > 3 ){
+            if( o_k >= 1 && early_exit == ee3 ){
                 c_l = parseInt( h13.m_ask.headers[
 
                     "content-length"
@@ -8131,7 +8136,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0-1 );
                 };;
             };;
-            if( o_k >= 1 && early_exit > 4 ){
+            if( o_k >= 1 && early_exit == ee4 ){
 
                 f_n = h13.m_ask.headers[ "filename" ];
                 if( 0
@@ -8166,6 +8171,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
 
             if( !doing_some_async_stuff ){
+    
+                if( early_exit < last_exit ){
+
+                    h13.m_giv.write("[early_exit_debug]");
+                };;
 
                 h13.m_giv.end();
             };;
