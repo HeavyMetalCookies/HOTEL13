@@ -7551,10 +7551,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var clk_p_x = evt_clk.offsetX ;
         var clk_p_y = evt_clk.offsetY ;
         
-        F_HOTEL13_SAM_EDI_CLK(
-            clk_p_x
-        ,   clk_p_y
-        );;
+        if( clk_p_x >= 0 && clk_p_x <=(c_fiverez-1) ){
+        if( clk_p_y >= 0 && clk_p_y <=(c_fiverez-1) ){
+
+            F_HOTEL13_SAM_EDI_CLK(
+                clk_p_x
+            ,   clk_p_y
+            );;
+        };;};;
     
         console.log( "[evt_clk]:" , evt_clk );
     };;
@@ -7562,22 +7566,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     PRIVATE_F_HOTEL13_SAM_MOU_MOV(
         evt_mov
     ){
-        if( 1 == 1 /**Always**/  ){
+        var mov_p_x = evt_mov.offsetX ;
+        var mov_p_y = evt_mov.offsetY ;
 
-            /** Update Cursor Position **/
+        if( mov_p_x >= 0 && mov_p_x <=(c_fiverez-1) ){
+        if( mov_p_y >= 0 && mov_p_y <=(c_fiverez-1) ){
 
-            F_HOTEL13_SAM_EDI_MOU(
-                evt_mov.offsetX
-            ,   evt_mov.offsetY
-            );;
-        };;
-        if( sam.edi_mod_hol >= 1 ){
-        
-            F_HOTEL13_SAM_EDI_CLK(
-                evt_mov.offsetX
-            ,   evt_mov.offsetY
-            );;
-        };;
+            if( 1 == 1 /**Always**/  ){
+
+                /** Update Cursor Position **/
+
+                F_HOTEL13_SAM_EDI_MOU(
+                    mov_p_x
+                ,   mov_p_y
+                );;
+            };;
+            if( sam.edi_mod_hol >= 1 ){
+
+                F_HOTEL13_SAM_EDI_CLK(
+                    mov_p_x
+                ,   mov_p_y
+                );;
+            };;
+        };;};;
     
         //////////////////console.log( "[evt_mov]:" , evt_mov );
     };;
@@ -8258,7 +8269,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var seg_y =( obj_y.m_i32 );
             
                 h13.m_giv.writeHead( 200 , d_txt );
-                h13.m_giv.write( "("+_+seg_x+_+c+_+seg_y+")" );
+                h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
                 h13.m_giv.end("[I_Understand_You]");
             }else{
 
