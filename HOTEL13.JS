@@ -8744,9 +8744,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_seg[ 0 ]
             );;
 
-            var wmc_i_x =( obj_xyz.m_i_x );
-            var wmc_i_y =( obj_xyz.m_i_y );
+            var wmc_i_x =( 0 );
+            var wmc_i_y =( 0 );
+            var wmc_i_z =( 0 );
+
+            if( obj_xyz.m_has ){
+                wmc_i_x =( obj_xyz.m_i_x );
+                wmc_i_y =( obj_xyz.m_i_y );
             /// wmc_i_z =( obj_xyz.m_i_z ); //:TODO://
+            };;
             
             F_HOTEL13_SERVEME( 
                 h13 
