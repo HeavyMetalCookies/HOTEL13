@@ -8248,7 +8248,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     };;
 
-    //:SERVE_THIS_CODE_AS_HTML_FILE:=====================://
+    //:SERVE_THIS_CODE_AS_JS_FILE:=======================://
     if( d_hotel13_h13node ){
     const   F_HOTEL13_SERVEME = function
     PRIVATE_F_HOTEL13_SERVEME(
@@ -8257,10 +8257,60 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
               //: [ i_h13 ]AKA[ i_sob / sob ]       ://
     ){
 
-        /******** TODO ***********/
+        l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
+        
+        if(i_err){
+            i_cof = "[we messed up]" ;
+        }else{
+        
+            i_h13.m_giv.writeHead( 200 , d_js );
+        
+            //:STOLENFROM:#BGT#:=====================://
+            //:get_app_domain:[059]:-----------------://
+            var n =( "\n" );                      
+                                                
+            var app_nam =( process.env[           
+                                                
+                "HEROKU_APP_NAME"                 
+            ]);;                                                                    
+            if( false == ( !!app_nam ) ){         
+                                                
+                d_hotel13_urlsite_o_k =( "[NOT_O_K]" );   
+                d_hotel13_urlsite =( ""                   
+                                                
+                +"[SEE:#_HEROKU_APP_NAME_#]"                                 
+                );;                               
+            }else{                                
+                d_hotel13_urlsite_o_k =( "[YES_O_K]" );   
+                d_hotel13_urlsite     =( ""               
+                + "https://"                      
+                +  app_nam                        
+                + ".herokuapp.com"                
+                );;                               
+            };;                                   
+            //:-----------------:get_app_domain:[059]://
+            //:#MYSBSYS#:[058]:----------------------:// 
+                                                
+            i_cof = ""+i_cof+"";                 
+            i_cof = i_cof.replaceAll(            
+                                                
+            "[BLACK_MAGIC:d_hotel13_urlsite]"        
+            ,             d_hotel13_urlsite          
+            );;                                  
+            i_cof = i_cof.replaceAll( 
+        
+            "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"    
+            ,             d_hotel13_urlsite_o_k      
+            );;                                  
+            //:----------------------:#MYSBSYS#:[058]://
+            //:=====================:STOLENFROM:#BGT#://
+        
+            i_h13.m_giv.end( i_cof  , "utf-8" );
+        
+        };;});; //:END[ readFile ]:::::::::::::::::::://
 
     };;};;
-    //:===================:SERVE_THIS_CODE_AS_HTML_FILE://
+    //:=======================:SERVE_THIS_CODE_AS_JS_FILE://
     if( d_hotel13_h13node ){ require("http").createServer(( 
 
         i_ask  //:AKA[ req / request  ]://
@@ -8457,57 +8507,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         }else
         if( h13.m_url == "/HOTEL13" ){
 
-            l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
-
-            if(i_err){
-                i_cof = "[we messed up]" ;
-            }else{
-
-                h13.m_giv.writeHead( 200 , d_js );
-
-                //:STOLENFROM:#BGT#:=====================://
-                //:get_app_domain:[059]:-----------------://
-                var n =( "\n" );                      
-                                                      
-                var app_nam =( process.env[           
-                                                      
-                    "HEROKU_APP_NAME"                 
-                ]);;                                                                    
-                if( false == ( !!app_nam ) ){         
-                                                      
-                    d_hotel13_urlsite_o_k =( "[NOT_O_K]" );   
-                    d_hotel13_urlsite =( ""                   
-                                                      
-                    +"[SEE:#_HEROKU_APP_NAME_#]"                                 
-                    );;                               
-                }else{                                
-                    d_hotel13_urlsite_o_k =( "[YES_O_K]" );   
-                    d_hotel13_urlsite     =( ""               
-                    + "https://"                      
-                    +  app_nam                        
-                    + ".herokuapp.com"                
-                    );;                               
-                };;                                   
-                //:-----------------:get_app_domain:[059]://
-                //:#MYSBSYS#:[058]:----------------------:// 
-                                                     
-                i_cof = ""+i_cof+"";                 
-                i_cof = i_cof.replaceAll(            
-                                                     
-                "[BLACK_MAGIC:d_hotel13_urlsite]"        
-                ,             d_hotel13_urlsite          
-                );;                                  
-                i_cof = i_cof.replaceAll( 
-       
-                "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"    
-                ,             d_hotel13_urlsite_o_k      
-                );;                                  
-                //:----------------------:#MYSBSYS#:[058]://
-                //:=====================:STOLENFROM:#BGT#://
-
-                h13.m_giv.end( i_cof  , "utf-8" );
-
-            };;});; //:END[ readFile ]:::::::::::::::::::://
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: Serve[ THIS FILE ], yes , this file, ://
+            //: as a javascript source file to       ://
+            //: run on the client side.              ://
+            //:::::::::::::::::::::::::::::::::::::::://
+            F_HOTEL13_SERVEME( h13 );
         }else{
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
