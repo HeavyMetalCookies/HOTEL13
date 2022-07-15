@@ -8091,10 +8091,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //////////////////////////////////
             var             early_exit =( ee3 );
 
-            var                    ee1 =( 1 ); //:OK://
-            var                    ee2 =( 2 );
-            var                    ee3 =( 3 );
-            var                    ee4 =( 4 );
+            var                exi_ee1 =( 1 ); //:OK://
+            var                exi_ee2 =( 2 );
+            var                exi_ee3 =( 3 );
+            var                exi_ee4 =( 4 );
 
             var              last_exit =( 5 );
             //////////////////////////////////
@@ -8113,7 +8113,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             h13.m_giv.writeHead( 200 , d_txt );
             
-            if( (o_k >= 1) && (early_exit >= ee1) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee1) ){
 
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
                 obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
@@ -8130,7 +8130,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     h13.m_giv.write("[bad:No_Coords]\n");
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= ee2) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee2) ){
 
                 met = String.prototype.toUpperCase.call(
                             h13.m_ask.method );;
@@ -8144,7 +8144,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0+777 );
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= ee3) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee3) ){
                 c_l = parseInt( h13.m_ask.headers[
 
                     "content-length"
@@ -8158,7 +8158,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0+777 );
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= ee4) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee4) ){
 
                 h13.m_giv.write("[o_k:beg:ee4]\n");
 
