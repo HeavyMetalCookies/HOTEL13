@@ -8380,7 +8380,95 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         return( o_yes );
     };;
-    //:TRY_TO_INTERPRET_AS_COORD_HASH:===================://
+    //:===================:TRY_TO_INTERPRET_AS_COORD_HASH://
+    //:TRY_TO_INTERPRET_AS_AIM_JS_FILE:==================://
+
+        //:#_MIS_SPELLINGS_#://
+
+        const F_HOTEL13_GET_AIM_FMT = "[FIX:AIM_FMT_GET]" ;
+        const F_HOTEL13_GET_FMT_AIM = "[FIX:AIM_FMT_GET]" ;
+
+        const F_HOTEL13_AIM_GET_FMT = "[FIX:AIM_FMT_GET]" ;
+    
+        const F_HOTEL13_FMT_AIM_GET = "[FIX:AIM_FMT_GET]" ;
+        const F_HOTEL13_FMT_GET_AIM = "[FIX:AIM_FMT_GET]" ;
+
+        //:#_MIS_SPELLINGS_#://
+
+        const F_HOTEL13_HAS_AIM_FMT = "[FIX:AIM_FMT_HAS]" ;
+        const F_HOTEL13_HAS_FMT_AIM = "[FIX:AIM_FMT_HAS]" ;
+
+        const F_HOTEL13_AIM_HAS_FMT = "[FIX:AIM_FMT_HAS]" ;
+    
+        const F_HOTEL13_FMT_AIM_HAS = "[FIX:AIM_FMT_HAS]" ;
+        const F_HOTEL13_FMT_HAS_AIM = "[FIX:AIM_FMT_HAS]" ;
+
+    //:==================:TRY_TO_INTERPRET_AS_AIM_JS_FILE://
+    //:TRY_TO_INTERPRET_AS_AIM_JS_FILE:==================://
+    const   F_HOTEL13_AIM_FMT_GET = function
+    PRIVATE_F_HOTEL13_AIM_FMT_GET(
+
+        i_str
+    ){
+        if(!i_str){ i_str = "" ; };
+
+        var o_obj ={ laxcoma:"[HACK]"
+
+        ,   m_has : 0
+        ,   m_xyz : "[nil][m_xyz]"
+
+        ,   m_i_x : ( 0 - 10101 )
+        ,   m_i_y : ( 0 - 20202 )
+        ,   m_i_z : ( 0 - 30303 )
+        };;
+        Object.seal( o_obj );
+
+        if( i_str.length >= 4 ){
+        if( "A" === i_str[ 0 ]
+        &&  "I" === i_str[ 1 ]
+        &&  "M" === i_str[ 2 ]
+        &&  "_" === i_str[ 3 ]
+        ){
+            var str_xyz =( i_str );
+
+            str_xyz =( str_xyz.replaceAll(
+                "AIM_" , "" //:#_TAKEOFF_AIM_P_#://
+            ));;
+            str_xyz =( str_xyz.replaceAll(
+                ".JS"  , "" //:#_TAKEOFF_DOTJS_#://
+            ));;
+
+            var obj_xyz =( F_HOTEL13_ICH_TRY(
+                str_xyz
+            ));;
+            if( obj_xyz.m_has ){
+
+                o_obj.m_has =(           200 );
+                o_obj.m_xyz =( obj_xyz.m_xyz );
+
+                o_obj.m_i_x =( obj_xyz.m_i_x );
+                o_obj.m_i_y =( obj_xyz.m_i_y );
+                o_obj.m_i_z =( obj_xyz.m_i_z );
+            };;
+        };;};;
+
+        return( o_obj );
+    };;
+    const   F_HOTEL13_AIM_FMT_HAS = function
+    PRIVATE_F_HOTEL13_AIM_FMT_HAS(
+
+        i_str
+    ){
+        var o_yes=( 0 );
+        var obj_xyz = F_HOTEL13_AIM_FMT_GET( i_str );
+        if( obj_xyz.m_has ){
+
+            o_yes =( 1 );
+        };;
+        return( o_yes );
+    };;
+
+    //:==================:TRY_TO_INTERPRET_AS_AIM_JS_FILE://
     //:##################################################://
     //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
@@ -8733,33 +8821,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
             );;
         }else
-        if( 1 
-        &&  1 == h13.m_seg.length
-        &&  F_HOTEL13_ICH( h13.m_seg[ 0 ] )
-            //: : : : : : : : : :::: : : : : : : : : ://
-            //: EXAMPLE: www.app.com/001             ://
-            //: EXAMPLE: www.app.com/001_002         ://
-            //: EXAMPLE: www.app.com/001_002_003     ://
-            //:                                      ://
-            //: "001" is X axis ( in example )       ://
-            //: "002" is Y axis ( in example )       ://
-            //: "003" is Z axis ( in example )       ://
-            //: : : : : : : : : :::: : : : : : : : : ://
+        //:AIM_ROUTEPAIR::2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2://
+        if( h13.m_seg.length >= 1
+        &&  F_HOTEL13_AIM_FMT_HAS( h13.m_seg[ 0 ] )
         ){
-            //:::::::::::::::::::::::::::::::::::::::://
-            //:  [_X_SLASH_Y_] url sceme looks too   ://
-            //:  much like weird facebook bullshit.  ://
-            //:  Allow inputs that can be read as    ://
-            //:  coordinate hashes like:             ://
-            //:                                      ://
-            //:  XY  : 000_000                       ://
-            //:  XYZ : 000_000_000                   ://
-            //:                                      ://
-            //:::::::::::::::::::::::::::::::::::::::://
+        //:aim_routepair_js:-----------------------------://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: EXAMPLE: www.app.com/AIM_001.JS              ://
+        //: EXAMPLE: www.app.com/AIM_001_002.JS          ://
+        //: EXAMPLE: www.app.com/AIM_001_002_003.JS      ://
+        //:                                              ://
+        //: "001" is X axis ( in example )               ://
+        //: "002" is Y axis ( in example )               ://
+        //: "003" is Z axis ( in example )               ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
 
-            var obj_xyz = F_HOTEL13_ICH_TRY( 
+            var obj_xyz =( F_HOTEL13_AIM_FMT_GET( 
                 h13.m_seg[ 0 ]
-            );;
+            ));;
 
             var wmc_i_x =( 0 );
             var wmc_i_y =( 0 );
@@ -8768,18 +8847,66 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( obj_xyz.m_has ){
                 wmc_i_x =( obj_xyz.m_i_x );
                 wmc_i_y =( obj_xyz.m_i_y );
-            /// wmc_i_z =( obj_xyz.m_i_z ); //:TODO://
+                wmc_i_z =( obj_xyz.m_i_z );  
             };;
             
             F_HOTEL13_SERVEME( 
                 h13 
             ,   wmc_i_x 
             ,   wmc_i_y 
-        /// ,   wmc_i_z  <--- TODO ////////////////////////////// NOTICE_ME_SENPAI
+            ,   wmc_i_z  //: <--- TODO ////////////////////////////// NOTICE_ME_SENPAI
             );;
 
+        //:-----------------------------:aim_routepair_js://
         }else
-        if( 2 == h13.m_seg.length ){ //:#_X_SLASH_Y_#://
+        if( 1 
+        &&  1 == h13.m_seg.length
+        &&  F_HOTEL13_ICH( h13.m_seg[ 0 ] )
+        ){
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: EXAMPLE: www.app.com/001                     ://
+        //: EXAMPLE: www.app.com/001_002                 ://
+        //: EXAMPLE: www.app.com/001_002_003             ://
+        //:                                              ://
+        //: "001" is X axis ( in example )               ://
+        //: "002" is Y axis ( in example )               ://
+        //: "003" is Z axis ( in example )               ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //:aim_routepair_htm:----------------------------://
+
+            var obj_xyz =(F_HOTEL13_ICH_TRY( 
+                h13.m_seg[ 0 ]
+            ));;
+            var w_x =( 0 );
+            var w_y =( 0 );
+            var w_z =( 0 );
+            if( obj_xyz.m_has ){
+
+                w_x =( obj_xyz.m_i_x );
+                w_y =( obj_xyz.m_i_y );
+                w_z =( obj_xyz.m_i_z );
+            };;
+
+            var h13_webpage =( "" //:----------------://
+            +'      <!DOCTYPE HTML><head>              '
+            +'      <meta charset="utf-8"><title>      '
+            ////////////////////////////////////////////
+            +`     [AIM]( ${w_x} , ${w_y} , ${w_z} )   `
+            ////////////////////////////////////////////
+            +'      </title>                           '
+            +'          <script                        '
+            ////////////////////////////////////////////
+            +`src ="../../AIM/${w_y}_${w_x}_${w_z}.JS"`
+            ////////////////////////////////////////////
+            +'              charset="UTF-8">           '
+            +'          </script>                      '
+            +'      </head>                            '
+            );; //:----------------------------------://
+
+        //:----------------------------:aim_routepair_htm://
+        }else
+        //:2_2_2_2_2_2_2_2_2_2_2_2_2_2_2_2::AIM_ROUTEPAIR://    
+        if( 2 == h13.m_seg.length ){     //:#_X_SLASH_Y_#://
 
             //:::::::::::::::::::::::::::::::::::::::://
             //: Serve .HTM Page That Is Kind Of Like ://
@@ -10778,6 +10905,32 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     #_AB_URL_# : AddressBar_URL 
                : window.location.href is the address
                : bar url.
+
+    #_X_SLASH_Y_# :
+
+        //:::::::::::::::::::::::::::::::::::::::://
+        //:  [_X_SLASH_Y_] url sceme looks too   ://
+        //:  much like weird facebook bullshit.  ://
+        //:  Allow inputs that can be read as    ://
+        //:  coordinate hashes like:             ://
+        //:                                      ://
+        //:  XY  : 000_000                       ://
+        //:  XYZ : 000_000_000                   ://
+        //:                                      ://
+        //:::::::::::::::::::::::::::::::::::::::://
+
+    #_MIS_SPELLINGS_# :
+
+        Sometimes I wonder to myself , "how was that "
+        "function spelled"? So I will make mis-spelling
+        permutations into "monkey wrench macros" to
+        make sure I use the correct names.
+
+    #_TAKEOFF_AIM_P_# : take off "AIM_" prefix.
+
+
+    #_TAKEOFF_DOTJS_# : take off ".JS"  postfix
+
  
 *** ******************************************************** **/
 
