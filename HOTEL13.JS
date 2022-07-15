@@ -8266,6 +8266,104 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_obj );
         };;
     //:=============================:TRY_TO_PARSE_INTEGER://
+    //:TRY_TO_INTERPRET_AS_COORD_HASH:===================://
+
+    const   F_HOTEL13_TRY_ICH = "[FIX:ICH_TRY]" ;
+
+    const   F_HOTEL13_ICH_TRY = function
+    PRIVATE_F_HOTEL13_ICH_TRY(
+
+        i_str
+    ){
+        //:[ATF]:::::::::::::::::::::::::::::::::::::::::://
+        //:                                              ://
+        //: Try to interpret[ i_str ]as a                ://
+        //: valid coorinate hash.                        ://
+        //:                                              ://
+        //::::::::::::::::::::::::::::::::::::::::::[ATF]://
+
+        var o_obj ={ laxcoma:"[HACK]"
+
+        ,   m_has : 0
+        ,   m_xyz : "[nil][m_xyz]"
+
+        ,   m_i_x : ( 0 - 111 )
+        ,   m_i_y : ( 0 - 222 )
+        ,   m_i_z : ( 0 - 333 )
+        };;
+        Object.seal( o_obj );
+
+        if( !i_str ){ i_str = "" ; };
+        var arr = ( i_str.split( "_" ).filter(n=>n) );
+        if( arr.length < 1 ){ arr[ 0 ] = "000" ; };
+        if( arr.length < 2 ){ arr[ 1 ] = "000" ; };
+        if( arr.length < 3 ){ arr[ 2 ] = "000" ; };
+
+        var num_obj =new Array( 3 );
+            num_obj[ 0 ] = F_HOTEL13_TRYATOI( arr[ 0 ] );
+            num_obj[ 1 ] = F_HOTEL13_TRYATOI( arr[ 1 ] );
+            num_obj[ 2 ] = F_HOTEL13_TRYATOI( arr[ 2 ] );
+        
+        if( num_obj[ 0 ].m_has
+        &&  num_obj[ 1 ].m_has
+        &&  num_obj[ 2 ].m_has
+        ){
+            //:::::::::::::::::::::::::::://
+            //: @m_has@ : HAS / Exists?  ://
+            //: @m_xyz@ : XYZ Coord Hash ://
+            //: @m_i_x@ : Member . i_x   ://
+            //: @m_i_y@ : Member . i_y   ://
+            //: @m_i_z@ : Member . i_z   ://
+            //:::::::::::::::::::::::::::://
+
+            o_obj.m_has =( 1 );
+            o_obj.m_xyz =( ""
+            +              ""+num_obj[0].m_i32+""
+            +              ""+num_obj[1].m_i32+""
+            +              ""+num_obj[2].m_i32+""
+            );;
+            o_obj.m_i_x =(    num_obj[0].m_i32 );
+            o_obj.m_i_y =(    num_obj[1].m_i32 );
+            o_obj.m_i_z =(    num_obj[2].m_i32 );
+        };;
+
+        return( o_obj );
+    };;
+    const   F_HOTEL13_ICH = function
+    PRIVATE_F_HOTEL13_ICH( //:@IC@:Is_Coord_Hash?://
+
+        i_str
+    ){
+        //:[ATF]:::::::::::::::::::::::::::::::::::::::::://    
+        //:                                              ://
+        //:  Return positive if string can be            ://
+        //:  interpreted as a coordinate hash.           ://
+        //:                                              ://
+        //:  i_str === "777"   ==> 777_000_000 ==> YES   ://
+        //:  i_str === "1_2"   ==> 001_002_000 ==> YES   ://
+        //:  i_str === "1_2_3" ==> 001_002_003 ==> YES   ://
+        //:                                              ://
+        //:  Actually... It's not that "777" yeilds      ://
+        //:  "777_000_000" , it is that "777" and        ://
+        //:  "777_000_000" are interpreted as the        ://
+        //:  same value coordinate hash.                 ://
+        //:                                              ://
+        //::::::::::::::::::::::::::::::::::::::::::[ATF]://    
+        var o_yes=( 0 );
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: A bit wasteful of a way to do this , but     ://
+        //: but this is javascript land.                 ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        var obj_xyz = F_HOTEL13_ICH_TRY( i_str );
+        if( obj_xyz.has ){
+
+            o_yes =( 1 );
+        };;
+
+        return( o_yes );
+    };;
+    //:TRY_TO_INTERPRET_AS_COORD_HASH:===================://
     //:##################################################://
     //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
@@ -8618,7 +8716,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
             );;
         }else
-        if( 2 == h13.m_seg.length ){
+        if( 1 
+        &&  1 == h13.m_seg.length
+        &&  F_HOTEL13_ICH( h13.m_seg[ 0 ] )
+        ){
+            //:::::::::::::::::::::::::::::::::::::::://
+            //:  [_X_SLASH_Y_] url sceme looks too   ://
+            //:  much like weird facebook bullshit.  ://
+            //:  Allow inputs that can be read as    ://
+            //:  coordinate hashes like:             ://
+            //:                                      ://
+            //:  XY  : 000_000                       ://
+            //:  XYZ : 000_000_000                   ://
+            //:                                      ://
+            //:::::::::::::::::::::::::::::::::::::::://
+
+
+            slkdfjlaksjflksjafjasdl ssjdlfjsldfjlsjflkjsdlfjlsjfljlsfjsjfsjf NOTICE_ME_SENPAI
+
+        }else
+        if( 2 == h13.m_seg.length ){ //:#_X_SLASH_Y_#://
 
             //:::::::::::::::::::::::::::::::::::::::://
             //: Serve .HTM Page That Is Kind Of Like ://
