@@ -8123,7 +8123,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }else{
                     o_k =( 0-666 );
                     h13.m_giv.write("[Must_Supply_Coords]");
-                    h13.m_giv.end(  );
                 };;
             };;
             if( o_k >= 1 && early_exit == ee2 ){
@@ -8134,7 +8133,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 if( "POST" != met ){
     
                     h13.m_giv.write( "[___NOT_AA_POST___]" );
-                    h13.m_giv.end(   "[USE_POSTMAN_OR_JS]" );
                     o_k =( 0-666 );
                 };;
             };;
@@ -8145,7 +8143,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ]);;
 
                 if( Number.isNaN( c_l ) || c_l <= 0 ){
-                    h13.m_giv.end( "[c_l:is_nan]" );
+                    h13.m_giv.write( "[c_l:is_nan]" );
                     o_k =( 0-1 );
                 };;
             };;
