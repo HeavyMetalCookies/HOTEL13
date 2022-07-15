@@ -5996,7 +5996,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             d_pngname =( F_HOTEL13_URL_PNGNAME( 
 
                 window.location.href //:#_AB_URL_#://
-            );;
+            ));;
             
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
