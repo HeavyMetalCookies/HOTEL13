@@ -8229,7 +8229,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_obj );
         };;
     //:=============================:TRY_TO_PARSE_INTEGER://
-    //:HOTEL13_SERVER_MODE:==============================://
+    //:##################################################://
+    //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
 
         /// l_pg  = require( "pg"               );   
@@ -8247,9 +8248,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var d_css = { [c_t]: "text/css"                 } ;
 
     };;
+    if( d_hotel13_h13node ){ //:BEG:ENV_H13NODE::::::::::://
 
     //:SERVE_THIS_CODE_AS_JS_FILE:=======================://
-    if( d_hotel13_h13node ){
     const   F_HOTEL13_SERVEME = function
     PRIVATE_F_HOTEL13_SERVEME(
 
@@ -8309,9 +8310,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         
         };;});; //:END[ readFile ]:::::::::::::::::::://
 
-    };;};;
+    };; 
     //:=======================:SERVE_THIS_CODE_AS_JS_FILE://
-    if( d_hotel13_h13node ){ require("http").createServer(( 
+    //:HOTEL13_SERVER:===================================://
+    require("http").createServer(( 
 
         i_ask  //:AKA[ req / request  ]://
     ,   i_giv  //:AKA[ res / response ]://
@@ -8530,9 +8532,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             h13.m_giv.end( h13_webpage , "utf-8" );
         };;
 
-    }).listen(process.env.PORT); };; //:=================://
-    //:HOTEL13_SERVER_MODE:==============================://
-
+    }).listen(process.env.PORT); 
+    //:===================================:HOTEL13_SERVER://    
+    };; //:END:ENV_H13NODE:::::::::::::::::::::::::::::::://
+    //:HOTEL13_SERVER_MODE:##############################://
+    //:##################################################://
 
 
 /** BOMB_LASER_ECHOBOX_SPARKPIN **************************** ***
