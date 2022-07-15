@@ -5801,6 +5801,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
    ////////// 
    ////////// TEST_SIMULATION_PERFORMANCE();
 
+    //:HOTEL13_URL_TO_PNG_FILE_NAME:=====================://
+
+        const   F_HOTEL13_URL_PNGNAME = function
+        PRIVATE_F_HOTEL13_URL_PNGNAME(
+
+            i_url
+        ){
+            var o_pngname =( "TODO.PNG" );
+
+
+            console.log( "[window.location.href]"
+                          ,window.location.href );;
+
+
+
+            return( o_pngname );
+        };;
+    //:=====================:HOTEL13_URL_TO_PNG_FILE_NAME://
     //:GET_READY_TO_SAVE_LEVEL:==========================://
     //:                                                  ://
     //:     d_pix2048 ==> d_pix0512                      ://
@@ -5926,7 +5944,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:==================================:SAVE_FILE_INDEX://
     //:TEMPORARY_DEVELOPMENT_DATA:=======================://
 
-        var d_png = null;
+        var d_pngfile = null;
+        var d_pngname ="[nil][d_pngname]" ;
 
     //:=======================:TEMPORARY_DEVELOPMENT_DATA://
     //:==================================:LOAD_FILE_INDEX://
@@ -5963,7 +5982,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             F_HOTEL13_2048_0512( 1 , 1 );
             
             LOG(  "[UPNG.encode]" , "[BEG]" );
-            d_png = UPNG.encode( 
+            d_pngfile = UPNG.encode( 
             
                 [d_pix0512] //:ArrayOf_Frames://
             ,   512         //:Width_InPixels://
@@ -5974,12 +5993,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
 
+            d_pngname =( F_HOTEL13_URL_PNGNAME( 
+
+                window.location.href //:#_AB_URL_#://
+            );;
             
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
 
                 "UPLOAD/100/100" 
-            ,    d_png
+            ,    d_pngfile
 
             ).then((i_saywhat)=>{                        
                                                         
@@ -6010,9 +6033,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ){
             var o_k =( 1 );
             
-            var got_png =( d_png ); //:TODO: Get via httprequest
-            var arr_buf =(  null );
-            var pix_arr =(  null );
+            var got_png =( d_pngfile ); 
+            var arr_buf =(  null     );
+            var pix_arr =(  null     );
 
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
 
@@ -10410,6 +10433,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         Using a prefix to let me know that this header
         is something I( KANJICODER )made up and not some
         type of standard with XMLHTTPREQUEST.
+
+    #_AB_URL_# : AddressBar_URL 
+               : window.location.href is the address
+               : bar url.
  
 *** ******************************************************** **/
 
