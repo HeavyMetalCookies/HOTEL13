@@ -8282,10 +8282,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     const   F_HOTEL13_SERVEME = function
     PRIVATE_F_HOTEL13_SERVEME(
 
-        i_h13   //: Hotel13's StateObjectBundle( sob )   ://
-                //: [ i_h13 ]AKA[ i_sob / sob ]          ://
-    ,   i_wmc_x //:Input: WorldMapCoord . X  : : : : : : ://
-    ,   i_wmc_y //:Input: WorldMapCoord . Y  : : : : : : ://
+        i_h13     //: Hotel13's StateObjectBundle( sob ) ://
+                  //: [ i_h13 ]AKA[ i_sob / sob ]        ://
+    ,   i_wmc_i_x //:Input: WorldMapCoord . X  : : : : : ://
+    ,   i_wmc_i_y //:Input: WorldMapCoord . Y  : : : : : ://
     ){
 
         l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
@@ -8332,8 +8332,43 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         
             "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"    
             ,             d_hotel13_urlsite_o_k      
-            );;                                  
+            );;                             
             //:----------------------:#MYSBSYS#:[058]://
+            //:SetWorldMapCoords:--------------------://
+            if( (!(i_wmc_i_x >= 0 ))
+            &&  (!(i_wmc_i_y >= 0 ))
+            ){
+                d_hotel13_wmc_o_k = "[NOT_O_K]" ;
+            }else{
+                d_hotel13_wmc_o_k = "[YES_O_K]" ;
+            };;
+            if( d_hotel13_wmc_o_k==="[NOT_O_K]" ){
+
+                "[BLACK_MAGIC:d_hotel13_wmc_o_k]"    
+                ,             d_hotel13_wmc_o_k      
+                );;   
+            }else
+            if( d_hotel13_wmc_o_k==="[YES_O_K]" ){
+
+                i_cof = i_cof.replaceAll(            
+                                                    
+                "[BLACK_MAGIC:d_hotel13_wmc_s_x]"        
+                ,                  ""+i_wmc_i_x+""       
+                );;                                  
+                i_cof = i_cof.replaceAll( 
+            
+                "[BLACK_MAGIC:d_hotel13_wmc_s_y]"    
+                ,                  ""+i_wmc_i_y+""       
+                );;       
+                i_cof = i_cof.replaceAll( 
+            
+                "[BLACK_MAGIC:d_hotel13_wmc_o_k]"    
+                ,             d_hotel13_wmc_o_k      
+                );;   
+            }else{
+                F_HOTEL13_ERR("[unexpected_20220715]");
+            };;
+            //:--------------------:SetWorldMapCoords://
             //:=====================:STOLENFROM:#BGT#://
         
             i_h13.m_giv.end( i_cof  , "utf-8" );
@@ -8523,9 +8558,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //////////////////    h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
             //////////////////    h13.m_giv.end("[I_Understand_You]");
 
-                let wmc_x =( seg_x );
-                let wmc_y =( seg_y );
-                F_HOTEL13_SERVEME( h13 , wmc_x , wmc_y );
+                let wmc_i_x =( seg_x );
+                let wmc_i_y =( seg_y );
+                F_HOTEL13_SERVEME( h13 , wmc_i_x , wmc_i_y );
 
 
             }else{
@@ -8552,8 +8587,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:::::::::::::::::::::::::::::::::::::::://
             F_HOTEL13_SERVEME( 
                 h13
-            ,   d_hotel13_wmc_i_x_def //:AKA[ wmc_x ]://
-            ,   d_hotel13_wmc_i_y_def //:AKA[ wmc_y ]://
+            ,   d_hotel13_wmc_i_x_def //:AKA[wmc_i_x]://
+            ,   d_hotel13_wmc_i_y_def //:AKA[wmc_i_y]://
             );;
         }else{
             var h13_webpage =( "" //:----------------://
