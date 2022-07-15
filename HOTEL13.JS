@@ -8344,6 +8344,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
             if( d_hotel13_wmc_o_k==="[NOT_O_K]" ){
 
+                i_cof = i_cof.replaceAll( 
+
                 "[BLACK_MAGIC:d_hotel13_wmc_o_k]"    
                 ,             d_hotel13_wmc_o_k      
                 );;   
