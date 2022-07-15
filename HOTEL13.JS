@@ -7964,6 +7964,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             i_str
         ){
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: hack so that we don't crash when trying  ://
+            //: to invoke method on[ i_str ].            ://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            if( 0
+            ||  null        ==        i_str  
+            ||  "undefined" == typeof i_str  
+            ||  "string"    != typeof i_str
+            ){
+                i_str =( "" );
+            };;
+              
+
             var o_obj ={ laxcoma:"[HACK]"
 
             ,   m_has : 0 //: m_i32 exists ?      ://
