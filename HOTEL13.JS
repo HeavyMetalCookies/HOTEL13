@@ -8074,6 +8074,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
         if( "UPLOAD" == h13.m_seg[ 0 ] ){
+
+            var             early_exit =( 1 );
+            var doing_some_async_stuff =( 0 );
     
             var obj_x   ; //:Object Holding X WorldCoord ://
             var obj_y   ; //:Object Holding Y WorldCoord ://
@@ -8088,7 +8091,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             h13.m_giv.writeHead( 200 , d_txt );
             
-            if( o_k >= 1 ){
+            if( o_k >= 1 && early_exit > 1 ){
 
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
                 obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
@@ -8105,7 +8108,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     h13.m_giv.end(  );
                 };;
             };;
-            if( o_k >= 1 ){
+            if( o_k >= 1 && early_exit > 2 ){
 
                 met = String.prototype.toUpperCase.call(
                             h13.m_ask.method );;
@@ -8117,7 +8120,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0-666 );
                 };;
             };;
-            if( o_k >= 1 ){
+            if( o_k >= 1 && early_exit > 3 ){
                 c_l = parseInt( h13.m_ask.headers[
 
                     "content-length"
@@ -8128,7 +8131,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0-1 );
                 };;
             };;
-            if( o_k >= 1 ){
+            if( o_k >= 1 && early_exit > 4 ){
 
                 f_n = h13.m_ask.headers[ "filename" ];
                 if( 0
@@ -8137,29 +8140,34 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ||  (        !f_n )
                 ){
                     var wtf =(
-                        m_ask.headers[ "content-type" ]
+                        h13.m_ask.headers[ "content-type" ]
                         .split("/")[1]
                     );;
                     f_n =( "file." + wtf );
                 };;
 
+                doing_some_async_stuff=( 1 );
                 rel =( "./" + f_n );
                 f_s = l_fs.createWriteStream( "./" + f_n );
-
                 f_s.on( "error" , (i_err)=>{
 
                     console.log("[OH_FUCK_NO_2022]");
                     h13.m_giv.end();
                 });;
-            
+
                 h13.i_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
                 h13.i_ask.on( "end" , ()=>{
 
                     f_s.close( ()=>{
 
-                        m_giv.end( "[SUCCESS]" );
+                        h13.m_giv.end( "[SUCCESS]" );
                     });;
                 });;
+            };;
+
+            if( !doing_some_async_stuff ){
+
+                h13.m_giv.end();
             };;
         }else
         if( 2 == h13.m_seg.length ){
