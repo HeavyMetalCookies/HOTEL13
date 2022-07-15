@@ -52,7 +52,35 @@
         );;                                              
         var               d_hotel13_urlsite_o_k=(                              
             "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"                
-        );;                                  
+        );;       
+
+        //:@wmc@:WorldMapCoord ::::::::::::::::::://
+        //:@wmc_s_x@     : wmc - string - x      ://
+        //:@wmc_s_y@     : wmc - string - y      :// 
+        //:@wmc_o_k@     : wmc - Okay?           ://
+        //:@wmc_i_x@     : wmc - integer- x      ://
+        //:@wmc_i_y@     : wmc - integer- y      ://
+        //:@wmc_i_x_def@ : DEFAULT x             ://
+        //:@wmc_i_y_def@ : DEFAULT y             ://
+        //:::::::::::::::::::::::::::::::::::::::://
+        var d_hotel13_wmc_i_x_def =(   0     );
+        var d_hotel13_wmc_i_y_def =(   0     );
+        var d_hotel13_wmc_i_x     =( 0 - 404 );
+        var d_hotel13_wmc_i_y     =( 0 - 404 );
+        var               d_hotel13_wmc_s_x =(
+            "[BLACK_MAGIC:d_hotel13_wmc_s_x]" );;
+        var               d_hotel13_wmc_s_y =(
+            "[BLACK_MAGIC:d_hotel13_wmc_s_y]" );;
+        var               d_hotel13_wmc_o_k =(
+            "[BLACK_MAGIC:d_hotel13_wmc_o_k]" );;
+        if( "[YES_O_K]" ==d_hotel13_wmc_o_k ){
+
+            d_hotel13_wmc_i_x =( Number.parseInt( 
+            d_hotel13_wmc_s_x ));;
+
+            d_hotel13_wmc_i_y =( Number.parseInt( 
+            d_hotel13_wmc_s_y ));;
+        };;
 
         if( "[YES_O_K]" == d_hotel13_urlsite_o_k ){
 
@@ -8254,8 +8282,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     const   F_HOTEL13_SERVEME = function
     PRIVATE_F_HOTEL13_SERVEME(
 
-        i_h13 //: Hotel13's StateObjectBundle( sob )://
-              //: [ i_h13 ]AKA[ i_sob / sob ]       ://
+        i_h13   //: Hotel13's StateObjectBundle( sob )   ://
+                //: [ i_h13 ]AKA[ i_sob / sob ]          ://
+    ,   i_wmc_x //:Input: WorldMapCoord . X  : : : : : : ://
+    ,   i_wmc_y //:Input: WorldMapCoord . Y  : : : : : : ://
     ){
 
         l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
@@ -8489,9 +8519,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var seg_x =( obj_x.m_i32 );
                 var seg_y =( obj_y.m_i32 );
             
-                h13.m_giv.writeHead( 200 , d_txt );
-                h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
-                h13.m_giv.end("[I_Understand_You]");
+            //////////////////    h13.m_giv.writeHead( 200 , d_txt );
+            //////////////////    h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
+            //////////////////    h13.m_giv.end("[I_Understand_You]");
+
+                let wmc_x =( seg_x );
+                let wmc_y =( seg_y );
+                F_HOTEL13_SERVEME( h13 , wmc_x , wmc_y );
+
+
             }else{
 
                 let seg = h13.m_seg ;
@@ -8514,7 +8550,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //: as a javascript source file to       ://
             //: run on the client side.              ://
             //:::::::::::::::::::::::::::::::::::::::://
-            F_HOTEL13_SERVEME( h13 );
+            F_HOTEL13_SERVEME( 
+                h13
+            ,   d_hotel13_wmc_i_x_def //:AKA[ wmc_x ]://
+            ,   d_hotel13_wmc_i_y_def //:AKA[ wmc_y ]://
+            );;
         }else{
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
