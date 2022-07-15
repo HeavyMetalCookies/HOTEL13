@@ -8543,10 +8543,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_giv.end( JSON.stringify( uro ));
             };;
         }else
-        if( 2 == h13.m_seg.length ){
+        if( 1
+        &&  ( 3         == h13.m_seg.length )
+        &&  ( "H13_J_S" == h13.m_seg[ 0 ]   )
+        ){
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: Serve as custom taylored client side     ://    
+            //: javascript library by going to url :     ://    
+            //:                                          ://    
+            //: www.app.com/H13_J_S/001/002              ://    
+            //: www.app.com/H13_J_S/###/###              ://    
+            //:                                          ://    
+            //:::::::::::::::::::::::::::::::::::::::::::://
 
-            var obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 0 ] );
-            var obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
+            var obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
+            var obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
 
             if( obj_x.m_has && obj_y.m_has ){
 
@@ -8573,6 +8584,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_giv.write( "\n"                     );
                 h13.m_giv.write( "[m_seg[1]]:" + seg[ 1 ] );
                 h13.m_giv.write( "\n"                     );
+                h13.m_giv.write( "[m_seg[2]]:" + seg[ 2 ] );
+                h13.m_giv.write( "\n"       
                 h13.m_giv.end("[Room_XY_Is_BS]");
             };;
         }else
