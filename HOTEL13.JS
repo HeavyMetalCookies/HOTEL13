@@ -8719,6 +8719,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( 1 
         &&  1 == h13.m_seg.length
         &&  F_HOTEL13_ICH( h13.m_seg[ 0 ] )
+            //: : : : : : : : : :::: : : : : : : : : ://
+            //: EXAMPLE: www.app.com/001             ://
+            //: EXAMPLE: www.app.com/001_002         ://
+            //: EXAMPLE: www.app.com/001_002_003     ://
+            //:                                      ://
+            //: "001" is X axis ( in example )       ://
+            //: "002" is Y axis ( in example )       ://
+            //: "003" is Z axis ( in example )       ://
+            //: : : : : : : : : :::: : : : : : : : : ://
         ){
             //:::::::::::::::::::::::::::::::::::::::://
             //:  [_X_SLASH_Y_] url sceme looks too   ://
@@ -8731,8 +8740,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:                                      ://
             //:::::::::::::::::::::::::::::::::::::::://
 
+            var obj_xyz = F_HOTEL13_ICH_TRY( 
+                h13.m_seg[ 0 ]
+            );;
 
-            slkdfjlaksjflksjafjasdl ssjdlfjsldfjlsjflkjsdlfjlsjfljlsfjsjfsjf NOTICE_ME_SENPAI
+            var wmc_i_x =( obj_xyz.m_i_x );
+            var wmc_i_y =( obj_xyz.m_i_y );
+            /// wmc_i_z =( obj_xyz.m_i_z ); //:TODO://
+            
+            F_HOTEL13_SERVEME( 
+                h13 
+            ,   wmc_i_x 
+            ,   wmc_i_y 
+        /// ,   wmc_i_z  <--- TODO ////////////////////////////// NOTICE_ME_SENPAI
+            );;
 
         }else
         if( 2 == h13.m_seg.length ){ //:#_X_SLASH_Y_#://
