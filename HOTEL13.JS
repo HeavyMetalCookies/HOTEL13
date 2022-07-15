@@ -8293,13 +8293,55 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
 
-                if(i_err){
-                    i_cof = "[we messed up]" ;
-                }else{
-                    h13.m_giv.writeHead( 200 , d_js );
-                    h13.m_giv.end( i_cof  , "utf-8" );
-                };;
-            });;
+            if(i_err){
+                i_cof = "[we messed up]" ;
+            }else{
+
+                h13.m_giv.writeHead( 200 , d_js );
+
+                //:STOLENFROM:#BGT#:=====================://
+                //:get_app_domain:[059]:-----------------://
+                var n =( "\n" );                      
+                                                      
+                var app_nam =( process.env[           
+                                                      
+                    "HEROKU_APP_NAME"                 
+                ]);;                                                                    
+                if( false == ( !!app_nam ) ){         
+                                                      
+                    d_hotel13_urlsite_o_k =( "[NOT_O_K]" );   
+                    d_hotel13_urlsite =( ""                   
+                                                      
+                    +"[SEE:#_HEROKU_APP_NAME_#]"                                 
+                    );;                               
+                }else{                                
+                    d_hotel13_urlsite_o_k =( "[YES_O_K]" );   
+                    d_hotel13_urlsite     =( ""               
+                    + "https://"                      
+                    +  app_nam                        
+                    + ".herokuapp.com"                
+                    );;                               
+                };;                                   
+                //:-----------------:get_app_domain:[059]://
+                //:#MYSBSYS#:[058]:----------------------:// 
+                                                     
+                i_cof = ""+i_cof+"";                 
+                i_cof = i_cof.replaceAll(            
+                                                     
+                "[BLACK_MAGIC:d_hotel13_urlsite]"        
+                ,             d_hotel13_urlsite          
+                );;                                  
+                i_cof = i_cof.replaceAll( 
+       
+                "[BLACK_MAGIC:d_hotel13_urlsite_o_k]"    
+                ,             d_hotel13_urlsite_o_k      
+                );;                                  
+                //:----------------------:#MYSBSYS#:[058]://
+                //:=====================:STOLENFROM:#BGT#://
+
+                h13.m_giv.end( i_cof  , "utf-8" );
+
+            };;});; //:END[ readFile ]:::::::::::::::::::://
         }else{
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
@@ -10206,8 +10248,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     :----------------------------------------------------------:
 
     69TH COMMIT , NICE . 2022_07_15 , 644 AM 
-                                                                
+                                                 
 
+    #_HEROKU_APP_NAME_# :
+
+        You need to run special heroku command in
+        terminal on your heroku project for this
+        environment variable to be available.
+
+
+    #BGT# : www.tinyurl.com/BOMB-GAME-TUTORIAL
  
 *** ******************************************************** **/
 
