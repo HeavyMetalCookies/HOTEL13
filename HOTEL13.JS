@@ -80,7 +80,7 @@
         ,   i_urlpath  /** @urlpath@  **/                 //
         ){                                                //
             var o_promise = new Promise( function         //
-            EXECUTO_F_XHR( o_k_yes , wontsay ){           //
+            EXECUTO_F_HOTEL13_XHR( o_k_yes , wontsay ){   //
                                                           //
                 var emp , urlfull , xhr_ask ;             //
                                                           //
@@ -5923,8 +5923,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             LOG(  "[UPNG.encode]" , "[END]" );
             
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
+
+            
+            ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
+            F_HOTEL13_XHR( "POST" , "UPLOAD/100/100" )  
+            .then((i_saywhat)=>{                        
+                                                        
+                console.log( "[what?]:" + i_saywhat );  
+    
+                o_k_yes( i_saywhat );
+            });;    
                 
-            o_k_yes( "[TODO:NODEJS_STUFF]" );  
+            //:o_k_yes( "[TODO:NODEJS_STUFF]" );  
         };;
 
         const   F_HOTEL13_NODESYS_SAV = function
