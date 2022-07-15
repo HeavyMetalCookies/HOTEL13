@@ -8553,15 +8553,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
         }else
         if( 1
-        &&  ( 3         == h13.m_seg.length )
+        &&  ( 4         == h13.m_seg.length )
         &&  ( "H13_J_S" == h13.m_seg[ 0 ]   )
+        &&  (  "H13.JS" == h13.m_seg[ 3 ]   )
         ){
             //:::::::::::::::::::::::::::::::::::::::::::://
             //: Serve as custom taylored client side     ://    
             //: javascript library by going to url :     ://    
             //:                                          ://    
-            //: www.app.com/H13_J_S/001/002              ://    
-            //: www.app.com/H13_J_S/###/###              ://    
+            //: www.app.com/H13_J_S/001/002/APP          ://    
+            //: www.app.com/H13_J_S/###/###/APP          ://    
             //:                                          ://    
             //:::::::::::::::::::::::::::::::::::::::::::://
 
@@ -8595,6 +8596,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 h13.m_giv.write( "\n"                     );
                 h13.m_giv.write( "[m_seg[2]]:" + seg[ 2 ] );
                 h13.m_giv.write( "\n"                     );      
+                h13.m_giv.write( "[m_seg[3]]:" + seg[ 3 ] );
+                h13.m_giv.write( "\n"                     );    
                 h13.m_giv.end("[Room_XY_Is_BS]");;;;;;;;;;;;
             };;
         }else
@@ -8644,7 +8647,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      </title>                           '
             +'          <script                        '
             ////////////////////////////////////////////
-            +`       src ="../../H13_J_S/${w_y}/${w_x}"`
+            +`src ="../../H13_J_S/${w_y}/${w_x}/H13.JS"`
             ////////////////////////////////////////////
             +'              charset="UTF-8">           '
             +'          </script>                      '
