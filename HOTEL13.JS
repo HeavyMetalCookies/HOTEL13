@@ -8498,6 +8498,53 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     };;
     if( d_hotel13_h13node ){ //:BEG:ENV_H13NODE::::::::::://
 
+    //:HOTEL13_SERVE_STATIC_PNG:=========================://
+
+        const   F_HOTEL13_SERVEME_PNG = function
+        PRIVATE_F_HOTEL13_SERVEME_PNG( 
+
+            i_h13  //: Hotel13's SOB(StateObjectBundle)  ://    
+        ,   i_rfp  //: Relative_File_Path  : : : : : : : ://
+        ,   i_dep  //: OPTional_DEPth Var. : : : : : : : ://
+        ){
+            i_dep = ( i_dep ? i_dep : 1 );
+
+            l_fs.readFile( i_rfp,function( i_err , i_cof ){
+            "use strict"
+
+                if(i_err){
+                    i_cof = "[PARTY_MONSTER_ERROR]";
+                    if( 1 === i_dep ){
+                              i_dep++;
+                        //:------------------------------://
+                        //: Try To Serve Our 404 Image   ://
+                        //:------------------------------://
+                        F_HOTEL13_SERVEME_PNG(
+                            i_h13 
+                        ,   "./PNG/404_512.PNG" 
+                        ,   i_dep
+                        );;
+                    }else{
+                        i_h13.m_giv.writeHead( 200, d_png );    
+                        i_h13.m_giv.end( i_cof    ,"utf-8");
+                    };;
+                }else{
+                        i_h13.m_giv.writeHead( 200, d_png );
+                        i_h13.m_giv.end( i_cof    ,"utf-8");    
+                };;
+                //:--------------------------------------://
+                //: Allow for recursively calling        ://
+                //: yourself but only end the response   ://
+                //: once.                                ://
+                //[ WRONG. This is a race condition !!!!!]//
+                //:--------------------------------------://
+                //- if( 1 == i_dep ){                    -//
+                //- 	i_h13.m_giv.end(i_cof,"utf-8");  -//
+                //- };;                                  -//
+                //:--------------------------------------://
+            });;
+        };;
+    //:=========================:HOTEL13_SERVE_STATIC_PNG://
     //:SERVE_THIS_CODE_AS_JS_FILE:=======================://
     const   F_HOTEL13_SERVEME = function
     PRIVATE_F_HOTEL13_SERVEME(
@@ -8628,6 +8675,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "PNG"    == h13.m_seg[ 0 ] ){
+
+            //: @rfp@ : Relative File Path
+            //: @s_i@ : Segment      Index
+            //: @m_i@ : Max( valid ) Index
+
+            var rfp = "." ; 
+            var m_i =( h13.m_seg.length - 1 );
+            for( var s_i = 0 ; s_i <=( m_i ) ; s_i ++ ){
+
+                rfp += ( "/" + h13.m_seg[ s_i ] );
+            };;
+
+            F_HOTEL13_SERVEME_PNG( h13 , rfp );
+        }else
         if( "UPLOAD" == h13.m_seg[ 0 ] ){
 
             //:@uro@ : Upload_Response_Object://
@@ -10992,5 +11054,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     |                           [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ] :
     |                                                          :
     :----------------------------------------------------------:
+
+    @rfp@:RelativeFilePath 
+    @s_i@:Segment_Index
+
 *** ******************************************************** **/
 
