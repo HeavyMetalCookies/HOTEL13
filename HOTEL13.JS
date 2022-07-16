@@ -10968,6 +10968,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     #_TAKEOFF_DOTJS_# : take off ".JS"  postfix
 
- 
+    #_MONEY_MAKING_IDEA_# : Virtual Subdivision :--------------:
+    |                                                          :
+    |                                                          :
+    |     one_level_pack_for_sale             DATE[2022_07_05] :
+    |       |                                                  :
+    |       V                                                  :
+    |   [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]                   :
+    |   [ ]+----------------------------+[ ]                   :
+    |   [ ]| main_game_path > > > > >.  |[ ]                   :
+    |   [ ]+-----------------------+ V  +[ ]                   :
+    |   [ ][ ][ ][ ][ ][ ][ ][ ][ ]| V  |[ ]                   :
+    |                           [ ]| V  |[ ]                   :
+    |   We keep for sale level  [ ]| V  |[ ]                   :
+    |   packs directly off the  [ ]| V  |[ ]                   :
+    |   main game path so that  [ ]| V  |[ ]                   :
+    |   users don't get land    [ ]| V  |[ ]                   :
+    |   locked by malicious     [ ]| V  |[ ]                   :
+    |   neighbors. We don't     [ ]| V  |[ ][ ][ ][ ][ ][ ][ ] :
+    |   want to have to setup   [ ]| V  +-----------------+[ ] :
+    |   an H.O.A. for our game. [ ]| .> > > > > > > > > > |[ ] :
+    |                           [ ]+----------------------+[ ] :
+    |                           [ ][ ][ ][ ][ ][ ][ ][ ][ ][ ] :
+    |                                                          :
+    :----------------------------------------------------------:
 *** ******************************************************** **/
 
