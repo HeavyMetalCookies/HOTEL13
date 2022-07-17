@@ -9111,11 +9111,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 &&  aim_z === url_z
                 ){
                     o_k =( 0 - 8 );
-                    uro.m_log.push( "[@URL_NE_F_N@]"     );
-                    uro.m_log.push( "[URL__ -VS- AIM__]" );
-                    uro.m_log.push( url_x + "-VS-" aim_x );
-                    uro.m_log.push( url_y + "-VS-" aim_y );
-                    uro.m_log.push( url_z + "-VS-" aim_z );
+                    uro.m_log.push( "[@URL_NE_F_N@]"       );
+                    uro.m_log.push( "[URL__ -VS- AIM__]"   );
+                    uro.m_log.push( url_x + "-VS-" + aim_x );
+                    uro.m_log.push( url_y + "-VS-" + aim_y );
+                    uro.m_log.push( url_z + "-VS-" + aim_z );
                 }else{
                     o_k =( 0 + 8 );
                 };;
