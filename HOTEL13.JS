@@ -5984,7 +5984,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var o_str = "" ;
 
                 o_str +=( ""+i_w_x+"" ); 
-                o_str +=(     "/" ;   );
+                o_str +=(     "/"     );
                 o_str +=( ""+i_w_y+"" ); 
                 o_str +=(     "/"     );
                 o_str +=( ""+i_w_z+"" );
