@@ -8195,6 +8195,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             i_str
         ){
+            var o_k =( 1 );
+
             //:::::::::::::::::::::::::::::::::::::::::::://
             //: hack so that we don't crash when trying  ://
             //: to invoke method on[ i_str ].            ://
@@ -8260,15 +8262,32 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
             };;
     
-            var res = Number.parseInt( nlz , 10 );
-            if( Number.isNaN( res ) ){
+            if( o_k >= 1 ){
+                //: : : : : : : ::: : : : : : : ://
+                //: No numeric characters (0-9) ://
+                //: found in the string.        ://
+                //: : : : : : : ::: : : : : : : ://
+                if( 0 === nlz.length ){
 
-                o_obj.m_has =( 0 );
-                o_obj.m_i32 =( 0 );
-            }else{
+                    o_obj.m_has =( 0 );
+                    o_obj.m_i32 =( 0 );
+                    o_k=( 0 );
+                };;
+            };;
+            if( o_k >= 1 ){
 
-                o_obj.m_has =(  1  );
-                o_obj.m_i32 =( res );
+                var res = Number.parseInt( nlz , 10 );
+                if( Number.isNaN( res ) ){
+
+                    o_obj.m_has =( 0 );
+                    o_obj.m_i32 =( 0 );
+                    o_k=( 0 );
+                }else{
+
+                    o_obj.m_has =(  1  );
+                    o_obj.m_i32 =( res );
+                    o_k=( 1 );
+                };;
             };;
 
             return( o_obj );
