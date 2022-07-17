@@ -9012,22 +9012,23 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //: Get the check written, then
                 //: remove the hard coding.
 
-                url_x = h13.m_seg[ 1 ];
-                url_y = h13.m_seg[ 2 ];
-                url_z = h13.m_seg[ 3 ];
+                url_x = ( h13.m_seg[ 1 ] || "[BLANK_X]" );
+                url_y = ( h13.m_seg[ 2 ] || "[BLANK_Y]" );
+                url_z = ( h13.m_seg[ 3 ] || "[BLANK_Z]" );
 
                 if( F_HOTEL13_YES3DIG[ url_x ]
                 &&  F_HOTEL13_YES3DIG[ url_y ]
                 &&  F_HOTEL13_YES3DIG[ url_z ]
                 ){
                     uro.m_log.push( "[bad_path_format]" );
-                    uro.m_log.push( "[url_x]:"+url_x    );
-                    uro.m_log.push( "[url_y]:"+url_y    );
-                    uro.m_log.push( "[url_z]:"+url_z    );
                     o_k=( 0 - 432 );
                 }else{
                     uro.m_log.push( "[o_k:GoodPathFMT]" );
                 };;
+
+                uro.m_log.push( "[url_x]:"+url_x    );
+                uro.m_log.push( "[url_y]:"+url_y    );
+                uro.m_log.push( "[url_z]:"+url_z    );
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee8 ) ){
 
