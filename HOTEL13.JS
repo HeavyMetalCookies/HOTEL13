@@ -8247,21 +8247,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //: Removing leading zeros.: : : : : : : : : ://
             //: "001" ==> "1"          : : : : : : : : : ://
             //:::::::::::::::::::::::::::::::::::::::::::://
+            if( s09.length <= 0 ){
+            
+                o_obj.m_has =( 0 );
+                o_obj.m_i32 =( 0 );
+                o_k =( 0 );
+            }else{
+                for(dex = 0  
+                ;   dex <=(s09.length-1) 
+                ;   dex++
+                ){    
 
-            for(dex = 0 ; dex <=(s09.length-1) ; dex++){    
+                    if( 1 == c_p ){
+                        if( "0" != nlz[ dex ] ){
 
-                if( 1 == c_p ){
-                    if( "0" != nlz[ dex ] ){
+                            c_p=( 2 );
+                        };;
+                    };;
 
-                        c_p=( 2 );
+                    if( 2 == c_p ){
+                        nlz += s09[ dex ];
                     };;
                 };;
-
-                if( 2 == c_p ){
-                    nlz += s09[ dex ];
-                };;
             };;
-    
             if( o_k >= 1 ){
                 //: : : : : : : ::: : : : : : : ://
                 //: No numeric characters (0-9) ://
