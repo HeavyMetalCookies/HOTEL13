@@ -5967,6 +5967,31 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_str );
         };;
     //:=====================:HOTEL13_XYZ_TO_PNG_FILE_NAME://
+    //:HOTEL_XYZ_TO_PNG_FILE_PATH:=======================://
+        const   F_HOTEL13_XYZ_PNGPATH = function
+        PRIVATE_F_HOTEL13_XYZ_PNGPATH(
+
+            i_w_x  //: @i_w_x@ : world_levelpack_coord_x ://    
+        ,   i_w_y  //: @i_w_y@ : world_levelpack_coord_y ://        
+        ,   i_w_z  //: @i_w_z@ : world_levelpack_coord_z ://    
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: ( 1 , 2 , 3 )==> "001/002/003"           ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            var o_str = "" ;
+
+                o_str +=( ""+i_w_x+"" ); 
+                o_str +=(     "/" ;   );
+                o_str +=( ""+i_w_y+"" ); 
+                o_str +=(     "/"     );
+                o_str +=( ""+i_w_z+"" );
+
+            return( o_str );
+        };;
+    //:=======================:HOTEL_XYZ_TO_PNG_FILE_PATH://
     //:GET_READY_TO_SAVE_LEVEL:==========================://
     //:                                                  ://
     //:     d_pix2048 ==> d_pix0512                      ://
@@ -6092,8 +6117,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:==================================:SAVE_FILE_INDEX://
     //:TEMPORARY_DEVELOPMENT_DATA:=======================://
 
-        var d_pngfile = null;
-        var d_pngname ="[nil][d_pngname]" ;
+        var d_pngfile     = null ;;;;;;;;;;;;;;;;;;
+        var d_pngname     ="[nil][d_pngname]"     ;
+        var d_pngpath     ="[nil][d_pngpath]"     ;
+        var d_pngpath_upp ="[nil][d_pngpath_upp]" ;
 
     //:=======================:TEMPORARY_DEVELOPMENT_DATA://
     //:==================================:LOAD_FILE_INDEX://
@@ -6147,12 +6174,25 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
             ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
             ));;
+            d_pngpath =( F_HOTEL13_XYZ_PNGPATH(
+
+                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
+            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
+            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
+            ));;
+
+            //: EX[ d_pngname ]IS[ "AIM_101_202_303.PNG" ]
+            //: EX[ d_pngpath ]IS[     "101/202/303"     ]
+        
+            d_pngpath_upp =( "UPLOAD/" + d_pngpath );
             
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
 
-                "UPLOAD/101/202/303"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
-            ,    d_pngfile
+                //: "UPLOAD/101/202/303"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
+
+            ,    d_pngpath_upp //:EX:[ "UPLOAD/101/202/303" ]://    
+            ,    d_pngfile     //:EX:[ some binary object   ]://
 
             ).then((i_saywhat)=>{                        
                                                         
