@@ -8795,8 +8795,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var                exi_ee5 =( 5 );  
             var                exi_ee6 =( 6 );  
             var                exi_ee7 =( 7 );  
+            var                exi_ee8 =( 8 );  
 
-            var              last_exit =( 8 );
+            var              last_exit =( 9 );
 
             var              early_exit =( last_exit );
             //////////////////////////////////
@@ -8953,6 +8954,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee7 ) ){
+
+
+                //: TODO: Make sure URLPATH and
+                //: filename agree with each other.
+                //: This should fail seeing that
+                //: "101/202/303" is hard coded. <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                //:
+                //: Get the check written, then
+                //: remove the hard coding.
+                 
+            };;
+            if( (o_k >= 1 ) && ( early_exit >= exi_ee8 ) ){
 
                 uro.m_log.push( "[o_k:beg:ee6]" );
 
