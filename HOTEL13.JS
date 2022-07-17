@@ -181,12 +181,21 @@
                 xhr_ask = new XMLHttpRequest();            
                 xhr_ask.open( "POST" , urlfull );   
 
+                //:create_png_filename:------------------://
+
+                    d_pngname =( F_HOTEL13_XYZ_PNGNAME( 
+
+                        d_hotel13_wmc_i_x    //: wmc.i_x ://
+                    ,   d_hotel13_wmc_i_y    //: wmc.i_y ://
+                    ,   d_hotel13_wmc_i_z    //: wmc.i_z ://
+                    ));;
+                //:------------------:create_png_filename://
                 //:#set_request_header#:-----------------://
 
                     xhr_ask.setRequestHeader(
 
                         "nsh_pngname" //:@nsh_pngname@://
-                    ,   "001_001_001.PNG"
+                    ,    d_pngname
                     );;
                 //:-----------------:#set_request_header#://        
     
