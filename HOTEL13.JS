@@ -6191,8 +6191,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 //: "UPLOAD/101/202/303"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
 
-            ,    d_pngpath_upp //:EX:[ "UPLOAD/101/202/303" ]://    
-            ,    d_pngfile     //:EX:[ some binary object   ]://
+                d_pngpath_upp //:EX["UPLOAD/101/202/303"]://          
+            ,   d_pngfile     //:EX[some binary object  ]://
 
             ).then((i_saywhat)=>{                        
                                                         
