@@ -8957,8 +8957,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 uro.m_log.push( "[o_k:beg:ee6]" );
 
                 doing_some_async_stuff=( 1 );
-                rel =( "./" + f_n );
-                f_s = l_fs.createWriteStream( "./" + f_n );
+                rel =( "./PNG/" + f_n );
+                f_s = l_fs.createWriteStream( rel );
                 f_s.on( "error" , (i_err)=>{
 
                     console.log(    "[OHFUKNO_2022]" );
