@@ -8726,8 +8726,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
 
             //////////////////////////////////
-            var             early_exit =( last_exit );
-
             var                exi_ee1 =( 1 );  
             var                exi_ee2 =( 2 );  
             var                exi_ee3 =( 3 );  
@@ -8737,6 +8735,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var                exi_ee7 =( 7 );  
 
             var              last_exit =( 8 );
+
+            var              early_exit =( last_exit );
             //////////////////////////////////
             var doing_some_async_stuff =( 0 );
     
