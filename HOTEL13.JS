@@ -6186,10 +6186,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         
             d_pngpath_upp =( "UPLOAD/" + d_pngpath );
             
-            ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
-
-                //: "UPLOAD/101/202/303"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
 
                 d_pngpath_upp //:EX["UPLOAD/101/202/303"]://          
             ,   d_pngfile     //:EX[some binary object  ]://
@@ -6200,8 +6197,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
                 o_k_yes( i_saywhat );
             });;    
-                
-            //:o_k_yes( "[TODO:NODEJS_STUFF]" );  
         };;
 
         const   F_HOTEL13_NODESYS_SAV = function
@@ -9065,12 +9060,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ||  (  ""  == f_n )
                 ||  (        !f_n )
                 ){
-                    //: var wtf =(
-                    //:     h13.m_ask.headers[ "content-type" ]
-                    //:     .split("/")[1] //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-                    //: );;                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: Refuse to upload if file is not in format: 000_000_000.PNG
-                    //: f_n =( "file." + wtf );
-
                     uro.m_log.push( "[MISSING:nsh_pngname]" );
                     o_k =( 0 );
                 };;
@@ -9108,14 +9097,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee7 ) ){
 
-
-                //: TODO: Make sure URLPATH and
-                //: filename agree with each other.
-                //: This should fail seeing that
-                //: "101/202/303" is hard coded. <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-                //:
-                //: Get the check written, then
-                //: remove the hard coding.
+                //:::::::::::::::::::::::::::::::::::::::://
+                //: URLPATH & FILENAME __MUST__ agree    ://
+                //: EX[ /UPLOAD/111/222/333     ]        ://
+                //: EX[     AIM_111_222_333.PNG ]        ://
+                //:::::::::::::::::::::::::::::::::::::::://
 
                 url_x = ( h13.m_seg[ 1 ] || "[BLANK_X]" );
                 url_y = ( h13.m_seg[ 2 ] || "[BLANK_Y]" );
@@ -9160,8 +9146,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     uro.m_log.push( url_y + "-VS-" + aim_y );
                     uro.m_log.push( url_z + "-VS-" + aim_z );
                 };;
-
-                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee9 ) ){
 
