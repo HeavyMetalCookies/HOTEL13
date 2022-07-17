@@ -8336,7 +8336,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:::::::::::::::::::::::::::::::::::::::::::://
         i_str = i_str.replaceAll( "," , "_" );
         i_str = i_str.replaceAll( "." , "_" );
-        i_str = i_str.replaceAll( "X" , "_" );
         i_str = i_str.replaceAll( "!" , "_" );
         i_str = i_str.replaceAll( "+" , "_" );
         i_str = i_str.replaceAll( "-" , "_" );
@@ -8726,7 +8725,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
 
             //////////////////////////////////
-            var             early_exit =( 5 );
+            var             early_exit =( 6 );
 
             var                exi_ee1 =( 1 );  
             var                exi_ee2 =( 2 );  
@@ -8734,7 +8733,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var                exi_ee4 =( 4 );  
             var                exi_ee5 =( 5 );  
 
-            var              last_exit =( 5 );
+            var              last_exit =( 6 );
             //////////////////////////////////
             var doing_some_async_stuff =( 0 );
     
@@ -8768,6 +8767,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     uro.m_log.push("[MISSING:Z_AXIS]");
                     o_k=(0-3);
                 };;
+
+                if( o_k >= 1 ){
+                    uro.m_log.push("[o_k:X_Y_Z:given]");
+                };;     
             }else
             if( (o_k >= 1) && (early_exit >= exi_ee2) ){
 
