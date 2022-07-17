@@ -8788,10 +8788,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     world_z =( obj_z.m_i32 );
                     
                     o_k =( 0+777 );
-                    uro.m_log.push( "[o_k:COORDS_GIVEN]" );
+                    uro.m_log.push( "[o_k:COORDS_GOT]" );
                 }else{
                     o_k =( 0-666 );
-                    uro.m_log.push( "[bad:No_Coords]" );
+                    uro.m_log.push( "[bad:COORDS_BAD]" );
                 };;
             };;
             if( (o_k >= 1) && (early_exit >= exi_ee3) ){
