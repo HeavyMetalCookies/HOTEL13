@@ -8782,6 +8782,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;     
             }else{
                 uro.m_log.push( "[DEAD_IN_WATER]" );
+                uro.m_log.push( "[o_k==]:"+o_k    );
+                uro.m_log.push( "[exi_ee1]:"+exi_ee1 );
+                uro.m_log.push( "[early_exit]:"+early_exit );
             };;
 
             if( (o_k >= 1) && (early_exit >= exi_ee2) ){
