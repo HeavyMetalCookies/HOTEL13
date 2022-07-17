@@ -154,6 +154,20 @@
         };;                                               //
     //:======================:FUNC_XML_HTTP_REQUEST:[061]://
     //:=================================:STOLENFROM:#BGT#://
+    //:HOTEL13_XML_GET:==================================://
+
+        const   F_HOTEL13_XHR_GET = function
+        PRIVATE_F_HOTEL13_XHR_GET(
+
+            i_urlpath
+        ){
+            var o_promise =( F_HOTEL13_XHR(
+
+                "GET" , i_urlpath
+            ));;
+            return( o_promise );
+        };;
+    //:==================================:HOTEL13_XML_GET://
     //:HOTEL13_XML_POST:=================================://
 
         const   F_HOTEL13_XHR_POST = function                   
