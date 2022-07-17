@@ -6046,7 +6046,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
             F_HOTEL13_XHR_POST( 
 
-                "UPLOAD/100/100"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
+                "UPLOAD/101/202/303"  //:< < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI : remove hard coding.
             ,    d_pngfile
 
             ).then((i_saywhat)=>{                        
@@ -8701,10 +8701,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //////////////////////////////////
             var             early_exit =( 5 );
 
-            var                exi_ee1 =( 1 ); //:OK://
-            var                exi_ee2 =( 2 ); //:OK://
-            var                exi_ee3 =( 3 ); //:OK://
-            var                exi_ee4 =( 4 ); //:OK://
+            var                exi_ee1 =( 1 );  
+            var                exi_ee2 =( 2 );  
+            var                exi_ee3 =( 3 );  
+            var                exi_ee4 =( 4 );  
+            var                exi_ee5 =( 5 );  
 
             var              last_exit =( 5 );
             //////////////////////////////////
@@ -8712,8 +8713,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
             var obj_x   ; //:Object Holding X WorldCoord ://
             var obj_y   ; //:Object Holding Y WorldCoord ://
+            var obj_z   ; //:Object Holding Z WorldCoord ://
+
             var world_x ; //:Worldmap . X LevelPack      ://    
             var world_y ; //:Worldmap . Y LevelPack      ://    
+            var world_z ; //:Worldmap . Z LevelPack      ://
 
             var met ; //:@met@ : Method          ://
             var c_l ; //:@c_l@ : Content Length  ://
@@ -8725,59 +8729,75 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             
             if( (o_k >= 1) && (early_exit >= exi_ee1) ){
 
+                if( h13.m_seg.length <= 1 ){
+                    uro.m_log.push("[MISSING:X_AXIS]");
+                    o_k=(0-1);
+                };;
+                if( h13.m_seg.length <= 2 ){
+                    uro.m_log.push("[MISSING:Y_AXIS]");
+                    o_k=(0-2);
+                };;
+                if( h13.m_seg.length <= 3 ){
+                    uro.m_log.push("[MISSING:Z_AXIS]");
+                    o_k=(0-3);
+                };;
+            }else
+            if( (o_k >= 1) && (early_exit >= exi_ee2) ){
+
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
                 obj_y = F_HOTEL13_TRYATOI( h13.m_seg[ 2 ] );
+                obj_z = F_HOTEL13_TRYATOI( h13.m_seg[ 3 ] );
 
-                if( obj_x.m_has && obj_y.m_has ){ //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI ( needs Z axis )
-
+                if( 1
+                &&  obj_x.m_has 
+                &&  obj_y.m_has 
+                &&  obj_z.m_has
+                ){ 
                     world_x =( obj_x.m_i32 );
                     world_y =( obj_y.m_i32 );
+                    world_z =( obj_z.m_i32 );
                     
                     o_k =( 0+777 );
-                //:h13.m_giv.write("[o_k:COORDS_GIVEN]\n");
                     uro.m_log.push( "[o_k:COORDS_GIVEN]" );
                 }else{
                     o_k =( 0-666 );
-                    //: h13.m_giv.write("[bad:No_Coords]\n");
                     uro.m_log.push( "[bad:No_Coords]" );
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= exi_ee2) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee3) ){
 
                 met = String.prototype.toUpperCase.call(
                             h13.m_ask.method );;
 
                 if( "POST" != met ){
     
-                    //h13.m_giv.write( "[bad:nota_post]\n" );
                     uro.m_log.push( "[bad:nota_post]" );
                     o_k =( 0-666 );
                 }else{
-                    //h13.m_giv.write( "[o_k:Is_A_Post]\n" );
+
                     uro.m_log.push( "[o_k:Is_A_Post]" );
                     o_k =( 0+777 );
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= exi_ee3) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee4) ){
                 c_l = parseInt( h13.m_ask.headers[
 
                     "content-length"
                 ]);;
 
                 if( Number.isNaN( c_l ) || c_l <= 0 ){
-                    //h13.m_giv.write( "[bad:c_l:nan]\n" );
+
                     uro.m_log.push( "[bad:c_l:nan]" );
                     o_k =( 0-1 );
                 }else{
-                    //h13.m_giv.write( "[o_k:not:nan]\n" );
+
                     uro.m_log.push( "[o_k:not:nan]" );
                     o_k =( 0+777 );
                 };;
             };;
-            if( (o_k >= 1) && (early_exit >= exi_ee4) ){
+            if( (o_k >= 1) && (early_exit >= exi_ee5) ){
 
-                //h13.m_giv.write("[o_k:beg:ee4]\n");
-                uro.m_log.push( "[o_k:beg:ee4]" );
+                uro.m_log.push( "[o_k:beg:ee5]" );
 
                 f_n = h13.m_ask.headers[ "nsh_pngname" ];
                 if( 0
@@ -8787,8 +8807,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ){
                     var wtf =(
                         h13.m_ask.headers[ "content-type" ]
-                        .split("/")[1]
-                    );;
+                        .split("/")[1] //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    );;                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: Refuse to upload if file is not in format: 000_000_000.PNG
                     f_n =( "file." + wtf );
                 };;
 
@@ -8813,18 +8833,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     });;
                 });;
 
-                //h13.m_giv.write("[o_k:end:ee4]\n");
-                uro.m_log.push( "[o_k:end:ee4]" );
+                uro.m_log.push( "[o_k:end:ee5]" );
             };;
 
             if( doing_some_async_stuff <= 0 ){
     
                 if( early_exit < last_exit ){
 
-                    //h13.m_giv.write("[warning:earlyexit]\n");
                     uro.m_log.push( "[warning:earlyexit]" );
                 };;
-
                 h13.m_giv.end( JSON.stringify( uro ));
             };;
         }else

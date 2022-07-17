@@ -1,0 +1,49 @@
+
+
+
+    DaisyChain / MerryGoRound Image Server :
+
+            [A] --socket--> [B] --socket--> [C]
+             ^                               |
+             |                               |
+           socket                          socket
+             |                               |
+             |                               V
+            [H]                             [D]
+             ^                               |
+             |                               |
+           socket                          socket
+             |                               |
+             |                               V
+            [G] <--socket-- [F] <--socket-- [D]
+
+    All the servers have socket connections to each
+    other and are used as "raid drive" to keep redundant
+    copies of images.
+
+    If you HTTP request to F passes message onto G.
+                           G passes message onto H.
+                           ETC.
+
+    Eventually message goes full circle.
+
+    When message goes full circle you have a variable
+    called "BATON"
+
+    BATON is set to "1" when "F" passes on the message.
+
+    A different server might decide that __IT__ should
+    handle the DOWNLOAD. If so, BATON gets set to ZERO.
+
+    When [F] sees that BATON is set to "ZERO" it will
+    __ASK__ the other server who set BATON to "0" for
+    the latest version of the image.
+
+    Server [F] with copy the image in it's data store,
+    then serve it to the user.
+
+    Something similiar can work for uploading as well.
+
+    Because all the servers are keeping socket 
+    connections open to each other, it will prevent
+    our heroku servers from going to sleep.
