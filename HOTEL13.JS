@@ -8607,6 +8607,66 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         };;
         return( o_yes );
     };;
+    const   F_HOTEL13_AIM_FMT_GET_STR = function
+    PRIVATE_F_HOTEL13_AIM_FMT_GET_STR(
+
+        i_str
+    ){
+        //:[ATF]:--------------------------------------------://
+        //:                                                  ://
+        //: Like[ F_HOTEL13_AIM_FMT_GET ]But zero padded     ://
+        //: string versions of the XYZ part of input.        ://
+        //:                                                  ://
+        //: AIM_123_456_789.PNG ==> ( "123" , "456" , "789" )://
+        //: AIM_001_002_003.JS  ==> ( "001" , "002" , "003" )://
+        //:                                                  ://
+        //: ADDED_DATE[ 2022_07_17 ]TIME[ 0540 ]PM           ://
+        //:                                                  ://
+        //:--------------------------------------------:[ATF]://
+
+        if( !i_str){ i_str="" ; };
+
+        var o_k =( 0 /**Undefined**/ );
+
+        var sob_xyz ={ laxcoma:"[HACK]"
+        
+        ,   m_has : 0
+        ,   m_s_x : "[nil][m_s_x](member_string_x)"
+        ,   m_s_y : "[nil][m_s_y](member_string_y)"
+        ,   m_s_z : "[nil][m_s_z](member_string_z)"
+        };;
+        Object.seal( sob_xyz );
+
+        var str_x ;  //: @str_x@ : String Holding x axis ://
+        var str_y ;  //: @str_y@ : String Holding y axis ://
+        var str_z ;  //: @str_z@ : String Holding z axis ://
+        var dex   ;  //: @dex@   : Generic Index Iterator://
+
+        var obj_xyz = F_HOTEL13_AIM_FMT_GET( i_str );
+        if( (!(obj_xyz.m_has)) ){
+            o_k=(            0-1 );
+            sob_xyz.m_has =( 0-1 );
+        }else{
+            str_x =( "" + obj_xyz.m_i_x + "" );
+            str_y =( "" + obj_xyz.m_i_y + "" );
+            str_z =( "" + obj_xyz.m_i_z + "" );
+
+            for( dex = 0 ; dex <=(3-1) ; dex++ ){
+
+                //:#_ZERO_PAD_#://
+                if( str_x.length < 3 ){str_x="0"+str_x;};
+                if( str_y.length < 3 ){str_y="0"+str_y;};
+                if( str_z.length < 3 ){str_z="0"+str_z;};
+            };;
+
+            sob_xyz.m_has =( 1 );
+            sob_xyz.m_s_x =( str_x );
+            sob_xyz.m_s_y =( str_y );
+            sob_xyz.m_s_z =( str_z );
+        };;
+
+        return( sob_xyz );
+    };;
 
     //:==================:TRY_TO_INTERPRET_AS_AIM_JS_FILE://
     //:##################################################://
@@ -8869,6 +8929,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var url_y   ;//:@url_y@: y m_seg of path   ://
             var url_z   ;//:@url_z@: z m_seg of path   ://
 
+            var sob_xyz ;//:@sob_xyz@:StringObject[xyz]://
+            var aim_x   ;//:@aim_x@: AIM_FMT_GET().~x~ ://
+            var aim_y   ;//:@aim_y@: AIM_FMT_GET().~y~ ://
+            var aim_z   ;//:@aim_z@: AIM_FMT_GET().~z~ ://
+
             h13.m_giv.writeHead( 200 , d_jso );
 
             uro.m_log.push( "[o_k:Sanity_Check]" );
@@ -9036,6 +9101,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //: Make Sure Path Agrees With Filename  ://    
                 //:::::::::::::::::::::::::::::::::::::::://
 
+                sob_xyz = F_HOTEL13_AIM_FMT_GET_STR( f_n );
+                aim_x   = sob_xyz.m_i_x ;
+                aim_y   = sob_xyz.m_i_y ;
+                aim_z   = sob_xyz.m_i_z ;
+
+                if( aim_x === url_x
+                &&  aim_y === url_y
+                &&  aim_z === url_z
+                ){
+                    o_k =( 0 - 8 );
+                    uro.m_log.push( "[@URL_NE_F_N@]"     );
+                    uro.m_log.push( "[URL__ -VS- AIM__]" );
+                    uro.m_log.push( url_x + "-VS-" aim_x );
+                    uro.m_log.push( url_y + "-VS-" aim_y );
+                    uro.m_log.push( url_z + "-VS-" aim_z );
+                }else{
+                    o_k =( 0 + 8 );
+                };;
 
                 //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
             };;
@@ -11305,6 +11388,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @url_x@ : Like @seg_x@ , but string from path.
     @url_y@ : Like @seg_y@ , but string from path.
     @url_z@ : Like @seg_z@ , but string from path.
+
+    @obj_xzy@ : TYPO_YOU_WANT[ obj_xyz ]
+
+    @sob_xyz@ : StringOBject With [ m_s_x , m_s_y , m_s_z ]
+    
+    @m_s_x@ : Member(var) : string_x
+    @m_s_y@ : Member(var) : string_y
+    @m_s_z@ : Member(var) : string_z
+
+    #_ZERO_PAD_# : Marking a section of code where we
+                 : are applying zero padding to string.
+
+    @NOTCIE_ME_SENPAI@ : TYPO. You know what it is.
+
+    @URL_NE_F_N@ : URL NotEqualTo File_Name
 
 *** ******************************************************** **/
 
