@@ -9019,11 +9019,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var seg_x =( obj_x.m_i32 );
                 var seg_y =( obj_y.m_i32 );
                 var seg_z =( obj_z.m_i32 );
-            
-            //////////////////    h13.m_giv.writeHead( 200 , d_txt );
-            //////////////////    h13.m_giv.write("("+_+seg_x+_+c+_+seg_y+_+")");
-            //////////////////    h13.m_giv.end("[I_Understand_You]");
-
+           
                 let wmc_i_x =( seg_x );
                 let wmc_i_y =( seg_y );
                 let wmc_i_z =( seg_z );
@@ -9140,7 +9136,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      </title>                           '
             +'          <script                        '
             ////////////////////////////////////////////
-            +`src ="../../AIM_${w_y}_${w_x}_${w_z}.JS" `
+            +`src ="../../AIM_${w_x}_${w_y}_${w_z}.JS" `
             ///////"../../AIM___001____002____003_.JS"//
             ////////////////////////////////////////////
             +'              charset="UTF-8">           '
