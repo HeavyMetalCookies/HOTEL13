@@ -8817,7 +8817,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var f_s ; //:@f_s@ : FileStream Inst  :------://    
             var nca ; //:@nca@ : Name_Components_Array   ://
             var nox ; //:@nox@ : filename NO_eXtension   ://
-            var ich ; //:@ich@ : Return Object From ICH  ://
+
+            var goodfmt ;//:Format[ AIM_000_000_000.EXT ]://    
 
             h13.m_giv.writeHead( 200 , d_jso );
 
@@ -8935,8 +8936,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }else{
                     //:MoreIntenseTest://
 
-                    ich = F_HOTEL13_AIM_FMT_HAS( nox );
-                    if( !(ich.m_has) ){
+                    goodfmt = F_HOTEL13_AIM_FMT_HAS( nox );
+                    if( !(goodfmt) ){
 
                         uro.m_log.push( 
                             "[NOT:AIM_###_###_###.PNG(002)]"
@@ -8945,7 +8946,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         o_k =( 0 );
                     };;
                 };;
+                if( o_k >= 1 ){
 
+                    uro.m_log.push( "[o_k:FILENAME_FMT]" );
+                    uro.m_log.push( "[f_n]:" + f_n       );
+                };;
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee7 ) ){
 
