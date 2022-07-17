@@ -8954,6 +8954,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var c_l ; //:@c_l@ : Content Length   :------://
             var f_n ; //:@f_n@ : File Name        :------://
             var rel ; //:@rel@ : RelativeFilePath :------://
+            var jtf ; //:@jtf@ : Just_The_Folder  :------://
             var f_s ; //:@f_s@ : FileStream Inst  :------://    
             var nca ; //:@nca@ : Name_Components_Array   ://
             var nox ; //:@nox@ : filename NO_eXtension   ://
@@ -9153,13 +9154,30 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 doing_some_async_stuff=( 1 );
 
-                rel =( ""
+                jtf =( ""
                 +   ( "./PNG/" )
                 +   ( "X_" + aim_x /**url_x**/ ) + "/"
                 +   ( "Y_" + aim_y /**url_y**/ ) + "/"
-                +   ( "Z_" + aim_z /**url_z**/ ) + "/"
+                +   ( "Z_" + aim_z /**url_z**/ ) +("")
+                );;
+
+                rel =( ""
+                +   ( jft  /** Just_The_Folder **/ )
+                +   ( "/"  /** ConcatWithSlash **/ )
                 +   ( f_n  /** FileNameWithExt **/ )
                 );;
+    
+                //:::::::::::::::::::::::::::::::::::::::://
+                //: Create Folder If Not Exists          ://
+                //:::::::::::::::::::::::::::::::::::::::://
+                if( (!(l_fs.existsSync( jtf ))) ){
+
+                    l_fs.mkdirSync( 
+    
+                        jtf
+                    ,   { recursive : true }
+                    );;
+                };;
 
                 f_s = l_fs.createWriteStream( rel );
                 f_s.on( "error" , (i_err)=>{
