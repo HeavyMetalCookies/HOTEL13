@@ -9102,9 +9102,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:::::::::::::::::::::::::::::::::::::::://
 
                 sob_xyz = F_HOTEL13_AIM_FMT_GET_STR( f_n );
-                aim_x   = sob_xyz.m_i_x ;
-                aim_y   = sob_xyz.m_i_y ;
-                aim_z   = sob_xyz.m_i_z ;
+                aim_x   = sob_xyz.m_s_x ; //:mstr_x://
+                aim_y   = sob_xyz.m_s_y ; //:mstr_y://
+                aim_z   = sob_xyz.m_s_z ; //:mstr_y://
 
                 if( aim_x === url_x
                 &&  aim_y === url_y
@@ -11404,6 +11404,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @NOTCIE_ME_SENPAI@ : TYPO. You know what it is.
 
     @URL_NE_F_N@ : URL NotEqualTo File_Name
+
+    [mstr_x]:MemberString_X BUT_USE[ m_s_x ]
+    [mstr_y]:MemberString_X BUT_USE[ m_s_y ]
+    [mstr_z]:MemberString_X BUT_USE[ m_s_z ]
 
 *** ******************************************************** **/
 
