@@ -9152,7 +9152,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 uro.m_log.push( "[o_k:beg:ee6]" );
 
                 doing_some_async_stuff=( 1 );
-                rel =( "./PNG/" + f_n );
+
+                rel =( ""
+                +   ( "./PNG/" )
+                +   ( "X_" + aim_x /**url_x**/ ) + "/"
+                +   ( "Y_" + aim_y /**url_y**/ ) + "/"
+                +   ( "Z_" + aim_z /**url_z**/ ) + "/"
+                +   ( f_n  /** FileNameWithExt **/ )
+                );;
+
                 f_s = l_fs.createWriteStream( rel );
                 f_s.on( "error" , (i_err)=>{
 
