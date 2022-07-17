@@ -8761,6 +8761,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             uro.m_log.push( "[o_k:Sanity_Check]" );
             
+
             if( (o_k >= 1) && (early_exit >= exi_ee1) ){
 
                 if( h13.m_seg.length <= 1 ){
@@ -8779,7 +8780,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 if( o_k >= 1 ){
                     uro.m_log.push("[o_k:X_Y_Z:given]");
                 };;     
+            }else{
+                uro.m_log.push( "[DEAD_IN_WATER]" );
             };;
+
             if( (o_k >= 1) && (early_exit >= exi_ee2) ){
 
                 obj_x = F_HOTEL13_TRYATOI( h13.m_seg[ 1 ] );
