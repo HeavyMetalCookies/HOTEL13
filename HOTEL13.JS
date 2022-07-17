@@ -9162,7 +9162,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 );;
 
                 rel =( ""
-                +   ( jft  /** Just_The_Folder **/ )
+                +   ( jtf  /** Just_The_Folder **/ )
                 +   ( "/"  /** ConcatWithSlash **/ )
                 +   ( f_n  /** FileNameWithExt **/ )
                 );;
@@ -11458,6 +11458,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     [mstr_x]:MemberString_X BUT_USE[ m_s_x ]
     [mstr_y]:MemberString_X BUT_USE[ m_s_y ]
     [mstr_z]:MemberString_X BUT_USE[ m_s_z ]
+
+    @jft@ : TYPO , you want[ @jtf@ ]
+    @jtf@ : Just_The_Folder
 
 *** ******************************************************** **/
 
