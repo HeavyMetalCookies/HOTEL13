@@ -5888,7 +5888,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //: Add Leading Zeros        ://
             //:::::::::::::::::::::::::::://
             while( 1 == 1 ){
-                if( 3 >= o_str.length ){
+                if( 3 > o_str.length ){
 
                     o_str = "0" + o_str ;
                 }else{
