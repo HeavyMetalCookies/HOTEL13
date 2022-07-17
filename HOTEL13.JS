@@ -9021,6 +9021,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 &&  F_HOTEL13_YES3DIG[ url_z ]
                 ){
                     uro.m_log.push( "[bad_path_format]" );
+                    uro.m_log.push( "[url_x]:"+url_x    );
+                    uro.m_log.push( "[url_y]:"+url_y    );
+                    uro.m_log.push( "[url_z]:"+url_z    );
                     o_k=( 0 - 432 );
                 }else{
                     uro.m_log.push( "[o_k:GoodPathFMT]" );
