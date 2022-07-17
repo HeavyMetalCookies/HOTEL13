@@ -8758,6 +8758,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var ich ; //:@ich@ : Return Object From ICH  ://
 
             h13.m_giv.writeHead( 200 , d_jso );
+
+            uro.m_log.push( "[o_k:Sanity_Check]" );
             
             if( (o_k >= 1) && (early_exit >= exi_ee1) ){
 
