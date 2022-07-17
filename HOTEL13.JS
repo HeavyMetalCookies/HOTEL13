@@ -5869,6 +5869,49 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_pngname );
         };;
     //:=====================:HOTEL13_URL_TO_PNG_FILE_NAME://
+    //:HOTEL13_IS_3_DIGIT_NUMSTRING:=====================://
+
+        const   F_HOTEL13_YES3DIG = function
+        PRIVATE_F_HOTEL13_YES3DIG(
+
+            i_str
+        ){
+            var o_yes =( 0 );
+            if(!i_str){ i_str="" ; };
+
+            if( 3 != i_str.length ){ o_yes =( 0-8675309 ); };
+
+            if( o_yes > 0 ){
+
+                for( var dex = 0 ; dex <=(3-1) ; dex++ ){
+
+                    if( "0" === i_str[ dex ]
+                    ||  "1" === i_str[ dex ]
+                    ||  "2" === i_str[ dex ]
+                    ||  "3" === i_str[ dex ]
+                    ||  "4" === i_str[ dex ]
+                    ||  "5" === i_str[ dex ]
+                    ||  "6" === i_str[ dex ]
+                    ||  "7" === i_str[ dex ]
+                    ||  "8" === i_str[ dex ]
+                    ||  "9" === i_str[ dex ]
+                    ){
+                        /** OK. Do nothing. **/
+                    }else{
+                        
+                        o_yes =( 0 - 42069 );
+                    };;
+                };;
+            }else
+            if( (!(o_yes < 0)) ){
+                /**Donothing**/
+            }else{
+                ERR("[unexpected_case]");
+            };;
+
+            return( o_yes );
+        };;
+    //:=====================:HOTEL13_IS_3_DIGIT_NUMSTRING://
     //:HOTEL13_XYZ_TO_PNG_FILE_NAME:=====================://
 
         const   F_HOTEL13_I32_STR = function
@@ -8796,8 +8839,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var                exi_ee6 =( 6 );  
             var                exi_ee7 =( 7 );  
             var                exi_ee8 =( 8 );  
+            var                exi_ee9 =( 9 );  
 
-            var              last_exit =( 9 );
+            var              last_exit =(10 );
 
             var              early_exit =( last_exit );
             //////////////////////////////////
@@ -8819,7 +8863,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var nca ; //:@nca@ : Name_Components_Array   ://
             var nox ; //:@nox@ : filename NO_eXtension   ://
 
-            var goodfmt ;//:Format[ AIM_000_000_000.EXT ]://    
+            var goodfmt ;//:Format[ AIM_000_000_000.EXT ]://   
+
+            var url_x   ;//:@url_x@: x m_seg of path   ://
+            var url_y   ;//:@url_y@: y m_seg of path   ://
+            var url_z   ;//:@url_z@: z m_seg of path   ://
 
             h13.m_giv.writeHead( 200 , d_jso );
 
@@ -8963,9 +9011,31 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:
                 //: Get the check written, then
                 //: remove the hard coding.
-                 
+
+                url_x = h13.m_seg[ 1 ];
+                url_y = h13.m_seg[ 2 ];
+                url_z = h13.m_seg[ 3 ];
+
+                if( F_HOTEL13_YES3DIG[ url_x ]
+                &&  F_HOTEL13_YES3DIG[ url_y ]
+                &&  F_HOTEL13_YES3DIG[ url_z ]
+                ){
+                    uro.m_log.push( "[bad_path_format]" );
+                    o_k=( 0 - 432 );
+                }else{
+                    uro.m_log.push( "[o_k:GoodPathFMT]" );
+                };;
             };;
             if( (o_k >= 1 ) && ( early_exit >= exi_ee8 ) ){
+
+                //:::::::::::::::::::::::::::::::::::::::://
+                //: Make Sure Path Agrees With Filename  ://    
+                //:::::::::::::::::::::::::::::::::::::::://
+
+
+                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+            };;
+            if( (o_k >= 1 ) && ( early_exit >= exi_ee9 ) ){
 
                 uro.m_log.push( "[o_k:beg:ee6]" );
 
@@ -11227,6 +11297,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @rfp@:RelativeFilePath 
     @s_i@:Segment_Index
+
+    @url_x@ : Like @seg_x@ , but string from path.
+    @url_y@ : Like @seg_y@ , but string from path.
+    @url_z@ : Like @seg_z@ , but string from path.
 
 *** ******************************************************** **/
 
