@@ -8306,12 +8306,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     const   F_HOTEL13_TRY_ICH = "[FIX:ICH_TRY]" ;
 
     const   F_HOTEL13_ICH_TRY = function
-    PRIVATE_F_HOTEL13_ICH_TRY(
-
+    PRIVATE_F_HOTEL13_ICH_TRY( 
+                  //:@ICH@ : Interpret as Coord Hash : : ://
         i_str
     ){
         //:[ATF]:::::::::::::::::::::::::::::::::::::::::://
-        //:                                              ://
+        //:                                              ://    
+        //: @ICH@:Interpas_Coord_Hash                    ://
         //: Try to interpret[ i_str ]as a                ://
         //: valid coorinate hash.                        ://
         //:                                              ://
@@ -8725,15 +8726,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
 
             //////////////////////////////////
-            var             early_exit =( 6 );
+            var             early_exit =( last_exit );
 
             var                exi_ee1 =( 1 );  
             var                exi_ee2 =( 2 );  
             var                exi_ee3 =( 3 );  
             var                exi_ee4 =( 4 );  
             var                exi_ee5 =( 5 );  
+            var                exi_ee6 =( 6 );  
+            var                exi_ee7 =( 7 );  
 
-            var              last_exit =( 6 );
+            var              last_exit =( 8 );
             //////////////////////////////////
             var doing_some_async_stuff =( 0 );
     
@@ -8745,11 +8748,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var world_y ; //:Worldmap . Y LevelPack      ://    
             var world_z ; //:Worldmap . Z LevelPack      ://
 
-            var met ; //:@met@ : Method          ://
-            var c_l ; //:@c_l@ : Content Length  ://
-            var f_n ; //:@f_n@ : File Name       ://
-            var rel ; //:@rel@ : RelativeFilePath://
-            var f_s ; //:@f_s@ : FileStream Inst ://
+            var met ; //:@met@ : Method           :------://
+            var c_l ; //:@c_l@ : Content Length   :------://
+            var f_n ; //:@f_n@ : File Name        :------://
+            var rel ; //:@rel@ : RelativeFilePath :------://
+            var f_s ; //:@f_s@ : FileStream Inst  :------://    
+            var nca ; //:@nca@ : Name_Components_Array   ://
+            var nox ; //:@nox@ : filename NO_eXtension   ://
+            var ich ; //:@ich@ : Return Object From ICH  ://
 
             h13.m_giv.writeHead( 200 , d_jso );
             
@@ -8827,20 +8833,50 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
             if( (o_k >= 1) && (early_exit >= exi_ee5) ){
 
-                uro.m_log.push( "[o_k:beg:ee5]" );
-
                 f_n = h13.m_ask.headers[ "nsh_pngname" ];
                 if( 0
                 ||  ( null == f_n )
                 ||  (  ""  == f_n )
                 ||  (        !f_n )
                 ){
-                    var wtf =(
-                        h13.m_ask.headers[ "content-type" ]
-                        .split("/")[1] //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-                    );;                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: Refuse to upload if file is not in format: 000_000_000.PNG
-                    f_n =( "file." + wtf );
+                    //: var wtf =(
+                    //:     h13.m_ask.headers[ "content-type" ]
+                    //:     .split("/")[1] //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    //: );;                //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TODO: Refuse to upload if file is not in format: 000_000_000.PNG
+                    //: f_n =( "file." + wtf );
+
+                    uro.m_log.push( "[MISSING:nsh_pngname]" );
+                    o_k =( 0 );
                 };;
+            };;
+            if( (o_k >= 1 ) && ( early_exit >= exi_ee6 ) ){
+
+                f_n = String.prototype.toUpperCase.call(f_n);
+                nox = f_n.replaceAll( ".PNG" , "" );
+                nca = nox.split( "_" ).filter( n => n );
+                if( 4 != nca.length ){
+    
+                    uro.m_log.push( 
+                        "[NOT:AIM_###_###_###.PNG(001)]"
+                    );;
+                    o_k =( 0 );
+                }else{
+                    //:MoreIntenseTest://
+
+                    ich = F_HOTEL13_AIM_FMT_HAS( nox );
+                    if( !(ich.m_has) ){
+
+                        uro.m_log.push( 
+                            "[NOT:AIM_###_###_###.PNG(002)]"
+                        );;
+                        o_k =( 0 );
+                    };;
+                };;
+
+            };;
+            if( (o_k >= 1 ) && ( early_exit >= exi_ee7 ) ){
+
+                uro.m_log.push( "[o_k:beg:ee6]" );
 
                 doing_some_async_stuff=( 1 );
                 rel =( "./" + f_n );
@@ -8863,7 +8899,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     });;
                 });;
 
-                uro.m_log.push( "[o_k:end:ee5]" );
+                uro.m_log.push( "[o_k:end:ee6]" );
             };;
 
             if( doing_some_async_stuff <= 0 ){
