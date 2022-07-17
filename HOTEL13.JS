@@ -9110,9 +9110,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 &&  aim_y === url_y
                 &&  aim_z === url_z
                 ){
-                    o_k =( 0 + 8 );
+                    o_k =( 0 + 888 );
                 }else{
-                    o_k =( 0 + 8 );
+                    o_k =( 0 - 808 );
 
                     uro.m_log.push( "[@URL_NE_F_N@]"       );
                     uro.m_log.push( "[URL__ -VS- AIM__]"   );
