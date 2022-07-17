@@ -8921,6 +8921,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     uro.m_log.push( 
                         "[NOT:AIM_###_###_###.PNG(001)]"
                     );;
+                    uro.m_log.push( "[f_n]:"+f_n );
                     o_k =( 0 );
                 }else{
                     //:MoreIntenseTest://
