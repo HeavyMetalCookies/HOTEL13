@@ -5855,15 +5855,66 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ){
             var o_pngname =( "TODO.PNG" );
 
-
-            console.log( "[window.location.href]"    //:<<<<<<<<<<<<<<<<<<<<< TODO
-                          ,window.location.href );;  //:<<<<<<<<<<<<<<<<<<<<< TODO
-
-
-
+            ERR( "[use:F_HOTEL13_XYZ_PNGNAME]" );
+            
             return( o_pngname );
         };;
     //:=====================:HOTEL13_URL_TO_PNG_FILE_NAME://
+    //:HOTEL13_XYZ_TO_PNG_FILE_NAME:=====================://
+
+        const   F_HOTEL13_I32_STR = function
+        PRIVATE_F_HOTEL13_I32_STR(
+        
+            i_i32
+        ){
+            var o_str = "" ;
+            if( "undefined" === typeof i_i32 ){
+                o_str = "???" ;
+            }else{
+
+                o_str =( ""+i_i32+"" );
+            };;
+
+            //:::::::::::::::::::::::::::://
+            //: Add Leading Zeros        ://
+            //:::::::::::::::::::::::::::://
+            while( 1 == 1 ){
+                if( 3 >= o_str.length ){
+
+                    o_str = "0" + o_str ;
+                }else{
+                    break;
+                };;
+            };;
+
+            return( o_str );
+        };;
+
+        const   F_HOTEL13_XYZ_PNGNAME = function
+        PRIVATE_F_HOTEL13_XYZ_PNGNAME(
+
+            i_w_x  //: @i_w_x@ : world_levelpack_coord_x ://    
+        ,   i_w_y  //: @i_w_y@ : world_levelpack_coord_y ://        
+        ,   i_w_z  //: @i_w_z@ : world_levelpack_coord_z ://    
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: ( 1 , 2 , 3 )==> AIM_001_002_003.PNG     ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+            var o_str = "";
+
+            o_str += "AIM_" ;
+            o_str += F_HOTEL13_I32_STR( i_w_x );
+            o_str += "_" ;
+            o_str += F_HOTEL13_I32_STR( i_w_y );
+            o_str += "_" ;
+            o_str += F_HOTEL13_I32_STR( i_w_z );
+            o_str += ".PNG"
+
+            return( o_str );
+        };;
+    //:=====================:HOTEL13_XYZ_TO_PNG_FILE_NAME://
     //:GET_READY_TO_SAVE_LEVEL:==========================://
     //:                                                  ://
     //:     d_pix2048 ==> d_pix0512                      ://
@@ -6038,9 +6089,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
 
-            d_pngname =( F_HOTEL13_URL_PNGNAME( 
+            d_pngname =( F_HOTEL13_XYZ_PNGNAME( 
 
-                window.location.href //:#_AB_URL_#://
+                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
+            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
+            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
             ));;
             
             ///////////////////////////////////////////////////////// < < NOTICE_ME_SENPAI
