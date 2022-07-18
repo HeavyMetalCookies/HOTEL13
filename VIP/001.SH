@@ -11,11 +11,15 @@
     echo "[VAR_IMGUR_KANJICODER_CID]:"$VAR_REDACTED
     echo "[VAR_IMGUR_KANJICODER_C_S]:"$VAR_REDACTED
 
+    echo off
+
     heroku config:set --app aim-hotel13 \
         "VAR_IMGUR_KANJICODER_CID"=$VAR_IMGUR_KANJICODER_CID
 
     heroku config:set --app aim-hotel13 \
         "VAR_IMGUR_KANJICODER_C_S"=$VAR_IMGUR_KANJICODER_C_S
+
+    echo on
 
     ## git push GIT_SSH master
     ## git push HER_OKU master
