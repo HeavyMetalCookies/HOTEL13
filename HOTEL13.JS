@@ -9089,6 +9089,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     };; 
     //:=======================:SERVE_THIS_CODE_AS_JS_FILE://
+    //:HOTEL13_IMGUR_UPLOAD:=============================://
+    //:NODESYS_IMGUR_UPLOAD:=============================://
+
+        dsdfsfsdf
+
+    //:=============================:NODESYS_IMGUR_UPLOAD://
+    //:=============================:HOTEL13_IMGUR_UPLOAD://
     //:HOTEL13_SERVER:===================================://
     require("http").createServer(( 
 
@@ -9169,19 +9176,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var rel ; //:@rel@ : RelativeFilePath :------://
             var jtf ; //:@jtf@ : Just_The_Folder  :------://
             var f_s ; //:@f_s@ : FileStream Inst  :------://    
-            var nca ; //:@nca@ : Name_Components_Array   ://
+            var nca ; //:@nca@ : Name_Components_Array   ://    
             var nox ; //:@nox@ : filename NO_eXtension   ://
 
             var goodfmt ;//:Format[ AIM_000_000_000.EXT ]://   
 
-            var url_x   ;//:@url_x@: x m_seg of path   ://
-            var url_y   ;//:@url_y@: y m_seg of path   ://
-            var url_z   ;//:@url_z@: z m_seg of path   ://
+            var url_x   ;//:@url_x@: x m_seg of path :---://      
+            var url_y   ;//:@url_y@: y m_seg of path :---://
+            var url_z   ;//:@url_z@: z m_seg of path :---://
 
-            var sob_xyz ;//:@sob_xyz@:StringObject[xyz]://
-            var aim_x   ;//:@aim_x@: AIM_FMT_GET().~x~ ://
-            var aim_y   ;//:@aim_y@: AIM_FMT_GET().~y~ ://
-            var aim_z   ;//:@aim_z@: AIM_FMT_GET().~z~ ://
+            var sob_xyz ;//:@sob_xyz@:StringObject[xyz]  ://
+            var aim_x   ;//:@aim_x@: AIM_FMT_GET().~x~   ://
+            var aim_y   ;//:@aim_y@: AIM_FMT_GET().~y~   ://
+            var aim_z   ;//:@aim_z@: AIM_FMT_GET().~z~   ://
 
             h13.m_giv.writeHead( 200 , d_jso );
 
