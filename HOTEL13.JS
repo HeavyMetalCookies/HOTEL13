@@ -9138,7 +9138,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             var api_3rd_has =( 0 );
             
-
             if( 1
             &&  ( F_HOTEL13_API_3RD_CID_IMGUR() )
             &&  ( F_HOTEL13_API_3RD_C_S_IMGUR() )
