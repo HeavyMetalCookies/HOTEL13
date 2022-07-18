@@ -6257,14 +6257,27 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_promise );                      
         };;
 
-        const   EXECUTO_F_HOTEL13_NODESYS_LOD = function
-        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_LOD(
-            o_k_yes                                     
-        ,   wontsay  
+        const   F_HOTEL13_HERSYNC_LOD_PNG = function
+        PRIVATE_F_HOTEL13_HERSYNC_LOD_PNG(
+
+            i_pngfile //:AKA[ got_png ]
         ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: HERE : CLIENT                            ://
+            //: SYNC : SYNCHRONOUS                       ://
+            //:                                          ://
+            //: Loads a binary .PNG file in ram stored   ://
+            //: in[ i_pngfile ]into the game.            ://
+            //:                                          ://
+            //: i_pngfile is __NOT__ raw RGBA byte array!://
+            //: i_pngfile    __IS___ .PNG file format.   ://  //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
             var o_k =( 1 );
             
-            var got_png =( d_pngfile ); 
+            var got_png =( i_pngfile ); //:AKA[d_pngfile]://
             var arr_buf =(  null     );
             var pix_arr =(  null     );
 
@@ -6336,6 +6349,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             }else{
                 YEL( "[NODESYS_LOD:FAILURE]" );
             };;
+
+        };;
+
+        const   EXECUTO_F_HOTEL13_NODESYS_LOD = function
+        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_LOD(
+            o_k_yes                                     
+        ,   wontsay  
+        ){
+
+            //:TODO: This should be a network access
+            //:      thing right here. Or rather...
+            //:      If we havent already saved to
+            //:      ram, request from network.
+            F_HOTEL13_HERSYNC_LOD_PNG(
+                d_pngfile
+            );;
+
+            o_k_yes( "[PNG_FILE_LOADED_INTO_GAME]" );
         };;
     
         const   F_HOTEL13_NODESYS_LOD = function
@@ -7489,12 +7520,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ));;
                     if( "[YES]" == nsh_yehotel ){
 
-                        d_png = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                        d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
 
                         console.log( "[MAYBE_GOT_PNG?]" );          
-                        console.log( "[d_png]" , d_png  );
+                        console.log( 
+                            "[d_pngfile]" 
+                        ,     d_pngfile  
+                        );;
 
                         //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+
+
+                        F_HOTEL13_HERSYNC_LOD_PNG( d_pngfile );
                     }else
                     if( "[NOT]" == nsh_yehotel ){
 
@@ -11641,6 +11678,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @nsh_yeshotel@ : WRONG_YOU_WANT[ nsh_yehotel ]
     @nsh_hashotel@ : WRONG_YOU_WANT[ nsh_yehotel ]
     @nsh_hahotel@  : WRONG_YOU_WANT[ nsh_yehotel ]
+
+    @HERSYNC@ : HERE - SYNCHRONOUS , opposite of NODESYS
+
+    @HERESYS@ : YOU_MEAN[ HERSYNC ]
+
+   
 
 *** ******************************************************** **/
 
