@@ -1,4 +1,7 @@
 
+
+    ##[2022_07_18]##############################################
+
     ############################################################
     ##                                                        ##
     ##  ECHO_PIT : Prevents heroku from blabbing about        ##
@@ -24,10 +27,14 @@
     ECHO_PIT=""
 
     ECHO_PIT=$( heroku config:set --app aim-hotel13 \
+                   "VAR_IMGUR_CID"=$VAR_IMGUR_KANJICODER_CID )
+    ECHO_PIT=$( heroku config:set --app aim-hotel13 \
         "VAR_IMGUR_KANJICODER_CID"=$VAR_IMGUR_KANJICODER_CID )
 
     ## echo $ECHO_PIT
 
+    ECHO_PIT=$( heroku config:set --app aim-hotel13 \
+                   "VAR_IMGUR_C_S"=$VAR_IMGUR_KANJICODER_C_S )
     ECHO_PIT=$( heroku config:set --app aim-hotel13 \
         "VAR_IMGUR_KANJICODER_C_S"=$VAR_IMGUR_KANJICODER_C_S )
 
@@ -35,3 +42,5 @@
 
     git push GIT_SSH master
     git push HER_OKU master
+
+    ##############################################[2022_07_18]##
