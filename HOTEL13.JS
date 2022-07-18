@@ -7485,7 +7485,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 .then( ( xhr_ask )=>{
 
                     nsh_yehotel =( xhr_ask.getResponseHeader( 
-                   "nsh_yehotel" 
+                   "NSH_YEHOTEL" 
                     ));;
                     if( "[YES]" == nsh_yehotel ){
 
@@ -7503,6 +7503,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         //: Do nothign. No Hotel         ://
                         //:::::::::::::::::::::::::::::::://    
                     }else{
+
+                        LOG("[nsh_yehotel]",nsh_yehotel);
+                        MSG("[EXPECTED:YES:ORR:NOT]");
                         ERR("[EXPECTED:YES:ORR:NOT]");
                     };;
                 });;
