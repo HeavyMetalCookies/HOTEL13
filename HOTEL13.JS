@@ -197,16 +197,13 @@
                                                            
                 xhr_ask = new XMLHttpRequest();            
                 xhr_ask.open( "GET" , urlfull );  
-                xhr_ask.responseType = "arraybuffer" ; //:<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                xhr_ask.responseType = "arraybuffer" ;  
                 xhr_ask.send();                            
                 xhr_ask.onreadystatechange=(evt_xhr)=>{    
                 if( xhr_ask.readyState === 4 ){            
                                                            
-                    console.log("DONE");                   
-                /// o_k_yes( xhr_ask.responseText );      //:<<<<<<<<<<<<<<< NOTICE_ME_SENPAI 
-        
-                    o_k_yes( xhr_ask );
-                                                           
+                    console.log("[DONE:XHR_GET_PNG]");                   
+                    o_k_yes(  xhr_ask );                                      
                 };;};;                                     
                                                            
             });; return( o_promise );                      
@@ -6043,7 +6040,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 o_str +=F_HOTEL13_I32_STR( i_w_x ); 
                 o_str +=(                   "/"  );
-                o_str +=F_HOTEL13_I32_STR( i_w_y );  //////////////////////////// NOTICE_ME_SENPAI
+                o_str +=F_HOTEL13_I32_STR( i_w_y );  
                 o_str +=(                   "/"  );
                 o_str +=F_HOTEL13_I32_STR( i_w_z );
 
@@ -6257,7 +6254,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var job = JSON.parse( i_saywhat );
                 if( job.m_o_k <= 0 ){
 
-                    ERR("[MY_SERVER_HATES_YOUR_GUTS]"); //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    ERR("[MY_SERVER_HATES_YOUR_GUTS]");  
                 };;
     
                 o_k_yes( i_saywhat );
@@ -6290,7 +6287,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //: in[ i_pngfile ]into the game.            ://
             //:                                          ://
             //: i_pngfile is __NOT__ raw RGBA byte array!://
-            //: i_pngfile    __IS___ .PNG file format.   ://  //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+            //: i_pngfile    __IS___ .PNG file format.   ://   
             //:                                          ://
             //:------------------------------------:[ATF]://
 
@@ -7539,10 +7536,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ));;
                     if( "[YES]" == nsh_yehotel ){
 
-                        d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                        d_pngfile = xhr_ask.response ;     
     
-                        /////d_pngfile = new Uint8Array( xhr_ask.response || xhr.mozResponseArrayBuffer );
-
                         console.log( "[MAYBE_GOT_PNG?]" );          
                         console.log( 
                             "[d_pngfile]" 
@@ -7551,6 +7546,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                         //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
 
+                        //: TODOHERE: F_HOTEL13_API_3RD_DOW_IMGUR
 
                         F_HOTEL13_HERSYNC_LOD_PNG( d_pngfile );
                     }else
@@ -8927,7 +8923,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             i_h13
         ,   i_404
         ){
-            if( i_404 >= 1 ){  //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+            if( i_404 >= 1 ){   
 
                 i_h13.m_giv.setHeader( "NSH_YEHOTEL" , "[NOT]");
             }else{
@@ -8963,12 +8959,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         ,   ( 1 ) //: Is 404 Image ://
                         );;
                     }else{
-                         F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                         F_HOTEL13_YEHOTEL( i_h13  , i_404 );  
                         i_h13.m_giv.writeHead( 200, d_png );   
                         i_h13.m_giv.end( i_cof    ,"utf-8");
                     };;
                 }else{
-                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );  
                         i_h13.m_giv.writeHead( 200, d_png );
                         i_h13.m_giv.end( i_cof    ,"utf-8");    
                 };;
@@ -9150,14 +9146,31 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( api_3rd_has );
         };;
 
-        const   F_HOTEL13_API_3RD_UPP_IMGUR = function
-        PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR(
+    //:=============================:NODESYS_IMGUR_UPLOAD://
+    //:=============================:HOTEL13_IMGUR_UPLOAD://
+    //:**************************************************://
+    //:                                                  ://
+    //:             BEG_OF_API_SECTION                   ://
+    //:                                                  ://
+    //:**************************************************://
+    //:**************************************************://
+    //:                                                  ://
+    //:     API : Same Functions On Client And Server    ://
+    //:         : with differing implementations.        ://
+    //:                                                  ://
+    //:**************************************************://
+    //:IMGUR_FUNCS_SERVER:===============================://
+    if( d_hotel13_yesnode >= 1 ){
 
-            /**Arguments?**/
-        ){
+        const   F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE =
+        PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE(
+
+            i_imgname //:ImageNameWithExtension://
+        ,   i_pngfile //:Our_512_X_512_PNG_FILE://
+        )=>{
 
             var o_promise = new Promise( function        
-            EXECUTO_F_HOTEL13_API_3RD_UPP_IMGUR( 
+            EXECUTO_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE( 
 
                 o_k_yes
             ,   wontsay 
@@ -9171,13 +9184,91 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0 );
                 };;
 
+                ERR( "[THIS CODE IS NOT FINISHED]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
+
                 o_k_yes( "[RETURNED_WHEN_ASYNC_THING_DONE]" );
             });;
             return( o_promise );
-
         };;
-    //:=============================:NODESYS_IMGUR_UPLOAD://
-    //:=============================:HOTEL13_IMGUR_UPLOAD://
+
+        const   F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE =
+        PRIVATE_F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE(
+
+            i_imgname
+        )=>{
+
+            var o_promise = new Promise( function        
+            EXECUTO_F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE( 
+
+                o_k_yes
+            ,   wontsay 
+            ){
+                var o_k =( 1 );
+
+                if( F_HOTEL13_API_3RD_HAS_IMGUR() ){
+
+                    o_k =( 1 );
+                }else{
+                    o_k =( 0 );
+                };;
+
+                ERR( "[THIS CODE IS NOT FINISHED]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
+
+                o_k_yes( "[RETURNED_WHEN_ASYNC_THING_DONE]" );
+            });;
+            return( o_promise );
+        };;
+
+    };;
+    //:===============================:IMGUR_FUNCS_SERVER://
+    //:IMGUR_FUNCS_CLIENT:===============================://
+    if( d_hotel13_notnode >= 1 ){
+
+        const   F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE =
+        PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE(
+
+            i_imgname //:ImageNameWithExtension://
+        ,   i_pngfile //:Our_512_X_512_PNG_FILE://
+        )=>{
+
+            YELL( "[TODO:API_3RD_UPP]" ); //:<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+        };;
+
+        const   F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE =  
+        PRIVATE_F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE(
+
+            i_imgname
+        )=>{
+            YELL( "[TODO:API_3RD_UPP]" ); //:<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+        };;
+    };;
+    //:===============================:IMGUR_FUNCS_CLIENT://
+    //:API_WIREUP:2022_07_18:============================://
+    if( d_hotel13_yesnode >= 1 ){
+
+        const F_HOTEL13_API_3RD_UPP_IMGUR=(
+              F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE );; 
+
+        const F_HOTEL13_API_3RD_DOW_IMGUR=(
+              F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE );;
+    }else
+    if( d_hotel13_notnode >= 1 ){
+
+        const F_HOTEL13_API_3RD_UPP_IMGUR=(
+              F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE );; 
+
+        const F_HOTEL13_API_3RD_DOW_IMGUR=(
+              F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE );;
+
+    }else{
+        ERR("[API_WIREUP_FAIL]");
+    };;
+    //:============================:API_WIREUP:2022_07_18://
+    //:**************************************************://
+    //:                                                  ://
+    //:             END_OF_API_SECTION                   ://
+    //:                                                  ://
+    //:**************************************************://
     //:HOTEL13_SERVER:===================================://
     require("http").createServer(( 
 
