@@ -6029,11 +6029,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             var o_str = "" ;
 
-                o_str +=( ""+i_w_x+"" ); 
-                o_str +=(     "/"     );
-                o_str +=( ""+i_w_y+"" ); 
-                o_str +=(     "/"     );
-                o_str +=( ""+i_w_z+"" );
+                o_str +=F_HOTEL13_I32_STR( i_w_x ); 
+                o_str +=(                   "/"  );
+                o_str +=F_HOTEL13_I32_STR( i_w_y );  //////////////////////////// NOTICE_ME_SENPAI
+                o_str +=(                   "/"  );
+                o_str +=F_HOTEL13_I32_STR( i_w_z );
 
             return( o_str );
         };;
