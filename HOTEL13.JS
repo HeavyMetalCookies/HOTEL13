@@ -7520,7 +7520,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ));;
                     if( "[YES]" == nsh_yehotel ){
 
-                        d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                        /// d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+    
+                        d_pngfile = new Uint8Array( xhr_ask.response || xhr.mozResponseArrayBuffer );
 
                         console.log( "[MAYBE_GOT_PNG?]" );          
                         console.log( 
