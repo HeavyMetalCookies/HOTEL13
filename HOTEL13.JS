@@ -156,16 +156,47 @@
     //:=================================:STOLENFROM:#BGT#://
     //:HOTEL13_XML_GET:==================================://
 
-        const   F_HOTEL13_XHR_GET = function
-        PRIVATE_F_HOTEL13_XHR_GET(
+        const   F_HOTEL13_XHR_GET = "[TRY:XHR_GET_PNG]" ;
+        const   F_HOTEL13_GET_XHR = "[TRY:XHR_GET_PNG]" ;
+
+        const   F_HOTEL13_XHR_GET_PNG = function
+        PRIVATE_F_HOTEL13_XHR_GET_PNG(
 
             i_urlpath
         ){
-            var o_promise =( F_HOTEL13_XHR(
+            var o_promise = new Promise( function          
+            EXECUTO_F_HOTEL13_XHR_GET_PNG( 
 
-                "GET" , i_urlpath
-            ));;
-            return( o_promise );
+                o_k_yes 
+            ,   wontsay
+            ){
+                                                           
+                var emp , urlfull , xhr_ask ;              
+                                                           
+                    emp = "" ; /**EmptyString**/           
+                urlfull = "[REQUEST_URL_NOT_SET]" ;        
+                                                           
+                if( "/" != i_urlpath[ 0 ] ){               
+                                                           
+                    urlfull = d_url + "/" + i_urlpath ;    
+                }else{                                     
+                    urlfull = d_url + emp + i_urlpath ;    
+                };;                                        
+                                                           
+                xhr_ask = new XMLHttpRequest();            
+                xhr_ask.open( i_asktype , urlfull );       
+                xhr_ask.send();                            
+                xhr_ask.onreadystatechange=(evt_xhr)=>{    
+                if( xhr_ask.readyState === 4 ){            
+                                                           
+                    console.log("DONE");                   
+                /// o_k_yes( xhr_ask.responseText );      //:<<<<<<<<<<<<<<< NOTICE_ME_SENPAI 
+        
+                    o_k_yes( xhr_ask );
+                                                           
+                };;};;                                     
+                                                           
+            });; return( o_promise );                      
         };;
     //:==================================:HOTEL13_XML_GET://
     //:HOTEL13_XML_POST:=================================://
@@ -6135,6 +6166,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var d_pngname     ="[nil][d_pngname]"     ;
         var d_pngpath     ="[nil][d_pngpath]"     ;
         var d_pngpath_upp ="[nil][d_pngpath_upp]" ;
+        var d_pngpath_dow ="[nil][d_pngpath_dow]" ;
 
     //:=======================:TEMPORARY_DEVELOPMENT_DATA://
     //:==================================:LOAD_FILE_INDEX://
@@ -7393,6 +7425,90 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 "[Code_Only_For_Standalone_Mode]"
             );;
         };;
+
+        //:Try_To_Load_Level_From_Server:----------------://
+
+            var s_x =( ""+d_hotel13_wmc_i_x+"" );
+            var s_y =( ""+d_hotel13_wmc_i_y+"" );
+            var s_z =( ""+d_hotel13_wmc_i_z+"" );
+
+            if( 0
+            ||   ( 0 > d_hotel13_wmc_i_x )
+            ||   ( 0 > d_hotel13_wmc_i_y )
+            ||   ( 0 > d_hotel13_wmc_i_z )
+            ){
+                YEL("[NEG_WMC:wmc_hasnt_been_set_yet]");
+                ERR("[NEG_WMC:wmc_hasnt_been_set_yet]");
+            };;
+
+            //:zero_padded_string_coords:------------://
+
+            //: TAG[ zeropad | zero-pad | zero_pad ] ://
+            //: TAG[ zeropadding | zero-padding    ] ://
+            //: TAG[ zero_padding | zero padding   ] ://
+                
+                var dex=( 0 );
+                for( dex = 0 ; dex <=(3-1) ; dex++ ){
+
+                    //:#_ZERO_PAD_#://
+                    if( s_x.length < 3 ){s_x="0"+s_x;};
+                    if( s_y.length < 3 ){s_y="0"+s_y;};
+                    if( s_z.length < 3 ){s_z="0"+s_z;};
+                };;
+
+            //:------------:zero_padded_string_coords://
+            //:Initiate_Download:--------------------://
+
+                //:::::::::::::::::::::::::::::::::::://
+                //:EX[ "PNG/X_111/Y_222/Z_333/"     ]://
+                //:..[   "AIM_111_222_333.PNG"      ]://
+                //:::::::::::::::::::::::::::::::::::://
+                d_pngpath_dow =( ""
+                +     "PNG/" 
+
+                +     "X_" + s_x + "/"
+                +     "Y_" + s_y + "/"
+                +     "Z_" + s_z + "/"  
+
+                +     "AIM"
+                +      "_"
+                +      s_x
+                +      "_"
+                +      s_y
+                +      "_"
+                +      s_z
+
+                +    ".PNG"
+                );;
+
+                F_HOTEL13_XHR_GET_PNG( d_pngpath_dow )
+                .then( ( xhr_ask )=>{
+
+                    nsh_yehotel =( xhr_ask.getResponseHeader( 
+                   "nsh_yehotel" 
+                    ));;
+                    if( "[YES]" == nsh_yehotel ){
+
+                        d_png = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+
+                        console.log( "[MAYBE_GOT_PNG?]" );          
+                        console.log( "[d_png]" , d_png  );
+
+                        //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    }else
+                    if( "[NOT]" == nsh_yehotel ){
+
+                        //:::::::::::::::::::::::::::::::://
+                        //: Do nothing. No Levelpack     ://
+                        //: Do nothign. No Hotel         ://
+                        //:::::::::::::::::::::::::::::::://    
+                    }else{
+                        ERR("[EXPECTED:YES:ORR:NOT]");
+                    };;
+                });;
+            //:------------------------:Initiate_Download://
+        //:----------------:Try_To_Load_Level_From_Server://
+
     
         F_HOTEL13_SAM_TIKLOOP(); //:LoopForever://
     };;
@@ -8741,14 +8857,33 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     //:HOTEL13_SERVE_STATIC_PNG:=========================://
 
+        var F_HOTEL13_404_ADD = "[USE:F_HOTEL13_YEHOTEL]";
+        var F_HOTEL13_ADD_404 = "[USE:F_HOTEL13_YEHOTEL]";
+
+        const   F_HOTEL13_YEHOTEL = function
+        PRIVATE_F_HOTEL13_YEHOTEL(
+
+            i_h13
+        ,   i_404
+        ){
+            if( i_404 >= 1 ){  //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+
+                i_h13.m_giv.setHeader( "yehotel" , "[NOT]" );
+            }else{
+                i_h13.m_giv.setHeader( "yehotel" , "[YES]" );
+            };;
+        };;
+
         const   F_HOTEL13_SERVEME_PNG = function
         PRIVATE_F_HOTEL13_SERVEME_PNG( 
 
             i_h13  //: Hotel13's SOB(StateObjectBundle)  ://    
         ,   i_rfp  //: Relative_File_Path  : : : : : : : ://
         ,   i_dep  //: OPTional_DEPth Var. : : : : : : : ://
+        ,   i_404  //: OPTional: Is 404 not found?       ://
         ){
             i_dep = ( i_dep ? i_dep : 1 );
+            i_404 = ( i_404 ? i_404 : 0 );
 
             l_fs.readFile( i_rfp,function( i_err , i_cof ){
             "use strict"
@@ -8764,13 +8899,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             i_h13 
                         ,   "./PNG/404_512.PNG" 
                         ,   i_dep
+                        ,   ( 1 ) //: Is 404 Image ://
                         );;
                     }else{
-                        i_h13.m_giv.writeHead( 200, d_png );    
+                        i_h13.m_giv.writeHead( 200, d_png );   
+                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                         i_h13.m_giv.end( i_cof    ,"utf-8");
                     };;
                 }else{
                         i_h13.m_giv.writeHead( 200, d_png );
+                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );
                         i_h13.m_giv.end( i_cof    ,"utf-8");    
                 };;
                 //:--------------------------------------://
@@ -11475,6 +11613,31 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @jft@ : TYPO , you want[ @jtf@ ]
     @jtf@ : Just_The_Folder
+
+    @d_pngpath_upp@ : pngpath for "UPLOAD"
+    @d_pngpath_dow@ : pngpath for "DOWNLOAD"
+
+    #_NON_STANDARD_HEADER_# :
+
+        TAG[ non-standard-header | nonstandardheader   ]
+        TAG[ non-standard | non standard | nonstandard ]
+
+        @nsh@ : Prefix used to denote headers that 
+              : KANJICODER is making up for this MMO.
+
+        @nsh_pngname@ : name of the .png file.
+        
+        @nsh_yehotel@ : YE Hotel , YES a hotel exists here.
+                      : Meaning the image did not 404 and
+                      : it is indeed an already existing
+                      : [ levelpack / hotel ]
+
+        NOW_DATE[ 2022_07_17 ]TIME[ 738 ]PM
+
+
+    @nsh_yeshotel@ : WRONG_YOU_WANT[ nsh_yehotel ]
+    @nsh_hashotel@ : WRONG_YOU_WANT[ nsh_yehotel ]
+    @nsh_hahotel@  : WRONG_YOU_WANT[ nsh_yehotel ]
 
 *** ******************************************************** **/
 
