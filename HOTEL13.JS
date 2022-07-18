@@ -8902,13 +8902,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         ,   ( 1 ) //: Is 404 Image ://
                         );;
                     }else{
+                         F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                         i_h13.m_giv.writeHead( 200, d_png );   
-                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                         i_h13.m_giv.end( i_cof    ,"utf-8");
                     };;
                 }else{
+                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );  //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                         i_h13.m_giv.writeHead( 200, d_png );
-                        F_HOTEL13_YEHOTEL( i_h13  , i_404 );
                         i_h13.m_giv.end( i_cof    ,"utf-8");    
                 };;
                 //:--------------------------------------://
