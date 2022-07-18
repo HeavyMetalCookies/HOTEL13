@@ -1,5 +1,17 @@
 
+    //: HOTEL13_INDEX :==================================://        
+    /** ************* ********************************** ***
 
+        [ CTRL_F_HELP  ] : Hackish Google Search === CTRL+F
+        [ BOMB_TYPES   ] : Use CTRL+F For More Info
+        [ DEVEL_TODO   ] : Developer Todo Notes
+        [ BASIC_LAYOUT ] : Basic Data Layout Of Hotel13
+        [ HASHTAG_SEC  ] : 90% of comments are here.
+                         : Always append new notes to the
+                         : BOTTOM OF THIS SECTION.
+
+    *** ************* ********************************** **/
+    //:==================================: HOTEL13_INDEX ://
     //:HOTEL13_ENVIORNMENT_DETECTION:====================://
     {
         let yes =( "undefined" === typeof window );               
@@ -9662,10 +9674,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:##################################################://
 
 
+/** CTRL_F_HELP ******************************************** ***
+*** TAG_SECTION ******************************************** ***
+
+    -----------------------------------------------------------
+    [ integer-to-string | integer_to_string | integertostring ]
+    [ integer-to-padded-string | int-to-padded-string         ]
+    [ padded-string | padded_string | padded string           ]
+    [ zero padded string | zero_padded_string | zeropadded    ]
+    [ zeropaddedstring | zero padding | zeropadding | zeropad ]
+    -----------------------------------------------------------
+    F_HOTEL13_I32_STR
+    -----------------------------------------------------------
+
+*** *********** ******************************** TAG_SECTION ***
+*** *********** ******************************** CTRL_F_HELP **/
 /** BOMB_LASER_ECHOBOX_SPARKPIN **************************** ***
 
     TAG[ bomb-types | bomb types | types-of-bombs ]
     TAG[ types of bombs ]
+    TAG[ BOMB_TYPES ]
 
     DATE[ 2022_07_07 ]KANJICODER_CANT_SLEEP
 
@@ -9722,7 +9750,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 *** **************************** BOMB_LASER_ECHOBOX_SPARKPIN **/
 /** DEVELOPER_TODO_NOTE ************************************ ***
 
-
+    TAG[ DEVTODO | DEVEL_TODO ]
 
     #_MAKE_EXPLOSIVE_AUTOMATA_ON_E_Z_2D_CANVAS_# 
     
@@ -9752,6 +9780,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             
 *** ************************************ DEVELOPER_TODO_NOTE **/
 /** ******************************************************** ***
+
+    TAG[ BASIC_DATA_LAYOUT | BASIC_LAYOUT ]
 
               [ ]
            [ ][ ][ ]
@@ -9866,6 +9896,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
 *** ******************************************************** **/
 /** HASHTAG_NOTES ****************************************** ***
+*** HASHTAG_SEC - ****************************************** ***
 
     #PUT_ANY# :
     
@@ -11694,5 +11725,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
    
 
-*** ******************************************************** **/
+*** ****************************************** HASHTAG_SEC - ***
+*** ****************************************** HASHTAG_NOTES **/
 
