@@ -6242,10 +6242,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                                         
                 console.log( "[what?]:" + i_saywhat );  
 
-                var job = JSON.parse( 
-            
-                    i_saywhat.responseText 
-                );;
+                var job = JSON.parse( i_saywhat );
                 if( job.m_o_k <= 0 ){
 
                     ERR("[MY_SERVER_HATES_YOUR_GUTS]"); //:<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
