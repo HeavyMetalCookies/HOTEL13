@@ -9305,13 +9305,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ){
             //:   APP.COM/API/3RD/UPP/IMGUR :::::::::::::://
                 F_HOTEL13_API_3RD_UPP_IMGUR()
-                .then( i_saywhat )=>{
+                .then( (i_saywhat)=>{
 
                     
                     h13.m_giv.writeHead( 200 , d_txt );
                     h13.m_giv.write( "[TODO:UPP]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                     h13.m_giv.end();
-                };;
+                });;
             }else
             if( 1
             &&  "API"   === h13.m_seg[ 0 ] 
@@ -9321,12 +9321,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ){
             //:   APP.COM/API/3RD/DOW/IMGUR :::::::::::::://
                 F_HOTEL13_API_3RD_DOW_IMGUR()
-                .then( i_saywhat )=>{
+                .then( (i_saywhat)=>{
 
                     h13.m_giv.writeHead( 200 , d_txt );
                     h13.m_giv.write( "[TODO:DOW]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                     h13.m_giv.end();
-                };;
+                });;
             }else{
                 //:::::::::::::::::::::::::::::::::::::::://
                 //: Unknown API Message .................://
