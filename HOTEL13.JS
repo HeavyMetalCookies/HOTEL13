@@ -184,7 +184,7 @@
                 };;                                        
                                                            
                 xhr_ask = new XMLHttpRequest();            
-                xhr_ask.open( i_asktype , urlfull );       
+                xhr_ask.open( "GET" , urlfull );       
                 xhr_ask.send();                            
                 xhr_ask.onreadystatechange=(evt_xhr)=>{    
                 if( xhr_ask.readyState === 4 ){            
