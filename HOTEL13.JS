@@ -9184,9 +9184,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0 );
                 };;
 
-                ERR( "[THIS CODE IS NOT FINISHED]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                
 
-                o_k_yes( "[RETURNED_WHEN_ASYNC_THING_DONE]" );
+                o_k_yes( "[NOT_FINISHED:UPP]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
             });;
             return( o_promise );
         };;
@@ -9212,9 +9212,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_k =( 0 );
                 };;
 
-                ERR( "[THIS CODE IS NOT FINISHED]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                
 
-                o_k_yes( "[RETURNED_WHEN_ASYNC_THING_DONE]" );
+                o_k_yes( "[NOT_FINISHED:DOW]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
             });;
             return( o_promise );
         };;
@@ -9295,6 +9295,47 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "API"       == h13.m_seg[ 0 ] ){
+
+            if( 1
+            &&  "API"   === h13.m_seg[ 0 ] 
+            &&  "3RD"   === h13.m_seg[ 1 ] 
+            &&  "UPP"   === h13.m_seg[ 2 ] 
+            &&  "IMGUR" === h13.m_seg[ 3 ] 
+            ){
+            //:   APP.COM/API/3RD/UPP/IMGUR :::::::::::::://
+                F_HOTEL13_API_3RD_UPP_IMGUR()
+                .then( i_saywhat )=>{
+
+                    
+                    h13.m_giv.writeHead( 200 , d_txt );
+                    h13.m_giv.write( "[TODO:UPP]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    h13.m_giv.end();
+                };;
+            }else
+            if( 1
+            &&  "API"   === h13.m_seg[ 0 ] 
+            &&  "3RD"   === h13.m_seg[ 1 ] 
+            &&  "DOW"   === h13.m_seg[ 2 ] 
+            &&  "IMGUR" === h13.m_seg[ 3 ] 
+            ){
+            //:   APP.COM/API/3RD/DOW/IMGUR :::::::::::::://
+                F_HOTEL13_API_3RD_DOW_IMGUR()
+                .then( i_saywhat )=>{
+
+                    h13.m_giv.writeHead( 200 , d_txt );
+                    h13.m_giv.write( "[TODO:DOW]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    h13.m_giv.end();
+                };;
+            }else{
+                //:::::::::::::::::::::::::::::::::::::::://
+                //: Unknown API Message .................://
+                //:::::::::::::::::::::::::::::::::::::::://    
+                h13.m_giv.writeHead( 200 , d_txt );
+                h13.m_giv.write( "[API_WTF]" );
+                h13.m_giv.end();
+            };;
+        }else
         if( "HAS_IMGUR" == h13.m_seg[ 0 ] ){
 
             //:::::::::::::::::::::::::::::::::::::::::::://
