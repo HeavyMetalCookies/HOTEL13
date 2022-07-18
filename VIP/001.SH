@@ -3,5 +3,14 @@
 
     git commit -m "[VIP_AUTO_COMMIT:KanjiCoder]"
 
-    git push GIT_SSH master
-    git push HER_OKU master
+    VAR_IMGUR_KANJICODER_CID='cat CID._'
+    VAR_IMGUR_KANJICODER_C_S='cat C_S._'
+
+    heroku config:set --app aim-hotel13 \
+        "VAR_IMGUR_KANJICODER_CID"=$VAR_IMGUR_KANJICODER_CID
+
+    heroku config:set --app aim-hotel13 \
+        "VAR_IMGUR_KANJICODER_C_S"=$VAR_IMGUR_KANJICODER_C_S
+
+    ## git push GIT_SSH master
+    ## git push HER_OKU master
