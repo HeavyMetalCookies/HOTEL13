@@ -8871,9 +8871,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ){
             if( i_404 >= 1 ){  //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
 
-                i_h13.m_giv.setHeader( "YEHOTEL" , "[NOT]" );
+                i_h13.m_giv.setHeader( "NSH_YEHOTEL" , "[NOT]");
             }else{
-                i_h13.m_giv.setHeader( "YEHOTEL" , "[YES]" );
+                i_h13.m_giv.setHeader( "NSH_YEHOTEL" , "[YES]");
             };;
         };;
 
