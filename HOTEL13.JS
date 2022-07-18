@@ -9162,12 +9162,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:IMGUR_FUNCS_SERVER:===============================://
     if( d_hotel13_yesnode >= 1 ){
 
-        const   F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE =
+        const   F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE = function
         PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE(
 
             i_imgname //:ImageNameWithExtension://
         ,   i_pngfile //:Our_512_X_512_PNG_FILE://
-        )=>{
+        ){
 
             var o_promise = new Promise( function        
             EXECUTO_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE( 
@@ -9191,11 +9191,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_promise );
         };;
 
-        const   F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE =
+        const   F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE = function
         PRIVATE_F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE(
 
             i_imgname
-        )=>{
+        ){
 
             var o_promise = new Promise( function        
             EXECUTO_F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE( 
@@ -9224,21 +9224,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:IMGUR_FUNCS_CLIENT:===============================://
     if( d_hotel13_notnode >= 1 ){
 
-        const   F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE =
+        const   F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE = function
         PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_NOTNODE(
 
             i_imgname //:ImageNameWithExtension://
         ,   i_pngfile //:Our_512_X_512_PNG_FILE://
-        )=>{
+        ){
 
             YELL( "[TODO:API_3RD_UPP]" ); //:<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
         };;
 
-        const   F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE =  
+        const   F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE = function
         PRIVATE_F_HOTEL13_API_3RD_DOW_IMGUR_NOTNODE(
 
             i_imgname
-        )=>{
+        ){
             YELL( "[TODO:API_3RD_UPP]" ); //:<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
         };;
     };;
