@@ -9092,8 +9092,91 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_IMGUR_UPLOAD:=============================://
     //:NODESYS_IMGUR_UPLOAD:=============================://
 
-        dsdfsfsdf
+        const  F_HOTEL13_API_3RD_GET_CID_IMGUR = "[@T_V@]";
+        const  F_HOTEL13_API_3RD_GET_C_S_IMGUR = "[@T_V@]";
+    
+        const   F_HOTEL13_API_3RD_CID_IMGUR = function
+        PRIVATE_F_HOTEL13_API_3RD_CID_IMGUR
+        ( ){
+            let p_e =( process.env );
+            var str_out =( ""
+            ||  p_e.VAR_IMGUR_CID 
+            ||  p_e.VAR_IMGUR_KANJICODER_CID
+            );;
+            return( str_out );
+        };;
+        const   F_HOTEL13_API_3RD_C_S_IMGUR = function
+        PRIVATE_F_HOTEL13_API_3RD_C_S_IMGUR
+        ( ){
+            let p_e =( process.env );
+            var str_out =( ""
+            ||  p_e.VAR_IMGUR_C_S
+            ||  p_e.VAR_IMGUR_KANJICODER_C_S
+            );;
+            return( str_out );
+        };;
 
+        const   F_HOTEL13_API_3RD_HAS_IMGUR = function
+        PRIVATE_F_HOTEL13_API_3RD_HAS_IMGUR(
+
+            /** NO arguments **/
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: Return TRUE if we have the correct       ://
+            //: environment variables set to make        ://
+            //: API requests to imgur.                   ://
+            //:                                          ://
+            //: If you need to set this up, use          ://
+            //: POWERSHELL on windows. NOT GITBASH       ://
+            //: on windows. Heroku likes to fail for     ://
+            //: this on gitbash for windows.             ://
+            //:                                          ://
+            //: FURTHER_READING[ #_HEROKU_IMGUR_VARS_# ] ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            var api_3rd_has =( 0 );
+            
+
+            if( 1
+            &&  ( F_HOTEL13_API_3RD_CID_IMGUR() )
+            &&  ( F_HOTEL13_API_3RD_C_S_IMGUR() )
+            ){
+                api_3rd_has =( 1 );
+            }else{
+                api_3rd_has =( 0 );
+            };;
+
+            return( api_3rd_has );
+        };;
+
+        const   F_HOTEL13_API_3RD_UPP_IMGUR = function
+        PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR(
+
+            /**Arguments?**/
+        ){
+
+            var o_promise = new Promise( function        
+            EXECUTO_F_HOTEL13_API_3RD_UPP_IMGUR( 
+
+                o_k_yes
+            ,   wontsay 
+            ){
+                var o_k =( 1 );
+
+                if( F_HOTEL13_API_3RD_HAS_IMGUR() ){
+
+                    o_k =( 1 );
+                }else{
+                    o_k =( 0 );
+                };;
+
+                o_k_yes( "[RETURNED_WHEN_ASYNC_THING_DONE]" );
+            });;
+            return( o_promise );
+
+        };;
     //:=============================:NODESYS_IMGUR_UPLOAD://
     //:=============================:HOTEL13_IMGUR_UPLOAD://
     //:HOTEL13_SERVER:===================================://
@@ -9122,6 +9205,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "HAS_IMGUR" == h13.m_seg[ 0 ] ){
+
+            //:::::::::::::::::::::::::::::::::::::::::::://
+            //: Before we write imgur upload, let's      ://
+            //: use this hack to see if we have          ://
+            //: the correct configuration ready.         ://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+
+            var has_imgur = F_HOTEL13_API_3RD_HAS_IMGUR();
+            h13.m_giv.writeHead( 200 , d_txt );
+            h13.m_giv.write("[has_imgur]:("+has_imgur+")");
+            h13.m_giv.end();
+        }else
         if( "PNG"    == h13.m_seg[ 0 ] ){
 
             //: @rfp@ : Relative File Path
@@ -11730,7 +11826,37 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @HERESYS@ : YOU_MEAN[ HERSYNC ]
 
+    #_HEROKU_IMGUR_VARS_# :
+        --------------------------------------------------------
+        I have a helper script that does this before
+        I push to heroku to help setup these confidential
+        values for accessing imgur api.
+        WRITTEN_DATE[ 2022_07_18 ]KANJICODER
+        --------------------------------------------------------
+
+        VAR_REDACTED="[REDACTED]"
+
+        VAR_IMGUR_CID=$(cat "./VIP/001/API_IMGUR/CID._")
+        VAR_IMGUR_C_S=$(cat "./VIP/001/API_IMGUR/C_S._")
+
+        echo "[VAR_IMGUR_CID]:"$VAR_REDACTED
+        echo "[VAR_IMGUR_C_S]:"$VAR_REDACTED
+
+        ECHO_PIT=""
+
+        ECHO_PIT=$( heroku config:set --app aim-hotel13 \
+                       "VAR_IMGUR_CID"=$VAR_IMGUR_CID )
+
+        ## echo $ECHO_PIT
+
+        ECHO_PIT=$( heroku config:set --app aim-hotel13 \
+                       "VAR_IMGUR_C_S"=$VAR_IMGUR_C_S )
+
+        ## echo $ECHO_PIT
+
+        --------------------------------------------------------
    
+    @T_V@ : [ Too / overly / excessively ] Verbose
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
