@@ -184,7 +184,8 @@
                 };;                                        
                                                            
                 xhr_ask = new XMLHttpRequest();            
-                xhr_ask.open( "GET" , urlfull );       
+                xhr_ask.open( "GET" , urlfull );  
+                xhr_ask.responseType = "arraybuffer" ; //:<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                 xhr_ask.send();                            
                 xhr_ask.onreadystatechange=(evt_xhr)=>{    
                 if( xhr_ask.readyState === 4 ){            
@@ -7520,9 +7521,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ));;
                     if( "[YES]" == nsh_yehotel ){
 
-                        /// d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                        d_pngfile = xhr_ask.response ;     //:<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
     
-                        d_pngfile = new Uint8Array( xhr_ask.response || xhr.mozResponseArrayBuffer );
+                        /////d_pngfile = new Uint8Array( xhr_ask.response || xhr.mozResponseArrayBuffer );
 
                         console.log( "[MAYBE_GOT_PNG?]" );          
                         console.log( 
