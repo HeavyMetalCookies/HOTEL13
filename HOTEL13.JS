@@ -9652,6 +9652,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     if( "./PNG/ERR_001.PNG" == aimpath ){
         
                         LOGANOK_ADD( "[ERROR_PATH]" );
+                        LOGANOK_ADD( "[i_str_xyz]:"
+                                    + "("
+                                    +  i_str_xyz
+                                    + ")"
+                        );;
                         LOGANOK_ERR();o_k=( 0 );
                     }else{
                         //:::::::::::::::::::::::::::::::://
@@ -10538,6 +10543,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     -----------------------------------------------------------
     F_HOTEL13_ICH
     -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    [ set-active-bomb | set_active_bomb | setactivebomb       ]
+    [ set-tripped-bomb | set_tripped_bomb | settrippedbomb    ]
+    [ active-bomb | activebomb | active_bomb | bomb_timer     ]
+    [ tripped-bomb | tripped_bomb | trippedbom | bombtimer    ]
+    [ activate-bomb | activate_bomb | activatebomb | bombtime ]
+    [ trip-bomb | trip_bomb | tripbomb | tripp_bomb| bomb_time]
+    [ tripp-bomb | trippbomb | activate-bomb-timer            ]
+    [ bomb-timer | bomb-is-now-ticking-down | bomb-ticker     ]
+    [ mine-ticker | activate-mine | trip-mine | active-mine   ]
+    -----------------------------------------------------------
+    edi_mod_act  ( AS_OF[ 2022_07_19 ]IS_TOGGLE_KEY[ "A" ] )
+                 ( Modifies:BOMB_SETTING_TOGGLE_KEY[ "B" ] )     
+    ------------------------------------------------------------
 
 
 *** *********** ******************************** TAG_SECTION ***
