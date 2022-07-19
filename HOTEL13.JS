@@ -6179,8 +6179,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:   IMGUR_SAVE  ::::::::::: F_HOTEL13_IMGURAP_SAV  ://
     //:   IMGUR_LOAD  ::::::::::: F_HOTEL13_IMGURAP_LOD  ://
     //:                                                  ://
-    //:   HEROKU_SAVE ::::::::::: F_HOTEL13_NODESYS_SAV  ://
-    //:   HEROKU_LOAD ::::::::::: F_HOTEL13_NODESYS_LOD  ://
+    //:   HEROKU_SAVE ::::::::::: F_HOTEL13_HEROKUA_SAV  ://
+    //:   HEROKU_LOAD ::::::::::: F_HOTEL13_HEROKUA_LOD  ://
     //:                                                  ://
     //:   FILE_SAVE / SAVE_FILE : F_HOTEL13_FILESYS_SAV  ://
     //:   FILE_LOAD / LOAD_FILE : F_HOTEL13_FILESYS_LOD  ://
@@ -6216,11 +6216,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         };;
     //:=====================:HOTEL13_FUNCS:IMGUR_API_SAVE://
     //:=====================:HOTEL13_FUNCS:IMGUR_API_LOAD://
-    //:HOTEL13_FUNCS:NODESYSTEM_SAVE:====================://
-    //:HOTEL13_FUNCS:NODESYSTEM_LOAD:====================://
+    //:HOTEL13_FUNCS:HEROKUA_SAVE:=======================://
+    //:HOTEL13_FUNCS:HEROKUA_LOAD:=======================://
 
-        const   EXECUTO_F_HOTEL13_NODESYS_SAV = function
-        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_SAV(
+        const   EXECUTO_F_HOTEL13_HEROKUA_SAV = function
+        PRIVATE_EXECUTO_F_HOTEL13_HEROKUA_SAV(
             o_k_yes                                     
         ,   wontsay     
         ){
@@ -6277,14 +6277,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             });;    
         };;
 
-        const   F_HOTEL13_NODESYS_SAV = function
-        PRIVATE_F_HOTEL13_NODESYS_SAV(
+        const   F_HOTEL13_HEROKUA_SAV = function
+        PRIVATE_F_HOTEL13_HEROKUA_SAV(
 
             /** VOID **/
         ){
             var o_promise =( new Promise( 
             
-                EXECUTO_F_HOTEL13_NODESYS_SAV
+                EXECUTO_F_HOTEL13_HEROKUA_SAV
             ));;
             return( o_promise );                      
         };;
@@ -6377,15 +6377,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( o_k >= 1 ){
 
                 F_HOTEL13_0512_2048( 1 , 1 );
-                LOG( "[NODESYS_LOD:SUCCESS]" );
+                LOG( "[HEROKUA_LOD:SUCCESS]" );
             }else{
-                YEL( "[NODESYS_LOD:FAILURE]" );
+                YEL( "[HEROKUA_LOD:FAILURE]" );
             };;
 
         };;
 
-        const   EXECUTO_F_HOTEL13_NODESYS_LOD = function
-        PRIVATE_EXECUTO_F_HOTEL13_NODESYS_LOD(
+        const   EXECUTO_F_HOTEL13_HEROKUA_LOD = function
+        PRIVATE_EXECUTO_F_HOTEL13_HEROKUA_LOD(
             o_k_yes                                     
         ,   wontsay  
         ){
@@ -6401,20 +6401,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             o_k_yes( "[PNG_FILE_LOADED_INTO_GAME]" );
         };;
     
-        const   F_HOTEL13_NODESYS_LOD = function
-        PRIVATE_F_HOTEL13_NODESYS_LOD(
+        const   F_HOTEL13_HEROKUA_LOD = function
+        PRIVATE_F_HOTEL13_HEROKUA_LOD(
 
             /** VOID **/
         ){
             var o_promise =( new Promise(
 
-                EXECUTO_F_HOTEL13_NODESYS_LOD
+                EXECUTO_F_HOTEL13_HEROKUA_LOD
             ));;
 
             return( o_promise );
         };;
-    //:====================:HOTEL13_FUNCS:NODESYSTEM_SAVE://
-    //:====================:HOTEL13_FUNCS:NODESYSTEM_LOAD://
+    //:=======================:HOTEL13_FUNCS:HEROKUA_SAVE://
+    //:=======================:HOTEL13_FUNCS:HEROKUA_LOAD://
     //:HOTEL13_FUNCS:FILESYSTEM_SAVE:====================://
     //:HOTEL13_FUNCS:FILESYSTEM_LOAD:====================://
     //:                                                  ://
@@ -8177,8 +8177,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:levelpack_save:-------------------------------://
         //:levelpack_load:-------------------------------://
     
-            if( "S" == asc ){ F_HOTEL13_NODESYS_SAV();    };
-            if( "L" == asc ){ F_HOTEL13_NODESYS_LOD();    };
+            if( "S" == asc ){ 
+
+                //////////  F_HOTEL13_HEROKUA_SAV();   
+                //////////  F_HOTEL13_IMGURAP_SAV(); 
+
+            };;
+            if( "L" == asc ){ F_HOTEL13_HEROKUA_LOD();    };
             if( "O" == asc ){ /** OBLITERATE NOT OPEN **/ };
 
             //:------------------------------------------://
@@ -9175,7 +9180,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     };; 
     //:=======================:SERVE_THIS_CODE_AS_JS_FILE://
     //:HOTEL13_IMGUR_UPLOAD:=============================://
-    //:NODESYS_IMGUR_UPLOAD:=============================://
+    //:HEROKUA_IMGUR_UPLOAD:=============================://
 
         const  F_HOTEL13_API_3RD_GET_CID_IMGUR = "[@T_V@]";
         const  F_HOTEL13_API_3RD_GET_C_S_IMGUR = "[@T_V@]";
@@ -9244,7 +9249,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
      /////////////// 
      /////////////// 
      ///////////////  };;
-    //:=============================:NODESYS_IMGUR_UPLOAD://
+    //:=============================:HEROKUA_IMGUR_UPLOAD://
     //:=============================:HOTEL13_IMGUR_UPLOAD://
     //:**************************************************://
     //:                                                  ://
@@ -12447,6 +12452,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @nsh_hahotel@  : WRONG_YOU_WANT[ nsh_yehotel ]
 
     @HERSYNC@ : HERE - SYNCHRONOUS , opposite of NODESYS
+              : PROBLEMATIC... No longer using  "NODESYS"
+              : PRECISELY BECAUSE I used it to mean both
+              : "client" and "server" namespace.
 
     @HERESYS@ : YOU_MEAN[ HERSYNC ]
 
@@ -12645,6 +12653,25 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         );;
 
         DATE[ 2022_07_19 ]TIME[ 0548 ]PM
+
+
+    #NODESYS# / @NODESYS@ :
+
+        Don't use this. I read this as "sever code" but
+        it is client code.
+
+        Hmm.. Try... @HEROKUA@
+
+    @IMGURAP@ : CLIENT_SIDE_CODE
+              : Making requests to: IMGUR  server.
+
+    @HEROKUA@ : CLIENT SIDE CODE
+              : Making requests to: HEROKU server.
+
+    @NODESYS@ : YOU_MEAN[ HEROKUA ]
+
+    #NODESYSTEM_SAVE# : YOU_MEAN[ HEROKUA_SAVE ]
+    #NODESYSTEM_LOAD# : YOU_MEAN[ HEROKUA_LOAD ]
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
