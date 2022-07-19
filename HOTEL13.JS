@@ -8179,7 +8179,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
             if( "S" == asc ){ 
 
-                //////////  F_HOTEL13_HEROKUA_SAV();   
+                            F_HOTEL13_HEROKUA_SAV();   
                 //////////  F_HOTEL13_IMGURAP_SAV(); 
 
             };;
