@@ -9476,7 +9476,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         
                         o_k=( 0 );
                         LOGANOK_ADD( "[NOT_HTTP_POST]" );
-                        LOGANOK_END();
+                        LOGANOK_ERR();
                     }else{
 
                         LOGANOK_NEX( "[STEP_002]" );
