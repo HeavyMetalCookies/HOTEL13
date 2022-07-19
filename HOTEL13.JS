@@ -6196,6 +6196,42 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     //:=======================:TEMPORARY_DEVELOPMENT_DATA://
     //:==================================:LOAD_FILE_INDEX://
+    //:SEFFECT_SIDE_EFFECT_SET:==========================://
+
+        const   F_HOTEL13_SEFFECT_PNGNAME_PNGPATH = function
+        PRIVATE_F_HOTEL13_SEFFECT_PNGNAME_PNGPATH(
+
+            /** NO ARGUMENTS. DONE VIA SIDE EFFECTS **/
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //:  Hotel13 is dedicated to the upload      ://
+            //:  and download of :                       ://
+            //:                                          ://
+            //:     [ LEVELPACK(S)/HOTEL(S)]             ://
+            //:                                          ://
+            //:  As such, API is tightly coupled with    ://
+            //:  the "levelpack" that the webpage        ://
+            //:  thinks that it is.                      ://
+            //:                                          ://
+            //:  DATE[ 2022_07_19 ]                      ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            d_pngname =( F_HOTEL13_XYZ_PNGNAME( 
+
+                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
+            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
+            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
+            ));;
+            d_pngpath =( F_HOTEL13_XYZ_PNGPATH(
+
+                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
+            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
+            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
+            ));;
+        };;
+    //:==========================:SEFFECT_SIDE_EFFECT_SET://
     //:HOTEL13_ANY_API:==================================://
     const   EXECUTO_F_HOTEL13_ANY_API_SAV = function
     PRIVATE_EXECUTO_F_HOTEL13_ANY_API_SAV(
@@ -6240,18 +6276,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             
             LOG( "[Need_To_Add_Heroku_Endpoint]" );
 
-            d_pngname =( F_HOTEL13_XYZ_PNGNAME( 
 
-                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
-            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
-            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
-            ));;
-            d_pngpath =( F_HOTEL13_XYZ_PNGPATH(
-
-                d_hotel13_wmc_i_x  //: WorldMapCoord.i_x ://
-            ,   d_hotel13_wmc_i_y  //: WorldMapCoord.i_y ://
-            ,   d_hotel13_wmc_i_z  //: WorldMapCoord.i_z ://
-            ));;
 
             //: EX[ d_pngname ]IS[ "AIM_101_202_303.PNG" ]
             //: EX[ d_pngpath ]IS[     "101/202/303"     ]
@@ -6313,13 +6338,30 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ,   wontsay     
         ){
 
+            //:::::::::::::::::::::::::::::::://
+            //: Side Effect Set : d_pngname  ://
+            //: Side Effect Set : d_pngpath  ://
+            //:::::::::::::::::::::::::::::::://
+            F_HOTEL13_SEFFECT_PNGNAME_PNGPATH();
+            
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: This path only uploads to heroku.    ://
+            //: It doesn't try to also upload to     ://
+            //: IMGUR API.                           ://
+            //:::::::::::::::::::::::::::::::::::::::://
             d_pngpath_upp =( "UPLOAD/" + d_pngpath );
+
+            //:::::::::::::::::::::::::::::::::::::::://
+            //:                                      ://
+            //:  Shared executor function that should://
+            //:  work for XMLHTTPREQ to any "save"   ://
+            //:  api path in our server.             ://
+            //:::::::::::::::::::::::::::::::::::::::://
             EXECUTO_F_HOTEL13_ANY_API_SAV( 
                 o_k_yes
             ,   wontsay
             );;
                 
-
             //:<<<<<<<<<<<< MOVED_TO: EXECUTO_F_HOTEL13_ANY_API_SAV
         };;
 
