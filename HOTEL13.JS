@@ -6306,18 +6306,42 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_FUNCS:IMGUR_API_SAVE:=====================://
     //:HOTEL13_FUNCS:IMGUR_API_LOAD:=====================://
 
+        const   EXECUTO_F_HOTEL13_IMGURAP_SAV = function
+        PRIVATE_EXECUTO_F_HOTEL13_IMGURAP_SAV(
+            o_k_yes                                     
+        ,   wontsay     
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://    
+            //:  Function should be identical to         ://
+            //:  [ EXECUTO_F_HOTEL13_HEROKUA_SAV ]       ://
+            //:  EXECPT[ d_pngpath_upp ]is different.    ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            F_HOTEL13_SEFFECT_PNGNAME_PNGPATH();
+
+            d_pngpath_upp =( 
+
+                "API/3RD/UPP/IMGUR/" + d_pngpath 
+            );;
+
+            EXECUTO_F_HOTEL13_ANY_API_SAV( 
+                o_k_yes
+            ,   wontsay
+            );;
+        };;
+
         const   F_HOTEL13_IMGURAP_SAV = function
         PRIVATE_F_HOTEL13_IMGURAP_SAV(
 
             /** VOID **/
         ){
-            window.alert( "[TODO]" );
-
-        
-            slfjlasjflsjflsjflk
-
-
-
+            var o_promise =( new Promise( 
+            
+                EXECUTO_F_HOTEL13_IMGURAP_SAV
+            ));;
+            return( o_promise );  
         };;
     
         const   F_HOTEL13_IMGURAP_LOD = function
@@ -8267,8 +8291,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
             if( "S" == asc ){ 
 
-                            F_HOTEL13_HEROKUA_SAV();   
-                //////////  F_HOTEL13_IMGURAP_SAV(); 
+                //:::::::::::::::::::::::::::::::::::::::://    
+                //:                                      ://
+                //:  All[ F_HOTEL13_*******_SAV ]Calls   ://
+                //:  should save to HEROKU_HARD_DISK     ://
+                //:  in addition to wherever-else on the ://
+                //:  internet they decide to save.       ://
+                //:                                      ://
+                //:::::::::::::::::::::::::::::::::::::::://
+
+                ////////////F_HOTEL13_HEROKUA_SAV();   
+                            F_HOTEL13_IMGURAP_SAV(); 
 
             };;
             if( "L" == asc ){ F_HOTEL13_HEROKUA_LOD();    };
@@ -12760,6 +12793,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     #NODESYSTEM_SAVE# : YOU_MEAN[ HEROKUA_SAVE ]
     #NODESYSTEM_LOAD# : YOU_MEAN[ HEROKUA_LOAD ]
+
+    #HEROKU_HARD_DISK# / [HEROKU_HARD_DISK] :
+
+        I mean the filesystem of your heroku deployment.
+
+        This storage gets erased every time you re-deploy
+        so just use it to help verify levelpack data
+        made it to our server un-mangled.
+    
+        If we verify that, it helps give us sanity of
+        mind when trying to use 3rd-party image API(s)
+        to upload to permanant[ image ]store.
+
+        DATE[ 2022_07_19 ]KANJICODER
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
