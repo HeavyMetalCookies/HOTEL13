@@ -6196,34 +6196,34 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     //:=======================:TEMPORARY_DEVELOPMENT_DATA://
     //:==================================:LOAD_FILE_INDEX://
-    //:HOTEL13_FUNCS:IMGUR_API_SAVE:=====================://
-    //:HOTEL13_FUNCS:IMGUR_API_LOAD:=====================://
+    //:HOTEL13_ANY_API:==================================://
+    const   EXECUTO_F_HOTEL13_ANY_API_SAV = function
+    PRIVATE_EXECUTO_F_HOTEL13_ANY_API_SAV(
+            o_k_yes 
+        ,   wontsay
+    ){
+        //:SIDE_EFFECT_NOTE:-----------------------------://
+        //:                                              ://
+        //:     Relies on setting[ d_pngpath_upp ]       ://
+        //:                                              ://
+        //:-----------------------------:SIDE_EFFECT_NOTE://
+        //:[ATF]:----------------------------------------://
+        //:                                              ://
+        //:  Our HEROKU upload API and IMGUR upload      ://
+        //:  API should be able to be called the         ://
+        //:  EXACT SAME WAY from[ HOTEL13.JS ]client.    ://
+        //:                                              ://
+        //:  If this is the case, we can use this        ://
+        //:  SHARED_EXECUTOR function.                   ://
+        //:                                              ://
+        //:  Q : Why do we want this?                    ://
+        //:  A : Makes it easy to swap out who we        ://
+        //:    : are uploading to by just changing       ://
+        //:    : [ d_pngpath_upp ].                      ://
+        //:                                              ://
+        //:----------------------------------------:[ATF]://
+        //:HOTEL_CLIENT_CALLING_HOTEL_SERVER:============://
 
-        const   F_HOTEL13_IMGURAP_SAV = function
-        PRIVATE_F_HOTEL13_IMGURAP_SAV(
-
-            /** VOID **/
-        ){
-            window.alert( "[TODO]" );
-        };;
-    
-        const   F_HOTEL13_IMGURAP_LOD = function
-        PRIVATE_F_HOTEL13_IMGURAP_LOD(
-
-            /** VOID **/
-        ){
-            window.alert( "[TODO]" );
-        };;
-    //:=====================:HOTEL13_FUNCS:IMGUR_API_SAVE://
-    //:=====================:HOTEL13_FUNCS:IMGUR_API_LOAD://
-    //:HOTEL13_FUNCS:HEROKUA_SAVE:=======================://
-    //:HOTEL13_FUNCS:HEROKUA_LOAD:=======================://
-
-        const   EXECUTO_F_HOTEL13_HEROKUA_SAV = function
-        PRIVATE_EXECUTO_F_HOTEL13_HEROKUA_SAV(
-            o_k_yes                                     
-        ,   wontsay     
-        ){
             var o_k =( 1 );
             
             F_HOTEL13_2048_0512( 1 , 1 );
@@ -6256,7 +6256,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //: EX[ d_pngname ]IS[ "AIM_101_202_303.PNG" ]
             //: EX[ d_pngpath ]IS[     "101/202/303"     ]
         
-            d_pngpath_upp =( "UPLOAD/" + d_pngpath );
+            //: d_pngpath_upp =( "UPLOAD/" + d_pngpath );
             
             F_HOTEL13_XHR_POST( 
 
@@ -6274,7 +6274,53 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
     
                 o_k_yes( i_saywhat );
-            });;    
+            });;   
+        //:============:HOTEL_CLIENT_CALLING_HOTEL_SERVER://
+    };;
+    //:==================================:HOTEL13_ANY_API://
+    //:HOTEL13_FUNCS:IMGUR_API_SAVE:=====================://
+    //:HOTEL13_FUNCS:IMGUR_API_LOAD:=====================://
+
+        const   F_HOTEL13_IMGURAP_SAV = function
+        PRIVATE_F_HOTEL13_IMGURAP_SAV(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+
+        
+            slfjlasjflsjflsjflk
+
+
+
+        };;
+    
+        const   F_HOTEL13_IMGURAP_LOD = function
+        PRIVATE_F_HOTEL13_IMGURAP_LOD(
+
+            /** VOID **/
+        ){
+            window.alert( "[TODO]" );
+        };;
+    //:=====================:HOTEL13_FUNCS:IMGUR_API_SAVE://
+    //:=====================:HOTEL13_FUNCS:IMGUR_API_LOAD://
+    //:HOTEL13_FUNCS:HEROKUA_SAVE:=======================://
+    //:HOTEL13_FUNCS:HEROKUA_LOAD:=======================://
+
+        const   EXECUTO_F_HOTEL13_HEROKUA_SAV = function
+        PRIVATE_EXECUTO_F_HOTEL13_HEROKUA_SAV(
+            o_k_yes                                     
+        ,   wontsay     
+        ){
+
+            d_pngpath_upp =( "UPLOAD/" + d_pngpath );
+            EXECUTO_F_HOTEL13_ANY_API_SAV( 
+                o_k_yes
+            ,   wontsay
+            );;
+                
+
+            //:<<<<<<<<<<<< MOVED_TO: EXECUTO_F_HOTEL13_ANY_API_SAV
         };;
 
         const   F_HOTEL13_HEROKUA_SAV = function
