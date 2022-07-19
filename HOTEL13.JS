@@ -197,7 +197,7 @@
                                                            
                 xhr_ask = new XMLHttpRequest();            
                 xhr_ask.open( "GET" , urlfull );  
-                xhr_ask.responseType = "arraybuffer" ;  
+                xhr_ask.responseType = "arraybuffer" ;  //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                 xhr_ask.send();                            
                 xhr_ask.onreadystatechange=(evt_xhr)=>{    
                 if( xhr_ask.readyState === 4 ){            
@@ -5969,6 +5969,32 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:=====================:HOTEL13_IS_3_DIGIT_NUMSTRING://
     //:HOTEL13_XYZ_TO_PNG_FILE_NAME:=====================://
 
+        const   F_HOTEL13_PAD_STR = function
+        PRIVATE_F_HOTEL13_PAD_STR(
+
+            i_str
+        ){
+            if( "string" != typeof i_str ){
+                ERR("[BADINPUT:PAD_STR]");
+            };;
+
+            var o_str =( i_str );
+
+            //:::::::::::::::::::::::::::://
+            //: Add Leading Zeros        ://
+            //:::::::::::::::::::::::::::://
+            while( 1 == 1 ){
+                if( 3 > o_str.length ){
+
+                    o_str = "0" + o_str ;  //:<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : extracted functionality. Is it correct?
+                }else{
+                    break;
+                };;
+            };;
+
+            return( o_str );
+        };;
+
         const   F_HOTEL13_I32_STR = function
         PRIVATE_F_HOTEL13_I32_STR(
         
@@ -5982,17 +6008,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 o_str =( ""+i_i32+"" );
             };;
 
-            //:::::::::::::::::::::::::::://
-            //: Add Leading Zeros        ://
-            //:::::::::::::::::::::::::::://
-            while( 1 == 1 ){
-                if( 3 > o_str.length ){
-
-                    o_str = "0" + o_str ;
-                }else{
-                    break;
-                };;
-            };;
+            o_str = F_HOTEL13_PAD_STR( o_str ); //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : refactor site.
 
             return( o_str );
         };;
@@ -8743,6 +8759,79 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         return( o_yes );
     };;
     //:===================:TRY_TO_INTERPRET_AS_COORD_HASH://
+    //:COORDHASH_TO_FILENAME:============================://
+
+        const   F_HOTEL13_COOHASH_AIMPATH = function
+        PRIVATE_F_HOTEL13_COOHASH_AIMPATH(
+
+            i_coohash //:EX[ "123_456_789" ]
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: "123_456_789" ==TO==>                    ://
+            //: "./X_123/Y_456/Z_789/AIM_123_456_789.PNG"://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            var o_aimpath =( "[nil][o_aimpath]" );
+
+            if( "string" != typeof i_coohash ){
+                ERR("[BADINPUTTYPE2022]");
+            };;
+
+            var arr = i_coohash.split( "_" )
+            .filter( n => n );;
+
+            if( 3 != arr.length ){
+                //:::::::::::::::::::::::::::::::::::::::://
+                //: Malformed input. I don't think we    ://
+                //: can 100% prevent malformed input,    ://
+                //: so we should __NOT__ crash the       ://
+                //: server over this.                    ://
+                //:::::::::::::::::::::::::::::::::::::::://
+                o_aimpath = "./PNG/ERR_001.PNG" ;
+            }else{
+        
+                var xxx = F_HOTEL13_PAD_STR( arr[0] );
+                var yyy = F_HOTEL13_PAD_STR( arr[1] );
+                var zzz = F_HOTEL13_PAD_STR( arr[2] );
+
+                o_aimpath =( ////////////////////
+                +   "./PNG/"
+                +          "X_"   +  xxx + "/" 
+                +          "Y_"   +  yyy + "/" 
+                +          "Z_"   +  zzz + "/" 
+                +     "AIM_" 
+                +                    xxx + "_"
+                +                    yyy + "_"
+                +                    zzz + ".PNG"
+                );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            };;
+               
+            return( o_aimpath );
+        };;
+    //:============================:COORDHASH_TO_FILENAME://
+    //:AIMPATH_TO_JUST_THE_FOLDER:=======================://
+    
+        const   F_HOTEL13_AIMPATH_JTF = function
+        PRIVATE_F_HOTEL13_AIMPATH_JTF(
+
+            i_aimpath
+        ){
+        //:[ATF]:----------------------------------------://
+        //:                                              ://
+        //:INN:                                          ://
+        //:"./PNG/X_101/Y_202/Z_303/AIM_101_202_303.PNG" ://
+        //:                                              ://
+        //:OUT:                                          ://
+        //:"./PNG/X_101/Y_202/Z_303"                     ://
+        //:                                              ://
+        //:----------------------------------------:[ATF]://  < < < < < < < < < NOTICE_ME_SENPAI : New functionality
+
+            slfjkasfjlsajflasdjf
+
+        };;
+    //:=======================:AIMPATH_TO_JUST_THE_FOLDER://
     //:TRY_TO_INTERPRET_AS_AIM_JS_FILE:==================://
 
         //:#_MIS_SPELLINGS_#://
@@ -9146,6 +9235,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( api_3rd_has );
         };;
 
+     ///////////////  const   F_HOTEL13_HED_AUT_IMGUR = function
+     ///////////////  PRIVATE_F_HOTEL13_HED_AUT_IMGUR(
+     /////////////// 
+     ///////////////      /**NOARGS**/
+     ///////////////  ){
+     ///////////////      
+     /////////////// 
+     /////////////// 
+     ///////////////  };;
     //:=============================:NODESYS_IMGUR_UPLOAD://
     //:=============================:HOTEL13_IMGUR_UPLOAD://
     //:**************************************************://
@@ -9162,34 +9260,383 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:IMGUR_FUNCS_SERVER:===============================://
     if( d_hotel13_yesnode >= 1 ){
 
+        var     F_HOTEL13_AIMPATH_MKDIRSYNC = function
+        PRIVATE_F_HOTEL13_AIMPATH_MKDIRSYNC(
+
+            i_aimpath
+        ){
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: @aimpath@ : AtomicIvyMMO_filePATH    ://
+            //:     @jtf@ : Just_The_____Filepath    ://
+            //:::::::::::::::::::::::::::::::::::::::://
+
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: Convert[ aimpath ]TO[ jtf ]          ://
+            //:::::::::::::::::::::::::::::::::::::::://
+            var jtf = F_HOTEL13_AIMPATH_JTF( i_aimpath );
+
+            //:::::::::::::::::::::::::::::::::::::::://
+            //: Create Folder If Not Exists          ://
+            //:::::::::::::::::::::::::::::::::::::::://
+            if( (!(l_fs.existsSync( jtf ))) ){
+
+                l_fs.mkdirSync( 
+
+                    jtf
+                ,   { recursive : true }
+                );;
+            };;
+        };;
+
+
+////    //:@STD@: Save__To_Disk://
+////    //:@LFD@: Load_From_Disk://
+////
+////    var     F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE_STD =
+////    function
+////    PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE_STD(
+////
+////        i_sob_h13
+////    ,   i_str_xyz
+////    ){
+////
+////            jtf =( ""
+////            +   ( "./PNG/" )
+////            +   ( "X_" + aim_x /**url_x**/ ) + "/"
+////            +   ( "Y_" + aim_y /**url_y**/ ) + "/"
+////            +   ( "Z_" + aim_z /**url_z**/ ) +("")
+////            );;
+////
+////            rel =( ""
+////            +   ( jtf  /** Just_The_Folder **/ )
+////            +   ( "/"  /** ConcatWithSlash **/ )
+////            +   ( f_n  /** FileNameWithExt **/ )
+////            );;
+////
+////            //:::::::::::::::::::::::::::::::::::::::://
+////            //: Create Folder If Not Exists          ://
+////            //:::::::::::::::::::::::::::::::::::::::://
+////            if( (!(l_fs.existsSync( jtf ))) ){
+////
+////                l_fs.mkdirSync( 
+////
+////                    jtf
+////                ,   { recursive : true }
+////                );;
+////            };;
+////
+////            f_s = l_fs.createWriteStream( rel );
+////            f_s.on( "error" , (i_err)=>{
+////
+////                console.log(    "[OHFUKNO_2022]" );
+////                uro.m_log.push( "[OHFUKNO_2022]" );
+////                h13.m_giv.end( JSON.stringify( uro ));
+////            });;
+////
+////            h13.m_ask.pipe( f_s ); //:#_W_D_A_I_C_#://
+////            h13.m_ask.on( "end" , ()=>{
+////
+////                f_s.close( ()=>{
+////
+////                    uro.m_log.push( "[SUCCESS]" );
+////                    uro.m_o_k =( 200 );
+////                    h13.m_giv.end( JSON.stringify( uro ));
+////                });;
+////            });;
+////
+////
+////    };;
+
         var     F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE = function
         PRIVATE_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE(
 
-            i_imgname //:ImageNameWithExtension://
-        ,   i_pngfile //:Our_512_X_512_PNG_FILE://
+        //+----------------------------------------------+//
+        //- i_imgname  <---- WRONG , keep_this_note_here -//
+        //- i_pngfile  <---- WRONG , keep_this_note_here -//
+        //+----------------------------------------------+//
+
+            i_sob_h13  //:StateObjectBundle: KIND: h13   ://
+        ,   i_str_xyz  //:           String: KIND: xyz   ://
         ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //:  Take in a request from HOTEL13.JS       ://
+            //:  client side application , extract       ://
+            //:  the .PNG file, and pass it on           ://
+            //:  to IMGUR.                               ://
+            //:                                          ://
+            //:  Also, store a copy on our own server    ://
+            //:  as well because why not?                ://
+            //:                                          ://
+            //:  We might want to DISABLE that           ://
+            //:  aspect in the future when we need       ://
+            //:  to scale, but for now that is fine.     ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+            //:ECI:======================================://
+            if( d_bug ){
+                if( 0
+                ||  "undefined" != typeof i_imgname 
+                ||  "undefined" != typeof i_pngfile 
+                ){
+                    ERR("[WRONG_INPUTS_TO_FUNC]");
+                };;
+            };;
+            //:======================================:ECI://
+            //:VARS:=====================================://
 
-            var o_promise = new Promise( function        
-            EXECUTO_F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE( 
+                var o_k =( 1 ); //:EverythingOkay?://
 
-                o_k_yes
-            ,   wontsay 
-            ){
-                var o_k =( 1 );
+                //:@loganok@ : "LOG Array And OK" ://
+                var loganok={ laxcoma:"[HACK]"
+                ,     m_log : [ ] //:ArrayOfLoggingInfo://
+                ,     m_o_k : (0) //:Everything_Ok?
+                };;
+                function    LOGANOK_ADD(        msg ){
+                            loganok.m_log.push( msg );
+                };;
+                function    LOGANOK_END( ){ 
 
-                if( F_HOTEL13_API_3RD_HAS_IMGUR() ){
-
-                    o_k =( 1 );
-                }else{
-                    o_k =( 0 );
+                    i_sob_h13.m_giv.writeHead( 
+    
+                        200 , d_jso
+                    );;
+                    i_sob_h13.m_giv.end(
+                        JSON.stringify( 
+                            loganok 
+                        )////////////////
+                    );;;;;;;;;;;;;;;;;;;;
                 };;
 
-                
+                var _______
+                ,       c_l  //:@c_l@ : ContentLength://       
+                ,   wigroom  //:@wigroom@ :WiggleRoom://
+                ,       f_s  //:@f_s@:FileStreamInst ://
+                ,   aimpath  //:EX: ./PNG/../AIM..PNG://
+                ,   hascred  //:@hascred@ :Imgur_Cred://
+                ,   png_bin  //:@png_bin@ :PNGBINARY ://
+                ;;;;;;;;;;;
 
-                o_k_yes( "[NOT_FINISHED:UPP]" ); //:<<<<<<<<<<<<< NOTICE_ME_SENPAI
-            });;
-            return( o_promise );
-        };;
+                var ___
+                ,   _s_  //: SPACE , literally       ://
+                ,   f_d  //: FormData                ://
+                ,   typ  //: Request Type            ://
+                ,   url  //: Request  URL            ://
+                ,   cid  //: Client_ID
+                ,   a_n  //: Authheader : KEY/NAME   ://
+                ,   a_v  //: Authheader :    VALUE   ://
+                ,   xhr
+                ;;;;;;;
+
+            //:=====================================:VARS://
+            //:NOT_A_PROMISE:============================://
+            var ptrstep =( 0-1 );
+            var arrstep =[
+                STEP_001  //: #ABORT_IF_FILE_TOO_BIG#    ://
+            ,   STEP_002  //: #SAVE_TO_HEROKU_HARDDISK#  ://
+            ,   STEP_003  //: #ABORT_IF_NO_IMGUR_CRED#   ://
+            ,   STEP_004  //: #LOAD_FROM_HEROKU_HARDDISK#://
+            ,   STEP_005  //: #SEND_PNG_TO_IMGUR#        ://
+            ,   STEP_006
+            ];;
+            function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
+                ptrstep++ ;
+                if( ptrstep <=( arrstep.length -1 )){
+                    arrstep[ ptrstep ]( );
+                };;
+            };;
+            function LOGANOK_ERR(){     //:AKA[ ABORT() ]://    
+
+                          o_k=( 0 );
+                loganok.m_o_k=( 0 );
+                LOGANOK_ADD( "[ABORTED_2022_07_19]"  );
+                LOGANOK_END( );
+            };;
+            //:============================:NOT_A_PROMISE://
+            //:BEGIN_OUR_STEPS:==========================://
+
+                LOGANOK_NEX(); //:[ENTER:STEP_001]://
+
+            //:==========================:BEGIN_OUR_STEPS://
+                
+                //:#ABORT_IF_FILE_TOO_BIG#:==============://
+                function STEP_001( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_001]" );
+
+                    //:1024KB Of Wiggle Room://
+                    wigroom =( 1024 * 1000 );
+
+                    c_l = parseInt( 
+                    i_sob_h13.m_ask.headers[
+
+                        "content-length"
+                    ]);;
+
+                    if( Number.isNaN( c_l ) || c_l <= 0 ){
+
+                        o_k=( 0 );
+                        LOGANOK_ADD( "[NAN_CONTENT_LEN]" );
+                        LOGANOK_ERR();
+                    }else
+                    if( !( c_l <=((512*512*4)+wigroom))){
+
+                        o_k=( 0 );
+                        LOGANOK_ADD("[NOT_512_X_512_PNG]");
+                        LOGANOK_ERR();
+                    }else{
+                        LOGANOK_NEX( "[STEP_002]" );
+                    };;
+                };;
+                //:==============:#ABORT_IF_FILE_TOO_BIG#://
+                //:#SAVE_TO_HEROKU_HARDDISK#:============://
+                function STEP_002( i_ignored ){
+        
+                    ASS( 1 <= o_k , "[@SBH@:STEP_002]" );
+
+                    aimpath=(
+                    F_HOTEL13_COOHASH_AIMPATH(
+                        i_str_xyz 
+                    ));;
+
+                    if( "./PNG/ERR_001.PNG" == aimpath ){
+        
+                        LOGANOK_ADD( "[ERROR_PATH]" );
+                        LOGANOK_ERR();o_k=( 0 );
+                    }else{
+                        //:::::::::::::::::::::::::::::::://
+                        //: Create Path Before Attempt   ://
+                        //: To Save To Hard Disk         ://
+                        //:::::::::::::::::::::::::::::::://
+                        F_HOTEL13_AIMPATH_MKDIRSYNC(
+                                  aimpath 
+                        );;
+
+                        f_s = l_fs.createWriteStream( aimpath );
+                        f_s.on( "error" , (i_err)=>{
+                        
+                            LOGANOK_ADD(  "[OHFUKNO_2022]" );
+                            LOGANOK_ERR();o_k=( 0 );
+                        });;
+                        i_sob_h13.m_ask.pipe( f_s );  
+
+                        i_sob_h13.m_ask.on( "end" , ( )=>{
+                        
+                            f_s.close( ()=>{
+                        
+                                loganok.m_o_k=( 100 );
+                                LOGANOK_ADD( "[SUCCESS]"  );
+                                LOGANOK_NEX( "[STEP_003]" );
+                            });;
+                        });;
+                    };;
+                };;
+                //:============:#SAVE_TO_HEROKU_HARDDISK#://
+                //:#ABORT_IF_NO_IMGUR_CRED#:=============://
+                function STEP_003( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_003]" );
+
+                    hascred = F_HOTEL13_API_3RD_HAS_IMGUR();    
+
+                    if( !hascred ){
+
+                        o_k=( 0 );
+                        LOGANOK_ADD( "[bad:imgur_cred]" );
+                        LOGANOK_ERR();
+                    }else{
+
+                        LOGANOK_ADD( "[Has_Imgur_Cred]" );
+                        LOGANOK_NEX( "[STEP_004]"       );
+                    };;
+                };;
+                //:=============:#ABORT_IF_NO_IMGUR_CRED#://
+                //:#LOAD_FROM_HEROKU_HARDDISK#:==========://
+                function STEP_004( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_004]" ); //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                
+                    l_fs.readFile( aimpath,(i_err,i_cof)=>{    
+
+                        if( i_err ){
+                            o_k=( 0 );
+                            LOGANOK_ADD( "[READFAIL]" );
+                            LOGANOK_ADD( ""+i_err+""  );
+                            LOGANOK_ERR();   //:ABORT://
+                        }else{
+
+                            png_bin =( i_cof );
+                            LOGANOK_ADD( "[READ:O_K]" );
+                            LOGANOK_NEX( "[STEP_005]" );
+                        };;
+                    });;
+                };;
+                //:==========:#LOAD_FROM_HEROKU_HARDDISK#://
+                //:#SEND_PNG_TO_IMGUR#:==================://
+                function STEP_005( i_ignored ){
+    
+                    ASS( 1 <= o_k , "[@SBH@:STEP_005]" );
+    
+                    _s_ =( " " ); //:Exactly One Space   ://  
+
+                    //:formdata:-------------------------://
+
+                    f_d = new FormData( );
+                    f_d.append( "image" ,    png_bin   );
+                    f_d.append( "album" , "ALBUM_AIM"  );
+
+                    //:-------------------------:formdata://
+
+                    typ =( "POST" );
+                    url =( "https://api.imgur.com/3/upload");
+                    cid =( F_HOTEL13_API_3RD_CID_IMGUR() );
+
+                    a_n =( "Authorization" );
+                    a_v =( "Client-ID"+ _s_ + cid );
+
+                    xhr =( new XMLHttpRequest() );
+       
+                    xhr.open(             typ , url );   
+                    xhr.setRequestHeader( a_n , a_v );
+                    xhr.setRequestHeader( 
+
+                        //:#_TELL_IMGUR_HOW_TO_RESPOND_#://
+                        //:#_NOT_OUTGOING_DATA_TYPE_#://
+                        "accept" , "application/json"
+
+                    );;
+   
+                    xhr.send();                           
+                    xhr.onreadystatechange=(evt_xhr)=>{   
+                    if( xhr.readyState === 4 ){           
+                                                           
+                        console.log("[IMGUR_UPP_DONE]");               
+                        LOGANOK_ADD( xhr.responseText );       
+                        LOGANOK_NEX( "[STEP_006]"     );
+                    };;};;   
+                };;
+                //:==================:#SEND_PNG_TO_IMGUR#://
+                //:#STOP_TALKING_TO_ME#:=================://
+                function STEP_006( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_006]" );
+
+                    console.log( "[STOP_TALKING_TO_ME]" );
+                    LOGANOK_ADD( "[STOP_TALKING_TO_ME]" );
+                    LOGANOK_END();
+                };;
+                //:=================:#STOP_TALKING_TO_ME#://
+
+            //:DO_NOTHING_HERE:==========================://
+
+                //:--------------------------------------://
+                //: Bro, your shit is like , all async,  ://
+                //: we can't do the complimentary        ://
+                //: action of[ BEGIN_OUR_STEPS ]here.    ://
+                //:--------------------------------------://    
+
+            //:==========================:DO_NOTHING_HERE://
+        };; //:END[ F_HOTEL13_API_3RD_UPP_IMGUR_YESNODE ]://    
 
         var     F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE = function
         PRIVATE_F_HOTEL13_API_3RD_DOW_IMGUR_YESNODE(
@@ -9298,15 +9745,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( "API"       == h13.m_seg[ 0 ] ){
 
             if( 1
-            &&  "API"   === h13.m_seg[ 0 ] 
-            &&  "3RD"   === h13.m_seg[ 1 ] 
-            &&  "UPP"   === h13.m_seg[ 2 ] 
-            &&  "IMGUR" === h13.m_seg[ 3 ] 
+            &&  "API"      === h13.m_seg[ 0 ] 
+            &&  "3RD"      === h13.m_seg[ 1 ] 
+            &&  "UPP"      === h13.m_seg[ 2 ] 
+            &&  "IMGUR"    === h13.m_seg[ 3 ] 
+            &&  F_HOTEL13_ICH( h13.m_seg[ 4 ] )
             ){
-            //:   APP.COM/API/3RD/UPP/IMGUR :::::::::::::://
-                F_HOTEL13_API_3RD_UPP_IMGUR()
+            //:   APP.COM/API/3RD/UPP/IMGUR/###_###_### :://    
+                F_HOTEL13_API_3RD_UPP_IMGUR(
+
+                    h13            //:<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                ,   h13.m_seg[ 4 ] //:EX[ "333_666_999" ]://
+                )
                 .then( (i_saywhat)=>{
 
+                              
                     
                     h13.m_giv.writeHead( 200 , d_txt );
                     h13.m_giv.write( "[TODO:UPP]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
@@ -9314,12 +9767,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 });;
             }else
             if( 1
-            &&  "API"   === h13.m_seg[ 0 ] 
-            &&  "3RD"   === h13.m_seg[ 1 ] 
-            &&  "DOW"   === h13.m_seg[ 2 ] 
-            &&  "IMGUR" === h13.m_seg[ 3 ] 
+            &&  "API"      === h13.m_seg[ 0 ] 
+            &&  "3RD"      === h13.m_seg[ 1 ] 
+            &&  "DOW"      === h13.m_seg[ 2 ] 
+            &&  "IMGUR"    === h13.m_seg[ 3 ] 
+            &&  F_HOTEL13_ICH( h13.m_seg[ 4 ] )
             ){
-            //:   APP.COM/API/3RD/DOW/IMGUR :::::::::::::://
+            //:   APP.COM/API/3RD/DOW/IMGUR/###_###_### :://
                 F_HOTEL13_API_3RD_DOW_IMGUR()
                 .then( (i_saywhat)=>{
 
@@ -9911,15 +10365,30 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 /** CTRL_F_HELP ******************************************** ***
 *** TAG_SECTION ******************************************** ***
 
+    TAG[ tag-section | tagsection | tag_section ]
+
     -----------------------------------------------------------
     [ integer-to-string | integer_to_string | integertostring ]
     [ integer-to-padded-string | int-to-padded-string         ]
     [ padded-string | padded_string | padded string           ]
     [ zero padded string | zero_padded_string | zeropadded    ]
     [ zeropaddedstring | zero padding | zeropadding | zeropad ]
+    [ pad string | pad-string | padstring | pad-numbers       ]
+    [ add padding | add-padding | addpadding | pad numbers    ]
+    [ number-padding | number padding | number_padding        ]
     -----------------------------------------------------------
-    F_HOTEL13_I32_STR
+    F_HOTEL13_PAD_STR  ( ( "1" ) ===> ( "001" ) )
+    F_HOTEL13_I32_STR  ( (  1  ) ===> ( "001" ) )
     -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    [ is-valid-coordinate-hash | coord-hash | is-coord-hash ]
+    [ is valid coordinate hash | coord hash | is coord hash ]
+    [ is_valid_coordinate_hash | coord_hash | is_coord_hash ]
+    -----------------------------------------------------------
+    F_HOTEL13_ICH
+    -----------------------------------------------------------
+
 
 *** *********** ******************************** TAG_SECTION ***
 *** *********** ******************************** CTRL_F_HELP **/
@@ -11988,6 +12457,165 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         --------------------------------------------------------
    
     @T_V@ : [ Too / overly / excessively ] Verbose
+
+    #_IMPLIED_PROMISE_# :
+
+        One of the confusing things about javascript
+        is the "return" statement inside of different
+        sections of a "promise chain". There is some
+        "compiler magic" going on here.
+
+        An "implied promise" is being created if you use
+        the "return" statement inside of a promise object.
+
+        https://www.youtube.com/watch?v=RXN7169vBGw&t=130s
+
+        I don't know if this works for a regular promise,
+        or if this is only specifically NODE.js "await".
+
+    #LOGANOK# :
+
+        If it's all capital, it is a local function that
+        pushes a message into the @loganok@ object.
+
+        ADDED_DATE[ 2022_07_19 ]TIME[ 336PM ]
+
+    @uro@ : Use "loganok" from now on. 
+          : We are going to use this for things other
+          : than just "upload"...
+          :
+          : @loganok_uro@ could be okay too.
+         
+    @loganok@     : LOG_ANd_OK object. 
+    @loganok_uro@ : LOGANOK Upload_Response_Object
+            @uro@ : Use Either[ loganok ]OR[ loganok_uro ]
+
+    @SBH@ : Shouldnt_Be_Here
+          : Means that you should __NOT__ be in this
+          : section of code, and that the error is
+          : a programmer error. No matter what the
+          : user does, not matter what data gets sent
+          : to the server, it doesn't matter, you should
+          : __NOT__ be inside this block of code.
+
+          : ADDED_DATE[ 2022_07_19 ]TIME[ 348 ]PM
+
+    @LOGANOK_ERR@ : USE local "ABORT()" , pairs nicely
+                  : with local "NEXT()" and makes it easy
+                  : to spot success and fail cases.
+                  :     
+                  : Actually, I am not 100% on this.
+                  : 
+                  : LOGANOK_[ ERR | ADD | END | NEX ]
+                  : Is very homogonous.
+
+    @LOGANOK_ADD@ : Adds a message to our loganok object.
+    @LOGANOK_END@ : Ends response to server.
+
+    @i_ignored@   : Ignored Input Argument
+
+    #ABORT_IF_FILE_TOO_BIG# :
+
+        //:::::::::::::::::::::::::::::::::::://  
+        //: Encoding a 512_x_512 .PNG image  ://
+        //: of[ NOISE/STATIC/MAXENTROPY]     ://
+        //: gives me a file of[ 697 KB ].    ://
+        //:                                  ://
+        //: So, 1024KB of wiggle room should ://
+        //: be enough to cover any 512_x_512 ://
+        //: .PNG file we get.                ://    
+        //:::::::::::::::::::::::::::::::::::://
+        
+    #SAVE_TO_HEROKU_HARDDISK# :
+
+        Before uploading to IMGUR, we save to our own
+        heroku server hard disk. That way, if upload
+        to imgur FAILS, but we can verify it on the
+        HEROKU SERVER VIA:
+    
+            www.app.com/PNG/X_123/Y_456/Z_789/
+                           AIM_123_456_789.PNG
+
+        Then we know the problem with imgur upload is
+        __NOT__ the data, but rather:
+
+            1. How we are loading data into outgoing
+               request to IMGUR.
+            
+            2. How we are writing our request object
+               to IMGUR.
+
+            3. In general, something wrong with how we
+               are making the request to imgur.
+
+            DATE[ 2022_07_19 ]TIME[ 0507 ]PM
+
+    #ABORT_IF_NO_IMGUR_CRED# :
+
+        If IMGUR credentials have not been setup in
+        environment variables of this server ,
+        abort now.
+
+        We are aborting AFTER we upload to HEROKU
+        just so that we can still get something done.
+        
+        Possibly if IMGUR is down the game does
+        not fail 100%.
+    
+        DATE[ 2022_07_19 ]TIME[ 0515 ]PM
+
+    #LOAD_FROM_HEROKU_HARDDISK# :
+
+        We are going to load to heroku harddisk first
+        because if we FAIL to upload to imgur, but
+        can verify .PNG exists by going to :
+
+        [ www.app.com / PNG / X_### / Y_### / Z_### /  ]
+        [             / AIM_    ### _   ### _   ###    ]
+
+        Then we know the failure is somewhere in how
+        we are calling the API. The data upload part
+        is working fine.
+
+        DATE[ 2022_07_19 ]
+
+    #SEND_PNG_TO_IMGUR# : 
+
+        Pack up .PNG read from hard disk and send it
+        off to imgur. This is the hardest part I 
+        anticipate, because I've never done this before.
+
+        DATE[ 2022_07_19 ]TIME[ 509 ]PM
+
+    #STOP_TALKING_TO_ME# :
+
+        Conversation is over with the server.
+        Stop talking with server. This is the
+        official end. This is not an error, 
+        you did nothing wrong. I just don't
+        want to talk to anyone right now.
+
+        DATE[ 2022_07_19 ]TIME[ 510 ]PM
+
+
+    #_TELL_IMGUR_HOW_TO_RESPOND_#
+    #_NOT_OUTGOING_DATA_TYPE_#
+
+        xhr.setRequestHeader( 
+        
+            //:::::::::::::::::::::::::::::::://
+            //: This is __NOT__ the type     ://
+            //: of data being uploaded ,     ://
+            //: This tells IMGUR what        ://
+            //: type of response we want     ://
+            //: IMGUR to send us back.       ://
+            //:::::::::::::::::::::::::::::::://
+
+            "accept" , "application/json"
+        
+        );;
+
+        DATE[ 2022_07_19 ]TIME[ 0548 ]PM
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
