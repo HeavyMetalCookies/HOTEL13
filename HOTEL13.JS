@@ -9409,6 +9409,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
 
                 var _______
+                ,   ask_met  //:@ask_met@ :ASK Method://
                 ,       c_l  //:@c_l@ : ContentLength://       
                 ,   wigroom  //:@wigroom@ :WiggleRoom://
                 ,       f_s  //:@f_s@:FileStreamInst ://
@@ -9432,12 +9433,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:NOT_A_PROMISE:============================://
             var ptrstep =( 0-1 );
             var arrstep =[
-                STEP_001  //: #ABORT_IF_FILE_TOO_BIG#    ://
-            ,   STEP_002  //: #SAVE_TO_HEROKU_HARDDISK#  ://
-            ,   STEP_003  //: #ABORT_IF_NO_IMGUR_CRED#   ://
-            ,   STEP_004  //: #LOAD_FROM_HEROKU_HARDDISK#://
-            ,   STEP_005  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_006
+                STEP_001  //: #ABORT_IF_NOT_HTTPPOST#    ://
+            ,   STEP_002  //: #ABORT_IF_FILE_TOO_BIG#    ://
+            ,   STEP_003  //: #SAVE_TO_HEROKU_HARDDISK#  ://
+            ,   STEP_004  //: #ABORT_IF_NO_IMGUR_CRED#   ://
+            ,   STEP_005  //: #LOAD_FROM_HEROKU_HARDDISK#://
+            ,   STEP_006  //: #SEND_PNG_TO_IMGUR#        ://
+            ,   STEP_007  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -9459,10 +9461,32 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             //:==========================:BEGIN_OUR_STEPS://
                 
-                //:#ABORT_IF_FILE_TOO_BIG#:==============://
+                //:#ABORT_IF_NOT_HTTPPOST#:==============://
                 function STEP_001( i_ignored ){
-
+    
                     ASS( 1 <= o_k , "[@SBH@:STEP_001]" );
+
+                    ask_met =( 
+                    String.prototype.toUpperCase.call(
+
+                        i_sob_h13.m_ask.method 
+                    ));;
+
+                    if( "POST" != ask_met ){
+        
+                        o_k=( 0 );
+                        LOGANOK_ADD( "[NOT_HTTP_POST]" );
+                        LOGANOK_END();
+                    }else{
+
+                        LOGANOK_NEX( "[STEP_002]" );
+                    };;
+                };;
+                //:==============:#ABORT_IF_NOT_HTTPPOST#://
+                //:#ABORT_IF_FILE_TOO_BIG#:==============://
+                function STEP_002( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_002]" );
 
                     //:1024KB Of Wiggle Room://
                     wigroom =( 1024 * 1000 );
@@ -9485,14 +9509,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         LOGANOK_ADD("[NOT_512_X_512_PNG]");
                         LOGANOK_ERR();
                     }else{
-                        LOGANOK_NEX( "[STEP_002]" );
+                        LOGANOK_NEX( "[STEP_003]" );
                     };;
                 };;
                 //:==============:#ABORT_IF_FILE_TOO_BIG#://
                 //:#SAVE_TO_HEROKU_HARDDISK#:============://
-                function STEP_002( i_ignored ){
+                function STEP_003( i_ignored ){
         
-                    ASS( 1 <= o_k , "[@SBH@:STEP_002]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_003]" );
 
                     aimpath=(
                     F_HOTEL13_COOHASH_AIMPATH(
@@ -9526,16 +9550,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         
                                 loganok.m_o_k=( 100 );
                                 LOGANOK_ADD( "[SUCCESS]"  );
-                                LOGANOK_NEX( "[STEP_003]" );
+                                LOGANOK_NEX( "[STEP_004]" );
                             });;
                         });;
                     };;
                 };;
                 //:============:#SAVE_TO_HEROKU_HARDDISK#://
                 //:#ABORT_IF_NO_IMGUR_CRED#:=============://
-                function STEP_003( i_ignored ){
+                function STEP_004( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_003]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_004]" );
 
                     hascred = F_HOTEL13_API_3RD_HAS_IMGUR();    
 
@@ -9547,14 +9571,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     }else{
 
                         LOGANOK_ADD( "[Has_Imgur_Cred]" );
-                        LOGANOK_NEX( "[STEP_004]"       );
+                        LOGANOK_NEX( "[STEP_005]"       );
                     };;
                 };;
                 //:=============:#ABORT_IF_NO_IMGUR_CRED#://
                 //:#LOAD_FROM_HEROKU_HARDDISK#:==========://
-                function STEP_004( i_ignored ){
+                function STEP_005( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_004]" ); //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    ASS( 1 <= o_k , "[@SBH@:STEP_005]" ); //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                 
                     l_fs.readFile( aimpath,(i_err,i_cof)=>{    
 
@@ -9567,15 +9591,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                             png_bin =( i_cof );
                             LOGANOK_ADD( "[READ:O_K]" );
-                            LOGANOK_NEX( "[STEP_005]" );
+                            LOGANOK_NEX( "[STEP_006]" );
                         };;
                     });;
                 };;
                 //:==========:#LOAD_FROM_HEROKU_HARDDISK#://
                 //:#SEND_PNG_TO_IMGUR#:==================://
-                function STEP_005( i_ignored ){
+                function STEP_006( i_ignored ){
     
-                    ASS( 1 <= o_k , "[@SBH@:STEP_005]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_006]" );
     
                     _s_ =( " " ); //:Exactly One Space   ://  
 
@@ -9612,14 +9636,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                                            
                         console.log("[IMGUR_UPP_DONE]");               
                         LOGANOK_ADD( xhr.responseText );       
-                        LOGANOK_NEX( "[STEP_006]"     );
+                        LOGANOK_NEX( "[STEP_007]"     );
                     };;};;   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
                 //:#STOP_TALKING_TO_ME#:=================://
-                function STEP_006( i_ignored ){
+                function STEP_007( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_006]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_007]" );
 
                     console.log( "[STOP_TALKING_TO_ME]" );
                     LOGANOK_ADD( "[STOP_TALKING_TO_ME]" );
@@ -12513,6 +12537,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @LOGANOK_END@ : Ends response to server.
 
     @i_ignored@   : Ignored Input Argument
+
+    #ABORT_IF_NOT_HTTPPOST# :
+
+        Not 100% necessary , but figure this gives me
+        a bit of extra sanity so why not?
 
     #ABORT_IF_FILE_TOO_BIG# :
 
