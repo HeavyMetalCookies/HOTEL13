@@ -9925,6 +9925,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   headers  :{
                             
                             [a_n]:a_v
+                        ,           "type"   : "file"
+                        ,           "album"  : "AIM"
                         ,   "Content-Type"   : "application/octet-stream"
                         ,   "Content-Length" : png_bin.length
                         }
