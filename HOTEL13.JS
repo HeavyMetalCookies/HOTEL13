@@ -8770,6 +8770,56 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_obj );
         };;
     //:=============================:TRY_TO_PARSE_INTEGER://
+    //:IS_THREE_DIGIT_STRING:============================://
+    //:YES_STRING_3_DIGITS:==============================://
+
+        const   F_HOTEL13_S3D     = "[FIX:YES_S3D]" ;
+        const   F_HOTEL13_3DS     = "[FIX:YES_S3D]" ;
+        const   F_HOTEL13_YES_3DS = "[FIX:YES_S3D]" ;
+
+        const   F_HOTEL13_YES_S3D = function
+        PRIVATE_F_HOTEL13_YES_S3D(  //:<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : new:2022_07_19
+
+            i_str_num
+        ){
+            var o_yes =( 1 ); /**IsUntilItIsnt**/
+
+            if( "string" != typeof i_str_num ){
+        
+                o_yes=( 0 );
+                ERR( "[BADINPUTTYPE:YES_S3D]" );
+            }else
+            if( 3 != i_str_num.length ){
+
+                o_yes=( 0 ); 
+            }else{
+
+                for( var dex = 0 ; dex <=(3-1) ; dex++ ){
+
+                    if( 0
+                    ||  "0" === i_str_num[ dex ]   //:EVE://
+                    ||  "1" === i_str_num[ dex ]   //:ODD://
+                    ||  "2" === i_str_num[ dex ]   //:EVE://
+                    ||  "3" === i_str_num[ dex ]   //:ODD://
+                    ||  "4" === i_str_num[ dex ]   //:EVE://
+                    ||  "5" === i_str_num[ dex ]   //:ODD://
+                    ||  "6" === i_str_num[ dex ]   //:EVE://       
+                    ||  "7" === i_str_num[ dex ]   //:ODD://
+                    ||  "8" === i_str_num[ dex ]   //:EVE://
+                    ||  "9" === i_str_num[ dex ]   //:ODD://
+                    ){
+                        /** Still okay, do nothing.**/
+                    }else{
+                        o_yes=( 0 ); //:Failure://
+                        break;
+                    };;
+                };;
+            };;
+
+            return( o_yes );
+        };;
+    //:==============================:YES_STRING_3_DIGITS://
+    //:============================:IS_THREE_DIGIT_STRING://
     //:TRY_TO_INTERPRET_AS_COORD_HASH:===================://
 
     const   F_HOTEL13_TRY_ICH = "[FIX:ICH_TRY]" ;
@@ -8885,6 +8935,36 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         return( o_yes );
     };;
     //:===================:TRY_TO_INTERPRET_AS_COORD_HASH://
+    //:STRINGS_TO_COORDHASH:=============================://
+
+        const  F_HOTEL13_STR_XYZ_COOHASH = "[WRONG]" ;
+        const  F_HOTEL13_XYZ_COOHASH     = "[WRONG]" ;
+        const  F_HOTEL13_STR_ARR_COOHASH = "[WRONG]" ;
+
+        const   F_HOTEL13_STR_COOHASH = function
+        PRIVATE_F_HOTEL13_STR_COOHASH(
+
+            i_str_xxx //: EX[ "000" ]
+        ,   i_str_yyy //: EX[ "420" ]
+        ,   i_str_zzz //: EX[ "069" ]
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://    
+            //:  We assume input is valid here.          ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            var ___ =( "" /**EMPTYSTRING**/ ):
+            var o_coohash =(""
+
+            +   i_str_xxx + "_"
+            +   i_str_yyy + "_"
+            +   i_str_zzz + ___
+            );;
+
+            return( o_coohash );
+        };;
+    //:=============================:STRINGS_TO_COORDHASH://
     //:COORDHASH_TO_FILENAME:============================://
 
         const   F_HOTEL13_COOHASH_AIMPATH = function
@@ -9482,7 +9562,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //+----------------------------------------------+//
 
             i_sob_h13  //:StateObjectBundle: KIND: h13   ://
-        ,   i_str_xyz  //:           String: KIND: xyz   ://
+        ,   i_str_xxx  //:           String: KIND: x-axis://
+        ,   i_str_yyy  //:           String: KIND: y-axis://
+        ,   i_str_zzz  //:           String: KIND: z-axis://
         ){
             //:[ATF]:------------------------------------://
             //:                                          ://
@@ -9506,6 +9588,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ||  "undefined" != typeof i_pngfile 
                 ){
                     ERR("[WRONG_INPUTS_TO_FUNC]");
+                };;
+
+                if( 0
+                ||  "undefined" != typeof i_str_xyz 
+                ){
+                    ERR("[OOPS_NOT_HASH_INPUT]");
                 };;
             };;
             //:======================================:ECI://
@@ -9535,6 +9623,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
 
                 var _______
+                ,   str_xyz  //:@str_xyz@ :COOHASH   ://
                 ,   ask_met  //:@ask_met@ :ASK Method://
                 ,       c_l  //:@c_l@ : ContentLength://       
                 ,   wigroom  //:@wigroom@ :WiggleRoom://
@@ -9559,13 +9648,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:NOT_A_PROMISE:============================://
             var ptrstep =( 0-1 );
             var arrstep =[
-                STEP_001  //: #ABORT_IF_NOT_HTTPPOST#    ://
-            ,   STEP_002  //: #ABORT_IF_FILE_TOO_BIG#    ://
-            ,   STEP_003  //: #SAVE_TO_HEROKU_HARDDISK#  ://
-            ,   STEP_004  //: #ABORT_IF_NO_IMGUR_CRED#   ://
-            ,   STEP_005  //: #LOAD_FROM_HEROKU_HARDDISK#://
-            ,   STEP_006  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_007  //: #STOP_TALKING_TO_ME#       ://
+                STEP_001  //: #MAKE_COORD_HASH#          ://
+            ,   STEP_002  //: #ABORT_IF_NOT_HTTPPOST#    ://
+            ,   STEP_003  //: #ABORT_IF_FILE_TOO_BIG#    ://
+            ,   STEP_004  //: #SAVE_TO_HEROKU_HARDDISK#  ://
+            ,   STEP_005  //: #ABORT_IF_NO_IMGUR_CRED#   ://
+            ,   STEP_006  //: #LOAD_FROM_HEROKU_HARDDISK#://
+            ,   STEP_007  //: #SEND_PNG_TO_IMGUR#        ://
+            ,   STEP_008  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -9587,10 +9677,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             //:==========================:BEGIN_OUR_STEPS://
                 
-                //:#ABORT_IF_NOT_HTTPPOST#:==============://
+                //:#MAKE_COORD_HASH#:====================://
                 function STEP_001( i_ignored ){
+
+                    str_xyz = F_HOTEL13_STR_COOHASH();
+
+                    LOGANOK_NEX( "[STEP_002]" );
+                };;
+                //:======================:MAKE_COORD_HASH://
+                //:#ABORT_IF_NOT_HTTPPOST#:==============://
+                function STEP_002( i_ignored ){
     
-                    ASS( 1 <= o_k , "[@SBH@:STEP_001]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_002]" );
 
                     ask_met =( 
                     String.prototype.toUpperCase.call(
@@ -9605,14 +9703,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         LOGANOK_ERR();
                     }else{
 
-                        LOGANOK_NEX( "[STEP_002]" );
+                        LOGANOK_NEX( "[STEP_003]" );
                     };;
                 };;
                 //:==============:#ABORT_IF_NOT_HTTPPOST#://
                 //:#ABORT_IF_FILE_TOO_BIG#:==============://
-                function STEP_002( i_ignored ){
+                function STEP_003( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_002]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_003]" );
 
                     //:1024KB Of Wiggle Room://
                     wigroom =( 1024 * 1000 );
@@ -9635,26 +9733,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         LOGANOK_ADD("[NOT_512_X_512_PNG]");
                         LOGANOK_ERR();
                     }else{
-                        LOGANOK_NEX( "[STEP_003]" );
+                        LOGANOK_NEX( "[STEP_004]" );
                     };;
                 };;
                 //:==============:#ABORT_IF_FILE_TOO_BIG#://
                 //:#SAVE_TO_HEROKU_HARDDISK#:============://
-                function STEP_003( i_ignored ){
+                function STEP_004( i_ignored ){
         
-                    ASS( 1 <= o_k , "[@SBH@:STEP_003]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_004]" );
 
                     aimpath=(
                     F_HOTEL13_COOHASH_AIMPATH(
-                        i_str_xyz 
+                        str_xyz 
                     ));;
 
                     if( "./PNG/ERR_001.PNG" == aimpath ){
         
                         LOGANOK_ADD( "[ERROR_PATH]" );
-                        LOGANOK_ADD( "[i_str_xyz]:"
+                        LOGANOK_ADD( "[str_xyz]:"
                                     + "("
-                                    +  i_str_xyz
+                                    +  str_xyz
                                     + ")"
                         );;
                         LOGANOK_ERR();o_k=( 0 );
@@ -9681,16 +9779,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         
                                 loganok.m_o_k=( 100 );
                                 LOGANOK_ADD( "[SUCCESS]"  );
-                                LOGANOK_NEX( "[STEP_004]" );
+                                LOGANOK_NEX( "[STEP_005]" );
                             });;
                         });;
                     };;
                 };;
                 //:============:#SAVE_TO_HEROKU_HARDDISK#://
                 //:#ABORT_IF_NO_IMGUR_CRED#:=============://
-                function STEP_004( i_ignored ){
+                function STEP_005( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_004]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_005]" );
 
                     hascred = F_HOTEL13_API_3RD_HAS_IMGUR();    
 
@@ -9702,14 +9800,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     }else{
 
                         LOGANOK_ADD( "[Has_Imgur_Cred]" );
-                        LOGANOK_NEX( "[STEP_005]"       );
+                        LOGANOK_NEX( "[STEP_006]"       );
                     };;
                 };;
                 //:=============:#ABORT_IF_NO_IMGUR_CRED#://
                 //:#LOAD_FROM_HEROKU_HARDDISK#:==========://
-                function STEP_005( i_ignored ){
+                function STEP_006( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_005]" ); //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+                    ASS( 1 <= o_k , "[@SBH@:STEP_006]" ); //:<<<<<<<<<<<<<< NOTICE_ME_SENPAI
                 
                     l_fs.readFile( aimpath,(i_err,i_cof)=>{    
 
@@ -9722,15 +9820,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                             png_bin =( i_cof );
                             LOGANOK_ADD( "[READ:O_K]" );
-                            LOGANOK_NEX( "[STEP_006]" );
+                            LOGANOK_NEX( "[STEP_007]" );
                         };;
                     });;
                 };;
                 //:==========:#LOAD_FROM_HEROKU_HARDDISK#://
                 //:#SEND_PNG_TO_IMGUR#:==================://
-                function STEP_006( i_ignored ){
+                function STEP_007( i_ignored ){
     
-                    ASS( 1 <= o_k , "[@SBH@:STEP_006]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_007]" );
     
                     _s_ =( " " ); //:Exactly One Space   ://  
 
@@ -9767,14 +9865,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                                            
                         console.log("[IMGUR_UPP_DONE]");               
                         LOGANOK_ADD( xhr.responseText );       
-                        LOGANOK_NEX( "[STEP_007]"     );
+                        LOGANOK_NEX( "[STEP_008]"     );
                     };;};;   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
                 //:#STOP_TALKING_TO_ME#:=================://
-                function STEP_007( i_ignored ){
+                function STEP_008( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_007]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
 
                     console.log( "[STOP_TALKING_TO_ME]" );
                     LOGANOK_ADD( "[STOP_TALKING_TO_ME]" );
@@ -9900,17 +9998,21 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         if( "API"       == h13.m_seg[ 0 ] ){
 
             if( 1
-            &&  "API"      === h13.m_seg[ 0 ] 
-            &&  "3RD"      === h13.m_seg[ 1 ] 
-            &&  "UPP"      === h13.m_seg[ 2 ] 
-            &&  "IMGUR"    === h13.m_seg[ 3 ] 
-            &&  F_HOTEL13_ICH( h13.m_seg[ 4 ] )
+            &&  "API"          === h13.m_seg[ 0 ] 
+            &&  "3RD"          === h13.m_seg[ 1 ] 
+            &&  "UPP"          === h13.m_seg[ 2 ] 
+            &&  "IMGUR"        === h13.m_seg[ 3 ] 
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 4 ] ) //:<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI:2022_07_19
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 5 ] ) 
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 6 ] ) 
             ){
-            //:   APP.COM/API/3RD/UPP/IMGUR/###_###_### :://    
+            //:   APP.COM/API/3RD/UPP/IMGUR/###/###/### :://    
                 F_HOTEL13_API_3RD_UPP_IMGUR(
 
                     h13            //:<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-                ,   h13.m_seg[ 4 ] //:EX[ "333_666_999" ]://
+                ,   h13.m_seg[ 4 ] //:EX[ "333" ]://
+                ,   h13.m_seg[ 5 ] //:EX[ "666" ]://
+                ,   h13.m_seg[ 6 ] //:EX[ "999" ]://
                 )
                 .then( (i_saywhat)=>{
 
@@ -9922,13 +10024,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 });;
             }else
             if( 1
-            &&  "API"      === h13.m_seg[ 0 ] 
-            &&  "3RD"      === h13.m_seg[ 1 ] 
-            &&  "DOW"      === h13.m_seg[ 2 ] 
-            &&  "IMGUR"    === h13.m_seg[ 3 ] 
-            &&  F_HOTEL13_ICH( h13.m_seg[ 4 ] )
+            &&  "API"          === h13.m_seg[ 0 ] 
+            &&  "3RD"          === h13.m_seg[ 1 ] 
+            &&  "DOW"          === h13.m_seg[ 2 ] 
+            &&  "IMGUR"        === h13.m_seg[ 3 ] 
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 4 ] ) //:<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI:2022_07_19
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 5 ] )
+            &&  F_HOTEL13_YES_S3D( h13.m_seg[ 6 ] )
             ){
-            //:   APP.COM/API/3RD/DOW/IMGUR/###_###_### :://
+            //:   APP.COM/API/3RD/DOW/IMGUR/###/###/### :://
                 F_HOTEL13_API_3RD_DOW_IMGUR()
                 .then( (i_saywhat)=>{
 
@@ -10557,7 +10661,28 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     -----------------------------------------------------------
     edi_mod_act  ( AS_OF[ 2022_07_19 ]IS_TOGGLE_KEY[ "A" ] )
                  ( Modifies:BOMB_SETTING_TOGGLE_KEY[ "B" ] )     
-    ------------------------------------------------------------
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    [ is-three-digit-string | three-digit-string | is-3ds     ]
+    [ is_three_digit_string | three_digit_string | is_3ds     ]
+    [ isthreedigitstring    | threedigitstring   | is3ds      ]
+    [ three_digit_string | threedigitstring | threedigit      ]
+    [ three-digit-string | three-digit | three_digit          ]
+    [ is three | is_three | is-three | isthree                ]
+    [ is three digit string | is it three digits | is digit   ]
+    -----------------------------------------------------------
+    F_HOTEL13_YES_S3D
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    [ create coordinate hash from xyz strings | xyz-to-hash   ]
+    [ create_coordinate_hash_from_xyz_strings | xyz to hash   ]
+    [ str_xyz_to_coordhash | str-xyz-to-coordhash             ]
+    [ str xyz to coordhash | xyz_to_hash | xyzstr to hash     ]
+    -----------------------------------------------------------
+    F_HOTEL13_STR_COOHASH
+    -----------------------------------------------------------
 
 
 *** *********** ******************************** TAG_SECTION ***
@@ -12686,6 +12811,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @LOGANOK_END@ : Ends response to server.
 
     @i_ignored@   : Ignored Input Argument
+
+    #MAKE_COORD_HASH# :
+
+        Turn X,Y,Z input strings into coordinate hash.
+        This is a bit convoluted. The result of
+        refactoring.
+
+        All of our "upload" api paths need to be
+        called in the exact same way.
+
+        GOING WITH: 
+            PATH[ XXX/YYY/ZZZ ]
+            FUNC( XXX,YYY,ZZZ )
+
+        INSTEAD OF:
+            PATH[ XXX_YYY_ZZZ ]
+            FUNC( XXX_YYY_ZZZ )
+
+        Still like coordinate hashes for the
+        FRONT END. Though in retrospect, we should
+        have just picked one and stuck with it.
+
+        DATE[ 2022_07_19 ]TIME[ 0820 ]PM
 
     #ABORT_IF_NOT_HTTPPOST# :
 
