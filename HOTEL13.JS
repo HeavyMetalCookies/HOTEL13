@@ -9917,10 +9917,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
                         });;
-                        i_giv.on( "close" , ()=>{
+                        i_giv.on( "close", ()=>{
 
+                            LOGANOK_ADD( "[#_NJS_CLOSE_#]" );
+                        });;
+                        i_giv.on( "end"  , ()=>{
 
                             LOGANOK_ADD( "[@A_I_A@]" );
+                            LOGANOK_ADD( "[#_NJS_END_#]" );
                             LOGANOK_NEX(); //:[STEP_008]://
                         });;
                     }));;
@@ -13127,6 +13131,33 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @I_H_N_I_W_I_A_D@ : I_Have_No_Idea_What_I_Am_Doing
     
     [I_H_A_S_I_W_I_A_D] : I have a slight idea what I am doing.
+
+    #_NJS_CLOSE_# :
+    #_NJS_END_#   :
+
+        close : emitted when stream resource is closed and
+              : indicates no more events will be emitted
+              : in the future.
+
+        finish: when all data is written to the stream but
+              : the stream may not be closed.
+              : https://stackoverflow.com/questions/65004497
+
+          end : Not sure about the difference between this 
+              : and "close" but this event is not 
+              : guaranteed to fire.
+              :
+              : https://stackoverflow.com/questions/35805759/
+              : nodejs.org/api/stream.html#stream_event_end
+
+        ------------------------------------------------
+        DATE[ 2022_07_20 ]TIME[ 222 ]AM
+        ------------------------------------------------
+        Getting pretty tired of trying to figure this
+        out. But with "close" the api is only partially
+        broken. Doesn't upload to IMGUR but re-loading
+        level after refresh will work.
+        ------------------------------------------------
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
