@@ -9650,6 +9650,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
                 function    LOGANOK_ADD(        msg ){
                             loganok.m_log.push( msg );
+                                   console.log( msg );
                 };;
                 function    LOGANOK_END( ){ 
 
@@ -9876,6 +9877,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 function STEP_007( i_ignored ){
     
                     ASS( 1 <= o_k , "[@SBH@:STEP_007]" );
+
+                    LOGANOK_ADD( "[THE_HARD_PART]" );
     
                     _s_ =( " " ); //:Exactly One Space   ://  
 
