@@ -9909,7 +9909,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     };;
 
                     nor_ask =( 
-                    l_https.request(nor_opt,(i_err,i_giv)=>{
+                    l_https.request(nor_opt,(i_giv)=>{
 
                         i_giv.on( "data" , (i_dat)=>{
 
@@ -9917,17 +9917,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
                         });;
-
-                        if( i_err ){
-
-                            LOGANOK_ERR( ""+i_err+"" );
-                        }else{
-
-                        ///   LOGANOK_ADD( "[@A_I_A@]" );
-                        ///   LOGANOK_NEX(); //:[STEP_008]://
-                        };;
-
                     }));;
+                    nor_ask.on( "error" , (i_err)=>{
+    
+                        LOGANOK_ADD( "[i_err]"+i_err );
+                        LOGANOK_ERR();
+                    });;
                     nor_ask.on( "close" , ( )=>{
 
                         LOGANOK_ADD( "[@A_I_A@]" );
