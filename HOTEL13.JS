@@ -10050,15 +10050,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ,   h13.m_seg[ 4 ] //:EX[ "333" ]://
                 ,   h13.m_seg[ 5 ] //:EX[ "666" ]://
                 ,   h13.m_seg[ 6 ] //:EX[ "999" ]://
-                )
-                .then( (i_saywhat)=>{
-
-                              
-                    
-                    h13.m_giv.writeHead( 200 , d_txt );
-                    h13.m_giv.write( "[TODO:UPP]" );  //:<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-                    h13.m_giv.end();
-                });;
+                );;
+                //:::::::::::::::::::::::::::::::::::::::://
+                //:                                      ://
+                //: Above call __NOT__ a promise. It     ://
+                //: doesn't need to be, and if you make  ://
+                //: it one, shit will get ugly.          ://
+                //:                                      ://
+                //:::::::::::::::::::::::::::::::::::::::://
             }else
             if( 1
             &&  "API"          === h13.m_seg[ 0 ] 
