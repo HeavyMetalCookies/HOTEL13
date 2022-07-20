@@ -13121,6 +13121,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @nor_ask@ : NodeOutboundRequest_ASK 
 
+    [I_H_N_I_W_I_A_D] : I Have No Idea What I Am Doing
+    [I H N I W I A D] :[I H    N  I    W    I A  D    ]
+    @I_H_N_I_W_I_A_D@ : I_Have_No_Idea_What_I_Am_Doing
+    
+
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
