@@ -9925,8 +9925,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   headers  :{
                             
                             [a_n]:a_v
+                        ,   "Content-Type"   : "application/octet-stream"
+                        ,   "Content-Length" : png_bin.length
                         }
-                    ,   json   : true
+                    ,   json   : false
                     ,   method : "POST" //:typ://
                     };;
 
