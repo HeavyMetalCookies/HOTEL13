@@ -8300,8 +8300,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:                                      ://
                 //:::::::::::::::::::::::::::::::::::::::://
 
-                ////////////F_HOTEL13_HEROKUA_SAV();   
-                            F_HOTEL13_IMGURAP_SAV(); 
+                 F_HOTEL13_HEROKUA_SAV();   //:<--------- sanity check. make sure this still works.
+                  ///////// F_HOTEL13_IMGURAP_SAV(); 
 
             };;
             if( "L" == asc ){ F_HOTEL13_HEROKUA_LOD();    };
