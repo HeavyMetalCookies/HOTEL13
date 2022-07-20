@@ -8970,8 +8970,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:[ATF]:------------------------------------://
             //:                                          ://    
             //:  We assume input is valid here.          ://
+            //:  (AND_IT_FUCKED_US_OVER_BIG_TIME)        ://
+            //:  (FOR_HOURS!! 2022_07_20:253AM  )        ://
             //:                                          ://
             //:------------------------------------:[ATF]://
+            if( d_bug ){
+                if( 3 != arguments.length ){
+                    ERR("[WHERE_IS_YOUR_ARGS]");
+                };;
+            };;
 
             var ___ =( "" /**EMPTYSTRING**/ );
             var o_coohash =(""
@@ -9004,8 +9011,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ERR("[BADINPUTTYPE2022]");
             };;
 
-            var arr = i_coohash.split( "_" )
-            .filter( n => n );;
+            var arr =( i_coohash.split( "_" )
+                .filter( n => n ) );;
 
             if( 3 != arr.length ){
                 //:::::::::::::::::::::::::::::::::::::::://
@@ -9021,7 +9028,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var yyy = F_HOTEL13_PAD_STR( arr[1] );
                 var zzz = F_HOTEL13_PAD_STR( arr[2] );
 
-                o_aimpath =( ////////////////////
+                o_aimpath =( "" /////////////////
                 +   "./PNG/"
                 +          "X_"   +  xxx + "/" 
                 +          "Y_"   +  yyy + "/" 
@@ -9795,7 +9802,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         str_xyz 
                     ));;
 
-                    if( "./PNG/ERR_001.PNG" == aimpath ){
+                    if( "./PNG/ERR_001.PNG" === aimpath ){
         
                         LOGANOK_ADD( "[ERROR_PATH]" );
                         LOGANOK_ADD( "[str_xyz]:"
