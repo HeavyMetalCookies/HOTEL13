@@ -8300,8 +8300,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:                                      ://
                 //:::::::::::::::::::::::::::::::::::::::://
 
-                 F_HOTEL13_HEROKUA_SAV();   //:<--------- sanity check. make sure this still works.
-                  ///////// F_HOTEL13_IMGURAP_SAV(); 
+                 ///// F_HOTEL13_HEROKUA_SAV();   //:<--------- sanity check. make sure this still works.
+                F_HOTEL13_IMGURAP_SAV(); 
 
             };;
             if( "L" == asc ){ F_HOTEL13_HEROKUA_LOD();    };
@@ -9917,6 +9917,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
                         });;
+                        i_giv.on( "close" , ()=>{
+
+
+                            LOGANOK_ADD( "[@A_I_A@]" );
+                            LOGANOK_NEX(); //:[STEP_008]://
+                        });;
                     }));;
                     nor_ask.on( "error" , (i_err)=>{
     
@@ -9925,8 +9931,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     });;
                     nor_ask.on( "close" , ( )=>{
 
-                        LOGANOK_ADD( "[@A_I_A@]" );
-                        LOGANOK_NEX(); //:[STEP_008]://
+                    /////    LOGANOK_ADD( "[@A_I_A@]" );
+                    /////    LOGANOK_NEX(); //:[STEP_008]://
                     });;
                     nor_ask.end();
 
