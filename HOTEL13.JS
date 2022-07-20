@@ -9984,8 +9984,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
 
-                    console.log( "[STOP_TALKING_TO_ME]" );
-                    LOGANOK_ADD( "[STOP_TALKING_TO_ME]" );
+                    console.log( "[IAG:STOPTALKINGTOME]");    
+                    LOGANOK_ADD( "[IAG:STOPTALKINGTOME]");
                     LOGANOK_END();
                 };;
                 //:=================:#STOP_TALKING_TO_ME#://
@@ -13163,6 +13163,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         broken. Doesn't upload to IMGUR but re-loading
         level after refresh will work.
         ------------------------------------------------
+
+    @IAG@ : Imgur_API_Get
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
