@@ -9915,7 +9915,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         }else{
 
                             LOGANOK_ADD( "[@A_I_A@]" );
-                            LOGANOK_END();
+                            LOGANOK_NEX(); //:[STEP_008]://
                         };;
 
                     });;
@@ -13097,7 +13097,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         https://stackoverflow.com/questions/41063529
 
+    [ Client Request Interrupted ] :
+    [ Client_Request_Interrupted ] :
 
+        Did you call ::::: LOGANOK_END()
+
+        When should have : LOGANOK_NEX() ?
 
 
 *** ****************************************** HASHTAG_SEC - ***
