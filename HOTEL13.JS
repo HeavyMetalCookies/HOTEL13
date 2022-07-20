@@ -8978,6 +8978,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 if( 3 != arguments.length ){
                     ERR("[WHERE_IS_YOUR_ARGS]");
                 };;
+                if( "string" != typeof i_str_xxx
+                ||  "string" != typeof i_str_yyy
+                ||  "string" != typeof i_str_zzz
+                ){
+                    ERR("[WRONG_TYPES_BITCH]");
+                };;
             };;
 
             var ___ =( "" /**EMPTYSTRING**/ );
@@ -9735,8 +9741,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:#MAKE_COORD_HASH#:====================://
                 function STEP_001( i_ignored ){
 
-                    str_xyz = F_HOTEL13_STR_COOHASH();
-
+                    str_xyz = F_HOTEL13_STR_COOHASH(
+                        i_str_xxx
+                    ,   i_str_yyy
+                    ,   i_str_zzz
+                    );;
                     LOGANOK_NEX( "[STEP_002]" );
                 };;
                 //:======================:MAKE_COORD_HASH://
