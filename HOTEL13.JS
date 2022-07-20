@@ -9230,10 +9230,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
 
-        /// l_pg  = require( "pg"               );   
-        var l_fs  = require( "fs"               );   
-        var l_url = require( "url"              );   
-        var l_qs  = require( "node:querystring" );   
+        /// l_pg    = require( "pg"               );   
+        var l_fs    = require( "fs"               );   
+        var l_url   = require( "url"              );   
+        var l_qs    = require( "node:querystring" );   
+        /// l_http  = require( "http"             );
+        var l_https = require( "https"            );
 
         let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
         var d_jso = { [c_t]: "application/json"         } ;
@@ -9673,6 +9675,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ,   png_bin  //:@png_bin@ :PNGBINARY ://
                 ;;;;;;;;;;;
 
+                var  ___2___
+                ,    nor_opt //:@nor_opt@://
+                ;;;;;;;;;;
+
                 var ___
                 ,   _s_  //: SPACE , literally       ://
                 ,   f_d  //: FormData                ://
@@ -9681,7 +9687,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ,   cid  //: Client_ID
                 ,   a_n  //: Authheader : KEY/NAME   ://
                 ,   a_v  //: Authheader :    VALUE   ://
-                ,   xhr
+                /// xhr
                 ;;;;;;;
 
             //:=====================================:VARS://
@@ -9889,35 +9895,63 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     a_n =( "Authorization" );
                     a_v =( "Client-ID"+ _s_ + cid );
 
-                    xhr =( new XMLHttpRequest() );
-       
-                    xhr.open(             typ , url );   
-                    xhr.setRequestHeader( a_n , a_v );
-                    xhr.setRequestHeader( 
+                    nor_opt = {
 
-                        //:#_TELL_IMGUR_HOW_TO_RESPOND_#://
-                        //:#_NOT_OUTGOING_DATA_TYPE_#://
-                        "accept" , "application/json"
+                        hostname : "api.imgur.com"
+                    ,   path     : "/3/upload"
+                    ,   headers  :{
+                            
+                            [a_n]:a_v
+                        }
+                    ,   json   : true
+                    ,   method : "GET"
+                    };;
 
-                    );;
-                    xhr.setRequestHeader(
-    
-                        //:#_OUTGOING_DATA_TYPE_#://
-                        
-                        "Content-Type" 
-                    ,   "multipart/form-data"
-                    );;
-   
-                    xhr.send( png_bin /**AKA:  pngfile**/ );      
-                                      /**AKA:i_payload**/
-                         
-                    xhr.onreadystatechange=(evt_xhr)=>{   
-                    if( xhr.readyState === 4 ){           
-                                                           
-                        console.log("[IMGUR_UPP_DONE]");               
-                        LOGANOK_ADD( xhr.responseText );       
-                        LOGANOK_NEX( "[STEP_008]"     );
-                    };;};;   
+                    l_https.request( nor_opt , (i_err,i_giv)=>{
+
+                        if( i_err ){
+
+                            LOGANOK_ERR( ""+i_err+"" );
+                        }else{
+
+                            LOGANOK_ADD( "[@A_I_A@]" );
+                            LOGANOK_END();
+                        };;
+
+                    });;
+
+                ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
+                ///////////////////////////    xhr =( l_http.request( ) ); //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : FIGURE THIS THE FUCK OUT.
+                ///////////////////////////
+                ///////////////////////////    xhr.open(             typ , url );   
+                ///////////////////////////    xhr.setRequestHeader( a_n , a_v );
+                ///////////////////////////    xhr.setRequestHeader( 
+                ///////////////////////////
+                ///////////////////////////        //:#_TELL_IMGUR_HOW_TO_RESPOND_#://
+                ///////////////////////////        //:#_NOT_OUTGOING_DATA_TYPE_#://
+                ///////////////////////////        "accept" , "application/json"
+                ///////////////////////////
+                ///////////////////////////    );;
+                ///////////////////////////    xhr.setRequestHeader(
+                ///////////////////////////
+                ///////////////////////////        //:#_OUTGOING_DATA_TYPE_#://
+                ///////////////////////////        
+                ///////////////////////////        "Content-Type" 
+                ///////////////////////////    ,   "multipart/form-data"
+                ///////////////////////////    );;
+                ///////////////////////////
+                ///////////////////////////    xhr.send( png_bin /**AKA:  pngfile**/ );      
+                ///////////////////////////                      /**AKA:i_payload**/
+                ///////////////////////////         
+                ///////////////////////////    xhr.onreadystatechange=(evt_xhr)=>{   
+                ///////////////////////////    if( xhr.readyState === 4 ){           
+                ///////////////////////////                                           
+                ///////////////////////////        console.log("[IMGUR_UPP_DONE]");               
+                ///////////////////////////        LOGANOK_ADD( xhr.responseText );       
+                ///////////////////////////        LOGANOK_NEX( "[STEP_008]"     );
+                ///////////////////////////    };;};; 
+
+  
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
                 //:#STOP_TALKING_TO_ME#:=================://
@@ -13049,6 +13083,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         I think this is how you tell IMGUR api what
         type of data you are sending it. But not
         100% on this.
+
+    #_NODEJS_HTTP_REQ_# :
+
+        https://nodejs.org/api/http.html#agentrequests
+
+    @nor_opt@ : Node_Outbound_Request _ OPTions
+
+    @A_I_A@ : Accessed_Imgur_API
+    #A_I_A# :
+
+        Stolen message from this stack overlfow post:
+
+        https://stackoverflow.com/questions/41063529
+
+
+
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
