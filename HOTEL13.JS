@@ -9917,14 +9917,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
                         });;
-                        i_giv.on( "close", ()=>{
+                        i_giv.on( "error",(i_err)=>{
 
-                            LOGANOK_ADD( "[#_NJS_CLOSE_#]" );
+                            LOGANOK_ADD( "[i_err]"+i_err );
+                            //// LOGANOK_ERR();
                         });;
                         i_giv.on( "end"  , ()=>{
 
                             LOGANOK_ADD( "[@A_I_A@]" );
                             LOGANOK_ADD( "[#_NJS_END_#]" );
+                        });;
+                        i_giv.on( "close", ()=>{
+
+                            LOGANOK_ADD( "[#_NJS_CLOSE_#]" );
                             LOGANOK_NEX(); //:[STEP_008]://
                         });;
                     }));;
