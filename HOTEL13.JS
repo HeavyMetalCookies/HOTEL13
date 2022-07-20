@@ -9053,8 +9053,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:                                              ://
         //:----------------------------------------:[ATF]://  < < < < < < < < < NOTICE_ME_SENPAI : New functionality
 
-            slfjkasfjlsajflasdjf
+            var o_jtf =( "[JFT_NOT_SET]" );
+            var   dex , arr , m_i ;
 
+            if( "string" != typeof i_aimpath ){
+
+                //: Set Error Path ://
+                o_jtf =( "./PNG/JTF_ERR" );
+            }else{
+                o_jtf =( "" );
+                arr =( i_aimpath
+                .   split(   "/"   )
+                .   filter( n => n )
+                );;
+
+                m_i =( arr.length - 1 - 1 );
+                for( dex = 0 ; dex <= m_i ; dex ++ ){
+
+                                     o_jtf += arr[ dex ] ;
+                    if( dex < m_i ){ o_jtf += "/" ;     };
+                };;
+
+            };;
+            return( o_jtf /**@JTF@:Just_The_Folder**/ );
         };;
     //:=======================:AIMPATH_TO_JUST_THE_FOLDER://
     //:TRY_TO_INTERPRET_AS_AIM_JS_FILE:==================://
