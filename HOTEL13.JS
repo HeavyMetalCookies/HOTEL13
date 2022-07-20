@@ -8786,8 +8786,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             if( "string" != typeof i_str_num ){
         
+                //:::::::::::::::::::::::::::::::::::::::://
+                //:                                      ://
+                //:  Don't error here because it makes   ://
+                //:  the routing simpler if the          ://
+                //:  m_seg[ # ]is out of bounds and      ://
+                //:  yeilds( "undefined" ).              ://
+                //:                                      ://
+                //:::::::::::::::::::::::::::::::::::::::://
                 o_yes=( 0 );
-                ERR( "[BADINPUTTYPE:YES_S3D]" );
             }else
             if( 3 != i_str_num.length ){
 
@@ -8819,6 +8826,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_yes );
         };;
     //:==============================:YES_STRING_3_DIGITS://
+    //:NOT_STRING_3_DIGITS:==============================://
+
+        const   F_HOTEL13_NOT_S3D = function
+        PRIVATE_F_HOTEL13_NOT_S3D(
+
+            i_str_num
+        ){
+            var     yes_s3d =(F_HOTEL13_YES_S3D( i_str_num ));
+            var     not_s3d =( ! yes_s3d );
+            return( not_s3d );
+        };;
+    //:==============================:NOT_STRING_3_DIGITS://
     //:============================:IS_THREE_DIGIT_STRING://
     //:TRY_TO_INTERPRET_AS_COORD_HASH:===================://
 
@@ -9997,6 +10016,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         if( "API"       == h13.m_seg[ 0 ] ){
 
+            if( 1
+            &&  "API"             === h13.m_seg[ 0 ]
+            &&  "3RD"             === h13.m_seg[ 1 ]
+            &&  "UPP"             === h13.m_seg[ 2 ]
+            &&  "IMGUR"           === h13.m_seg[ 3 ]
+            &&  (  F_HOTEL13_NOT_S3D( h13.m_seg[ 4 ] )
+                || F_HOTEL13_NOT_S3D( h13.m_seg[ 5 ] )
+                || F_HOTEL13_NOT_S3D( h13.m_seg[ 6 ] )
+                )
+            ){
+            //: APP.COM/API/3RD/UPP/IMGUR/XXX_YYY_ZZZ://
+            //: APP.COM/API/3RD/UPP/IMGUR/           ://
+            //: APP.COM/API/3RD/UPP/IMGUR/YOUFUCKEDUP://
+
+                h13.m_giv.writeHead( 200 , d_txt );
+                h13.m_giv.write( "[SUPPLY:XXX/YYY/ZZZ]" );
+                h13.m_giv.end();
+            }else
             if( 1
             &&  "API"          === h13.m_seg[ 0 ] 
             &&  "3RD"          === h13.m_seg[ 1 ] 
