@@ -9677,6 +9677,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 var  ___2___
                 ,    nor_opt //:@nor_opt@://
+                ,    nor_ask //:@nor_ask@://
                 ;;;;;;;;;;
 
                 var ___
@@ -9907,18 +9908,32 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   method : "GET"
                     };;
 
-                    l_https.request( nor_opt , (i_err,i_giv)=>{
+                    nor_ask =( 
+                    l_https.request(nor_opt,(i_err,i_giv)=>{
+
+                        i_giv.on( "data" , (i_dat)=>{
+
+                            console.log(
+                                "[IMGURDATA]:"+i_dat
+                            );;
+                        });;
 
                         if( i_err ){
 
                             LOGANOK_ERR( ""+i_err+"" );
                         }else{
 
-                            LOGANOK_ADD( "[@A_I_A@]" );
-                            LOGANOK_NEX(); //:[STEP_008]://
+                        ///   LOGANOK_ADD( "[@A_I_A@]" );
+                        ///   LOGANOK_NEX(); //:[STEP_008]://
                         };;
 
+                    }));;
+                    nor_ask.on( "close" , ( )=>{
+
+                        LOGANOK_ADD( "[@A_I_A@]" );
+                        LOGANOK_NEX(); //:[STEP_008]://
                     });;
+                    nor_ask.end();
 
                 ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
                 ///////////////////////////    xhr =( l_http.request( ) ); //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : FIGURE THIS THE FUCK OUT.
@@ -13103,6 +13118,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         Did you call ::::: LOGANOK_END()
 
         When should have : LOGANOK_NEX() ?
+
+    @nor_ask@ : NodeOutboundRequest_ASK 
 
 
 *** ****************************************** HASHTAG_SEC - ***
