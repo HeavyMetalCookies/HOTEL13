@@ -9873,11 +9873,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     _s_ =( " " ); //:Exactly One Space   ://  
 
                     //:formdata:-------------------------://
-
-                    f_d = new FormData( );
-                    f_d.append( "image" ,    png_bin   );
-                    f_d.append( "album" , "ALBUM_AIM"  );
-
+                    //+ WRONG: formdata is __NOT__       +//
+                    //+      : native to node.js         +//
+                    //-                                  -//
+                    //- f_d = new FormData( );           -//
+                    //- f_d.append( "image",   png_bin );-//
+                    //- f_d.append( "album","ALBUM_AIM");-//
+                    //-                                  -//
                     //:-------------------------:formdata://
 
                     typ =( "POST" );
@@ -9898,8 +9900,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         "accept" , "application/json"
 
                     );;
+                    xhr.setRequestHeader(
+    
+                        //:#_OUTGOING_DATA_TYPE_#://
+                        
+                        "Content-Type" 
+                    ,   "multipart/form-data"
+                    );;
    
-                    xhr.send();                           
+                    xhr.send( png_bin /**AKA:  pngfile**/ );      
+                                      /**AKA:i_payload**/
+                         
                     xhr.onreadystatechange=(evt_xhr)=>{   
                     if( xhr.readyState === 4 ){           
                                                            
@@ -13032,6 +13043,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         to upload to permanant[ image ]store.
 
         DATE[ 2022_07_19 ]KANJICODER
+
+    #_OUTGOING_DATA_TYPE_# :
+
+        I think this is how you tell IMGUR api what
+        type of data you are sending it. But not
+        100% on this.
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
