@@ -9827,6 +9827,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         
                                 loganok.m_o_k=( 100 );
                                 LOGANOK_ADD( "[SUCCESS]"  );
+                                LOGANOK_ADD( "[aimpath]:"
+                                         +"("+ aimpath + ")"
+                                );;
                                 LOGANOK_NEX( "[STEP_005]" );
                             });;
                         });;
