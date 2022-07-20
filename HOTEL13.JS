@@ -9927,7 +9927,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             [a_n]:a_v
                         }
                     ,   json   : true
-                    ,   method : "GET"
+                    ,   method : "POST" //:typ://
                     };;
 
                     nor_ask =( 
@@ -9965,6 +9965,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     /////    LOGANOK_ADD( "[@A_I_A@]" );
                     /////    LOGANOK_NEX(); //:[STEP_008]://
                     });;
+
+                    nor_ask.write( png_bin ); //:<--maybe?
                     nor_ask.end();
 
                 ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
