@@ -13120,7 +13120,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     [I H N I W I A D] :[I H    N  I    W    I A  D    ]
     @I_H_N_I_W_I_A_D@ : I_Have_No_Idea_What_I_Am_Doing
     
-
+    [I_H_A_S_I_W_I_A_D] : I have a slight idea what I am doing.
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
