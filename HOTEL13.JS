@@ -8954,7 +8954,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:                                          ://
             //:------------------------------------:[ATF]://
 
-            var ___ =( "" /**EMPTYSTRING**/ ):
+            var ___ =( "" /**EMPTYSTRING**/ );
             var o_coohash =(""
 
             +   i_str_xxx + "_"
