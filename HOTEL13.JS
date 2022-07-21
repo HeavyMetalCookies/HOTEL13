@@ -10121,6 +10121,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     +       "\r\n"
                     //:--------------------------------------://
                     );;
+                    //:LOG_CONTENT_TYPE:-----------------://
+
+                    console.log( "[BEG:CONTENT_TYPE]");
+                    console.log( "\n\n" );
+
+                    console.log( norform_c_t );
+
+                    console.log( "\n"   );
+                    console.log( "[END:CONTENT_TYPE]");
+
+                    //:LOG_CONTENT_TYPE:-----------------://
                     //:LOG_PAYLOAD_NO_DATA:--------------://
 
                     console.log( "[BEG:PAYLOAD_NO_DATA]" );
