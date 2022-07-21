@@ -10180,8 +10180,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //: Is worse, corrupts everything.
 
                     norform_pay =(
-
-                    +   Buffer.from( norform_str , "utf8"   ).toString()
+                        Buffer.from( norform_str , "utf8"   ).toString()
 
                     +   Buffer.from(     png_bin , "utf8" ).toString()
             ////    +   Buffer.from(     png_bin , "binary" ).toString()
