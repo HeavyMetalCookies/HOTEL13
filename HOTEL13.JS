@@ -10149,27 +10149,35 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         "\r\n--" + norform_bou + "--\r\n"
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay_buf_001 =(
+            ////    norform_pay_buf_001 =(
+            ////
+            ////        Buffer.from( norform_str,"utf8" )    
+            ////    );;
+            ////    //:- - - - - - - - -- - - - - - - - -://
+            ////    norform_pay_buf_002 =(
+            ////
+            ////        Buffer.from( png_bin , "binary" )
+            ////    );;
+            ////    //:- - - - - - - - -- - - - - - - - -://
+            ////    norform_pay_buf_003 =(
+            ////
+            ////        Buffer.from( fin_bou , "utf8" )
+            ////    );;
+            ////    //:- - - - - - - - -- - - - - - - - -://
+            ////    norform_pay = Buffer.concat([
+            ////    
+            ////        norform_pay_buf_001
+            ////    ,   norform_pay_buf_002
+            ////    ,   norform_pay_buf_003
+            ////    ]);;
 
-                        Buffer.from( norform_str,"utf8" )    
+                    norform_pay =(
+                        Buffer.from( norform_str , "utf8" ).toString()
+                    +   Buffer.from(     png_bin , "utf8" ).toString()
+                    +   Buffer.from(     fin_bou , "utf8" ).toString()
                     );;
-                    //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay_buf_002 =(
+            
 
-                        Buffer.from( png_bin , "binary" )
-                    );;
-                    //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay_buf_003 =(
-
-                        Buffer.from( fin_bou , "utf8" )
-                    );;
-                    //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay = Buffer.concat([
-
-                        norform_pay_buf_001
-                    ,   norform_pay_buf_002
-                    ,   norform_pay_buf_003
-                    ]);;
                     //:----------------:MAKE_UTF8_PAYLOAD://
                     //:LOG_BINARY_PAYLOAD:---------------://
 
@@ -10215,7 +10223,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     nor_opt = {
 
-                        hostname : "api.imgur.com"  //: "hostname" -OR- "host" ? ://
+                        host     : "api.imgur.com"  //: "hostname" -OR- "host" ? ://
                     ,   path     : "/3/upload"
                     ,   method   : "POST" //:typ://
                     ,   headers  :{
