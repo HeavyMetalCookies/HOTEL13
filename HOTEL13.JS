@@ -10150,33 +10150,33 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         "\r\n--" + norform_bou + "--\r\n"
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
-            ////    norform_pay_buf_001 =(
-            ////
-            ////        Buffer.from( norform_str,"utf8" )    
-            ////    );;
-            ////    //:- - - - - - - - -- - - - - - - - -://
-            ////    norform_pay_buf_002 =(
-            ////
-            ////        Buffer.from( png_bin , "binary" )
-            ////    );;
-            ////    //:- - - - - - - - -- - - - - - - - -://
-            ////    norform_pay_buf_003 =(
-            ////
-            ////        Buffer.from( fin_bou , "utf8" )
-            ////    );;
-            ////    //:- - - - - - - - -- - - - - - - - -://
-            ////    norform_pay = Buffer.concat([
-            ////    
-            ////        norform_pay_buf_001
-            ////    ,   norform_pay_buf_002
-            ////    ,   norform_pay_buf_003
-            ////    ]);;
-
-                    norform_pay =(
-                        Buffer.from( norform_str , "utf8" ).toString()
-                    +   Buffer.from(     png_bin , "utf8" ).toString()
-                    +   Buffer.from(     fin_bou , "utf8" ).toString()
+                    norform_pay_buf_001 =(
+                
+                        Buffer.from( norform_str,"utf8" )    
                     );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay_buf_002 =(
+                
+                        Buffer.from( png_bin , "binary" )
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay_buf_003 =(
+                
+                        Buffer.from( fin_bou , "utf8" )
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay = Buffer.concat([
+                    
+                        norform_pay_buf_001
+                    ,   norform_pay_buf_002
+                    ,   norform_pay_buf_003
+                    ]);;
+
+            ////    norform_pay =(
+            ////        Buffer.from( norform_str , "utf8" ).toString()
+            ////    +   Buffer.from(     png_bin , "utf8" ).toString()
+            ////    +   Buffer.from(     fin_bou , "utf8" ).toString()
+            ////    );;
             
 
                     //:----------------:MAKE_UTF8_PAYLOAD://
@@ -10231,7 +10231,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             
                             [a_n]:a_v
                         ,   "Content-Type"   : norform_c_t
-                        ,   "Content-Length" : Buffer.byteLength( norform_pay )
+                /////// ,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }
                     ////////,   json   : false
                     //////body : norform_pay
