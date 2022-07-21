@@ -10179,18 +10179,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //: norform_pay === Uint8Array
                     //: Is worse, corrupts everything.
 
-                    //:INTERNAL_EXPECTATION_FAILED://
+                    //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
                     norform_pay =Buffer.concat([
                         Buffer.from( norform_str , "utf8"   ) 
-
-            /////   +   Buffer.from(     png_bin , "utf8" ).toString()
-            ////    +   Buffer.from(     png_bin , "binary" ).toString()
-            //////  +   Buffer.from(     png_bin , "utf8" ) //:NO:toString()://
-                    ,   Buffer.from(     png_bin , "binary" )
-
-                    //// +   Buffer.from(encodeURIComponent(
-                    ////     png_bin ) , "utf8" )
-
+                    ,   Buffer.from(     png_bin , "utf8"   )
                     ,   Buffer.from(     fin_bou , "utf8"   ) 
                     ]).toString( "utf8" );
             
