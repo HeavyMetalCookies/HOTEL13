@@ -10177,12 +10177,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ////    ]);;
 
                     norform_pay =(
+                    new Uint8Array(
                         Buffer.from( norform_str , "utf8"   ).toString()
 
             ////    +   Buffer.from(     png_bin , "utf8" ).toString()
                     +   Buffer.from(     png_bin , "binary" ).toString()
 
                     +   Buffer.from(     fin_bou , "utf8"   ).toString()
+                    )
                     );;
             
 
