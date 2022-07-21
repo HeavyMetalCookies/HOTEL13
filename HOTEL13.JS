@@ -10119,7 +10119,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     +   "Content-Type" + ":" + spc
                     +""
                     +       "application/octet-stream"
-                    +       "\r\n"
+                    +       "\r\n" //:TWO_BEFORE_CONTENT://
+                    +       "\r\n" //:TWO_BEFORE_CONTENT://
                     //:--------------------------------------://
                     );;
                     //:LOG_CONTENT_TYPE:-----------------://
@@ -10230,7 +10231,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             
                             [a_n]:a_v
                         ,   "Content-Type"   : norform_c_t
-                        ,   "Content-Length" : Buffer.byteLength( norform_pay )
+                        ////,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }
                     ////////,   json   : false
                     //////body : norform_pay
