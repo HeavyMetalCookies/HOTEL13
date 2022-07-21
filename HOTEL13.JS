@@ -10176,8 +10176,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ////    ,   norform_pay_buf_003
             ////    ]);;
 
+                    //: norform_pay === Uint8Array
+                    //: Is worse, corrupts everything.
+
                     norform_pay =(
-                    new Uint8Array(
+                    Buffer.from(
                         Buffer.from( norform_str , "utf8"   ).toString()
 
             ////    +   Buffer.from(     png_bin , "utf8" ).toString()
