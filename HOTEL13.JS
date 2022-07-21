@@ -10003,7 +10003,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:::::::::::::::::::::::::::::::::::://
                     norform_jso ={
                         image       : png_bin
-                    ,   album       :    "AIM"
+                    ,   album       :"TffSOLf"   //:"AIM"://
                     ,    type       :   "file"
                     ,    name       : png_nam  //[namaext]//
                     ,   title       : png_tit  //[namonly]//
