@@ -10225,6 +10225,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         }
                     ////////,   json   : false
                     ,   method : "POST" //:typ://
+                    ,     body : norform_pay
                     };;
 
 
@@ -10265,7 +10266,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     });;
 
                 ////nor_ask.write( png_bin     ); //:<--maybe?
-                    nor_ask.write( norform_pay );
+                ////nor_ask.write( norform_pay ); //:<--WRONG TOO?
                     nor_ask.end();
 
                 ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
