@@ -4,6 +4,14 @@
 
 
 
+
+    //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary"   )
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]);;
+
     //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 
