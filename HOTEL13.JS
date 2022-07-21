@@ -10185,9 +10185,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             /////   +   Buffer.from(     png_bin , "utf8" ).toString()
             ////    +   Buffer.from(     png_bin , "binary" ).toString()
             //////  +   Buffer.from(     png_bin , "utf8" ) //:NO:toString()://
+                    +   Buffer.from(     png_bin , "binary" )
 
-                    +   Buffer.from(encodeURIComponent(
-                        png_bin ) , "utf8" )
+                    //// +   Buffer.from(encodeURIComponent(
+                    ////     png_bin ) , "utf8" )
 
                     +   Buffer.from(     fin_bou , "utf8"   ).toString()
                     );;
