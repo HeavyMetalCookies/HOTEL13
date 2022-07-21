@@ -2,6 +2,13 @@
 
     IUH: Imugr Upload Hell
 
+    //:WE_DONT_SUPPORT_THAT_FILE_TYPE : 7:42 PM ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary" ) 
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]).toString();
+
     //:COMPILE_ERROR : 2022_07_21 : 740PM ://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 
