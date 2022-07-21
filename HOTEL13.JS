@@ -9305,7 +9305,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var l_qs     = require( "node:querystring" );   
         /// l_http   = require( "http"             );
         var l_https  = require( "https"            );
-        var l_buffer = require( "node:buffer"      );
+        /// l_buffer = require( "node:buffer"      );
 
         let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
         var d_jso = { [c_t]: "application/json"         } ;
@@ -10139,12 +10139,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:- - - - - - - - -- - - - - - - - -://
                     norform_pay_buf_001 =(
 
-                        l_buffer.from( norform_str,"utf8" )    
+                        Buffer.from( norform_str,"utf8" )    
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
                     norform_pay_buf_002 =(
 
-                        new l_buffer( png_bin , "binary" )
+                        new Buffer( png_bin , "binary" )
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
                     norform_pay_buf_003 =(
@@ -10152,7 +10152,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         Buffer.from( fin_bou , "utf8" )
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay = l_buffer.concat([
+                    norform_pay = Buffer.concat([
 
                         norform_pay_buf_001
                     ,   norform_pay_buf_002
