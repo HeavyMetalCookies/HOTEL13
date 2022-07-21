@@ -10183,11 +10183,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //: Is worse, corrupts everything.
 
                     //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
-                    norform_pay =Buffer.concat([
-                        Buffer.from( norform_str , "utf8"   ) 
-                    ,   Buffer.from(     png_bin , "binary" ) 
-                    ,   Buffer.from(     fin_bou , "utf8"   ) 
-                    ]);; 
+                    //: norform_pay =Buffer.concat([
+                    //:     Buffer.from( norform_str , "utf8"   ) 
+                    //: ,   Buffer.from(     png_bin , "binary" ) 
+                    //: ,   Buffer.from(     fin_bou , "utf8"   ) 
+                    //: ]);; 
+
+                    norform_pay = "[sfjslfjlsjflsjdfjjjkdk]" ;
             
 
                     //:----------------:MAKE_UTF8_PAYLOAD://
