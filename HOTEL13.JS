@@ -10024,11 +10024,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     norform_c_t =( 
                         "multipart/form-data"     +";"+spc
                     +""
-                                +   "charset=" + double_quotes
-                                +""
-                                +               "utf-8"
-                                +""
-                                +                double_quotes+";"+spc
+                        //:utf8:-------------------------://
+                        +   "charset=" 
+                        +       double_quotes
+                        +""
+                        +       "utf-8"
+                        +""
+                        +       double_quotes+";"+spc
+                        //:-------------------------:utf8://    
                     +""
                     +   "boundary=" + norform_bou
                     );;
