@@ -10016,7 +10016,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:user_defined_boundary:------------://
 
                     norform_bou =(
-                    "stackoverflow_com_questions_3508338" 
+                        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                    //: "stackoverflow_com_questions_3508338" 
                     );;
                     //:------------:user_defined_boundary://
                     //:all_one_line:---------------------://
