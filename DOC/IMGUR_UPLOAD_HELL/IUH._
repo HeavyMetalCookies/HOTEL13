@@ -2,13 +2,17 @@
 
     IUH: Imugr Upload Hell
 
-
-
-
-    //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 ://
+    //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 : 736PM ://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 
-    ,   Buffer.from(     png_bin , "binary"   )
+    ,   Buffer.from(     png_bin , "utf8"   )
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]);;
+
+    //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 : 735PM ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary" )
     ,   Buffer.from(     fin_bou , "utf8"   ) 
     ]);;
 
