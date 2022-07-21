@@ -2,6 +2,32 @@
 
     IUH: Imugr Upload Hell
 
+
+
+    //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 : 7:48 PM ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   new  Buffer(     png_bin , "binary" ) 
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]);; 
+
+    ############################################################
+
+    "INERNAL_EXPECATION_FAILED" <-- Closer To Successs 
+    "WE_DONT_SUPPORT_THAT_FILE_TYPE" <-- Further From Success
+
+    ############################################################
+
+    I have come to the conclusion that status 417 Internal 
+    expectation failed indicates that you do not have 
+    permission to write to the album, 
+    so double check you are sending the correct bearer 
+    token in your header.
+
+    https://stackoverflow.com/questions/65065660
+
+    ############################################################
+
     //:WE_DONT_SUPPORT_THAT_FILE_TYPE : 7:42 PM ://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 
