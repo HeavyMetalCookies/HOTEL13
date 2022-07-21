@@ -10179,6 +10179,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //: norform_pay === Uint8Array
                     //: Is worse, corrupts everything.
 
+                    //:INTERNAL_EXPECTATION_FAILED://
                     norform_pay =Buffer.concat([
                         Buffer.from( norform_str , "utf8"   ) 
 
@@ -10191,7 +10192,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ////     png_bin ) , "utf8" )
 
                     ,   Buffer.from(     fin_bou , "utf8"   ) 
-                    ]);;
+                    ]).toString( "utf8" );
             
 
                     //:----------------:MAKE_UTF8_PAYLOAD://
