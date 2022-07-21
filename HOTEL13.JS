@@ -10238,6 +10238,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   headers  :{
                             
                             [a_n]:a_v
+                        ,   "name" : "IDONTKNOWWHATIAMDOING.png"
                         ,   "Content-Type"   : norform_c_t
                 /////// ,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }

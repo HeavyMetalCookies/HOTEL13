@@ -7,6 +7,13 @@
     //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "utf8"   )
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]).toString( "utf8" );
+
+    //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
     ,   Buffer.from(     png_bin , "binary" )
     ,   Buffer.from(     fin_bou , "utf8"   ) 
     ]).toString( "utf8" );
@@ -17,3 +24,11 @@
     ,   Buffer.from(     png_bin , "binary" )
     ,   Buffer.from(     fin_bou , "utf8"   ) 
     ]);;
+
+
+
+    Internal Expectation Failed :
+
+        1. Maybe File Too Big ?
+
+            https://github.com/ShareX/ShareX/issues/4941
