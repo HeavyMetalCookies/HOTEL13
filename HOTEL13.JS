@@ -10215,22 +10215,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     nor_opt = {
 
-                        hostname : "api.imgur.com"
+                        host     : "api.imgur.com"  //: NOT: "hostname" ? ://
                     ,   path     : "/3/upload"
+                    ,   method   : "POST" //:typ://
                     ,   headers  :{
                             
                             [a_n]:a_v
                         ,   "Content-Type"   : norform_c_t
-                        ,   "Content-Length" : norform_pay.length //:<<<<<<<<<<<<< WRONG
+                        ,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }
                     ////////,   json   : false
-                    ,   method : "POST" //:typ://
                     //////body : norform_pay
                     };;
 
 
                     nor_ask =( 
                     l_https.request(nor_opt,(i_giv)=>{
+
+                        i_giv.setEncoding( "utf8" );
 
                         i_giv.on( "data" , (i_dat)=>{
 
