@@ -10230,8 +10230,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     a_v =( "Client-ID"+ _s_ + cid );
 
                     nor_opt = {
-
-                        host     : "api.imgur.com"  //: "hostname" -OR- "host" ? ://
+                        encoding : "utf-8" //:GUESS:OVERFLOW_29005084
+                    ,   host     : "api.imgur.com"  //: "hostname" -OR- "host" ? ://
                     ,   path     : "/3/upload"
                     ,   method   : "POST" //:typ://
                     ,   headers  :{
