@@ -10171,7 +10171,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   norform_pay_buf_003
                     ]);;
                     //:----------------:MAKE_UTF8_PAYLOAD://
+                    //:LOG_BINARY_PAYLOAD:---------------://
 
+                    console.log( "[BEG:PAYLOAD_BINARY]" );
+                    console.log( "\n\n" );
+                    
+                    console.log( norform_pay );
+    
+                    console.log( "\n"   );
+                    console.log( "[END:PAYLOAD_BINARY]" );
+
+                    //:---------------:LOG_BINARY_PAYLOAD://
 
                     LOGANOK_ADD( "[PAYLOAD_BUILT]" );
                     LOGANOK_NEX();   //:[STEP_009]://
