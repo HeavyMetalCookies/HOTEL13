@@ -10165,18 +10165,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         Buffer.from( fin_bou , "utf8" )
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
-                    norform_pay = Buffer.concat([
-                    
-                        norform_pay_buf_001
-                    ,   norform_pay_buf_002
-                    ,   norform_pay_buf_003
-                    ]);;
 
-            ////    norform_pay =(
-            ////        Buffer.from( norform_str , "utf8" ).toString()
-            ////    +   Buffer.from(     png_bin , "utf8" ).toString()
-            ////    +   Buffer.from(     fin_bou , "utf8" ).toString()
-            ////    );;
+                    
+            ////    norform_pay = Buffer.concat([
+            ////
+            ////        /** Fails : ERROR 417 **/
+            ////    
+            ////        norform_pay_buf_001
+            ////    ,   norform_pay_buf_002
+            ////    ,   norform_pay_buf_003
+            ////    ]);;
+
+                    norform_pay =(
+                        Buffer.from( norform_str , "utf8"   ).toString()
+                    +   Buffer.from(     png_bin , "binary" ).toString()
+                    +   Buffer.from(     fin_bou , "utf8"   ).toString()
+                    );;
             
 
                     //:----------------:MAKE_UTF8_PAYLOAD://
