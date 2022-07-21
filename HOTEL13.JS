@@ -10005,7 +10005,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         image       : png_bin
                     ,   album       :"TffSOLf"   //:"AIM"://
                     ,    type       :   "file"
-                    ,    name       : png_nam  //[namaext]//
+                    ,    name       : png_nam.toLowerCase()  //[namaext]//
                     ,   title       : png_tit  //[namonly]//
                     ,   description :    "DSC"
                     };;
@@ -10283,41 +10283,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     /////    LOGANOK_NEX(); //:[STEP_010]://
                     });;
 
-                ////nor_ask.write( png_bin     ); //:<--maybe?
+                //- nor_ask.write( png_bin     ); WRONG  -//    
                     nor_ask.write( norform_pay ); //:<--We need to write... But what?
                     nor_ask.end();
-
-                ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
-                ///////////////////////////    xhr =( l_http.request( ) ); //:<<<<<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI : FIGURE THIS THE FUCK OUT.
-                ///////////////////////////
-                ///////////////////////////    xhr.open(             typ , url );   
-                ///////////////////////////    xhr.setRequestHeader( a_n , a_v );
-                ///////////////////////////    xhr.setRequestHeader( 
-                ///////////////////////////
-                ///////////////////////////        //:#_TELL_IMGUR_HOW_TO_RESPOND_#://
-                ///////////////////////////        //:#_NOT_OUTGOING_DATA_TYPE_#://
-                ///////////////////////////        "accept" , "application/json"
-                ///////////////////////////
-                ///////////////////////////    );;
-                ///////////////////////////    xhr.setRequestHeader(
-                ///////////////////////////
-                ///////////////////////////        //:#_OUTGOING_DATA_TYPE_#://
-                ///////////////////////////        
-                ///////////////////////////        "Content-Type" 
-                ///////////////////////////    ,   "multipart/form-data"
-                ///////////////////////////    );;
-                ///////////////////////////
-                ///////////////////////////    xhr.send( png_bin /**AKA:  pngfile**/ );      
-                ///////////////////////////                      /**AKA:i_payload**/
-                ///////////////////////////         
-                ///////////////////////////    xhr.onreadystatechange=(evt_xhr)=>{   
-                ///////////////////////////    if( xhr.readyState === 4 ){           
-                ///////////////////////////                                           
-                ///////////////////////////        console.log("[IMGUR_UPP_DONE]");               
-                ///////////////////////////        LOGANOK_ADD( xhr.responseText );       
-                ///////////////////////////        LOGANOK_NEX( "[STEP_010]"     );
-                ///////////////////////////    };;};; 
-
   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
