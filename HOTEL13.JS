@@ -10024,11 +10024,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     norform_c_t =( 
                         "multipart/form-data"     +";"+spc
                     +""
-                    ///// +   "_charset_=" + double_quotes
-                    ///// +""
-                    ///// +               "utf-8"
-                    ///// +""
-                    ///// +                double_quotes+";"+spc
+                                +   "charset=" + double_quotes
+                                +""
+                                +               "utf-8"
+                                +""
+                                +                double_quotes+";"+spc
                     +""
                     +   "boundary=" + norform_bou
                     );;
@@ -10238,7 +10238,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   headers  :{
                             
                             [a_n]:a_v
-                        ,   "name" : "IDONTKNOWWHATIAMDOING.png"
+                ////////,   "name" : "IDONTKNOWWHATIAMDOING.png"
                         ,   "Content-Type"   : norform_c_t
                 /////// ,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }
