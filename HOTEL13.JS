@@ -10144,7 +10144,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:- - - - - - - - -- - - - - - - - -://
                     norform_pay_buf_002 =(
 
-                        new Buffer( png_bin , "binary" )
+                        Buffer.from( png_bin , "binary" )
                     );;
                     //:- - - - - - - - -- - - - - - - - -://
                     norform_pay_buf_003 =(
