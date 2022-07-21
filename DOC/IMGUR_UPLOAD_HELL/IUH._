@@ -2,6 +2,13 @@
 
     IUH: Imugr Upload Hell
 
+    //:COMPILE_ERROR : 2022_07_21 : 740PM ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary" ).toString("utf8")
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]);;
+
     //:INTERNAL_EXPECTATION_FAILED : 2022_07_21 : 736PM ://
     norform_pay =Buffer.concat([
         Buffer.from( norform_str , "utf8"   ) 

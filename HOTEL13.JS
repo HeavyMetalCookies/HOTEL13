@@ -10185,9 +10185,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:WE_DONT_SUPPORT_THAT_FILE_TYPE://
                     norform_pay =Buffer.concat([
                         Buffer.from( norform_str , "utf8"   ) 
-                    ,   Buffer.from(     png_bin , "binary" ).toString("utf8")
+                    ,   Buffer.from(     png_bin , "binary" ) 
                     ,   Buffer.from(     fin_bou , "utf8"   ) 
-                    ]);;
+                    ]).toString();
             
 
                     //:----------------:MAKE_UTF8_PAYLOAD://
