@@ -10181,7 +10181,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     norform_pay =(
                     Buffer.from(
-                        Buffer.from( norform_str , "utf8"   ).toString()
+
+                    +  "[intentionalcorruption]"
+
+                    +   Buffer.from( norform_str , "utf8"   ).toString()
 
                     +   Buffer.from(     png_bin , "utf8" ).toString()
             ////    +   Buffer.from(     png_bin , "binary" ).toString()
