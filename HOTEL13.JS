@@ -10215,7 +10215,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     nor_opt = {
 
-                        host     : "api.imgur.com"  //: NOT: "hostname" ? ://
+                        hostname : "api.imgur.com"  //: "hostname" -OR- "host" ? ://
                     ,   path     : "/3/upload"
                     ,   method   : "POST" //:typ://
                     ,   headers  :{
