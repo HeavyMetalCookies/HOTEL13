@@ -9049,6 +9049,62 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_aimpath );
         };;
     //:============================:COORDHASH_TO_FILENAME://
+    //:AIMPATH_TO_NAME_WITH_EXT:=========================://
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: @aimpath@ : Full Path To Levelpack File      ://
+        //: @namaext@ : Filename with extension string.  ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+
+        const F_HOTEL13_AIMPATH_PNG_NAM = "[WRONG]" ;
+
+        const   F_HOTEL13_AIMPATH_NAMAEXT = function
+        PRIVATE_F_HOTEL13_AIMPATH_NAMAEXT(
+
+            i_aimpath
+        ){
+            if( "string" != typeof i_aimpath ){
+                ERR("[BADINN:AIMPATH_NAMAEXT]");;
+            };;
+
+            var arr =( i_aimpath
+                .split(   "/"   )
+                .filter( n => n ) 
+            );;
+            var o_namaext =( arr[ arr.length - 1 ] );
+            return( o_namaext );
+        };;
+    //:=========================:AIMPATH_TO_NAME_WITH_EXT://
+    //:AIMPATH_TO_NAME_WITHOUT_EXTENSION:===============://
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: @aimpath@ : Full Path To Levelpack File      ://
+        //: @namonly@ : Filename ONLY (no extension)     ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+
+        const F_HOTEL13_AIMPATH_PNG_TIT = "[WRONG]" ;
+        
+        const   F_HOTEL13_AIMPATH_NAMONLY = function
+        PRIVATE_F_HOTEL13_AIMPATH_NAMONLY(
+            
+            i_aimpath
+        ){
+            if( "string" != typeof i_aimpath ){
+                ERR("[BADINN:AIMPATH_NAMONLY]");;
+            };;
+            
+            var namaext =( F_HOTEL13_AIMPATH_NAMAEXT(
+
+                i_aimpath
+            ));;
+            var arr =( namaext
+                .split(   "."   )
+                .filter( n => n )
+            );;
+            var o_namonly =( arr[ 0 ] );
+            return( o_namonly );
+        };;
+    //:================:AIMPATH_TO_NAME_WITHOUT_EXTENSION://
     //:AIMPATH_TO_JUST_THE_FOLDER:=======================://
     
         const   F_HOTEL13_AIMPATH_JTF = function
@@ -9243,12 +9299,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
 
-        /// l_pg    = require( "pg"               );   
-        var l_fs    = require( "fs"               );   
-        var l_url   = require( "url"              );   
-        var l_qs    = require( "node:querystring" );   
-        /// l_http  = require( "http"             );
-        var l_https = require( "https"            );
+        /// l_pg     = require( "pg"               );   
+        var l_fs     = require( "fs"               );   
+        var l_url    = require( "url"              );   
+        var l_qs     = require( "node:querystring" );   
+        /// l_http   = require( "http"             );
+        var l_https  = require( "https"            );
+        var l_buffer = require( "node:buffer"      );
 
         let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
         var d_jso = { [c_t]: "application/json"         } ;
@@ -9690,8 +9747,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ;;;;;;;;;;;
 
                 var  ___2___
-                ,    nor_opt //:@nor_opt@://
-                ,    nor_ask //:@nor_ask@://
+                ,    arr_k_v     //:@arr_k_v@     :--://
+                ,        kv0     //:    @kv0@     :--://
+                ,        kv1     //:    @kv1@     :--://
+                ,        kvi     //:    @kvi@     :--://
+                ,        k_v     //:    @k_v@     :--://
+                ,    norform_jso //:@norform_jso@ :--://
+                ,    norform_jso_key //:@jso_key@    ://
+                ,    norform_jso_val //:@jso_val@    ://
+                ,    norform_bou //:@norform_bou@ :--://
+                ,    norform_c_t //:@norform_c_t@ :--://
+                ,    norform_pay_buf_001        //:--://
+                ,    norform_pay_buf_002        //:--://
+                ,    norform_pay_buf_003        //:--://
+                ,    norform_pay //:@norform_pay@ :--://        
+                ,    nor_opt     //:@nor_opt@     :--://
+                ,    nor_ask     //:@nor_ask@     :--://
                 ;;;;;;;;;;
 
                 var ___
@@ -9715,8 +9786,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   STEP_004  //: #SAVE_TO_HEROKU_HARDDISK#  ://
             ,   STEP_005  //: #ABORT_IF_NO_IMGUR_CRED#   ://
             ,   STEP_006  //: #LOAD_FROM_HEROKU_HARDDISK#://
-            ,   STEP_007  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_008  //: #STOP_TALKING_TO_ME#       ://
+            ,   STEP_007  //: #GET_JUST_FILENAME#        ://
+            ,   STEP_008  //: #BUILD_FORM_DATA#          ://
+            ,   STEP_009  //: #SEND_PNG_TO_IMGUR#        ://
+            ,   STEP_010  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -9892,10 +9965,210 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     });;
                 };;
                 //:==========:#LOAD_FROM_HEROKU_HARDDISK#://
-                //:#SEND_PNG_TO_IMGUR#:==================://
+                //:#GET_JUST_FILENAME#:==================://
                 function STEP_007( i_ignored ){
-    
+
                     ASS( 1 <= o_k , "[@SBH@:STEP_007]" );
+
+                    png_nam =( 
+                    F_HOTEL13_AIMPATH_NAMAEXT( aimpath ));;
+                    png_tit =(
+                    F_HOTEL13_AIMPATH_NAMONLY( aimpath ));;
+
+                    LOGANOK_ADD("[png_nam]:("+png_nam+")");
+                    LOGANOK_ADD("[png_tit]:("+png_tit+")");
+
+                    LOGANOK_NEX(); //:[STEP_008]://
+                };;
+                //:==================:#GET_JUST_FILENAME#://
+                //:#BUILD_FORM_DATA#:====================://
+                function STEP_008( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
+
+                    if( 042 != 0x22 ){ ERR("[OCT42]");};
+                    if( 042 !=   34 ){ ERR("[OCT42]");};    
+                    let double_quotes =( 
+                        String.fromCharCode( 042 ));;
+
+                    let equals_sign =( "=" );
+                    let         spc =( " " );
+
+                    //:::::::::::::::::::::::::::::::::::://
+                    //:                                  ://
+                    //: @norform@ :                      ://
+                    //:     Nodejs_Outgoing_Request      ://
+                    //:     FORM-data                    ://
+                    //:                                  ://
+                    //:::::::::::::::::::::::::::::::::::://
+                    norform_jso ={
+                        image       : png_bin
+                    ,   album       :    "AIM"
+                    ,    type       :   "file"
+                    ,    name       : png_nam  //[namaext]//
+                    ,   title       : png_tit  //[namonly]//
+                    ,   description :    "DSC"
+                    };;
+                    arr_k_v=( Object.entries( norform_jso ) );  
+                        kv0=( 0 );
+                        kv1=( arr_k_v.length - 1 );
+
+                    //:user_defined_boundary:------------://
+
+                    norform_bou =(
+                    "stackoverflow_com_questions_3508338" 
+                    );;
+                    //:------------:user_defined_boundary://
+                    //:all_one_line:---------------------://
+                    norform_c_t =( 
+                        "multipart/form-data" + ";" + "spc"
+                    +""
+                    +   "charset=" + double_quotes
+                    +""
+                    +               "utf-8"
+                    +""
+                    +                double_quotes+";"+spc
+                    +""
+                    +   "boundary=" + norform_bou
+                    );;
+                    //:---------------------:all_one_line://
+
+                    norform_str = "" ;
+                    
+                    for( kvi = kv0 ; kvi <=(kv1); kvi++ ){
+
+                        k_v = arr_k_v[ kvi ];
+                        norform_jso_key = k_v[  0  ];
+                        norform_jso_val = k_v[  1  ];
+
+                        ASS( 
+                           (norform_jso[ norform_jso_key ] )    
+                            ===
+                           (           ( norform_jso_val ) )
+                        ,
+                            "[JUST_BEING_PARANOID_2022]"
+                        );;
+
+                        //:------------------------------://
+                        //: Image Is Binary Data, Must   ://
+                        //: be handled later when we     ://
+                        //: start working with byte data.://
+                        //:------------------------------://
+                        if( "image" == norform_jso_key ){
+
+                            continue;
+                        };;
+
+                        norform_str +=( ""
+                        +   "--" + norform_bou + "\r\n"
+                        +""
+                        +"" 
+                        +   "Content-Disposition:" 
+                        +   spc
+                        +   "form-data;"
+                        +   spc
+                        +   "name"
+                        +       equals_sign
+                        +       double_quotes
+                        +"" ////////////////////////////////////
+                        +""
+                        +           norform_jso_key
+                        +""
+                        +"" ////////////////////////////////////
+                        +       double_quotes
+                        +       ";"+spc+"\r\n\r\n"
+                        +"" ////////////////////////////////////
+                        +""
+                        +           norform_jso_val
+                        +""
+                        +"" ////////////////////////////////////
+                        +       "\r\n"
+                        );;
+                    };;
+
+                    norform_str +=( ""
+                    //:--------------------------------------://
+                    +"" /////////////// BOUNDARY ///////////////
+                    +""
+                    +   "--" + norform_bou + "\r\n"
+                    +""
+                    //:--------------------------------------://
+                    +   "Content-Disposition:" + spc
+                    +""
+                    +       "form-data"  + ";" + spc
+                    +"" 
+                    //:--------------------------------------://
+                    +   "name"
+                    +       equals_sign
+                    +       double_quotes
+                    +""
+                    +       "image"    //:OtherAPIs[ "file" ]://
+                    +""
+                    +       double_quotes + ";" + spc
+                    //:--------------------------------------://
+                    +   "filename"
+                    +       equals_sign
+                    +       double_quotes
+                    +""
+                    +       png_nam                //[namaext]//
+                    +""
+                    +       double_quotes
+                    +       "\r\n"
+                    //:--------------------------------------://
+                    +   "Content-Type" + ":" + spc
+                    +""
+                    +       "application/octet-stream"
+                    +       "\r\n"
+                    //:--------------------------------------://
+                    );;
+                    //:LOG_PAYLOAD_NO_DATA:--------------://
+
+                    console.log( "[BEG:PAYLOAD_NO_DATA]" );
+                    console.log( "\n\n" );
+                    
+                    console.log( norform_str );
+    
+                    console.log( "\n"   );
+                    console.log( "[END:PAYLOAD_NO_DATA]" );
+
+                    //:--------------:LOG_PAYLOAD_NO_DATA://
+                    //:MAKE_UTF8_PAYLOAD:----------------://
+                    let fin_bou =(     //: FinalBoundary ://
+                        "\r\n--" + norform_bou + "--\r\n"
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay_buf_001 =(
+
+                        l_buffer.from( norform_str,"utf8" )    
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay_buf_002 =(
+
+                        new l_buffer( png_bin , "binary" )
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay_buf_003 =(
+
+                        Buffer.from( fin_bou , "utf8" )
+                    );;
+                    //:- - - - - - - - -- - - - - - - - -://
+                    norform_pay = l_buffer.concat([
+
+                        norform_pay_buf_001
+                    ,   norform_pay_buf_002
+                    ,   norform_pay_buf_003
+                    ]);;
+                    //:----------------:MAKE_UTF8_PAYLOAD://
+
+
+                    LOGANOK_ADD( "[PAYLOAD_BUILT]" );
+                    LOGANOK_NEX();   //:[STEP_009]://
+                };;
+                //:======================:BUILD_FORM_DATA://
+                //:#SEND_PNG_TO_IMGUR#:==================://
+                function STEP_009( i_ignored ){
+    
+                    ASS( 1 <= o_k , "[@SBH@:STEP_009]" );
 
                     LOGANOK_ADD( "[THE_HARD_PART]" );
     
@@ -9925,14 +10198,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ,   headers  :{
                             
                             [a_n]:a_v
-                        ,           "type"   : "file"
-                        ,           "album"  : "AIM"
-                        ,   "Content-Type"   : "application/octet-stream"
-                        ,   "Content-Length" : png_bin.length
+                        ,   "Content-Type"   : norform_c_t
+                        ,   "Content-Length" : norform_pay.length //:<<<<<<<<<<<<< WRONG
                         }
-                    ,   json   : false
+                    ////////,   json   : false
                     ,   method : "POST" //:typ://
                     };;
+
 
                     nor_ask =( 
                     l_https.request(nor_opt,(i_giv)=>{
@@ -9956,7 +10228,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         i_giv.on( "close", ()=>{
 
                             LOGANOK_ADD( "[#_NJS_CLOSE_#]" );
-                            LOGANOK_NEX(); //:[STEP_008]://
+                            LOGANOK_NEX(); //:[STEP_010]://
                         });;
                     }));;
                     nor_ask.on( "error" , (i_err)=>{
@@ -9967,10 +10239,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     nor_ask.on( "close" , ( )=>{
 
                     /////    LOGANOK_ADD( "[@A_I_A@]" );
-                    /////    LOGANOK_NEX(); //:[STEP_008]://
+                    /////    LOGANOK_NEX(); //:[STEP_010]://
                     });;
 
-                    nor_ask.write( png_bin ); //:<--maybe?
+                ////nor_ask.write( png_bin     ); //:<--maybe?
+                    nor_ask.write( norform_pay );
                     nor_ask.end();
 
                 ///////////////////////////    //: RTFM[ #_NODEJS_HTTP_REQ_# ] ://
@@ -10001,16 +10274,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ///////////////////////////                                           
                 ///////////////////////////        console.log("[IMGUR_UPP_DONE]");               
                 ///////////////////////////        LOGANOK_ADD( xhr.responseText );       
-                ///////////////////////////        LOGANOK_NEX( "[STEP_008]"     );
+                ///////////////////////////        LOGANOK_NEX( "[STEP_010]"     );
                 ///////////////////////////    };;};; 
 
   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
                 //:#STOP_TALKING_TO_ME#:=================://
-                function STEP_008( i_ignored ){
+                function STEP_010( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_010]" );
 
                     console.log( "[IAG:STOPTALKINGTOME]");    
                     LOGANOK_ADD( "[IAG:STOPTALKINGTOME]");
@@ -13060,6 +13333,44 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         DATE[ 2022_07_19 ]
 
+    #GET_JUST_FILENAME# :
+
+        GET: filename with extension ( png_nam )
+        GET: title of image          ( png_tit )
+
+        DATE[ 2022_07_20 ]
+
+    #BUILD_FORM_DATA# :
+
+        Create the form data payload that imgur expects.
+        We could use a 3rd party library for this, but
+        I want avoid putting things in "package.json"
+        unless they are "really fucking hard" to do.
+
+        Open These Tabs In This Order To Learn More :
+
+        https://stackoverflow.com/questions/49053193
+        https://tanaikech.github.io/2017/07/27 
+                        /multipart-post-request-using-node.js/
+        https://developer.mozilla.org/en-US/docs/Web/HTTP
+                        /Basics_of_HTTP/MIME_types
+        https://community.axway.com/s/question
+            /0D52X00005ziQqVSAU/rest-request-with
+            -contenttype-multipartformdata-header
+            -doesnt-handle-content
+        https://apidocs.imgur.com/#de179b6a-3eda
+            -4406-a8d7-1fb06c17cb9c
+        https://nodejs.org/api/buffer.html
+
+        Wow, that is fucking ugly.. Lets make tinyurls:
+
+            1 : www.tinyurl.com/BFD-URL-001
+            2 : www.tinyurl.com/BFD-URL-002
+            3 : www.tinyurl.com/BFD-URL-003
+            4 : www.tinyurl.com/BFD-URL-004
+            5 : www.tinyurl.com/BFD-URL-005
+            6 : www.tinyurl.com/BFD-URL-006
+
     #SEND_PNG_TO_IMGUR# : 
 
         Pack up .PNG read from hard disk and send it
@@ -13193,6 +13504,46 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ------------------------------------------------
 
     @IAG@ : Imgur_API_Get
+
+    #l_buffer# : A byte buffer object in node.js
+               : Used for low-level API requests.
+               :
+               : https://nodejs.org/api/buffer.html 
+
+    @norform@  : Node Outgoing Request - FORM (data)
+
+    @norform_obj@ : WRONG, use[ norform_jso ]
+    @norform_jso@ : norform - JSON Object
+    @norform_pay@ : norform - PAYLOAD (what gets sent)
+    @norform_bou@ : norform - BOUNDARY string
+    @norform_c_t@ : norform - Content Type
+
+    WRONG[ "mulipart/form-data;"  ]
+      YES[ "multipart/form-data;" ]
+
+    @arr_k_v@ : ARRay - Key_Value , key value pairs.
+        @k_v@ : Key_Value == [ key , val ]
+              : k_v[ 0 ] == KEY
+              : k_v[ 1 ] == VAL
+
+    @arr_m_i@ : Array, maxindex (max valid index)
+
+    @kv0@ : k_v = arr_k_v[ kv0 ] , FIRST INDEX
+    @kv1@ : k_v = arr_k_v[ kv1 ] , LAST  INDEX
+    @kvi@ : k_v = arr_k_v[ kvi ] , INDEX[ kv0 to kv1 ]
+    @k_v@ : Key_Value Pair , k_v = [ key , val ]
+
+    @jso_key@ : JSonObject - KEY
+    @jso_val@ : JSonOBject - VAL
+    @norform_jso_key@ : norform . jso_key
+    @norform_jso_val@ : norform . jso_val
+
+    @norform_pay_buf_001@ : Payload buffer section #1
+    @norform_pay_buf_002@ : Payload buffer section #2
+    @norform_pay_buf_003@ : Payload buffer section #3
+
+    @png_nam@ : USE[ NAMAEXT | NAMONLY ]( nam ==  name )
+    @png_tit@ : USE[ NAMONLY           ]( tit == title )
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
