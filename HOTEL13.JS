@@ -10231,7 +10231,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             
                             [a_n]:a_v
                         ,   "Content-Type"   : norform_c_t
-                        ////,   "Content-Length" : Buffer.byteLength( norform_pay )
+                        ,   "Content-Length" : Buffer.byteLength( norform_pay )
                         }
                     ////////,   json   : false
                     //////body : norform_pay
