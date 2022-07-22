@@ -10723,7 +10723,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             &&  "API"      === h13.m_seg[ 0 ]
             &&  "LISHASH"  === h13.m_seg[ 1 ]
             ){   
-                if( ! ( F_HOTEL13_ICH( h13.m_seg[ 0 ] ){
+                if( ! ( F_HOTEL13_ICH( h13.m_seg[ 0 ] ))){
 
                     h13.m_giv.writeHead( 400 , d_txt );
                     h13.m_giv.write(
