@@ -3984,6 +3984,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:==========================:ADJACENT_ROOMS_LOOKUP_TABLE://
     //:HELPER_FUNCTION_SECTION_I_GUESS:==================://
 
+        const   F_HOTEL13_STR_UPP = function
+        PRIVATE_F_HOTEL13_STR_UPP(
+
+            i_str
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //: An uppercase method that wont explode    ://
+            //: if given invalid input. DATE[2022_07_22] ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            if(!i_str){ i_str = "" ; };
+        
+            var o_str =( String.prototype.toUpperCase.call(
+                i_str
+            ));;
+            return( o_str );
+        };;
+
         const   F_TOG = function 
         PRIVATE_F_TOG(
         
@@ -10871,13 +10891,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var act_p_w =( F_HOTEL13_API_3RD_C_S_IMGUR() );
             var got_p_w =( h13.m_seg[ 1 ] );
 
-            act_p_w =( String.prototype.toUpperCase.call(
-            act_p_w ));;
+            act_p_w =F_HOTEL13_STR_UPP( act_p_w );
+            got_p_w =F_HOTEL13_STR_UPP( got_p_w );
 
-            got_p_w =( String.prototype.toUpperCase.call(
-            got_p_w ));;
-
-            if( act_p_w === got_p_w ){
+            if( 1
+            &&  ( act_p_w === got_p_w )
+            &&  ( act_p_w  != ""      ) //:#PWE_GAURD#://
+            ){
 
                 h13.m_giv.writeHead( 200 , d_txt );
                 h13.m_giv.write("[TODO:BLOW_IT_UP]");
@@ -14214,6 +14234,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @act_p_w@ : ACTual PassWord
     @got_p_w@ : GOTten PassWord
+
+    #PWE_GAURD# : Password must be non-blank , or else
+                : I will always refuse to drop the table.
+                : This extra gaurd exists in case the
+                : file where client secret is read from
+                : accidentially gets [ nuked / erased ].
+                :
+                : PWE   == PassWordExtra
+                : GUARD == GAURD
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
