@@ -10544,8 +10544,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     MSG("[ heroku addons:create         ]");
                     MSG("[ heroku-postgresql:hobby-dev  ]");
                     MSG("[ --version=14                 ]");
-                    MSG("[ --app  "YOURAPPNAME"         ]");
-                    MSG("[ --name "YOURAPPNAME-database"]");
+                    MSG("[ --app  'YOURAPPNAME'         ]");
+                    MSG("[ --name 'YOURAPPNAME-database']");
                     MSG("[******************************]"); 
 
                     ERR( "[sorry!!!]"         );          
