@@ -9589,6 +9589,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_IMGUR_UPLOAD:=============================://
     //:HEROKUA_IMGUR_UPLOAD:=============================://
 
+        const  F_HOTEL13_CID = "[MORE_VERBOSE_THAN_THAT]" ;
+        const  F_HOTEL13_C_S = "[MORE_VERBOSE_THAN_THAT]" ;
+
         const  F_HOTEL13_API_3RD_GET_CID_IMGUR = "[@T_V@]";
         const  F_HOTEL13_API_3RD_GET_C_S_IMGUR = "[@T_V@]";
     
@@ -10861,6 +10864,25 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "DANGER_ZONE_FLIP_THE_TABLE_MY_BITCH_2022"
+        === h13.m_seg[ 0 ]
+        ){
+
+            var act_p_w =( F_HOTEL13_API_3RD_GET_C_S_IMGUR() );
+            var got_p_w =( h13.m_seg[ 1 ] );
+
+            if( act_p_w === got_p_w ){
+
+                h13.m_giv.writeHead( 200 , d_txt );
+                h13.m_giv.write("[TODO:BLOW_IT_UP]");
+                h13.m_giv.end();
+            }else{
+
+                h13.m_giv.writeHead( 404 , d_txt );
+                h13.m_giv.write("[404_PASSWORD_NOT_FOUND]");
+                h13.m_giv.end();
+            };;
+        }else
         if( "API"       == h13.m_seg[ 0 ] ){
 
             if( 1
@@ -14183,6 +14205,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @nod@ : Number_Of_Digits
     @miz@ : Missing_Zeros
+
+    @act_p_w@ : ACTual PassWord
+    @got_p_w@ : GOTten PassWord
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
