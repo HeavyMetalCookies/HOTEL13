@@ -9781,6 +9781,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             //:=====================================:VARS://
             //:NOT_A_PROMISE:============================://
+            //:                                          ://
+            //:     12-step program to storing the       ://
+            //:     image you want persistantly.         ://
+            //:                                          ://
+            //:- - - - - - - - - - -- - - - - - - - - - -://
             var ptrstep =( 0-1 );
             var arrstep =[
                 STEP_001  //: #MAKE_COORD_HASH#          ://
@@ -9790,12 +9795,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   STEP_005  //: #ABORT_IF_NO_IMGUR_CRED#   ://
             ,   STEP_006  //: #LOAD_FROM_HEROKU_HARDDISK#://
             ,   STEP_007  //: #GET_JUST_FILENAME#        ://
-
             ,   STEP_008  //: #GET_IMGUR_BEARER_TOKEN#   ://
-
             ,   STEP_009  //: #BUILD_FORM_DATA#          ://
             ,   STEP_010  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_011  //: #STOP_TALKING_TO_ME#       ://
+            ,   STEP_011  //: #ADD_IMGUR_URL_TO_DATABASE#://
+            ,   STEP_012  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -10321,10 +10325,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
-                //:#STOP_TALKING_TO_ME#:=================://
+                //:#ADD_IMGUR_URL_TO_DATABASE#:----------://
                 function STEP_011( i_ignored ){
+                    
+                    LOGANOK_ADD( "[TODO:DATABASESTORE]" );
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_011]" );
+                    LOGANOK_NEX(); //:[STEP_012]://
+                };;
+                //:----------:#ADD_IMGUR_URL_TO_DATABASE#://
+                //:#STOP_TALKING_TO_ME#:=================://
+                function STEP_012( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_012]" );
 
                     console.log( "[IAG:STOPTALKINGTOME]");    
                     LOGANOK_ADD( "[IAG:STOPTALKINGTOME]");
@@ -10421,6 +10433,150 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:             END_OF_API_SECTION                   ://
     //:                                                  ://
     //:**************************************************://
+    //:HOTEL13_DATABASE.DATA:============================://
+    if( d_hotel13_yesnode ){
+    
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: @d_hotel13_dbu@ : Database URL           ://
+        //: @d_hotel13_cin@ : Connection_INfo        ://
+        //: @d_hotel13_dcp@ : DB_Connection_Pool     ://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+
+        var d_hotel13_dbu = process.env.DATABASE_URL ;       
+        var d_hotel13_cin ={                                 
+            connectionString : d_hotel13_dbu                 
+        ,   ssl : { rejectUnauthorized : false }     
+        };;                                          
+        var d_hotel13_dcp = "[nil][d_hotel13_dcp]"   ;       
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.CreateTableStatement.TABle.HOTEL13  ://   
+        //:::::::::::::::::::::::::::::::::::::::::::://
+
+        var d_cts_tab_hotel13 =( "                   "+n 
+        +"                                           "+n
+        +"  CREATE TABLE IF NOT EXISTS tab_hotel13(  "+n 
+        +"                                           "+n
+        +"       iid SERIAL PRIMARY KEY              "+n 
+        +"                                           "+n
+        +"  ,  col_coohash  VARCHAR( 11 )UNIQUE      "+n 
+        +"                                           "+n
+        +"  ,  col_verni32  INT                      "+n
+        +"                  CHECK( col_verni32 >= 0 )"+n   
+        +"                                           "+n
+        +"  ,  col_png_url  VARCHAR( 32 )            "+n
+        +"  );;                                      "+n           
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
+    };;
+    //:============================:HOTEL13_DATABASE.DATA://
+    //:HOTEL13_DATABASE.FUNC:============================://
+    
+    const   EXECUTO_F_HOTEL13_DATBASE_INI = function
+    PRIVATE_EXECUTO_F_HOTEL13_DATBASE_INI(
+
+            o_k_yes //:ACCEPTOR://
+        ,   wontsay //:REJECTOR://
+    ){
+        //:NICE_OUTLINE:-----------------------------://
+        var ptrstep =( 0-1 );
+        var arrstep =[
+                                              
+            CREATE_CONNECTION_POOL           //: 001 ://
+        ,   TEST_CONNECTION_TO_DATABASE      //: 002 ://
+        ,   CREATE_TABLE_IF_NOT_EXISTS       //: 003 ://
+        ,   RESOLVE_YOUR_PROMISE_AT_THE_END  //: 004 ://
+        ];;
+        function DATBASE_INI_NEX( ){     
+            ptrstep++ ;
+            if( ptrstep <=( arrstep.length -1 )){
+                arrstep[ ptrstep ]( );
+            };;
+        };;
+        //:-----------------------------:NICE_OUTLINE://
+        //:FOUR_STEP_PROGRAM:------------------------://
+
+        DATBASE_INI_NEX();
+
+        function 
+        CREATE_CONNECTION_POOL(){
+
+            d_hotel13_dcp =( 
+                new( l_pg.Pool )( d_hotel13_cin ));    
+                                                    
+            d_hotel13_dcp
+            .on( "error" , ( i_err , i_cli ) =>{ 
+                                                    
+                ERR( "[oh_nooo_bro_2022_07_21]" );        
+            });;      
+
+            DATBASE_INI_NEX();
+        };;
+        function 
+        TEST_CONNECTION_TO_DATABASE(){
+
+            d_hotel13_dcp
+            .connect( ( i_err , i_cli , i_don )=>{   
+                                                          
+                if( i_err ){                              
+                    LOG( "[d_dbu...]" , d_dbu );          
+                    LOG( "[error_is]" , i_err );          
+                    ERR( "[sorry!!!]"         );          
+                };;                                       
+                /** Assert Client ( @i_cli@ ) Exists **/ 
+                if( ( i_cli ) ){ LOG( "[cli_exists]" ); }; 
+                if(!( i_cli ) ){ ERR( "[cli_notcli]" ); }; 
+                                                          
+                i_don();//: @don@ : PGSQL Done Function:// 
+                DATBASE_INI_NEX();
+            });;  
+        };;
+        function 
+        CREATE_TABLE_IF_NOT_EXISTS(){
+
+            d_hotel13_dcp                               
+            .query( d_cts_tab_hotel13 )                 
+            .then( function( i_res ){                   
+                                                        
+                LOG( "[cts_o_k:tbm]" , i_tbm );  
+                DATBASE_INI_NEX();
+            })                                          
+            .catch( function( i_err ){                  
+                                                        
+                LOG( "[cts_err:tbm]" , i_tbm );         
+                ERR( "[cts_err:tbm]"         );         
+            })                                          
+            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                          
+        };; 
+        function
+        RESOLVE_YOUR_PROMISE_AT_THE_END(){
+
+            o_k_yes( "[DATABASE_SETUP_DONE]" );
+        };;
+        //:------------------------:FOUR_STEP_PROGRAM://
+
+    };;
+    const   F_HOTEL13_DATBASE_INI = function
+    PRIVATE_F_HOTEL13_DATBASE_INI(
+       
+        /** No arguments **/
+    ){
+        var o_promise = new Promise(  
+
+            EXECUTO_F_HOTEL13_DATBASE_INI
+
+        );;return( o_promise );
+    };;
+    //:============================:HOTEL13_DATABASE.FUNC://
+    //:HOTEL13_SERVER_INIT_ON_STARTUP:===================://
+    if( d_hotel13_yesnode ){
+
+        F_HOTEL13_DATBASE_INI()
+        .then(( i_saywhat )=>{
+
+            console.log("[DONE:F_HOTEL13_DATBASE_INI]");
+        });;
+    };;
+    //:===================:HOTEL13_SERVER_INIT_ON_STARTUP://
     //:HOTEL13_SERVER:===================================://
     require("http").createServer(( 
 
@@ -13442,6 +13598,27 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         anticipate, because I've never done this before.
 
         DATE[ 2022_07_19 ]TIME[ 509 ]PM
+
+    #ADD_IMGUR_URL_TO_DATABASE# :
+
+        We need to store the imgur hashes in a database.
+        I don't know how the fuck to reliably collect
+        the images via the API, and this makes us
+        less platform dependant anyways.
+
+        DATABASE__TABLE : tab_hotel13 
+
+        DATABASE_COLUMN : col_coohash : EX[ 101_202_303 ]
+        DATABASE_COLUMN : col_verni32 : VERsion_Number_I32
+        DATABASE_COLUMN : col_png_url : .PNG file's URL.
+
+        col_verni32 needs to be an integer because looking
+        it up, will be a pain in the ass to try and
+        lexographically short a version string like:
+        "000.000.001" , though when serializing we 
+        could store it like that.
+
+        DATE[ 2022_07_21 ]TIME[ 1059 ]PM
 
     #STOP_TALKING_TO_ME# :
 
