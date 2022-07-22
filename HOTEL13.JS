@@ -9744,6 +9744,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ,   aimpath  //:EX: ./PNG/../AIM..PNG://
                 ,   hascred  //:@hascred@ :Imgur_Cred://
                 ,   png_bin  //:@png_bin@ :PNGBINARY ://
+                ,   png_nam  //:@png_nam@ :PNG_NAME  ://
+                ,   png_tit  //:@png_tit@ :PNG_TITLE ://
+                ,   bearask  //:@bearask@ :----------://
                 ;;;;;;;;;;;
 
                 var  ___2___
@@ -9991,7 +9994,48 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     LOGANOK_ADD("[TODO:GetBearerToken]");
 
-                    LOGANOK_NEX(); //:[STEP_009]://
+                    let bearask_cid =( 
+                        F_HOTEL13_API_3RD_CID_IMGUR() );;
+                    let bearask_c_s =(
+                        F_HOTEL13_API_3RD_C_S_IMGUR() );;
+
+                    bearask =(
+                    l_https.request({
+
+                            encoding : "utf-8"  
+                        ,   host     : "api.imgur.com"   
+                        ,   path     : "/oauth2/authorize"
+                        ,   method   : "GET" //:typ://
+                        ,   headers  :{
+                            
+                            "response_type" : "token"
+                        ,   "client_id"     :  bearask_cid
+                            
+                        }
+                    },(i_giv)=>{
+
+                        i_giv.on( "data" , (i_dat)=>{
+
+                            LOGANOK_ADD( "[BEARASK]"
+                                         +i_dat  );;
+                        });;
+                        i_giv.on( "error" , (i_err)=>{
+
+                            LOGANOK_ERR();o_k=(0);
+                        });;
+                        i_giv.on( "close" , ()=>{
+
+                            LOGANOK_NEX(); //:[STEP_009]://
+                        });;
+
+                    }));;
+                    bearask.on( "error" , (i_err)=>{
+    
+                        LOGANOK_ADD( "[i_err]"+i_err );
+                        LOGANOK_ERR();
+                    });;
+                /// bearask.write( xxxxxxxxxxx );
+                    bearask.end();
                 };;
                 //:=============:#GET_IMGUR_BEARER_TOKEN#://
                 //:#BUILD_FORM_DATA#:====================://
@@ -13378,6 +13422,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         is because we do not have access rights.
 
+        EVENTUALLY : We want to save access token
+                   : in[ ./TXT/ACCESS_TOKEN.TXT ]
+                   :
+                   : So we don't have to authenticate
+                   : every time. Put timestamp on
+                   : token file because expires
+                   : in 24 hours.
+
+        EVENTUALLY : Put access tokens in database
+                   : and associate them with
+                   : different users.
+
         DATE[ 2022_07_21 ]TIME[ 0836 ]PM
 
     #BUILD_FORM_DATA# :
@@ -13584,6 +13640,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
     @png_nam@ : USE[ NAMAEXT | NAMONLY ]( nam ==  name )
     @png_tit@ : USE[ NAMONLY           ]( tit == title )
+
+    @bearask@ : BEAR-ASK , an outgoing request from
+              : HOTEL13.JS server to IMGUR asking
+              : for a "bearer token"
+              : DATE[ 2022_07_21 ]TIME[ 0855PM ]
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
