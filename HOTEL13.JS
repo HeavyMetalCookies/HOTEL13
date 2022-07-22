@@ -9992,58 +9992,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
 
-                /////////    LOGANOK_ADD("[TODO:GetBearerToken]");
-                /////////
-                /////////    let bearask_cid =( 
-                /////////        F_HOTEL13_API_3RD_CID_IMGUR() );;
-                /////////    let bearask_c_s =(
-                /////////        F_HOTEL13_API_3RD_C_S_IMGUR() );;
-                /////////
-                /////////    bearask =(
-                /////////    l_https.request({
-                /////////
-                /////////            encoding : "utf-8"  
-                /////////        ,   host     : "api.imgur.com"   
-                /////////        ,   path     :(""
-                /////////
-                /////////            +   "/oauth2/authorize"
-                /////////            +   "?"
-                /////////            +   "client_id="+bearask_cid
-                /////////            +   "&"
-                /////////            +   "response_type=token"
-                /////////        )
-                /////////        ,   method   : "GET" //:typ://
-                /////////        ,   headers  : {}
-                /////////    },(i_giv)=>{
-                /////////
-                /////////        i_giv.on( "data" , (i_dat)=>{
-                /////////
-                /////////            LOGANOK_ADD( "[BEARASK]"
-                /////////                         +i_dat  );;
-                /////////        });;
-                /////////        i_giv.on( "error" , (i_err)=>{
-                /////////
-                /////////            LOGANOK_ERR();o_k=(0);
-                /////////        });;
-                /////////        i_giv.on( "close" , ()=>{
-                /////////
-                /////////            LOGANOK_NEX(); //:[STEP_009]://
-                /////////        });;
-                /////////
-                /////////    }));;
-                /////////    bearask.on( "error" , (i_err)=>{
-                /////////
-                /////////        LOGANOK_ADD( "[i_err]"+i_err );
-                /////////        LOGANOK_ERR();
-                /////////    });;
-                //////////// bearask.write( xxxxxxxxxxx );
-                /////////    bearask.end();
-
-                    //: What about just adding client ://
-                    //: secret into request?
+                    //:::::::::::::::::::::::::::::::::::://
+                    //:                                  ://
+                    //:  You don't want to do this.      ://
+                    //:  But we __DO__ need to setup     ://
+                    //:  a database and put imgur        ://
+                    //:  hashes into it. We could use    ://
+                    //:  file-system, but that gets      ://
+                    //:  erased every time we            ://
+                    //:  re-deploy.                      ://
+                    //:::::::::::::::::::::::::::::::::::://
 
                     LOGANOK_NEX();
-
                 };;
                 //:=============:#GET_IMGUR_BEARER_TOKEN#://
                 //:#BUILD_FORM_DATA#:====================://
@@ -13653,6 +13613,38 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
               : HOTEL13.JS server to IMGUR asking
               : for a "bearer token"
               : DATE[ 2022_07_21 ]TIME[ 0855PM ]
+
+    #IMGUR_UPLOAD_SUCCESS# :
+    
+        I think I know what it is... Your APPLICATION
+        and your ACCOUNT are distinct. Your application
+        does __NOT__ have access to your ACCOUNT's 
+        albums. Trying to use your application to upload
+        to your ACCOUNT is an access violation.
+
+        DATE[ 2022_07_21 ]TIME[ 0935 ]AM
+
+        I ANSWERED THIS:
+
+            https://stackoverflow.com/questions/69041370
+
+        CORRECT :
+
+            payload=Buffer.concat([
+                Buffer.from( str_form_data      , "utf8"   ) 
+            ,   Buffer.from( png_binary_file    , "binary" ) 
+            ,   Buffer.from( final_form_boundary, "utf8"   ) 
+            ]);;
+
+        WRONG: Will Corrupt Your PNG BINARY:
+
+            payload=Buffer.concat([
+                Buffer.from( str_form_data      , "utf8"   )     
+            ,   Buffer.from( png_binary_file    , "binary" )  
+            ,   Buffer.from( final_form_boundary, "utf8"   ) 
+            ]).toString( "utf8" );
+
+        DATE[ 2022_07_21 ]TIME[ 09:55 ]AM
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
