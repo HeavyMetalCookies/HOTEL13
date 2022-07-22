@@ -10868,7 +10868,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         === h13.m_seg[ 0 ]
         ){
 
-            var act_p_w =( F_HOTEL13_API_3RD_GET_C_S_IMGUR() );
+            var act_p_w =( F_HOTEL13_API_3RD_C_S_IMGUR() );
             var got_p_w =( h13.m_seg[ 1 ] );
 
             if( act_p_w === got_p_w ){
