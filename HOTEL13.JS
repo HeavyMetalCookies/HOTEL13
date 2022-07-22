@@ -10463,7 +10463,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     })                                          
                     .catch( function( i_err ){                  
                                               
-                        MSG("[FAIL:STEP_ELEVEN]");      
+                        MSG("[FAIL:STEP_ELEVEN]");   
+                        LOG("[i_err]",i_err );
                         LOGANOK_ERR(); o_k=( 0 );       
                     }) 
                     ;;;;;;;;;;;;;;;;;;;;;;;;;;;
