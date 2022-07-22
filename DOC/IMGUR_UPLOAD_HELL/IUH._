@@ -4,6 +4,43 @@
 
 
 
+//:GETTING_CLOSE:============================================://
+
+    These are identical, but the one where we convert
+    to string says "unsupported file type". So...
+    I am thinking the .toString() is corrupting the
+    data. Even though we can't read the data in
+    powershell because it is JUST NUMBERS , it is
+    actually CLOSER TO CORRECT in the 2nd example.
+
+    We need to try to upload to our album with
+    postman. I did a postman upload, but think it
+    probably uploaded anonymously.
+
+
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary" ) 
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]).toString( "utf8" );
+
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   new  Buffer(     png_bin , "binary" ) 
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]);; 
+
+ 
+
+//:============================================:GETTING_CLOSE://
+
+    //:WE_DONT_SUPPORT_THAT_FILE_TYPE: 2022_07_21 : 758PM ://
+    norform_pay =Buffer.concat([
+        Buffer.from( norform_str , "utf8"   ) 
+    ,   Buffer.from(     png_bin , "binary" ) 
+    ,   Buffer.from(     fin_bou , "utf8"   ) 
+    ]).toString( "utf8" );
+
     //:BAD_REQUEST: 2022_07_21 : 755 PM ://
     norform_pay = "[sfjslfjlsjflsjdfjjjkdk]" ;
 

@@ -9787,9 +9787,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   STEP_005  //: #ABORT_IF_NO_IMGUR_CRED#   ://
             ,   STEP_006  //: #LOAD_FROM_HEROKU_HARDDISK#://
             ,   STEP_007  //: #GET_JUST_FILENAME#        ://
-            ,   STEP_008  //: #BUILD_FORM_DATA#          ://
-            ,   STEP_009  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_010  //: #STOP_TALKING_TO_ME#       ://
+
+            ,   STEP_008  //: #GET_IMGUR_BEARER_TOKEN#   ://
+
+            ,   STEP_009  //: #BUILD_FORM_DATA#          ://
+            ,   STEP_010  //: #SEND_PNG_TO_IMGUR#        ://
+            ,   STEP_011  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -9981,10 +9984,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     LOGANOK_NEX(); //:[STEP_008]://
                 };;
                 //:==================:#GET_JUST_FILENAME#://
-                //:#BUILD_FORM_DATA#:====================://
+                //:#GET_IMGUR_BEARER_TOKEN#:=============://
                 function STEP_008( i_ignored ){
 
                     ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
+
+                    LOGANOK_ADD("[TODO:GetBearerToken]");
+
+                    LOGANOK_NEX(); //:[STEP_009]://
+                };;
+                //:=============:#GET_IMGUR_BEARER_TOKEN#://
+                //:#BUILD_FORM_DATA#:====================://
+                function STEP_009( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_009]" );
 
                     if( 042 != 0x22 ){ ERR("[OCT42]");};
                     if( 042 !=   34 ){ ERR("[OCT42]");};    
@@ -10187,7 +10200,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         Buffer.from( norform_str , "utf8"   ) 
                     ,   Buffer.from(     png_bin , "binary" ) 
                     ,   Buffer.from(     fin_bou , "utf8"   ) 
-                    ]).toString( "utf8" );
+                    ]);;
 
  
             
@@ -10206,13 +10219,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:---------------:LOG_BINARY_PAYLOAD://
 
                     LOGANOK_ADD( "[PAYLOAD_BUILT]" );
-                    LOGANOK_NEX();   //:[STEP_009]://
+                    LOGANOK_NEX();   //:[STEP_010]://
                 };;
                 //:======================:BUILD_FORM_DATA://
                 //:#SEND_PNG_TO_IMGUR#:==================://
-                function STEP_009( i_ignored ){
+                function STEP_010( i_ignored ){
     
-                    ASS( 1 <= o_k , "[@SBH@:STEP_009]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_010]" );
 
                     LOGANOK_ADD( "[THE_HARD_PART]" );
     
@@ -10276,7 +10289,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         i_giv.on( "close", ()=>{
 
                             LOGANOK_ADD( "[#_NJS_CLOSE_#]" );
-                            LOGANOK_NEX(); //:[STEP_010]://
+                            LOGANOK_NEX(); //:[STEP_011]://
                         });;
                     }));;
                     nor_ask.on( "error" , (i_err)=>{
@@ -10287,7 +10300,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     nor_ask.on( "close" , ( )=>{
 
                     /////    LOGANOK_ADD( "[@A_I_A@]" );
-                    /////    LOGANOK_NEX(); //:[STEP_010]://
+                    /////    LOGANOK_NEX(); //:[STEP_011]://
                     });;
 
                 //- nor_ask.write( png_bin     ); WRONG  -//    
@@ -10297,9 +10310,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
                 //:#STOP_TALKING_TO_ME#:=================://
-                function STEP_010( i_ignored ){
+                function STEP_011( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_010]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_011]" );
 
                     console.log( "[IAG:STOPTALKINGTOME]");    
                     LOGANOK_ADD( "[IAG:STOPTALKINGTOME]");
@@ -13355,6 +13368,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         GET: title of image          ( png_tit )
 
         DATE[ 2022_07_20 ]
+
+    #GET_IMGUR_BEARER_TOKEN# :
+
+        We need a bearer token. I think the mysterious
+
+        INTERNAL_EXPECTATION_FAILED 
+        internal expectation failed
+
+        is because we do not have access rights.
+
+        DATE[ 2022_07_21 ]TIME[ 0836 ]PM
 
     #BUILD_FORM_DATA# :
 
