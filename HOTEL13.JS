@@ -10871,6 +10871,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var act_p_w =( F_HOTEL13_API_3RD_C_S_IMGUR() );
             var got_p_w =( h13.m_seg[ 1 ] );
 
+            act_p_w =( String.prototype.toUpperCase.call(
+            act_p_w );;
+
+            got_p_w =( String.prototype.toUpperCase.call(
+            got_p_w );;
+
             if( act_p_w === got_p_w ){
 
                 h13.m_giv.writeHead( 200 , d_txt );
