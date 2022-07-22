@@ -10565,13 +10565,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             .query( d_cts_tab_hotel13 )                 
             .then( function( i_res ){                   
                                                         
-                LOG( "[cts_o_k:tbm]" , i_tbm );  
+                MSG("[DONE:CREATE_TABLE_IF_NOT_EXISTS]");
                 DATBASE_INI_NEX();
             })                                          
             .catch( function( i_err ){                  
                                                         
-                LOG( "[cts_err:tbm]" , i_tbm );         
-                ERR( "[cts_err:tbm]"         );         
+                MSG("[FAIL:CREATE_TABLE_IF_NOT_EXISTS]");      
+                ERR("[FAIL:CREATE_TABLE_IF_NOT_EXISTS]");            
             })                                          
             ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;                                          
         };; 
