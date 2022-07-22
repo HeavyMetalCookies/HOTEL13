@@ -10535,7 +10535,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             .connect( ( i_err , i_cli , i_don )=>{   
                                                           
                 if( i_err ){                              
-                    LOG( "[d_dbu...]" , d_dbu );          
+                    LOG( "[d_hotel13_dbu...]" 
+                         , d_hotel13_dbu      );;        
                     LOG( "[error_is]" , i_err );          
                     ERR( "[sorry!!!]"         );          
                 };;                                       
