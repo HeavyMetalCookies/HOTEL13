@@ -10953,7 +10953,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
     
 
-        sfjlsfjlksjdflsdj
+        sfjlsfjlksjdflsdj //:< < < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI!
 
         o_k_yes( o_scatpng );
     });;
@@ -10968,7 +10968,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
     
     
-        sljdflsjflkjsdl
+        sljdflsjflkjsdl //:< < < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI!
 
         o_k_yes( o_scatpng );
     });;
