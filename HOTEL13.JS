@@ -10551,6 +10551,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
 
+        var d_sel_tab_hotel13 =( "                   "+n
+        +"                                           "+n
+        +"      /** SELECT TOP 10 **/                "+n
+        +"                                           "+n
+        +"      SELECT *                             "+n
+        +"      FROM     tab_hotel13                 "+n
+        +"      WHERE    col_coohash = '[i_coohash]' "+n
+        +"      ORDER BY col_verni32 ASC             "+n
+        +"      LIMIT 10                             "+n
+        +"      ;;                                   "+n
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  
+
 
     };;
     //:============================:HOTEL13_DATABASE.DATA://
@@ -10706,6 +10719,39 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         if( "API"       == h13.m_seg[ 0 ] ){
 
+            if( 1
+            &&  "API"      === h13.m_seg[ 0 ]
+            &&  "LISHASH"  === h13.m_seg[ 1 ]
+            ){   
+                if( ! ( F_HOTEL13_ICH( h13.m_seg[ 0 ] ){
+
+                    h13.m_giv.writeHead( 400 , d_txt );
+                    h13.m_giv.write(
+                        "[Please_Supply:COOHASH]"
+                    );;
+                    h13.m_giv.end();
+                }else{
+
+                    d_hotel13_dcp                               
+                    .query( d_sel_tab_hotel13 )                 
+                    .then( function( i_res ){ 
+                           
+                        h13.m_giv.writeHead(200,d_jso);
+                        h13.m_giv.write(
+                            JSON.stringify( 
+                                i_res.rows
+                            )
+                        );;
+                        h13.m_giv.end();
+                    })                                          
+                    .catch( function( i_err ){                  
+                                              
+                        MSG("[FAIL:LISHASH]");      
+                        ERR("[FAIL:LISHASH]");            
+                    }) 
+                    ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                };;
+            }else
             if( 1
             &&  "API"             === h13.m_seg[ 0 ]
             &&  "3RD"             === h13.m_seg[ 1 ]
