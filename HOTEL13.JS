@@ -14075,6 +14075,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
               : The version number of a given 
               : [ levelpack / hotel ]
 
+    #CLIENT_REQUEST_INTERRUPTED# :
+
+        https://aim-hotel13.herokuapp.com/001_001_003
+
+        FIGURE OUT WHY THE FUCK WHY ?
+
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
 
