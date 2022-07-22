@@ -11517,10 +11517,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      <!DOCTYPE HTML><head>              '
             +'      <meta charset="utf-8"><title>      '
             ////////////////////////////////////////////
+            ////       #_GENERATE_PAGE_NAME_#        ///
+            ////////////////////////////////////////////
             +` [AIM_XYZ]( ${s_x} , ${s_y} , ${s_z} )   `
             ////////////////////////////////////////////
             +'      </title>                           '
             +'          <script                        '
+            ////////////////////////////////////////////
+            ////       #_GENERATE_FILE_NAME_#        ///
             ////////////////////////////////////////////
             +`src ="../../AIM_${s_x}_${s_y}_${s_z}.JS" `
             ///////"../../AIM___001____002____003_.JS"//
@@ -11695,8 +11699,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     generate file name | gen file name | gen-file-name
     create-file-name | create_file_name | createfilename
     genfilename | generatefilename
+    #_GENERATE_PAGE_TITLE_# 
     -----------------------------------------------------------
-    TRY[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ]
+    SEE[ #_GENERATE_FILE_NAME_# | #_GENERATE_PAGE_NAME_# ]
     -----------------------------------------------------------
 
     -----------------------------------------------------------
@@ -11708,8 +11713,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     genaimfile | gen_aim_file | gen-aim-file
     gen aim file
     -----------------------------------------------------------
-    TRY[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ]
+    SEE[ #_GENERATE_FILE_NAME_# | #_GENERATE_PAGE_NAME_# ]
     -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    generate page title | generate-page-title | make-page-name
+    generatepagetitle | gen page title | genpagetitle
+    gen_page_title | page title generation | make_page_name
+    page_title_generation | pagetitlegeneration | makepagename
+    -----------------------------------------------------------
+    SEE[ #_GENERATE_FILE_NAME_# | #_GENERATE_PAGE_NAME_# ]
+    -----------------------------------------------------------
+
 
 
 *** *********** ******************************** TAG_SECTION ***
