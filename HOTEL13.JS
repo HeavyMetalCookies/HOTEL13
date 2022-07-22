@@ -8856,6 +8856,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:                                              ://
         //::::::::::::::::::::::::::::::::::::::::::[ATF]://
 
+        var strict_mode_failure =( 0 );
+
         var o_obj ={ laxcoma:"[HACK]"
 
         ,   m_has : 0
@@ -8881,7 +8883,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         var arr = ( i_str.split( "_" ).filter(n=>n) );
         var dex ;
+        if( arr.length != 3 ){
+
+            strict_mode_failure =( 1 );
+        };;
         if( arr.length < 3 ){
+
+            strict_mode_failure =( 1 );
+
             var  d_0 =( arr.length );
             var  d_1 =(   3-1      );
             for( dex = d_0 ; dex <= d_1 ; dex++ ){
@@ -8889,6 +8898,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 arr[ dex ]=( "000" );
             };;
         };;
+        for( dex = 0 ; dex <=( 3-1 ) ; dex++ ){
+
+            if( 3 != ( arr[ dex ] ).length ){
+
+                strict_mode_failure =( 1 );
+            };;
+        };;
+
         var num_obj =new Array( 3 );
             num_obj[ 0 ] = F_HOTEL13_TRYATOI( arr[ 0 ] );
             num_obj[ 1 ] = F_HOTEL13_TRYATOI( arr[ 1 ] );
@@ -8915,6 +8932,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             o_obj.m_i_x =(    num_obj[0].m_i32 );
             o_obj.m_i_y =(    num_obj[1].m_i32 );
             o_obj.m_i_z =(    num_obj[2].m_i32 );
+        };;
+
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //:                                          ://        
+        //:  #_LOOSE_RULE_CAUSE_FUCKING_PROBLEMS_#   ://        
+        //:                                          ://        
+        //:::::::::::::::::::::::::::::::::::::::::::://        
+        if( strict_mode_failure >= 1 ){
+
+            o_obj.m_has =( 0 );
         };;
 
         return( o_obj );
@@ -13991,6 +14019,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ]).toString( "utf8" );
 
         DATE[ 2022_07_21 ]TIME[ 09:55 ]AM
+
+    #_LOOSE_RULE_CAUSE_FUCKING_PROBLEMS_# :
+
+        Interpreting "1_1_1" === "001_001_001"
+
+        Causes a lot of fucking problems with database
+        records. We added more code to make "1_1_1"
+        be detected as an INVALID coordinate hash.
+
+        Coordinate hashes need 3 segments.
+        Each segment being 3 digits.
+
+        DATE[ 2022_07_22 ]TIME[ 0257 ]AM
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
