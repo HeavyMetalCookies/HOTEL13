@@ -10460,6 +10460,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 .col_verni32
                             );;
                             verni32=( lastver + 1 );
+
+                            MSG("[WE_GOT_ROWS!!!!!]");
+                            LOG("[lastver]",lastver );
+                            LOG("[verni32]",verni32 );
+                            LOG("[coohash]",coohash );
+                            LOG("[sql_cmd]",sql_cmd );
                         }else
                         if( i_res.rows.length ===0 ){
 
