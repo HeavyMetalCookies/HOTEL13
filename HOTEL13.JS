@@ -9992,52 +9992,58 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     ASS( 1 <= o_k , "[@SBH@:STEP_008]" );
 
-                    LOGANOK_ADD("[TODO:GetBearerToken]");
+                /////////    LOGANOK_ADD("[TODO:GetBearerToken]");
+                /////////
+                /////////    let bearask_cid =( 
+                /////////        F_HOTEL13_API_3RD_CID_IMGUR() );;
+                /////////    let bearask_c_s =(
+                /////////        F_HOTEL13_API_3RD_C_S_IMGUR() );;
+                /////////
+                /////////    bearask =(
+                /////////    l_https.request({
+                /////////
+                /////////            encoding : "utf-8"  
+                /////////        ,   host     : "api.imgur.com"   
+                /////////        ,   path     :(""
+                /////////
+                /////////            +   "/oauth2/authorize"
+                /////////            +   "?"
+                /////////            +   "client_id="+bearask_cid
+                /////////            +   "&"
+                /////////            +   "response_type=token"
+                /////////        )
+                /////////        ,   method   : "GET" //:typ://
+                /////////        ,   headers  : {}
+                /////////    },(i_giv)=>{
+                /////////
+                /////////        i_giv.on( "data" , (i_dat)=>{
+                /////////
+                /////////            LOGANOK_ADD( "[BEARASK]"
+                /////////                         +i_dat  );;
+                /////////        });;
+                /////////        i_giv.on( "error" , (i_err)=>{
+                /////////
+                /////////            LOGANOK_ERR();o_k=(0);
+                /////////        });;
+                /////////        i_giv.on( "close" , ()=>{
+                /////////
+                /////////            LOGANOK_NEX(); //:[STEP_009]://
+                /////////        });;
+                /////////
+                /////////    }));;
+                /////////    bearask.on( "error" , (i_err)=>{
+                /////////
+                /////////        LOGANOK_ADD( "[i_err]"+i_err );
+                /////////        LOGANOK_ERR();
+                /////////    });;
+                //////////// bearask.write( xxxxxxxxxxx );
+                /////////    bearask.end();
 
-                    let bearask_cid =( 
-                        F_HOTEL13_API_3RD_CID_IMGUR() );;
-                    let bearask_c_s =(
-                        F_HOTEL13_API_3RD_C_S_IMGUR() );;
+                    //: What about just adding client ://
+                    //: secret into request?
 
-                    bearask =(
-                    l_https.request({
+                    LOGANOK_NEX();
 
-                            encoding : "utf-8"  
-                        ,   host     : "api.imgur.com"   
-                        ,   path     :(""
-    
-                            +   "/oauth2/authorize"
-                            +   "?"
-                            +   "client_id="+bearask_cid
-                            +   "&"
-                            +   "response_type=token"
-                        )
-                        ,   method   : "GET" //:typ://
-                        ,   headers  : {}
-                    },(i_giv)=>{
-
-                        i_giv.on( "data" , (i_dat)=>{
-
-                            LOGANOK_ADD( "[BEARASK]"
-                                         +i_dat  );;
-                        });;
-                        i_giv.on( "error" , (i_err)=>{
-
-                            LOGANOK_ERR();o_k=(0);
-                        });;
-                        i_giv.on( "close" , ()=>{
-
-                            LOGANOK_NEX(); //:[STEP_009]://
-                        });;
-
-                    }));;
-                    bearask.on( "error" , (i_err)=>{
-    
-                        LOGANOK_ADD( "[i_err]"+i_err );
-                        LOGANOK_ERR();
-                    });;
-                /// bearask.write( xxxxxxxxxxx );
-                    bearask.end();
                 };;
                 //:=============:#GET_IMGUR_BEARER_TOKEN#://
                 //:#BUILD_FORM_DATA#:====================://
@@ -10062,7 +10068,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:::::::::::::::::::::::::::::::::::://
                     norform_jso ={
                         image       : png_bin
-                    ,   album       :"TffSOLf"   //:"AIM"://
+                ////,   album       :"TffSOLf"   //:"AIM"://
                     ,    type       :   "file"
                     ,    name       : png_nam.toLowerCase()  //[namaext]//
                     ,   title       : png_tit  //[namonly]//
