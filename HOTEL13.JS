@@ -10460,6 +10460,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 .col_verni32
                             );;
                             verni32=( lastver + 1 );
+                        }else
+                        if( i_res.rows.length ===0 ){
+
+                            /**DoNothing**/
+                        }else{
+                            ERR("[WTF_WHERE_ROWS?]");
                         };;
 
                         LOGANOK_NEX(); //:[STEP_012]://
