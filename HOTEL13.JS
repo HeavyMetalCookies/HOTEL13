@@ -10729,7 +10729,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +"      LIMIT 10                             "+n
         +"      ;;                                   "+n
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.DropTableStatement.HOTEL13 :::::::::://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        var d_dts_tab_hotel13 =( "                    +n   
+        +"                                            +n   
+        +"  DROP TABLE IF EXISTS tab_hotel13 ;        +n   
+        +"                                            +n   
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+      
 
 
     };;
@@ -10898,10 +10907,24 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             &&  ( act_p_w === got_p_w )
             &&  ( act_p_w  != ""      ) //:#PWE_GAURD#://
             ){
+                d_hotel13_dcp
+                .query( d_dts_tab_hotel13 )
+                .then( function( i_res ){
 
-                h13.m_giv.writeHead( 200 , d_txt );
-                h13.m_giv.write("[TODO:BLOW_IT_UP]");
-                h13.m_giv.end();
+                    h13.m_giv.writeHead( 200 , d_txt );
+                    h13.m_giv.write("[DATABASE_EXPLODED]");
+                    h13.m_giv.end();
+                })
+                .catch( function( i_err ){
+
+                    LOG( "[OH_FUCK_WHAT_NOW?]");
+                    LOG( "[i_err]" , i_err    );
+
+                    h13.m_giv.writeHead( 200 , d_txt );
+                    h13.m_giv.write("[SQL_ERROR_OHNO]");
+                    h13.m_giv.end();
+                })
+                ;;;;;;;;;;;;;;;;;;;;;;;;;;;
             }else{
 
                 h13.m_giv.writeHead( 404 , d_txt );
