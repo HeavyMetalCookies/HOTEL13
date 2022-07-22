@@ -9826,6 +9826,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ;;;;;;;
 
                 var _____________
+                ,   verni32        //:@verni32@       ://
                 ,   got_jso        //:Got_JSON_OBJ   ://
                 ,   png_url_imgur
                 ;;;;;;;;;;;;;;;;;
@@ -9835,9 +9836,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             //:=====================================:VARS://
             //:NOT_A_PROMISE:============================://
             //:                                          ://
-            //:     12-step program to storing the       ://
+            //:     13-step program to storing the       ://
             //:     image you want persistantly.         ://
-            //:     #12_STEP_PROGRAM#                    ://
+            //:     #13_STEP_PROGRAM#                    ://
             //:                                          ://
             //:- - - - - - - - - - -- - - - - - - - - - -://
             var ptrstep =( 0-1 );
@@ -9852,8 +9853,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   STEP_008  //: #GET_IMGUR_BEARER_TOKEN#   ://
             ,   STEP_009  //: #BUILD_FORM_DATA#          ://
             ,   STEP_010  //: #SEND_PNG_TO_IMGUR#        ://
-            ,   STEP_011  //: #ADD_IMGUR_URL_TO_DATABASE#://
-            ,   STEP_012  //: #STOP_TALKING_TO_ME#       ://
+            ,   STEP_011  //: #GET_MOST_RECENT_LEVELPACK#://
+            ,   STEP_012  //: #ADD_IMGUR_URL_TO_DATABASE#://
+            ,   STEP_013  //: #STOP_TALKING_TO_ME#       ://
             ];;
             function LOGANOK_NEX( ){     //:AKA[ NEXT() ]://
                 ptrstep++ ;
@@ -10388,15 +10390,48 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
   
                 };;
                 //:==================:#SEND_PNG_TO_IMGUR#://
-                //:#ADD_IMGUR_URL_TO_DATABASE#:----------://
+                //:#GET_MOST_RECENT_LEVELPACK#:----------://    
                 function STEP_011( i_ignored ){
+
+                        verni32 =( 0 /**ZERO**/       );
+                    let lastver =( 0 - 1 /**NEGONE**/ );
+                    let coohash =( str_xyz );
+                    let sql_cmd =( d_sel_tab_hotel13 );
+                        sql_cmd = sql_cmd.replaceAll(
+
+                            "[i_coohash]" , coohash
+                        );;
+                    d_hotel13_dcp                               
+                    .query( sql_cmd )                 
+                    .then( function( i_res ){ 
+                           
+                        lastver =( 
+                            i_res.rows[ 0 ] 
+                            .col_verni32
+                        );;
+                        verni32=( lastver + 1 );
+
+                        LOGANOK_NEX(); //:[STEP_012]://
+                    })                                          
+                    .catch( function( i_err ){                  
+                                              
+                        MSG("[FAIL:STEP_ELEVEN]");      
+                        LOGANOK_ERR(); o_k=( 0 );       
+                    }) 
+                    ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                };;
+                //:----------:#GET_MOST_RECENT_LEVELPACK#://
+                //:#ADD_IMGUR_URL_TO_DATABASE#:----------://
+                function STEP_012( i_ignored ){
+
+                    ASS( 1 <= o_k , "[@SBH@:STEP_012]" );
                     
                     LOGANOK_ADD( "[BEG:DATASTORE]");
 
-                    var coohash =( str_xyz           );
-                    var verni32 =(    0              );
-                    var png_url =( png_url_imgur     );
-                    var sql_cmd =( d_iis_tab_hotel13 );
+                    let coohash =( str_xyz           );
+                    /// verni32 :( ALREADY SET       );
+                    let png_url =( png_url_imgur     );
+                    let sql_cmd =( d_iis_tab_hotel13 );
 
                     sql_cmd = sql_cmd.replaceAll(
 
@@ -10417,26 +10452,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     .query( sql_cmd )                 
                     .then( function( i_res ){ 
                                                    
-                        MSG("[DONE:STEP_011]");
+                        MSG("[DONE:STEP_012]");
                         LOGANOK_ADD( "[END:DATASTORE]");
-                        LOGANOK_NEX(); //:[STEP_012]://
+                        LOGANOK_NEX(); //:[STEP_013]://
                     })                                          
                     .catch( function( i_err ){                  
                                               
-                        MSG("[BEG:FAIL_STEP_011]"); 
+                        MSG("[BEG:FAIL_STEP_012]"); 
   
                         LOG("[i_err]" , i_err );
 
-                        MSG("[END:FAIL_STEP_011]");   
+                        MSG("[END:FAIL_STEP_012]");   
                         LOGANOK_END();           
                     })                                          
                     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
                 };;
                 //:----------:#ADD_IMGUR_URL_TO_DATABASE#://
                 //:#STOP_TALKING_TO_ME#:=================://
-                function STEP_012( i_ignored ){
+                function STEP_013( i_ignored ){
 
-                    ASS( 1 <= o_k , "[@SBH@:STEP_012]" );
+                    ASS( 1 <= o_k , "[@SBH@:STEP_013]" );
 
                     console.log( "[IAG:STOPTALKINGTOME]");    
                     LOGANOK_ADD( "[IAG:STOPTALKINGTOME]");
@@ -10601,7 +10636,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +"      SELECT *                             "+n
         +"      FROM     tab_hotel13                 "+n
         +"      WHERE    col_coohash = '[i_coohash]' "+n
-        +"      ORDER BY col_verni32 ASC             "+n
+        +"      ORDER BY col_verni32 DESC            "+n
         +"      LIMIT 10                             "+n
         +"      ;;                                   "+n
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -14032,6 +14067,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         Each segment being 3 digits.
 
         DATE[ 2022_07_22 ]TIME[ 0257 ]AM
+
+    #12_STEP_PROGRAM# : It's a 13 step program now.
+                      : SEE[ 13_STEP_PROGRAM ]
+
+    @verni32@ : VERsion_Number_Int32
+              : The version number of a given 
+              : [ levelpack / hotel ]
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
