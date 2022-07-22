@@ -9790,6 +9790,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 ;;;;;;;
 
                 var _____________
+                ,   got_jso        //:Got_JSON_OBJ   ://
                 ,   png_url_imgur
                 ;;;;;;;;;;;;;;;;;
 
@@ -10309,7 +10310,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
 
-                            png_url_imgur=( i_dat.data.link );
+                            got_jso = JSON.parse( i_dat );
+
+                            png_url_imgur=(
+                                got_jso.data.link );;
+
                             if(!png_url_imgur){
                                 MSG("[IMGUR_DOWN_MAYBE]");
                             };;
