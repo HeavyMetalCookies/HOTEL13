@@ -6013,6 +6013,43 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_str );
         };;
 
+        const   F_HOTEL13_I32_S3D = function
+        PRIVATE_F_HOTEL13_I32_S3D(
+
+            i_i32
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://    
+            //:  Convert Integer to 3 Digit String       ://
+            //:  ( I32 ) ==============> ( S3D )         ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            if( "number" != typeof i_i32 ){
+                ERR("[INVALID_INPUT:I32_S3D]");
+            };;
+            if( i_i32 < 0 || i_i32 >(512-1) ){
+                LOG("[NUMBER_OUTSIDE_OF_ALLOWED_BOUNDS]");
+                i_i32 =( 606 /** 606 : SIXOHSIX**/ );
+                /** ************************************ **/
+                /** Don't crash server if someone enters **/    
+                /** out of bound value in address bar,   **/
+                /** but change number to "606" to signal **/
+                /** the nature of the problem.           **/
+                /** ************************************ **/
+            };;
+            var o_str =( ""+i_i32+"" );
+            var   nod =( o_str.length ); //:@nod@://
+            var   miz =( 3 - nod      ); //:@miz@://
+
+            while( 1 == 1 ){
+                o_str =( "0" + o_str );
+                miz -- ;
+                if( miz <= 0 ){ break; };
+            };;
+            return( o_str );
+        };;
+
         const   F_HOTEL13_XYZ_PNGNAME = function
         PRIVATE_F_HOTEL13_XYZ_PNGNAME(
 
@@ -8932,6 +8969,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             o_obj.m_i_x =(    num_obj[0].m_i32 );
             o_obj.m_i_y =(    num_obj[1].m_i32 );
             o_obj.m_i_z =(    num_obj[2].m_i32 );
+
+            if( 0
+            ||  "number" != typeof o_obj.m_i_x 
+            ||  "number" != typeof o_obj.m_i_y 
+            ||  "number" != typeof o_obj.m_i_z 
+            ){
+                ERR("[WTF_NAN_FROM_ICH]");
+            };;
         };;
 
 
@@ -11365,6 +11410,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 w_z =( obj_xyz.m_i_z );
             };;
 
+            var s_x = F_HOTEL13_I32_S3D( w_x );
+            var s_y = F_HOTEL13_I32_S3D( w_y );
+            var s_z = F_HOTEL13_I32_S3D( w_z );
+
             var h13_webpage =( "" //:----------------://
             +'      <!DOCTYPE HTML><head>              '
             +'      <meta charset="utf-8"><title>      '
@@ -11494,7 +11543,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     [ number-padding | number padding | number_padding        ]
     -----------------------------------------------------------
     F_HOTEL13_PAD_STR  ( ( "1" ) ===> ( "001" ) )
-    F_HOTEL13_I32_STR  ( (  1  ) ===> ( "001" ) )
+    F_HOTEL13_I32_STR  ( (  1  ) ===> ( "001" ) ) (  old  )
+    F_HOTEL13_I32_S3D  ( (  1  ) ===> ( "001" ) ) ( !NEW! )
     -----------------------------------------------------------
 
     -----------------------------------------------------------
@@ -14109,6 +14159,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         WANT[  AIM_001_001_001_JS ]
     
         DATE[ 2022_07_22 ]TIME[ 0406 ]AM
+
+    @nod@ : Number_Of_Digits
+    @miz@ : Missing_Zeros
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
