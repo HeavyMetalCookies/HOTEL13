@@ -10004,14 +10004,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                             encoding : "utf-8"  
                         ,   host     : "api.imgur.com"   
-                        ,   path     : "/oauth2/authorize"
+                        ,   path     :(""
+    
+                            +   "/oauth2/authorize"
+                            +   "?"
+                            +   "client_id="+bearask_cid
+                            +   "&"
+                            +   "response_type=token"
+                        )
                         ,   method   : "GET" //:typ://
-                        ,   headers  :{
-                            
-                            "response_type" : "token"
-                        ,   "client_id"     :  bearask_cid
-                            
-                        }
+                        ,   headers  : {}
                     },(i_giv)=>{
 
                         i_giv.on( "data" , (i_dat)=>{
