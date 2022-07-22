@@ -10537,7 +10537,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 if( i_err ){                              
                     LOG( "[d_hotel13_dbu...]" 
                          , d_hotel13_dbu      );;        
-                    LOG( "[error_is]" , i_err );          
+                    LOG( "[error_is]" , i_err );   
+
+                    MSG("[******************************]"); 
+                    MSG("[ FIX::::::::::::::::::::::::::]");
+                    MSG("[ heroku addons:create         ]");
+                    MSG("[ heroku-postgresql:hobby-dev  ]");
+                    MSG("[ --version=14                 ]");
+                    MSG("[ --app  "YOURAPPNAME"         ]");
+                    MSG("[ --name "YOURAPPNAME-database"]");
+                    MSG("[******************************]"); 
+
                     ERR( "[sorry!!!]"         );          
                 };;                                       
                 /** Assert Client ( @i_cli@ ) Exists **/ 
