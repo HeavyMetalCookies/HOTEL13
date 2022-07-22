@@ -9789,11 +9789,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 /// xhr
                 ;;;;;;;
 
+                var _____________
+                ,   png_url_imgur
+                ;;;;;;;;;;;;;;;;;
+
+                png_url_imgur =( "[nil][png_url_imgur]" );
+
             //:=====================================:VARS://
             //:NOT_A_PROMISE:============================://
             //:                                          ://
             //:     12-step program to storing the       ://
             //:     image you want persistantly.         ://
+            //:     #12_STEP_PROGRAM#                    ://
             //:                                          ://
             //:- - - - - - - - - - -- - - - - - - - - - -://
             var ptrstep =( 0-1 );
@@ -10301,6 +10308,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             console.log(
                                 "[IMGURDATA]:"+i_dat
                             );;
+
+                            png_url_imgur=( i_dat.link );
+                            if(!png_url_imgur){
+                                MSG("[IMGUR_DOWN_MAYBE]");
+                            };;
                         });;
                         i_giv.on( "error",(i_err)=>{
 
@@ -10338,9 +10350,42 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 //:#ADD_IMGUR_URL_TO_DATABASE#:----------://
                 function STEP_011( i_ignored ){
                     
-                    LOGANOK_ADD( "[TODO:DATABASESTORE]" );
+                    LOGANOK_ADD( "[BEG:DATASTORE]");
 
-                    LOGANOK_NEX(); //:[STEP_012]://
+                    var coohash =( str_xyz           );
+                    var verni32 =(    0              );
+                    var png_url =( png_url_imgur     );
+                    var sql_cmd =( d_iis_tab_hotel13 );
+
+                    sql_cmd = sql_cmd.replaceAll(
+
+                        "[i_coohash]" ,""+coohash+""
+                    );;
+                    sql_cmd = sql_cmd.replaceAll(
+
+                        "[i_verni32]" ,""+verni32+""
+                    );;
+                    sql_cmd = sql_cmd.replaceAll(
+
+                        "[i_png_url]" ,""+png_url+""
+                    );;
+
+                    LOG( "[sql_cmd]" , sql_cmd );
+
+                    d_hotel13_dcp                               
+                    .query( sql_cmd )                 
+                    .then( function( i_res ){ 
+                                                   
+                        MSG("[DONE:STEP_011]");
+                        LOGANOK_ADD( "[END:DATASTORE]");
+                        LOGANOK_NEX(); //:[STEP_012]://
+                    })                                          
+                    .catch( function( i_err ){                  
+                                              
+                        MSG("[FAIL:STEP_011]");      
+                        ERR("[FAIL:STEP_011]");            
+                    })                                          
+                    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
                 };;
                 //:----------:#ADD_IMGUR_URL_TO_DATABASE#://
                 //:#STOP_TALKING_TO_ME#:=================://
