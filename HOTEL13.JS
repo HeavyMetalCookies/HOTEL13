@@ -11369,7 +11369,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             +'      <!DOCTYPE HTML><head>              '
             +'      <meta charset="utf-8"><title>      '
             ////////////////////////////////////////////
-            +`     [AIM]( ${w_x} , ${w_y} , ${w_z} )   `
+            +` [AIM_XYZ]( ${w_x} , ${w_y} , ${w_z} )   `
             ////////////////////////////////////////////
             +'      </title>                           '
             +'          <script                        '
@@ -11539,6 +11539,27 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     [ str xyz to coordhash | xyz_to_hash | xyzstr to hash     ]
     -----------------------------------------------------------
     F_HOTEL13_STR_COOHASH
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    generate-file-name | generate_file_name | gen_file_name
+    generate file name | gen file name | gen-file-name
+    create-file-name | create_file_name | createfilename
+    genfilename | generatefilename
+    -----------------------------------------------------------
+    TRY[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ]
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    generate aim js file | generate_aim_js_file |
+    generate-aim-js-file | generateaimjsfile
+    aim.js | aim_js | aimjs | aim_1_1_1.js
+    aim_001_001_001.js | AIM_001_001_001.JS
+    aim_001_001_003.js | AIM_001_001_003.JS
+    genaimfile | gen_aim_file | gen-aim-file
+    gen aim file
+    -----------------------------------------------------------
+    TRY[ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ]
     -----------------------------------------------------------
 
 
@@ -14080,6 +14101,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         https://aim-hotel13.herokuapp.com/001_001_003
 
         FIGURE OUT WHY THE FUCK WHY ?
+
+        Our re-factor has broken the file name
+        generation that we doing zero-padding.
+
+        HAVE[  AIM_1_1_1.JS       ]
+        WANT[  AIM_001_001_001_JS ]
+    
+        DATE[ 2022_07_22 ]TIME[ 0406 ]AM
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
