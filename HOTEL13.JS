@@ -10453,11 +10453,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     .query( sql_cmd )                 
                     .then( function( i_res ){ 
                            
-                        lastver =( 
-                            i_res.rows[ 0 ] 
-                            .col_verni32
-                        );;
-                        verni32=( lastver + 1 );
+                        if( i_res.rows.length >= 1 ){
+
+                            lastver =( 
+                                i_res.rows[ 0 ] 
+                                .col_verni32
+                            );;
+                            verni32=( lastver + 1 );
+                        };;
 
                         LOGANOK_NEX(); //:[STEP_012]://
                     })                                          
