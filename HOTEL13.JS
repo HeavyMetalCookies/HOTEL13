@@ -10435,6 +10435,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:**************************************************://
     //:HOTEL13_DATABASE.DATA:============================://
     if( d_hotel13_yesnode ){
+
+        let n =( "\n" ); //:TempNewlineMacro://
     
         //:::::::::::::::::::::::::::::::::::::::::::://
         //: @d_hotel13_dbu@ : Database URL           ://
