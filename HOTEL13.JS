@@ -9299,6 +9299,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:HOTEL13_SERVER_MODE:##############################://
     if( d_hotel13_h13node ){
 
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: l_pg : Add This To Your[ package.json ]      ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        /** ******************************************** ***    
+            { 
+                "//" : "KANJICODER_NEEDS_A_DATABASE"
+            ,   "dependencies": { "pg" : "8.7.3" } 
+            }
+        *** ******************************************** **/
+ 
         var l_pg     = require( "pg"               );   
         var l_fs     = require( "fs"               );   
         var l_url    = require( "url"              );   
