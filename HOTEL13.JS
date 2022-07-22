@@ -10554,6 +10554,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +"                                           "+n  
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
 
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.Select.TABle.HOTEL13 :::::::::::::::://
+        //:::::::::::::::::::::::::::::::::::::::::::://
 
         var d_sel_tab_hotel13 =( "                   "+n
         +"                                           "+n
@@ -10727,7 +10730,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             &&  "API"      === h13.m_seg[ 0 ]
             &&  "LISHASH"  === h13.m_seg[ 1 ]
             ){   
-                if( ! ( F_HOTEL13_ICH( h13.m_seg[ 0 ] ))){
+                let coohash =( h13.m_seg[ 2 ] );
+                let sql_cmd =( d_sel_tab_hotel13 );
+                    sql_cmd = sql_cmd.replaceAll(
+
+                        "[i_coohash]" , coohash
+                    );;
+
+                if( ! ( F_HOTEL13_ICH( coohash ))){
 
                     h13.m_giv.writeHead( 400 , d_txt );
                     h13.m_giv.write(
@@ -10737,7 +10747,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }else{
 
                     d_hotel13_dcp                               
-                    .query( d_sel_tab_hotel13 )                 
+                    .query( sql_cmd )                 
                     .then( function( i_res ){ 
                            
                         h13.m_giv.writeHead(200,d_jso);
