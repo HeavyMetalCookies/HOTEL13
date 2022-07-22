@@ -6332,7 +6332,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var job = JSON.parse( i_saywhat );
                 if( job.m_o_k <= 0 ){
 
-                    ERR("[MY_SERVER_HATES_YOUR_GUTS]");  
+                    LOG( "[job]" , job );
+                    YEL("[d_pngpath_upp]:",d_pngpath_upp);
+                    ERR("[MY_SERVER_HATES_YOUR_GUTS]"); 
+                    
                 };;
     
                 o_k_yes( i_saywhat );
