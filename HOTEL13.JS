@@ -10479,6 +10479,29 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +"  ,  col_png_url  VARCHAR( 32 )            "+n
         +"  );;                                      "+n           
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.InsertIntoStatement.TABle.HOTEL13   ://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+                 
+        var d_iis_tab_hotel13 =( "                   "+n   
+        +"                                           "+n  
+        +"      INSERT INTO tab_hotel13              "+n  
+        +"      (                                    "+n
+        +"            col_coohash                    "+n
+        +"        ,   col_verni32                    "+n
+        +"        ,   col_png_url                    "+n
+        +"      )VALUES                              "+n
+        +"      (                                    "+n
+        +"            '[i_coohash]'                  "+n
+        +"        ,    [i_verni32]                   "+n
+        +"        ,   '[i_png_url]'                  "+n
+        +"      );;                                  "+n    
+        +"                                           "+n  
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
+
+
+
     };;
     //:============================:HOTEL13_DATABASE.DATA://
     //:HOTEL13_DATABASE.FUNC:============================://
@@ -10551,7 +10574,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     ERR( "[sorry!!!]"         );          
                 };;                                       
                 /** Assert Client ( @i_cli@ ) Exists **/ 
-                if( ( i_cli ) ){ LOG( "[cli_exists]" ); }; 
+                if( ( i_cli ) ){ MSG( "[cli_exists]" ); }; 
                 if(!( i_cli ) ){ ERR( "[cli_notcli]" ); }; 
                                                           
                 i_don();//: @don@ : PGSQL Done Function:// 
