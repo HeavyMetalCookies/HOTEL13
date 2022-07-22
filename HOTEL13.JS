@@ -10463,7 +10463,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         }else
                         if( i_res.rows.length ===0 ){
 
-                            /**DoNothing**/
+                            MSG("[NO_FUCKING_ROWS?]");
+                            LOG("[coohash]",coohash );
+                            LOG("[sql_cmd]",sql_cmd );
                         }else{
                             ERR("[WTF_WHERE_ROWS?]");
                         };;
