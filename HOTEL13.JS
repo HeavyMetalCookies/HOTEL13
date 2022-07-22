@@ -8945,12 +8945,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //: A bit wasteful of a way to do this , but     ://
         //: but this is javascript land.                 ://
         //:::::::::::::::::::::::::::::::::::::::::::::::://
-        var obj_xyz = F_HOTEL13_ICH_TRY( i_str );
-        if( obj_xyz.m_has ){
+        if( !( "string" === typeof i_str )){
 
-            o_yes =( 1 );
+            o_yes=( 0 );
+        }else
+        if( "" === i_str ){
+
+            o_yes=( 0 );
+        }else{
+            var obj_xyz = F_HOTEL13_ICH_TRY( i_str );
+            if( obj_xyz.m_has ){
+
+                o_yes =( 1 );
+            };;
         };;
-
         return( o_yes );
     };;
     //:===================:TRY_TO_INTERPRET_AS_COORD_HASH://
