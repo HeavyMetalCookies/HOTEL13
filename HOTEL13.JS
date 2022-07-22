@@ -7716,41 +7716,60 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 +    ".PNG"
                 );;
 
-                F_HOTEL13_XHR_GET_PNG( d_pngpath_dow )
-                .then( ( xhr_ask )=>{
+                let coohash =(
+                    ( s_x + "_" + s_y + "_" + s_z )
+                );;
 
-                    nsh_yehotel =( xhr_ask.getResponseHeader( 
-                   "NSH_YEHOTEL" 
-                    ));;
-                    if( "[YES]" == nsh_yehotel ){
+                F_HOTEL13_CAS_COOHASH_SCATPNG( coohash )
+                .then( ( i_scatpng )=>{
 
-                        d_pngfile = xhr_ask.response ;     
-    
-                        console.log( "[MAYBE_GOT_PNG?]" );          
-                        console.log( 
-                            "[d_pngfile]" 
-                        ,     d_pngfile  
+                    if( i_scatpng.m_has ){
+
+                        F_HOTEL13_HERSYNC_LOD_PNG(
+
+                            i_scatpng.m_png
                         );;
-
-                        //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-
-                        //: TODOHERE: F_HOTEL13_API_3RD_DOW_IMGUR
-
-                        F_HOTEL13_HERSYNC_LOD_PNG( d_pngfile );
-                    }else
-                    if( "[NOT]" == nsh_yehotel ){
-
-                        //:::::::::::::::::::::::::::::::://
-                        //: Do nothing. No Levelpack     ://
-                        //: Do nothign. No Hotel         ://
-                        //:::::::::::::::::::::::::::::::://    
                     }else{
-
-                        LOG("[nsh_yehotel]",nsh_yehotel);
-                        MSG("[EXPECTED:YES:ORR:NOT]");
-                        ERR("[EXPECTED:YES:ORR:NOT]");
+                        /** Do nothing. No .PNG to load. **/
                     };;
                 });;
+
+            ///////////// F_HOTEL13_XHR_GET_PNG( d_pngpath_dow )
+            /////////    F_HOTEL13_CAS_COOHASH_SCATPNG( coohash )
+            /////////    .then( ( xhr_ask )=>{
+            /////////
+            /////////        nsh_yehotel =( xhr_ask.getResponseHeader( 
+            /////////       "NSH_YEHOTEL" 
+            /////////        ));;
+            /////////        if( "[YES]" == nsh_yehotel ){
+            /////////
+            /////////            d_pngfile = xhr_ask.response ;     
+            /////////
+            /////////            console.log( "[MAYBE_GOT_PNG?]" );          
+            /////////            console.log( 
+            /////////                "[d_pngfile]" 
+            /////////            ,     d_pngfile  
+            /////////            );;
+            /////////
+            /////////            //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
+            /////////
+            /////////            //: TODOHERE: F_HOTEL13_API_3RD_DOW_IMGUR
+            /////////
+            /////////            F_HOTEL13_HERSYNC_LOD_PNG( d_pngfile );
+            /////////        }else
+            /////////        if( "[NOT]" == nsh_yehotel ){
+            /////////
+            /////////            //:::::::::::::::::::::::::::::::://
+            /////////            //: Do nothing. No Levelpack     ://
+            /////////            //: Do nothign. No Hotel         ://
+            /////////            //:::::::::::::::::::::::::::::::://    
+            /////////        }else{
+            /////////
+            /////////            LOG("[nsh_yehotel]",nsh_yehotel);
+            /////////            MSG("[EXPECTED:YES:ORR:NOT]");
+            /////////            ERR("[EXPECTED:YES:ORR:NOT]");
+            /////////        };;
+            /////////    });;
             //:------------------------:Initiate_Download://
         //:----------------:Try_To_Load_Level_From_Server://
 
@@ -9512,6 +9531,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     ,   i_wmc_i_y //:Input: WorldMapCoord . Y  : : : : : ://
     ,   i_wmc_i_z //:Input: WorldMapCoord . Z  : : : : : ://    
     ){
+        //:[ATF]:----------------------------------------://
+        //:                                              ://
+        //:  If the titlebar says something like :       ://
+        //:  -------------------------------------       ://
+        //:  [AIM_XYZ]( 001 , 001 , 001 )                ://
+        //:  -------------------------------------       ://
+        //:  The javascript running on that page was     ://
+        //:  probably generated from here.               ://
+        //:  -------------------------------------       ://
+        //:  EX: AIM_001_001_001.JS                      ://
+        //:  -------------------------------------       ://
+        //:                                              ://
+        //:----------------------------------------:[ATF]://
 
         l_fs.readFile("./HOTEL13.JS",(i_err,i_cof)=>{     
         
@@ -10874,6 +10906,78 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         });;
     };;
     //:===================:HOTEL13_SERVER_INIT_ON_STARTUP://
+    //:HOTEL13_CAS_TYPES:================================://
+
+        const   F_HOTEL13_NEW_SCATPNG = function
+        PRIVATE_F_HOTEL13_NEW_SCATPNG(
+
+            /** VOID **/
+        ){
+            var o_scatpng ={
+            ,       m_png  : null   //: .PNG Binary File ://
+            ,       m_has  : (0)    //:  HAS .PNG File?  ://
+            };;
+            Object.seal( o_scatpng );
+            return(      o_scatpng );
+        };;
+    //:================================:HOTEL13_CAS_TYPES://
+    //:HOTEL13_CAS_FUNCTIONS:============================://
+    //:                                                  ://
+    //:  CAS : Client_And_Server                         ://
+    //:      : Designed to tightly couple a function     ://
+    //:      : that is available on both the client      ://
+    //:      : and server, to make routing less          ://
+    //:      : of hard-to-follow spaghetti code.         ://
+    //:                                                  ://
+    //:      : Since it is called "Client_And_Server"    ://
+    //:      : The "Client" section should always        ://
+    //:      : come first.                               ://
+    //:                                                  ://
+    //:      : TAG[ #_CLIENT_AND_SERVER_# | #CAS# ]      ://
+    //:                                                  ://
+    //:hotel13_cas_functions:- - - - - - ---- - - - - - -://
+
+    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
+    ////////////////////////////////////////////////////////
+    const   F_HOTEL13_CAS_COOHASH_SCATPNG = function
+    PRIVATE_F_HOTEL13_CAS_COOHASH_SCATPNG(
+    ////////////////////////////////////////////////////////
+
+        i_coohash
+
+    ////////////////////////////////////////////////////////
+    ){if(      d_hotel13_notnode   ){ //////////////////////
+    ////////////////////////////////////////////////////////
+    return new Promise( function( o_k_yes , wontsay ){
+
+        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
+    
+
+        sfjlsfjlksjdflsdj
+
+        o_k_yes( o_scatpng );
+    });;
+    ////////////////////////////////////////////////////////
+    }else if(  d_hotel13_yesnode   ){ //////////////////////
+    ////////////////////////////////////////////////////////
+    return new Promise( function( o_k_yes , wontsay ){
+
+
+
+    
+        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
+    
+    
+        sljdflsjflkjsdl
+
+        o_k_yes( o_scatpng );
+    });;
+    ////////////////////////////////////////////////////////
+    }else{ ERR("[NEITHER_ENVIRONMENT]"); };;};;
+    ////////////////////////////////////////////////////////
+    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
+
+    //:============================:HOTEL13_CAS_FUNCTIONS://
     //:HOTEL13_SERVER:===================================://
     require("http").createServer(( 
 
@@ -10900,6 +11004,15 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "F_HOTEL13_CAS_COOHASH_SCATPNG" == h13.m_seg[ 0 ] ){
+             F_HOTEL13_CAS_COOHASH_SCATPNG(    h13.m_seg[ 1 ] )
+            .then( (i_png_bin)=>{
+
+                h13.m_giv.writeHead( 200 , d_png );
+                h13.m_giv.write( i_png_bin );
+                h13.m_giv.end();
+            });;
+        }else
         if( "DANGER_ZONE_FLIP_THE_TABLE_MY_BITCH_2022"
         === h13.m_seg[ 0 ]
         ){
@@ -11714,6 +11827,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     gen aim file
     -----------------------------------------------------------
     SEE[ #_GENERATE_FILE_NAME_# | #_GENERATE_PAGE_NAME_# ]
+    SEE_FUNCTION[ F_HOTEL13_SERVEME ]
     -----------------------------------------------------------
 
     -----------------------------------------------------------
@@ -11725,7 +11839,33 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     SEE[ #_GENERATE_FILE_NAME_# | #_GENERATE_PAGE_NAME_# ]
     -----------------------------------------------------------
 
+    -----------------------------------------------------------
+    serve the server | serve server | servetheserver
+    serve_the_server | serve_server | serve yourself
+    serve-the-server | serve-server | serve your own source
+    serve_your_own_source | serveyourownsource
+    self-serve | selfserve | self_serve | self serve icecream
+    -----------------------------------------------------------
+    F_HOTEL13_SERVEME
+    -----------------------------------------------------------
 
+    -----------------------------------------------------------
+    use coordinate hash to get png file
+    F_HOTEL13_USE_COOHASH_GET_PNG
+    F_HOTEL13_COOHASH_PNG
+    F_HOTEL13_CAS_COOHASH_PNG | SCATPNG 
+    -----------------------------------------------------------
+    F_HOTEL13_CAS_COOHASH_SCATPNG <-- Use coordhash to get .PNG
+    -----------------------------------------------------------
+    
+    -----------------------------------------------------------
+    Server_And_Client | ser ver-and-client |
+    server and client | serverandclient | server_and_client
+    SAC | SAC_FUNCTIONS | SAC_FUNCS
+    SERVER_AND_CLIENT 
+    -----------------------------------------------------------
+    YOU_MEAN[ #_CLIENT_AND_SERVER_# ]
+    -----------------------------------------------------------
 
 *** *********** ******************************** TAG_SECTION ***
 *** *********** ******************************** CTRL_F_HELP **/
@@ -14288,6 +14428,25 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 :
                 : PWE   == PassWordExtra
                 : GUARD == GAURD
+
+    @CAS@ : Client_And_Server
+    @SAC@ : Typo_Of[ CAS ]
+
+    @yes_o_k@ : YOU_MEAN[ o_k_yes ]
+    @o_k_yes@ : ACCEPTOR Function in Executor of promise.
+    @wontsay@ : REJECTOR Function in Executor of promise.
+              : Called "wontsay" means "never called".
+
+    @i_scatpng@ : Input_SCATPNG
+    @scatpng@   : Schrodinger's CAT PNG
+                : The .PNG binary file may or may not
+                : exist.
+
+    @wavepng@   : USE[ scatpng ]
+    @darkpng@   : USE[ scatpng ]
+    @mayepng@   : USE[ scatpng ] ( maye   ==  maybe png )
+    @evilpng@   : USE[ scatpng ]
+    @strapng@   : USE[ scatpng ] ( strapng==strange png )
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
