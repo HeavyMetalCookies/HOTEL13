@@ -10685,12 +10685,19 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +"                                           "+n
         +"       iid SERIAL PRIMARY KEY              "+n 
         +"                                           "+n
-        +"  ,  col_coohash  VARCHAR( 11 )UNIQUE      "+n 
+        +"  ,  col_coohash  VARCHAR( 11 )            "+n 
         +"                                           "+n
         +"  ,  col_verni32  INT                      "+n
         +"                  CHECK( col_verni32 >= 0 )"+n   
         +"                                           "+n
         +"  ,  col_png_url  VARCHAR( 32 )            "+n
+        +"                                           "+n
+        +"      /** Coordinate Hash And Version **/  "+n
+        +"      /** Number Should Be Unique     **/  "+n
+        +"      /** Combination.                **/  "+n
+        +"  ,   CONSTRAINT con_hotel13 UNIQUE        "+n
+        +"      ( col_coohash , col_verni32 )        "+n
+        +"                                           "+n
         +"  );;                                      "+n           
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
 
