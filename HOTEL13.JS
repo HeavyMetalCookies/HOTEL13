@@ -10733,10 +10733,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //:::::::::::::::::::::::::::::::::::::::::::://
         //: DATA.DropTableStatement.HOTEL13 :::::::::://
         //:::::::::::::::::::::::::::::::::::::::::::://
-        var d_dts_tab_hotel13 =( "                    +n   
-        +"                                            +n   
-        +"  DROP TABLE IF EXISTS tab_hotel13 ;        +n   
-        +"                                            +n   
+        var d_dts_tab_hotel13 =( "                   "+n   
+        +"                                           "+n   
+        +"  DROP TABLE IF EXISTS tab_hotel13 ;       "+n   
+        +"                                           "+n   
         );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
       
 
