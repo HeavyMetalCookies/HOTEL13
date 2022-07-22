@@ -10051,7 +10051,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         image       : png_bin
                 ////,   album       :"TffSOLf"   //:"AIM"://
                     ,    type       :   "file"
-                    ,    name       : png_nam.toLowerCase()  //[namaext]//
+                    ,    name       : png_nam  //[namaext]//
                     ,   title       : png_tit  //[namonly]//
                     ,   description :    "DSC"
                     };;
@@ -10160,7 +10160,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     +       equals_sign
                     +       double_quotes
                     +""
-                    +       png_nam.toLowerCase()               //[namaext]//
+                    +       png_nam                //[namaext]//
                     +""
                     +       double_quotes
                     +       "\r\n"
@@ -10309,7 +10309,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                                 "[IMGURDATA]:"+i_dat
                             );;
 
-                            png_url_imgur=( i_dat.link );
+                            png_url_imgur=( i_dat.data.link );
                             if(!png_url_imgur){
                                 MSG("[IMGUR_DOWN_MAYBE]");
                             };;
