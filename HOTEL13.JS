@@ -7132,7 +7132,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 });
             });;
             ask.on( "error",(e)=>{ EXI( i_tar,e ); });
-        //  ask.write( /** Like: xhr.send() **/ );
+        //- ask.write( ); /** Only POST needs WRITE **/  -//        
             ask.end();
         };;
     });;
