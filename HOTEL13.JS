@@ -1,6 +1,6 @@
-
-    //: HOTEL13_INDEX :==================================://        
-    /** ************* ********************************** ***
+//:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII://
+//:INDEX_SECTION_HOTEL13:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII://
+/** ******************************************************** ***
 
         [ CTRL_F_HELP  ] : Hackish Google Search === CTRL+F
         [ BOMB_TYPES   ] : Use CTRL+F For More Info
@@ -10,8 +10,13 @@
                          : Always append new notes to the
                          : BOTTOM OF THIS SECTION.
 
-    *** ************* ********************************** **/
-    //:==================================: HOTEL13_INDEX ://
+*** ******************************************************** **/
+//:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII:INDEX_SECTION_HOTEL13://
+//:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII://
+//:----------------------------------------------------------://
+//:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE://
+//:ENVIRONMENT_SECTION_HOTEL13:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE://
+
     //:HOTEL13_ENVIORNMENT_DETECTION:====================://
     {
         let yes =( "undefined" === typeof window );               
@@ -45,6 +50,155 @@
             &&    d_hotel13_yesnode
             ) ? 1 : 0 );;
     //:============================:HOTEL13_ARE_YOU_ALONE://
+
+//:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE:ENVIRONMENT_SECTION_HOTEL13://
+//:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE://
+//:----------------------------------------------------------://
+//:DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD://
+//:DATA_ONLY_SECTION_HOTEL13:DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD://
+
+    //:HOTEL13_MIMETYPES:================================://
+    if( d_hotel13_not_aim ){
+        
+        //:#_DONT_UPLICATE_CONTENT_TYPES_IF_PART_OF_AIM_#://
+
+        let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
+        var d_jso = { [c_t]: "application/json"         } ;
+        var d_txt = { [c_t]: "text/plain"               } ;
+        var d_png = { [c_t]: "image/png"                } ;
+        var d_htm = { [c_t]: "text/html"                } ;
+        var d_js  = { [c_t]: "text/javascript"          } ;
+        var d_exe = { [c_t]: "application/x-msdownload" } ;
+        var d_css = { [c_t]: "text/css"                 } ;
+    };;
+    //:================================:HOTEL13_MIMETYPES://
+    //:HOTEL13_DATABASE.DATA:============================://
+    if( d_hotel13_yesnode ){
+
+        //:#_CAN_EXIST_IN_ALL_NODE_JS_ENVIRONMENTS_#://
+
+        let n =( "\n" ); //:TempNewlineMacro://
+    
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: @d_hotel13_dbu@ : Database URL           ://
+        //: @d_hotel13_cin@ : Connection_INfo        ://
+        //: @d_hotel13_dcp@ : DB_Connection_Pool     ://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+
+        var d_hotel13_dbu = process.env.DATABASE_URL ;       
+        var d_hotel13_cin ={                                 
+            connectionString : d_hotel13_dbu                 
+        ,   ssl : { rejectUnauthorized : false }     
+        };;                                          
+        var d_hotel13_dcp = "[nil][d_hotel13_dcp]"   ;       
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.CreateTableStatement.TABle.HOTEL13  ://   
+        //:::::::::::::::::::::::::::::::::::::::::::://
+
+        var d_cts_tab_hotel13 =( "                   "+n 
+        +"                                           "+n
+        +"  CREATE TABLE IF NOT EXISTS tab_hotel13(  "+n 
+        +"                                           "+n
+        +"       iid SERIAL PRIMARY KEY              "+n 
+        +"                                           "+n
+        +"  ,  col_coohash  VARCHAR( 11 )            "+n 
+        +"                                           "+n
+        +"  ,  col_verni32  INT                      "+n
+        +"                  CHECK( col_verni32 >= 0 )"+n   
+        +"                                           "+n
+        +"  ,  col_png_url  VARCHAR( 32 )            "+n
+        +"                                           "+n
+        +"      /** Coordinate Hash And Version **/  "+n
+        +"      /** Number Should Be Unique     **/  "+n
+        +"      /** Combination.                **/  "+n
+        +"  ,   CONSTRAINT con_hotel13 UNIQUE        "+n
+        +"      ( col_coohash , col_verni32 )        "+n
+        +"                                           "+n
+        +"  );;                                      "+n           
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.InsertIntoStatement.TABle.HOTEL13   ://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+                 
+        var d_iis_tab_hotel13 =( "                   "+n   
+        +"                                           "+n  
+        +"      INSERT INTO tab_hotel13              "+n  
+        +"      (                                    "+n
+        +"            col_coohash                    "+n
+        +"        ,   col_verni32                    "+n
+        +"        ,   col_png_url                    "+n
+        +"      )VALUES                              "+n
+        +"      (                                    "+n
+        +"            '[i_coohash]'                  "+n
+        +"        ,    [i_verni32]                   "+n
+        +"        ,   '[i_png_url]'                  "+n
+        +"      );;                                  "+n    
+        +"                                           "+n  
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.Select.TABle.HOTEL13 :::::::::::::::://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+
+        var d_sel_tab_hotel13 =( "                   "+n
+        +"                                           "+n
+        +"      /** SELECT TOP 10 **/                "+n
+        +"                                           "+n
+        +"      SELECT *                             "+n
+        +"      FROM     tab_hotel13                 "+n
+        +"      WHERE    col_coohash = '[i_coohash]' "+n
+        +"      ORDER BY col_verni32 DESC            "+n
+        +"      LIMIT 10                             "+n
+        +"      ;;                                   "+n
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        //: DATA.DropTableStatement.HOTEL13 :::::::::://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        var d_dts_tab_hotel13 =( "                   "+n   
+        +"                                           "+n   
+        +"  DROP TABLE IF EXISTS tab_hotel13 ;       "+n   
+        +"                                           "+n   
+        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
+    };;
+    //:============================:HOTEL13_DATABASE.DATA://
+
+//:DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD:DATA_ONLY_SECTION_HOTEL13://
+//:DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD://
+//:LIBRARY_SECTION_HOTEL13:LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL://
+//:LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL://
+
+    if( d_hotel13_h13node /** #_HOTEL13_SERVER_ONLY_# **/ ){
+
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        //: l_pg : Add This To Your[ package.json ]      ://
+        //:::::::::::::::::::::::::::::::::::::::::::::::://
+        /** ******************************************** ***    
+            { 
+                "//" : "KANJICODER_NEEDS_A_DATABASE"
+            ,   "dependencies": { "pg" : "8.7.3" } 
+            }
+        *** ******************************************** **/
+ 
+        var l_pg     = require( "pg"               );   
+        var l_fs     = require( "fs"               );   
+        var l_url    = require( "url"              );   
+        var l_qs     = require( "node:querystring" );   
+        /// l_http   = require( "http"             );
+        var l_https  = require( "https"            );
+        /// l_buffer = require( "node:buffer"      );
+    };;
+//:LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL:LIBRARY_SECTION_HOTEL13://
+//:LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL://
+
+
+
+    //# BELOW : Not sectioned. #//
+
+
+
     //:HOTEL13_XMLHTTPREQUEST_WIREUP_HACK:===============://
     //:HOTEL13_PHONE_HOME:===============================://
     //:                                                  ://
@@ -6616,6 +6770,290 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         };;
     //:====================:HOTEL13_FUNCS:FILESYSTEM_SAVE://
     //:====================:HOTEL13_FUNCS:FILESYSTEM_LOAD://
+
+//:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB://
+//:BOTH_CLIENT_AND_SERVER_SECTION_HOTEL13:BBBBBBBBBBBBBBBBBBB://
+
+
+    //:HOTEL13_TAR:(TASK_ARRAY):=========================://
+    //:                                                  ://
+    //:     #_TASK_ARRAY_MIGHT_BE_TOO_COMPLEX_#          ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        const   F_HOTEL13_NEW_TASKARR = "[USE:NEW_TAR]" ;
+        const   F_HOTEL13_TAR_NEW     = "[USE:NEW_TAR]" ;
+
+        const   F_HOTEL13_NEW_TAR = function
+        PRIVATE_F_HOTEL13_NEW_TAR(
+
+            /**VOID**/
+        ){  //:::::::::::::::::::::::::::::::::::::::::::://
+            //:[ATF]:Create New Task Array Runner   [ATF]://
+            //:::::::::::::::::::::::::::::::::::::::::::://
+
+            var o_tar ={ laxcoma:"[HACK]"
+                             //::::::::::::::::::::::::::://
+            ,   m_t_a : [ ]  //: Member:TaskArray        ://    
+            ,   m_t_p :(0-1) //: Member:TaskPointer      ://    
+            ,   m_end : null //: Member:END/DONE function://    
+            };;              //::::::::::::::::::::::::::://
+            Object.seal( o_tar );
+            return(      o_tar );
+        };;
+
+        const F_HOTEL13_RUNLIST = "[USE:F_HOTEL13_TAR_RUN]" ;
+        const F_HOTEL13_NEXTASK = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_EXITASK = "[USE:F_HOTEL13_TAR_EXI]" ;
+        const F_HOTEL13_RUNTASK = "[USE:F_HOTEL13_TAR_RUN]" ;
+        const F_HOTEL13_TASKNEX = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_RUNNEXT = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_TAR_ERR = "[USE:F_HOTEL13_TAR_EXI]" ;
+        const F_HOTEL13_TASKEXI = "[USE:F_HOTEL13_TAR_EXI]" ;
+
+        const   F_HOTEL13_TAR_RUN = function
+        PRIVATE_F_HOTEL13_TAR_RUN(
+
+            i_tar  
+        ){
+            var o_vod_promise = new Promise( function
+            EXECUTO_F_HOTEL13_TAR_RUN(o_k_yes,wontsay ){
+
+                //:#_THIS_IS_NOT_K_I_S_S_#://
+
+                i_tar.m_end =( o_k_yes          );
+                var taskcmd =( i_tar.m_t_a[ 0 ] );
+                    taskcmd(   i_tar            );
+            });;
+            return( o_vod_promise );
+        };;
+        const   F_HOTEL13_TAR_NEX = function
+        PRIVATE_F_HOTEL13_TAR_NEX(
+
+            i_tar
+        ){
+            var m_i =( i_tar.m_t_a.length - 1 );
+                i_tar.m_t_p ++;
+            if( i_tar.m_t_p > m_i ){
+
+                console.log( "[RESOLVING_PROMISE]" );
+                i_tar.m_end( /** _void_ **/ );
+            }else{
+                var taskcmd = i_tar.m_t_a[ 
+                              i_tar.m_t_p ];  
+                    taskcmd(  i_tar       );
+            };;
+        };;
+        const   F_HOTEL13_TAR_EXI = function
+        PRIVATE_F_HOTEL13_TAR_EXI(
+
+            i_tar  //:Input Task Array Object://
+        ,   i_err_obj  //:Optional_Error_Object  ://
+        ){
+            console.log( "[EXITASK/EARLY_ABORT]" );
+            if( i_err_obj ){
+                console.log( i_err_obj );
+            };;
+            i_tar.m_end( /** NO ARGS **/ );
+        };;
+    //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
+    //:HOTEL13_CAS_TYPES:================================://
+
+        const   F_HOTEL13_NEW_SCATPNG = function
+        PRIVATE_F_HOTEL13_NEW_SCATPNG(
+
+            /** VOID **/
+        ){
+            var o_scatpng ={ laxcoma:"[HACK]"
+            ,       m_png  : null   //: .PNG Binary File ://
+            ,       m_has  : (0)    //:  HAS .PNG File?  ://
+            ,       m_ooi  :"[nil][m_ooi]"     //:@m_ooi@://
+            };;
+            Object.seal( o_scatpng );
+            return(      o_scatpng );
+        };;
+
+        const c_hotel13_scatpng_ooi_heroku =(
+
+            "[M_OOI.HEROKU:::::FILE_SYSTEM]"
+        );;
+        const c_hotel13_scatpng_ooi_imgur  =(
+
+            "[M_OOI.IMGUR:::IMAGE_DOWNLOAD]"
+        );;
+        const c_hotel13_scatpng_ooi_none   =(
+
+            "[M_OOI.NONE::::NO_IMAGE_FOUND]"
+        );;
+
+    //:================================:HOTEL13_CAS_TYPES://
+    //:HOTEL13_CAS_FUNCTIONS:============================://
+    //:                                                  ://
+    //:  SEE[ #_ABOUT_CAS_FUNCTIONS_# ]                  ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
+    ////////////////////////////////////////////////////////
+    const   F_HOTEL13_CAS_COOHASH_SCATPNG = function
+    PRIVATE_F_HOTEL13_CAS_COOHASH_SCATPNG(
+    ////////////////////////////////////////////////////////
+
+        i_coohash
+
+    ////////////////////////////////////////////////////////
+    ){if(      d_hotel13_notnode   ){ //////////////////////
+    ////////////////////////////////////////////////////////
+    return new Promise( function F01( o_k_yes , wontsay ){
+
+        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
+
+        //:::::::::::::::::::::::::::::::::::::::::::://        
+        //:EX[ www.app.com                          ]://        
+        //:  [      /F_HOTEL13_CAS_COOHASH_SCATPNG  ]://
+        //:  [      /001_001_001                    ]://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        var e_s =( "/" != d_url[d_url.length-1]?"/":"");
+        var url =(
+        +    d_url+e_s
+        +    "F_HOTEL13_CAS_COOHASH_SCATPNG/"
+        +    i_coohash
+        );;
+
+        var xhr = new XMLHttpRequest();
+            xhr.open( "GET" , url );
+            xhr.responseType = "arraybuffer" ;
+            xhr.send();
+            xhr.onreadystatechange=(e)=>{
+            if( xhr.readyState === (4) ){
+
+                let      ooi =( xhr.getResponseHeader( 
+                    "nsh_ooi" ));;
+                
+                if( 200 === xhr.status ){
+                    o_scatpng.m_has =(  1           );
+                    o_scatpng.m_png =( xhr.response );
+                    o_scatpng.m_ooi =(     ooi      );
+                }else{
+                    o_scatpng.m_has =( 0 - 420669   );
+                    o_scatpng.m_png =(    null      );
+                    o_scatpng.m_ooi =(     ooi      );
+                };;
+                o_k_yes( o_scatpng );
+            };;};;
+    });;
+    ////////////////////////////////////////////////////////
+    }else if(  d_hotel13_yesnode   ){ //////////////////////
+    ////////////////////////////////////////////////////////    
+    return new Promise( function F02( o_k_yes , wontsay ){
+
+        var tar = F_HOTEL13_NEW_TAR(); //: NewTaskArray  ://
+        let NEX = F_HOTEL13_TAR_NEX ;  //: NextTask      ://
+        let EXI = F_HOTEL13_TAR_EXI ;  //: EarlyExit     ://
+
+        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
+        var aimpath = F_HOTEL13_COOHASH_AIMPATH(i_coohash);
+
+        let ooi_heroku = c_hotel13_scatpng_ooi_heroku ;
+        let ooi_imgur  = c_hotel13_scatpng_ooi_imgur  ;
+        let ooi_none   = c_hotel13_scatpng_ooi_none   ;
+
+        var png_url =( "[nil][png_url]" );
+
+        o_scatpng.m_ooi =( ooi_none );
+
+        l_fs.readfile( aimpath , (i_err,i_cof)=>{
+
+            if( i_err ){
+                let t_a = tar.m_t_a ;
+                t_a.push( 
+                        F02_GET_IMGUR_URL_FROM_DATABASE );;
+                t_a.push( 
+                        F02_TRY_TO_READ_FROM_IMGUR      );;
+
+                F_HOTEL13_TAR_RUN( tar ).then((_void_)=>{
+
+                    //:::::::::::::::::::::::::::::::://
+                    //:Never Fail. Just Don't Return ://
+                    //:Data Askef For If You Cant.   ://
+                    //:::::::::::::::::::::::::::::::://        
+                    o_k_yes( o_scatpng );
+                });;
+            }else{
+
+                o_scatpng.m_has =(    1  );
+                o_scatpng.m_png =( i_cof );
+                o_scatpng.m_ooi =( ooi_heroku );
+                o_k_yes( o_scatpng );
+            };;
+        });;
+        function 
+        F02_GET_IMGUR_URL_FROM_DATABASE( i_tar ){
+
+            if( ! ( F_HOTEL13_ICH( i_coohash ))){
+            
+                EXI( i_tar , "[NOT_A_COORDHASH]" );
+            }else{
+
+                var sql_cmd =( d_sel_tab_hotel13 );
+                sql_cmd = sql_cmd.replaceAll(
+
+                    "[i_coohash]" , i_coohash
+                );;
+            
+                d_hotel13_dcp.query( sql_cmd )
+                .then( function( i_res ){ 
+                    
+                    png_url =( i_res.rows[ 0 ]
+                              .col_png_url );;
+
+                    NEX( i_tar );
+                }).catch( function( i_err ){                  
+                                        
+                    EXI( i_tar , "[QUERYFAIL]" );          
+                }) 
+                ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            };;
+        };;
+        function 
+        F02_TRY_TO_READ_FROM_IMGUR( i_tar ){
+
+            var ask = l_https.request({
+
+                host     : "i.imgur.com"  
+            ,   method   : "GET" 
+            ,   headers  :
+                {
+                    accept : "image/png"
+                }
+            },( got )=>{ 
+
+                got.setEncoding( "utf8"    );
+                got.on( "data" , ( got_dat )=>{
+                
+                    o_scatpng.m_png=( got_dat   );
+                    o_scatpng.m_has=(  1        );
+                    o_scatpng.m_ooi=( ooi_imgur );
+                });;
+                got.on( "error", (e)=>{ EXI( i_tar,e); });
+                got.on( "end"  , ( )=>{ LOG("[E001]"); });
+                got.on( "close", ( )=>{ NEX( i_tar  ); });
+            });;
+            ask.write( png_url );
+            ask.end();
+        };;
+    });;
+    ////////////////////////////////////////////////////////
+    }else{ ERR("[NEITHER_ENVIRONMENT]"); };;};;
+    ////////////////////////////////////////////////////////
+    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
+
+    //:============================:HOTEL13_CAS_FUNCTIONS://
+
+//:BBBBBBBBBBBBBBBBBBB:BOTH_CLIENT_AND_SERVER_SECTION_HOTEL13://
+//:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB://
+
+
     //:HOTEL13_FUNCS:ALL_RENDER_CODE:====================://
     //:HOTEL13_FUNCS:_DRAW_2D:===========================://
     //:SEG_D2D:- - - - - - - - -- - - - - - - - -:SEG_D2D://
@@ -9528,326 +9966,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     };;
 
     //:==================:TRY_TO_INTERPRET_AS_AIM_JS_FILE://
-
-//:##########################################################://
-//:##########################################################://
-//:##########################################################://
-//:HOTEL13:CLIENT_AND_SERVER:################################://
-
-
-    //:HOTEL13_TAR:(TASK_ARRAY):=========================://
-    //:                                                  ://
-    //:     #_TASK_ARRAY_MIGHT_BE_TOO_COMPLEX_#          ://
-    //:                                                  ://
-    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
-
-        const   F_HOTEL13_NEW_TASKARR = "[USE:NEW_TAR]" ;
-        const   F_HOTEL13_TAR_NEW     = "[USE:NEW_TAR]" ;
-
-        const   F_HOTEL13_NEW_TAR = function
-        PRIVATE_F_HOTEL13_NEW_TAR(
-
-            /**VOID**/
-        ){  //:::::::::::::::::::::::::::::::::::::::::::://
-            //:[ATF]:Create New Task Array Runner   [ATF]://
-            //:::::::::::::::::::::::::::::::::::::::::::://
-
-            var o_tar ={ laxcoma:"[HACK]"
-                             //::::::::::::::::::::::::::://
-            ,   m_t_a : [ ]  //: Member:TaskArray        ://    
-            ,   m_t_p :(0-1) //: Member:TaskPointer      ://    
-            ,   m_end : null //: Member:END/DONE function://    
-            };;              //::::::::::::::::::::::::::://
-            Object.seal( o_tar );
-            return(      o_tar );
-        };;
-
-        const F_HOTEL13_RUNLIST = "[USE:F_HOTEL13_TAR_RUN]" ;
-        const F_HOTEL13_NEXTASK = "[USE:F_HOTEL13_TAR_NEX]" ;
-        const F_HOTEL13_EXITASK = "[USE:F_HOTEL13_TAR_EXI]" ;
-        const F_HOTEL13_RUNTASK = "[USE:F_HOTEL13_TAR_RUN]" ;
-        const F_HOTEL13_TASKNEX = "[USE:F_HOTEL13_TAR_NEX]" ;
-        const F_HOTEL13_RUNNEXT = "[USE:F_HOTEL13_TAR_NEX]" ;
-        const F_HOTEL13_TAR_ERR = "[USE:F_HOTEL13_TAR_EXI]" ;
-        const F_HOTEL13_TASKEXI = "[USE:F_HOTEL13_TAR_EXI]" ;
-
-        const   F_HOTEL13_TAR_RUN = function
-        PRIVATE_F_HOTEL13_TAR_RUN(
-
-            i_tar  
-        ){
-            var o_vod_promise = new Promise( function
-            EXECUTO_F_HOTEL13_TAR_RUN(o_k_yes,wontsay ){
-
-                //:#_THIS_IS_NOT_K_I_S_S_#://
-
-                i_tar.m_end =( o_k_yes          );
-                var taskcmd =( i_tar.m_t_a[ 0 ] );
-                    taskcmd(   i_tar            );
-            });;
-            return( o_vod_promise );
-        };;
-        const   F_HOTEL13_TAR_NEX = function
-        PRIVATE_F_HOTEL13_TAR_NEX(
-
-            i_tar
-        ){
-            var m_i =( i_tar.m_t_a.length - 1 );
-                i_tar.m_t_p ++;
-            if( i_tar.m_t_p > m_i ){
-
-                console.log( "[RESOLVING_PROMISE]" );
-                i_tar.m_end( /** _void_ **/ );
-            }else{
-                var taskcmd = i_tar.m_t_a[ 
-                              i_tar.m_t_p ];  
-                    taskcmd(  i_tar       );
-            };;
-        };;
-        const   F_HOTEL13_TAR_EXI = function
-        PRIVATE_F_HOTEL13_TAR_EXI(
-
-            i_tar  //:Input Task Array Object://
-        ,   i_err_obj  //:Optional_Error_Object  ://
-        ){
-            console.log( "[EXITASK/EARLY_ABORT]" );
-            if( i_err_obj ){
-                console.log( i_err_obj );
-            };;
-            i_tar.m_end( /** NO ARGS **/ );
-        };;
-    //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
-    //:HOTEL13_CAS_TYPES:================================://
-
-        const   F_HOTEL13_NEW_SCATPNG = function
-        PRIVATE_F_HOTEL13_NEW_SCATPNG(
-
-            /** VOID **/
-        ){
-            var o_scatpng ={ laxcoma:"[HACK]"
-            ,       m_png  : null   //: .PNG Binary File ://
-            ,       m_has  : (0)    //:  HAS .PNG File?  ://
-            ,       m_ooi  :"[nil][m_ooi]"     //:@m_ooi@://
-            };;
-            Object.seal( o_scatpng );
-            return(      o_scatpng );
-        };;
-
-        const c_hotel13_scatpng_ooi_heroku =(
-
-            "[M_OOI.HEROKU:::::FILE_SYSTEM]"
-        );;
-        const c_hotel13_scatpng_ooi_imgur  =(
-
-            "[M_OOI.IMGUR:::IMAGE_DOWNLOAD]"
-        );;
-        const c_hotel13_scatpng_ooi_none   =(
-
-            "[M_OOI.NONE::::NO_IMAGE_FOUND]"
-        );;
-
-    //:================================:HOTEL13_CAS_TYPES://
-    //:HOTEL13_CAS_FUNCTIONS:============================://
-    //:                                                  ://
-    //:  SEE[ #_ABOUT_CAS_FUNCTIONS_# ]                  ://
-    //:                                                  ://
-    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
-
-    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
-    ////////////////////////////////////////////////////////
-    const   F_HOTEL13_CAS_COOHASH_SCATPNG = function
-    PRIVATE_F_HOTEL13_CAS_COOHASH_SCATPNG(
-    ////////////////////////////////////////////////////////
-
-        i_coohash
-
-    ////////////////////////////////////////////////////////
-    ){if(      d_hotel13_notnode   ){ //////////////////////
-    ////////////////////////////////////////////////////////
-    return new Promise( function F01( o_k_yes , wontsay ){
-
-        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
-
-        //:::::::::::::::::::::::::::::::::::::::::::://        
-        //:EX[ www.app.com                          ]://        
-        //:  [      /F_HOTEL13_CAS_COOHASH_SCATPNG  ]://
-        //:  [      /001_001_001                    ]://
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        var e_s =( "/" != d_url[d_url.length-1]?"/":"");
-        var url =(
-        +    d_url+e_s
-        +    "F_HOTEL13_CAS_COOHASH_SCATPNG/"
-        +    i_coohash
-        );;
-
-        var xhr = new XMLHttpRequest();
-            xhr.open( "GET" , url );
-            xhr.responseType = "arraybuffer" ;
-            xhr.send();
-            xhr.onreadystatechange=(e)=>{
-            if( xhr.readyState === (4) ){
-
-                let      ooi =( xhr.getResponseHeader( 
-                    "nsh_ooi" ));;
-                
-                if( 200 === xhr.status ){
-                    o_scatpng.m_has =(  1           );
-                    o_scatpng.m_png =( xhr.response );
-                    o_scatpng.m_ooi =(     ooi      );
-                }else{
-                    o_scatpng.m_has =( 0 - 420669   );
-                    o_scatpng.m_png =(    null      );
-                    o_scatpng.m_ooi =(     ooi      );
-                };;
-                o_k_yes( o_scatpng );
-            };;};;
-    });;
-    ////////////////////////////////////////////////////////
-    }else if(  d_hotel13_yesnode   ){ //////////////////////
-    ////////////////////////////////////////////////////////    
-    return new Promise( function F02( o_k_yes , wontsay ){
-
-        var tar = F_HOTEL13_NEW_TAR(); //: NewTaskArray  ://
-        let NEX = F_HOTEL13_TAR_NEX ;  //: NextTask      ://
-        let EXI = F_HOTEL13_TAR_EXI ;  //: EarlyExit     ://
-
-        var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
-        var aimpath = F_HOTEL13_COOHASH_AIMPATH(i_coohash);
-
-        let ooi_heroku = c_hotel13_scatpng_ooi_heroku ;
-        let ooi_imgur  = c_hotel13_scatpng_ooi_imgur  ;
-        let ooi_none   = c_hotel13_scatpng_ooi_none   ;
-
-        var png_url =( "[nil][png_url]" );
-
-        o_scatpng.m_ooi =( ooi_none );
-
-        l_fs.readfile( aimpath , (i_err,i_cof)=>{
-
-            if( i_err ){
-                let t_a = tar.m_t_a ;
-                t_a.push( 
-                        F02_GET_IMGUR_URL_FROM_DATABASE );;
-                t_a.push( 
-                        F02_TRY_TO_READ_FROM_IMGUR      );;
-
-                F_HOTEL13_TAR_RUN( tar ).then((_void_)=>{
-
-                    //:::::::::::::::::::::::::::::::://
-                    //:Never Fail. Just Don't Return ://
-                    //:Data Askef For If You Cant.   ://
-                    //:::::::::::::::::::::::::::::::://        
-                    o_k_yes( o_scatpng );
-                });;
-            }else{
-
-                o_scatpng.m_has =(    1  );
-                o_scatpng.m_png =( i_cof );
-                o_scatpng.m_ooi =( ooi_heroku );
-                o_k_yes( o_scatpng );
-            };;
-        });;
-        function 
-        F02_GET_IMGUR_URL_FROM_DATABASE( i_tar ){
-
-            if( ! ( F_HOTEL13_ICH( i_coohash ))){
-            
-                EXI( i_tar , "[NOT_A_COORDHASH]" );
-            }else{
-
-                var sql_cmd =( d_sel_tab_hotel13 );
-                sql_cmd = sql_cmd.replaceAll(
-
-                    "[i_coohash]" , i_coohash
-                );;
-            
-                d_hotel13_dcp.query( sql_cmd )
-                .then( function( i_res ){ 
-                    
-                    png_url =( i_res.rows[ 0 ]
-                              .col_png_url );;
-
-                    NEX( i_tar );
-                }).catch( function( i_err ){                  
-                                        
-                    EXI( i_tar , "[QUERYFAIL]" );          
-                }) 
-                ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-            };;
-        };;
-        function 
-        F02_TRY_TO_READ_FROM_IMGUR( i_tar ){
-
-            var ask = l_https.request({
-
-                host     : "i.imgur.com"  
-            ,   method   : "GET" 
-            ,   headers  :
-                {
-                    accept : "image/png"
-                }
-            },( got )=>{ 
-
-                got.setEncoding( "utf8"    );
-                got.on( "data" , ( got_dat )=>{
-                
-                    o_scatpng.m_png=( got_dat   );
-                    o_scatpng.m_has=(  1        );
-                    o_scatpng.m_ooi=( ooi_imgur );
-                });;
-                got.on( "error", (e)=>{ EXI( i_tar,e); });
-                got.on( "end"  , ( )=>{ LOG("[E001]"); });
-                got.on( "close", ( )=>{ NEX( i_tar  ); });
-            });;
-            ask.write( png_url );
-            ask.end();
-        };;
-    });;
-    ////////////////////////////////////////////////////////
-    }else{ ERR("[NEITHER_ENVIRONMENT]"); };;};;
-    ////////////////////////////////////////////////////////
-    //:CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC://
-
-    //:============================:HOTEL13_CAS_FUNCTIONS://
-
-
-//:################################:HOTEL13:CLIENT_AND_SERVER://
-//:##########################################################://
-//:##########################################################://
-//:##########################################################://
-
     //:##################################################://
     //:HOTEL13_SERVER_MODE:##############################://
-    if( d_hotel13_h13node ){
 
-        //:::::::::::::::::::::::::::::::::::::::::::::::://
-        //: l_pg : Add This To Your[ package.json ]      ://
-        //:::::::::::::::::::::::::::::::::::::::::::::::://
-        /** ******************************************** ***    
-            { 
-                "//" : "KANJICODER_NEEDS_A_DATABASE"
-            ,   "dependencies": { "pg" : "8.7.3" } 
-            }
-        *** ******************************************** **/
- 
-        var l_pg     = require( "pg"               );   
-        var l_fs     = require( "fs"               );   
-        var l_url    = require( "url"              );   
-        var l_qs     = require( "node:querystring" );   
-        /// l_http   = require( "http"             );
-        var l_https  = require( "https"            );
-        /// l_buffer = require( "node:buffer"      );
-
-        let c_t =( "Content-Type" ); //:#JS_DYNA_KEY#://
-        var d_jso = { [c_t]: "application/json"         } ;
-        var d_txt = { [c_t]: "text/plain"               } ;
-        var d_png = { [c_t]: "image/png"                } ;
-        var d_htm = { [c_t]: "text/html"                } ;
-        var d_js  = { [c_t]: "text/javascript"          } ;
-        var d_exe = { [c_t]: "application/x-msdownload" } ;
-        var d_css = { [c_t]: "text/css"                 } ;
-
-    };;
     if( d_hotel13_h13node ){ //:BEG:ENV_H13NODE::::::::::://
 
     //:HOTEL13_SERVE_STATIC_PNG:=========================://
@@ -11088,97 +11209,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:                                                  ://
     //:**************************************************://
     //:HOTEL13_DATABASE.DATA:============================://
-    if( d_hotel13_yesnode ){
 
-        let n =( "\n" ); //:TempNewlineMacro://
-    
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        //: @d_hotel13_dbu@ : Database URL           ://
-        //: @d_hotel13_cin@ : Connection_INfo        ://
-        //: @d_hotel13_dcp@ : DB_Connection_Pool     ://
-        //:::::::::::::::::::::::::::::::::::::::::::://
+        //:::::::::::::::::::://
+        //: Moved Further Up ://
+        //:::::::::::::::::::://
 
-        var d_hotel13_dbu = process.env.DATABASE_URL ;       
-        var d_hotel13_cin ={                                 
-            connectionString : d_hotel13_dbu                 
-        ,   ssl : { rejectUnauthorized : false }     
-        };;                                          
-        var d_hotel13_dcp = "[nil][d_hotel13_dcp]"   ;       
-
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        //: DATA.CreateTableStatement.TABle.HOTEL13  ://   
-        //:::::::::::::::::::::::::::::::::::::::::::://
-
-        var d_cts_tab_hotel13 =( "                   "+n 
-        +"                                           "+n
-        +"  CREATE TABLE IF NOT EXISTS tab_hotel13(  "+n 
-        +"                                           "+n
-        +"       iid SERIAL PRIMARY KEY              "+n 
-        +"                                           "+n
-        +"  ,  col_coohash  VARCHAR( 11 )            "+n 
-        +"                                           "+n
-        +"  ,  col_verni32  INT                      "+n
-        +"                  CHECK( col_verni32 >= 0 )"+n   
-        +"                                           "+n
-        +"  ,  col_png_url  VARCHAR( 32 )            "+n
-        +"                                           "+n
-        +"      /** Coordinate Hash And Version **/  "+n
-        +"      /** Number Should Be Unique     **/  "+n
-        +"      /** Combination.                **/  "+n
-        +"  ,   CONSTRAINT con_hotel13 UNIQUE        "+n
-        +"      ( col_coohash , col_verni32 )        "+n
-        +"                                           "+n
-        +"  );;                                      "+n           
-        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;    
-
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        //: DATA.InsertIntoStatement.TABle.HOTEL13   ://
-        //:::::::::::::::::::::::::::::::::::::::::::://
-                 
-        var d_iis_tab_hotel13 =( "                   "+n   
-        +"                                           "+n  
-        +"      INSERT INTO tab_hotel13              "+n  
-        +"      (                                    "+n
-        +"            col_coohash                    "+n
-        +"        ,   col_verni32                    "+n
-        +"        ,   col_png_url                    "+n
-        +"      )VALUES                              "+n
-        +"      (                                    "+n
-        +"            '[i_coohash]'                  "+n
-        +"        ,    [i_verni32]                   "+n
-        +"        ,   '[i_png_url]'                  "+n
-        +"      );;                                  "+n    
-        +"                                           "+n  
-        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;  
-
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        //: DATA.Select.TABle.HOTEL13 :::::::::::::::://
-        //:::::::::::::::::::::::::::::::::::::::::::://
-
-        var d_sel_tab_hotel13 =( "                   "+n
-        +"                                           "+n
-        +"      /** SELECT TOP 10 **/                "+n
-        +"                                           "+n
-        +"      SELECT *                             "+n
-        +"      FROM     tab_hotel13                 "+n
-        +"      WHERE    col_coohash = '[i_coohash]' "+n
-        +"      ORDER BY col_verni32 DESC            "+n
-        +"      LIMIT 10                             "+n
-        +"      ;;                                   "+n
-        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        //: DATA.DropTableStatement.HOTEL13 :::::::::://
-        //:::::::::::::::::::::::::::::::::::::::::::://
-        var d_dts_tab_hotel13 =( "                   "+n   
-        +"                                           "+n   
-        +"  DROP TABLE IF EXISTS tab_hotel13 ;       "+n   
-        +"                                           "+n   
-        );;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;   
-      
-
-
-    };;
     //:============================:HOTEL13_DATABASE.DATA://
     //:HOTEL13_DATABASE.FUNC:============================://
     
@@ -14946,7 +14981,39 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         //: DATE[ 2022_07_23 ]TIME[ 116AM ]              ://
         //:----------------------------------------------://
 
+    #_DONT_UPLICATE_CONTENT_TYPES_IF_PART_OF_AIM_# :
 
+        The "not_aim" gaurd is here because it is okay
+        for these to exist on CLIENT and SERVER side,
+        but if[ HOTEL13.JS ]is injected into
+        [ AIM/server.js ]then we want to __NOT__ define
+        these mimetypes here because[ AIM/server.js ]
+        already defines them.
+
+        DATE[ 2022_07_23 ]TIME[ 508 ]AM
+
+    #_CAN_EXIST_IN_ALL_NODE_JS_ENVIRONMENTS_# :
+
+        We might want these database commands to be
+        available when[ HOTEL13.JS ]is integrated
+        into the main[ AIM/server.js ]code.
+    
+        So we will allow it to be declared in 
+            
+        ANY node.js environment.
+
+        DATE[ 2022_07_23 ]TIME[ 508 ]AM
+
+    #_HOTEL13_SERVER_ONLY_# :
+
+        These libraries should only be included if
+        we are in stand-alone hotel.js server mode.
+
+        If we are injecting[ HOTEL.JS ]into
+        [ AIM/server.js ]then these libraries have
+        already been declared by other code.
+    
+        DATE[ 2022_07_23 ]TIME[ 508 ]AM
 
 
 *** ****************************************** HASHTAG_SEC - ***
