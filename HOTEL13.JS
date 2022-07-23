@@ -6807,7 +6807,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                              //::::::::::::::::::::::::::://
             ,   m_t_a : [ ]  //: Member:TaskArray        ://    
             ,   m_t_p :(0-1) //: Member:TaskPointer      ://    
-            ,   m_end : null //: Member:END/DONE function://    
+            ,   m_end : null //: Member:END/DONE function://  
+            ,   m_log : [ ]  //: Member:LoggingArray     ://
             };;              //::::::::::::::::::::::::::://
             Object.seal( o_tar );
             return(      o_tar );
@@ -6821,6 +6822,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         const F_HOTEL13_RUNNEXT = "[USE:F_HOTEL13_TAR_NEX]" ;
         const F_HOTEL13_TAR_ERR = "[USE:F_HOTEL13_TAR_EXI]" ;
         const F_HOTEL13_TASKEXI = "[USE:F_HOTEL13_TAR_EXI]" ;
+        const F_HOTEL13_TASKLOG = "[USE:F_HOTEL13_TAR_TAL]" ;
+        const F_HOTEL13_TAR_LOG = "[USE:F_HOTEL13_TAR_TAL]" ;
 
         const   F_HOTEL13_TAR_RUN = function
         PRIVATE_F_HOTEL13_TAR_RUN(
@@ -6865,7 +6868,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( i_err_obj ){
                 console.log( i_err_obj );
             };;
-            i_tar.m_end( /** NO ARGS **/ );
+            i_tar.m_log.push( ""+i_err+"" );
+            i_tar.m_end( /** NO ARGS **/  );
+        };;
+        const   F_HOTEL13_TAR_TAL = function
+        PRIVATE_F_HOTEL13_TAR_TAL(
+
+            i_tar //: Task Array Object     ://
+        ,   i_msg //: Message To Add To Log ://
+        ){
+            i_tar.m_log.push( i_msg );
         };;
     //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
     //:HOTEL13_CAS_TYPES:================================://
@@ -6879,6 +6891,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,       m_png  : null   //: .PNG Binary File ://
             ,       m_has  : (0)    //:  HAS .PNG File?  ://
             ,       m_ooi  :"[nil][m_ooi]"     //:@m_ooi@://
+            ,       m_log  : [ ]    //: LoggingObject://
             };;
             Object.seal( o_scatpng );
             return(      o_scatpng );
@@ -6964,11 +6977,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     o_scatpng.m_has =(  1           );
                     o_scatpng.m_png =( xhr.response );
                     o_scatpng.m_ooi =(     ooi      );
+                    o_scatpng.m_log.push("[YES:200]");
                 }else{
                     o_scatpng.m_has =( 0 - 420669   );
                     o_scatpng.m_png =(    null      );
                     o_scatpng.m_ooi =(     ooi      );
+                    o_scatpng.m_log.push("[NOT:200]");
                 };;
+
                 o_k_yes( o_scatpng );
             };;};;
     });;
@@ -6980,6 +6996,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         var tar = F_HOTEL13_NEW_TAR(); //: NewTaskArray  ://
         let NEX = F_HOTEL13_TAR_NEX ;  //: NextTask      ://
         let EXI = F_HOTEL13_TAR_EXI ;  //: EarlyExit     ://
+        let TAL = F_HOTEL13_TAR_TAL ;  //: TaskArr.LOG   ://
 
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
         var aimpath = F_HOTEL13_COOHASH_AIMPATH(i_coohash);
@@ -6995,6 +7012,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         l_fs.readFile( aimpath , (i_err,i_cof)=>{
 
             if( i_err ){
+                TAL( tar , "[PNG_404_HEROKU_DISK]" );
+
                 let t_a = tar.m_t_a ;
                 t_a.push( 
                         F02_GET_IMGUR_URL_FROM_DATABASE );;
@@ -7006,14 +7025,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     //:::::::::::::::::::::::::::::::://
                     //:Never Fail. Just Don't Return ://
                     //:Data Askef For If You Cant.   ://
-                    //:::::::::::::::::::::::::::::::://        
+                    //:::::::::::::::::::::::::::::::://   
+                    o_scatpng.m_log.push( tar.m_log );
                     o_k_yes( o_scatpng );
                 });;
             }else{
+                TAL( tar , "[PNG_FOUND_ON_DISK]" );
 
                 o_scatpng.m_has =(    1  );
                 o_scatpng.m_png =( i_cof );
                 o_scatpng.m_ooi =( ooi_heroku );
+
+                o_scatpng.m_log.push( tar.m_log );
                 o_k_yes( o_scatpng );
             };;
         });;
@@ -7037,6 +7060,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     png_url =( i_res.rows[ 0 ]
                               .col_png_url );;
 
+                    TAL( "[png_url]:"+png_url );
                     NEX( i_tar );
                 }).catch( function( i_err ){                  
                                         
@@ -11431,8 +11455,17 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     h13.m_giv.setHeader(
                         "nsh_ooi" , i_scatpng.m_ooi   );;
-                    h13.m_giv.writeHead( 404 , d_txt  );
-                    h13.m_giv.write("[PNG_NOT_FOUND]" );        
+                    h13.m_giv.writeHead( 404 , d_jso  );
+
+                    i_scatpng.m_log.push( 
+                        "[PNG_NOT_FOUND]"
+                    );;
+                    h13.m_giv.write(
+                        JSON.stringify( 
+                            i_scatpng.m_log
+                        );;
+                    );;
+      
                     h13.m_giv.end();
                 }else{
                     ERR("[EDCL_20220723]");
