@@ -7097,8 +7097,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   method   : "GET" 
             ,   headers  :
                 {
-                    //: accept : "image/png"
-                        accept : "application/octet-stream"
+                    accept : "image/png"
+                    //: accept : "application/octet-stream"
                 }
             },( got )=>{ 
 
@@ -7113,6 +7113,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 got.on( "end"  , ( )=>{ LOG("[E001]"); });
                 got.on( "close", ( )=>{ NEX( i_tar  ); });
             });;
+            ask.on( "error",(e)=>{ EXI( i_tar,e ); });
             ask.write( png_url );
             ask.end();
         };;
