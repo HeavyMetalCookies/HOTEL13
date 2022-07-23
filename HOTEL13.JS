@@ -7024,7 +7024,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   method   : "GET" 
             ,   headers  :
                 {
-                    accept : "image/png"
+                    //: accept : "image/png"
+                        accept : "application/octet-stream"
                 }
             },( got )=>{ 
 
