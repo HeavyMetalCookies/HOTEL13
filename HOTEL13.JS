@@ -13,6 +13,17 @@
 *** ******************************************************** **/
 //:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII:INDEX_SECTION_HOTEL13://
 //:IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII://
+//:MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM://
+//:MONKEY_WRENCH_MACROS_HOTEL13:MMMMMMMMMMMMMMMMMMMMMMMMMMMMM://
+
+
+
+    const HEADERS_RECIEVED = "[TYPO_FIX:HEADERS_RECEIVED]" ;
+
+
+
+//:MMMMMMMMMMMMMMMMMMMMMMMMMMMMM:MONKEY_WRENCH_MACROS_HOTEL13://
+//:MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM://
 //:----------------------------------------------------------://
 //:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE://
 //:ENVIRONMENT_SECTION_HOTEL13:EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE://
@@ -6927,6 +6938,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             xhr.send();
             xhr.onreadystatechange=(e)=>{
             if( xhr.readyState === xhr.HEADERS_RECEIVED ){
+
+                YEL( "[HEADERS_RECIEVED]" );
 
                 ooi =( xhr.getResponseHeader( 
                     "nsh_ooi" ));;
