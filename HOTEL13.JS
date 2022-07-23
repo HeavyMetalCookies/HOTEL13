@@ -7072,9 +7072,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                               .col_png_url );;
 
                     TAL( i_tar , ""
-                    +   "[x][png_url][x]:"
+                    +   "[-][png_url][-]:"
                     +   "("
-                    +   png_url 
+                    +   ASS( png_url )
                     +   ")"
                     );;
                     NEX( i_tar );
@@ -7094,6 +7094,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             var ask = l_https.request({
 
                 host     : "i.imgur.com"  
+            ,   path     : ASS( png_url )
             ,   method   : "GET" 
             ,   headers  :
                 {
@@ -7116,7 +7117,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 got.on( "close",( )=>{ NEX( i_tar  );        });
             });;
             ask.on( "error",(e)=>{ EXI( i_tar,e ); });
-            ask.write( png_url );
+            ask.write( /** Like: xhr.send() **/ );
             ask.end();
         };;
     });;
