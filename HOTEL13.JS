@@ -6972,7 +6972,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( xhr.readyState === xhr.HEADERS_RECEIVED 
             ||  xhr.readyState === (2)
             ){
-                YEL( "[HEADERS_RECIEVED]" );
+                MSG( "[HEADERS_RECIEVED]" );
 
                 ooi =( xhr.getResponseHeader( 
                     "nsh_ooi" ));;
@@ -7105,7 +7105,6 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   headers  :
                 {
                     accept : "image/png"
-                //: accept : "application/octet-stream"
                 }
             },( got )=>{ 
 
@@ -8256,9 +8255,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     if( i_scatpng.m_has ){
 
-                        YEL( "[i_scatpng.m_has]"
+                        LOG( "[i_scatpng.m_has]"
                              , i_scatpng.m_has );;
-                        YEL( "[i_scatpng.m_ooi]"
+                        LOG( "[i_scatpng.m_ooi]"
                              , i_scatpng.m_ooi );;
 
                         F_HOTEL13_HERSYNC_LOD_PNG(
@@ -8266,50 +8265,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             i_scatpng.m_png
                         );;
                     }else{
-                        /** Do nothing. No .PNG to load. **/
+                        //:::::::::::::::::::::::::::::::://
+                        //: Do nothing. No .PNG to load. ://
+                        //: .PNG ==[ LevelPack / Hotel ] ://
+                        //:::::::::::::::::::::::::::::::://
                         console.log(
                             "[NO_PNG:i_scatpng]" 
                                     ,i_scatpng 
                         );;
                     };;
                 });;
-
-            ///////////// F_HOTEL13_XHR_GET_PNG( d_pngpath_dow )
-            /////////    F_HOTEL13_CAS_COOHASH_SCATPNG( coohash )
-            /////////    .then( ( xhr_ask )=>{
-            /////////
-            /////////        nsh_yehotel =( xhr_ask.getResponseHeader( 
-            /////////       "NSH_YEHOTEL" 
-            /////////        ));;
-            /////////        if( "[YES]" == nsh_yehotel ){
-            /////////
-            /////////            d_pngfile = xhr_ask.response ;     
-            /////////
-            /////////            console.log( "[MAYBE_GOT_PNG?]" );          
-            /////////            console.log( 
-            /////////                "[d_pngfile]" 
-            /////////            ,     d_pngfile  
-            /////////            );;
-            /////////
-            /////////            //: TODO HERE : LOAD INTO GAME I THIN <<<<<<<<<<<<<<<<<<< NOTICE_ME_SENPAI
-            /////////
-            /////////            //: TODOHERE: F_HOTEL13_API_3RD_DOW_IMGUR
-            /////////
-            /////////            F_HOTEL13_HERSYNC_LOD_PNG( d_pngfile );
-            /////////        }else
-            /////////        if( "[NOT]" == nsh_yehotel ){
-            /////////
-            /////////            //:::::::::::::::::::::::::::::::://
-            /////////            //: Do nothing. No Levelpack     ://
-            /////////            //: Do nothign. No Hotel         ://
-            /////////            //:::::::::::::::::::::::::::::::://    
-            /////////        }else{
-            /////////
-            /////////            LOG("[nsh_yehotel]",nsh_yehotel);
-            /////////            MSG("[EXPECTED:YES:ORR:NOT]");
-            /////////            ERR("[EXPECTED:YES:ORR:NOT]");
-            /////////        };;
-            /////////    });;
             //:------------------------:Initiate_Download://
         //:----------------:Try_To_Load_Level_From_Server://
 
