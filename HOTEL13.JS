@@ -11420,17 +11420,18 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 if( i_scatpng.m_has >= 1 ){
 
-                    h13.m_giv.writeHead( 200 , d_png  );
+                    
                     h13.m_giv.setHeader( 
                         "nsh_ooi" ,  i_scatpng.m_ooi  );;
+                    h13.m_giv.writeHead( 200 , d_png  );
                     h13.m_giv.write( i_scatpng.m_png  );        
                     h13.m_giv.end();
                 }else
                 if( i_scatpng.m_has <= 0 ){
 
-                    h13.m_giv.writeHead( 404 , d_txt  );
                     h13.m_giv.setHeader(
                         "nsh_ooi" , i_scatpng.m_ooi   );;
+                    h13.m_giv.writeHead( 404 , d_txt  );
                     h13.m_giv.write("[PNG_NOT_FOUND]" );        
                     h13.m_giv.end();
                 }else{
