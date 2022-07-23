@@ -6930,7 +6930,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ERR("[WHY_THE_FUCK_NO:d_url]");
         };;
         var e_s =( "/" != d_url[d_url.length-1]?"/":"");
-        var url =(
+        var url =( ""
         +    d_url+e_s
         +    "F_HOTEL13_CAS_COOHASH_SCATPNG/"
         +    i_coohash
