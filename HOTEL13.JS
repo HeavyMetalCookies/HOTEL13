@@ -7731,6 +7731,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                         );;
                     }else{
                         /** Do nothing. No .PNG to load. **/
+                        console.log(
+                            "[NO_PNG:i_scatpng]" 
+                                    ,i_scatpng 
+                        );;
                     };;
                 });;
 
@@ -9129,8 +9133,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         ){
             //:[ATF]:------------------------------------://
             //:                                          ://
-            //: "123_456_789" ==TO==>                    ://
-            //: "./X_123/Y_456/Z_789/AIM_123_456_789.PNG"://
+            //: "123_456_789" ==TO==> "./PNG/"+          ://
+            //: "X_123/Y_456/Z_789/AIM_123_456_789.PNG"  ://
             //:                                          ://
             //:------------------------------------:[ATF]://
 
@@ -9172,6 +9176,112 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             return( o_aimpath );
         };;
     //:============================:COORDHASH_TO_FILENAME://
+    //:IS_THE_STRING_A_COORDINATE_HASH:==================://
+    //:                                                  ://
+    //:     STR_0_9_YES : Return >=1 if "0"-"9" ascii.   ://
+    //:     STR_EQU     : Return >=1 if equal strings.   ://
+    //:     YES_COOHASH : Return >=1 if coordinate hash  ://
+    //:     NOT_COOHASH : Return >=1 if NOT  coord hash  ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        const   F_HOTEL13_STR_0_9_YES = function
+        PRIVATE_F_HOTEL13_STR_0_9_YES(
+
+            i_chr //:DONT_Allow_Invalid_Input://
+        ){
+            if( "string" != typeof i_chr ){
+                ERR("[STR_0_9:MUST_HAVE_STRING_INPUT]");
+            };;
+            if( i_chr.length != 1 ){
+                ERR("[Expect_Char_Iput]");
+            };;
+            var o_yes =( 0 );
+
+                if( "0" === i_chr[ 0 ]
+                ||  "1" === i_chr[ 0 ]
+                ||  "2" === i_chr[ 0 ]
+                ||  "3" === i_chr[ 0 ]
+                ||  "4" === i_chr[ 0 ]
+                ||  "5" === i_chr[ 0 ]
+                ||  "6" === i_chr[ 0 ]
+                ||  "7" === i_chr[ 0 ]
+                ||  "8" === i_chr[ 0 ]
+                ||  "9" === i_chr[ 0 ]
+                ){
+                    o_yes =( 1 );
+                };;
+            return( o_yes );
+        };;
+
+        const   F_HOTEL13_STR_EQU = function
+        PRIVATE_F_HOTEL13_STR_EQU(
+
+            i_str_001
+        ,   i_str_001
+        ){ 
+            if( "string" != typeof i_str_001
+            ||  "string" != typeof i_str_002
+            ){
+                ERR("[EXPECTS_STRING_INPUT_2022]");
+            };;
+            var o_equ=( 0 );
+            if( i_str_001 === i_str_002 ){
+                o_equ=( 1 );
+            };;
+            return( o_equ );
+        };;
+
+        const   F_HOTEL13_YES_COOHASH = function
+        PRIVATE_F_HOTEL13_YES_COOHASH(
+
+            i_str //:AllowInvalidInput://
+        ){
+            var o_yes=( 0 );
+
+            if( "string" != typeof i_str
+            ||  i_str.length != 11 
+            ){
+                o_yes=( 0 );
+            }else{
+                if( 1
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 0 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 1 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 2 ] )
+
+                &&  F_HOTEL13_STR_EQU( "_",i_str[ 3 ] )
+
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 4 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 5 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 6 ] )
+
+                &&  F_HOTEL13_STR_EQU( "_",i_str[ 7 ] )
+
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 8 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[ 9 ] )
+                &&  F_HOTEL13_STR_0_9_YES( i_str[10 ] )
+                ){
+                    o_yes =( 1 );
+                };;
+            };;
+            return( o_yes );
+        };;
+        const   F_HOTEL13_NOT_COOHASH = function
+        PRIVATE_F_HOTEL13_NOT_COOHASH(
+
+            i_str
+        ){  
+            var o_not_coohash=( 0 );
+            var   yes_coohash=( F_HOTEL13_YES_COOHASH(
+
+                i_str
+            ));;
+            if( yes_coohash >= 1 ){ o_not_coohash=( 0 ); };
+            if( yes_coohash <= 0 ){ o_not_coohash=( 1 ); };
+
+            return( o_not_coohash );
+        };;
+    //:==================:IS_THE_STRING_A_COORDINATE_HASH://
     //:AIMPATH_TO_NAME_WITH_EXT:=========================://
 
         //:::::::::::::::::::::::::::::::::::::::::::::::://
@@ -10906,6 +11016,101 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         });;
     };;
     //:===================:HOTEL13_SERVER_INIT_ON_STARTUP://
+    //:HOTEL13_TAR:(TASK_ARRAY):=========================://
+    //:                                                  ://
+    //:     I question if "re-inventing" promises is     ://
+    //:     a good idea. But... You have to try things   ://
+    //:     and see if they work. Maybe this is          ://
+    //:     a whole bunch of code that overly            ://
+    //:     complicates things, maybe it's a good        ://
+    //:     idea... We will see.                         ://
+    //:     DATE[ 2022_07_23 ]TIME[ 116AM ]              ://
+    //:                                                  ://
+    //: - - - - - - - - - - - -- - - - - - - - - - - - - ://
+
+        const   F_HOTEL13_NEW_TASKARR = "[USE:NEW_TAR]" ;
+        const   F_HOTEL13_TAR_NEW     = "[USE:NEW_TAR]" ;
+
+        const   F_HOTEL13_NEW_TAR = function
+        PRIVATE_F_HOTEL13_NEW_TAR(
+
+            /**VOID**/
+        ){
+            //:[ATF]:------------------------------------://
+            //:                                          ://
+            //:  I like the idea of creating a task      ://
+            //:  runner. But is this really a good       ://
+            //:  idea or does it make things overly      ://
+            //:  complex?                                ://
+            //:                                          ://
+            //:------------------------------------:[ATF]://
+
+            var o_tar ={ laxcoma:"[HACK]"
+           
+            ,   m_t_a : [ ]  //:Member: TaskArray
+            ,   m_t_p :(0-1) //:Member:TaskPointer
+            ,   m_end : null //:Member:END/DONE function.
+            };;
+            Object.seal( o_tar );
+            return(      o_tar );
+        };;
+
+        const F_HOTEL13_RUNLIST = "[USE:F_HOTEL13_TAR_RUN]" ;
+        const F_HOTEL13_NEXTASK = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_EXITASK = "[USE:F_HOTEL13_TAR_EXI]" ;
+        const F_HOTEL13_RUNTASK = "[USE:F_HOTEL13_TAR_RUN]" ;
+        const F_HOTEL13_TASKNEX = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_RUNNEXT = "[USE:F_HOTEL13_TAR_NEX]" ;
+        const F_HOTEL13_TAR_ERR = "[USE:F_HOTEL13_TAR_EXI]" ;
+        const F_HOTEL13_TASKEXI = "[USE:F_HOTEL13_TAR_EXI]" ;
+
+        const   F_HOTEL13_TAR_RUN = function
+        PRIVATE_F_HOTEL13_TAR_RUN(
+
+            i_tar  
+        ){
+            var o_promise = new Promise(
+            EXECUTO_F_HOTEL13_TAR_RUN(o_k_yes,wontsay )=>{
+
+                //:#_THIS_IS_NOT_K_I_S_S_#://
+
+                i_tar.m_end =( o_k_yes          );
+                var taskcmd =( i_tar.m_t_a[ 0 ] );
+                    taskcmd(   i_tar            );
+            });;
+            return( o_promise );
+        };;
+        const   F_HOTEL13_TAR_NEX = function
+        PRIVATE_F_HOTEL13_TAR_NEX(
+
+            i_tar
+        ){
+            var m_i =( i_tar.m_t_a.length - 1 );
+                i_tar.m_t_p ++;
+            if( i_tar.m_t_p > m_i ){
+
+                console.log( "[RESOLVING_PROMISE]" );
+                i_tar.m_end( /** NO ARGS **/ );
+            }else{
+                var taskcmd = i_tar.m_t_a[ 
+                              i_tar.m_t_p ];  
+                    taskcmd(  i_tar       );
+            };;
+        };;
+        const   F_HOTEL13_TAR_EXI = function
+        PRIVATE_F_HOTEL13_TAR_EXI(
+
+            i_tar  //:Input Task Array Object://
+        ,   i_err_obj  //:Optional_Error_Object  ://
+        ){
+            console.log( "[EXITASK/EARLY_ABORT]" );
+            if( i_err_obj ){
+                console.log( i_err_obj );
+            };;
+            i_tar.m_end( /** NO ARGS **/ );
+        };;
+
+    //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
     //:HOTEL13_CAS_TYPES:================================://
 
         const   F_HOTEL13_NEW_SCATPNG = function
@@ -10913,13 +11118,28 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             /** VOID **/
         ){
-            var o_scatpng ={
+            var o_scatpng ={ laxcoma:"[HACK]"
             ,       m_png  : null   //: .PNG Binary File ://
             ,       m_has  : (0)    //:  HAS .PNG File?  ://
+            ,       m_ooi  :"[nil][m_ooi]"     //:@m_ooi@://
             };;
             Object.seal( o_scatpng );
             return(      o_scatpng );
         };;
+
+        const c_hotel13_scatpng_ooi_heroku =(
+
+            "[M_OOI.HEROKU:::::FILE_SYSTEM]"
+        );;
+        const c_hotel13_scatpng_ooi_imgur  =(
+
+            "[M_OOI.IMGUR:::IMAGE_DOWNLOAD]"
+        );;
+        const c_hotel13_scatpng_ooi_none   =(
+
+            "[M_OOI.NONE::::NO_IMAGE_FOUND]"
+        );;
+
     //:================================:HOTEL13_CAS_TYPES://
     //:HOTEL13_CAS_FUNCTIONS:============================://
     //:                                                  ://
@@ -10951,26 +11171,135 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     return new Promise( function( o_k_yes , wontsay ){
 
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
-    
 
-        sfjlsfjlksjdflsdj //:< < < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI!
+        //:::::::::::::::::::::::::::::::::::::::::::://        
+        //:EX[ www.app.com                          ]://        
+        //:  [      /F_HOTEL13_CAS_COOHASH_SCATPNG  ]://
+        //:  [      /001_001_001                    ]://
+        //:::::::::::::::::::::::::::::::::::::::::::://
+        var e_s =( "/" != d_url[d_url.length-1]?"/":"");
+        var url =(
+        +    d_url+e_s
+        +    "F_HOTEL13_CAS_COOHASH_SCATPNG/"
+        +    i_coohash
+        );;
 
-        o_k_yes( o_scatpng );
+        var xhr = new XMLHttpRequest();
+            xhr.open( "GET" , url );
+            xhr.send();
+            xhr.onreadystatechange=(e)=>{
+            if( xhr.readyState === (4) ){
+                
+                if( 200 === xhr.status ){
+                    o_scatpng.m_has =(  1           );
+                    o_scatpng.m_png =( xhr.response );
+                    o_scatpng.m_ooi =( "nsh_ooi"    );
+                }else{
+                    o_scatpng.m_has =( 0 - 420669 );
+                };;
+                o_k_yes( o_scatpng );
+            };;};;
     });;
     ////////////////////////////////////////////////////////
     }else if(  d_hotel13_yesnode   ){ //////////////////////
-    ////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////    
     return new Promise( function( o_k_yes , wontsay ){
 
+        var tar = F_HOTEL13_NEW_TAR(); //: NewTaskArray  ://
+        let NEX = F_HOTEL13_TAR_NEX ;  //: NextTask      ://
+        let EXI = F_HOTEL13_TAR_EXI ;  //: EarlyExit     ://
 
-
-    
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
-    
-    
-        sljdflsjflkjsdl //:< < < < < < < < < < < < < < < < < < < NOTICE_ME_SENPAI!
+        var aimpath = F_HOTEL13_COOHASH_AIMPATH(i_coohash);
 
-        o_k_yes( o_scatpng );
+        let ooi_heroku = c_hotel13_scatpng_ooi_heroku ;
+        let ooi_imgur  = c_hotel13_scatpng_ooi_imgur  ;
+        let ooi_none   = c_hotel13_scatpng_ooi_none   ;
+
+        var png_url =( "[nil][png_url]" );
+
+        o_scatpng.m_ooi =( ooi_none );
+
+        l_fs.readfile( aimpath , (i_err,i_cof)=>{
+
+            if( i_err ){
+                let t_a = tar.m_t_a ;
+                t_a.push( 
+                            GET_IMGUR_URL_FROM_DATABASE );;
+                t_a.push( 
+                            TRY_TO_READ_FROM_IMGUR      );;
+
+                F_HOTEL13_RUNLIST( tar ).then(()=>{
+
+                    //:::::::::::::::::::::::::::::::://
+                    //:Never Fail. Just Don't Return ://
+                    //:Data Askef For If You Cant.   ://
+                    //:::::::::::::::::::::::::::::::://        
+                    o_k_yes( o_scatpng );
+                });;
+            }else{
+
+                o_scatpng.m_has =(    1  );
+                o_scatpng.m_png =( i_cof );
+                o_scatpng.m_ooi =( ooi_heroku );
+                o_k_yes( o_scatpng );
+            };;
+        });;
+        function 
+        GET_IMGUR_URL_FROM_DATABASE( i_tar ){
+
+            if( ! ( F_HOTEL13_ICH( i_coohash ))){
+            
+                EXI( i_tar , "[NOT_A_COORDHASH]" );
+            }else{
+
+                var sql_cmd =( d_sel_tab_hotel13 );
+                sql_cmd = sql_cmd.replaceAll(
+
+                    "[i_coohash]" , i_coohash
+                );;
+            
+                d_hotel13_dcp.query( sql_cmd )
+                .then( function( i_res ){ 
+                    
+                    png_url =( i_res.rows[ 0 ]
+                              .col_png_url );;
+
+                    NEX( i_tar );
+                }).catch( function( i_err ){                  
+                                        
+                    EXI( i_tar , "[QUERYFAIL]" );          
+                }) 
+                ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+            };;
+        };;
+        function 
+        TRY_TO_READ_FROM_IMGUR( i_tar ){
+
+            var ask = l_https.request({
+
+                host     : "i.imgur.com"  
+            ,   method   : "GET" 
+            ,   headers  :
+                {
+                    accept : "image/png"
+                }
+            },( got )=>{ 
+
+                got.setEncoding( "utf8"    );
+                got.on( "data" , ( got_dat )=>{
+                
+                    o_scatpng.m_png=( got_dat   );
+                    o_scatpng.m_has=(  1        );
+                    o_scatpng.m_ooi=( ooi_imgur );
+                });;
+                got.on( "error", (e)=>{ EXI( i_tar,e); });
+                got.on( "end"  , ( )=>{ LOG("[E001]"); });
+                got.on( "close", ( )=>{ NEX( i_tar  ); });
+            });;
+            ask.write( png_url );
+            ask.end();
+        };;
     });;
     ////////////////////////////////////////////////////////
     }else{ ERR("[NEITHER_ENVIRONMENT]"); };;};;
@@ -11004,13 +11333,35 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         h13.m_url =( h13.m_url.toUpperCase()             );      
         h13.m_seg =( h13.m_url.split( "/" ).filter(n=>n) );
 
+        if( "F_HOTEL13_CAS_COOHASH_SCATPNG" == h13.m_seg[ 0 ]
+        &&   F_HOTEL13_NOT_COOHASH(            h13.m_seg[ 1 ] )
+        ){
+            h13.m_giv.writeHead( 400 , d_txt );
+            h13.m_giv.write( "[APPEND:/COOHASH]" );
+            h13.m_giv.end();
+        }else
         if( "F_HOTEL13_CAS_COOHASH_SCATPNG" == h13.m_seg[ 0 ] ){
              F_HOTEL13_CAS_COOHASH_SCATPNG(    h13.m_seg[ 1 ] )
-            .then( (i_png_bin)=>{
+            .then( ( i_scatpng )=>{
 
-                h13.m_giv.writeHead( 200 , d_png );
-                h13.m_giv.write( i_png_bin );
-                h13.m_giv.end();
+                if( i_scatpng.m_has >= 1 ){
+
+                    h13.m_giv.writeHead( 200 , d_png  );
+                    h13.m_giv.setHeader( 
+                        "nsh_ooi" ,  i_scatpng.m_ooi  );;
+                    h13.m_giv.write( i_scatpng.m_png  );        
+                    h13.m_giv.end();
+                }else
+                if( i_scatpng.m_has <= 0 ){
+
+                    h13.m_giv.writeHead( 404 , d_txt  );
+                    h13.m_giv.setHeader(
+                        "nsh_ooi" , i_scatpng.m_ooi   );;
+                    h13.m_giv.write("[PNG_NOT_FOUND]" );        
+                    h13.m_giv.end();
+                }else{
+                    ERR("[EDCL_20220723]");
+                };;
             });;
         }else
         if( "DANGER_ZONE_FLIP_THE_TABLE_MY_BITCH_2022"
@@ -11743,10 +12094,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     //:##################################################://
 
 
-/** CTRL_F_HELP ******************************************** ***
-*** TAG_SECTION ******************************************** ***
+/** CTRL_F_HELP ******************************** *********** ***
+*** TAG_SECTION ******************************** *********** ***
+--- ----------- -------------------------------- ----------- ---
 
-    TAG[ tag-section | tagsection | tag_section ]
+    TAG[ tag_section | tag-section | tagsection ]
+
+--- ----------- -------------------------------- ----------- ---
 
     -----------------------------------------------------------
     [ integer-to-string | integer_to_string | integertostring ]
@@ -11867,6 +12221,48 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     YOU_MEAN[ #_CLIENT_AND_SERVER_# ]
     -----------------------------------------------------------
 
+    -----------------------------------------------------------
+    IS_COOHASH | is-coohash | HAS_COOHASH | ISA_COOHASH
+    is-a-coohash | is a coohash | is a coordinate has
+    is coordinate hash | is coord hash | is_coord_hash
+    isa_coohash | isa-coohash | isa coohash | isa hash
+    isa_hash | isahash
+    -----------------------------------------------------------
+    F_HOTEL13_YES_COOHASH
+    F_HOTEL13_NOT_COOHASH
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    not a coordinate hash
+    not_a_coordinate_hash
+    notacoordinatehash
+    -----------------------------------------------------------
+    F_HOTEL13_NOT_COOHASH
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    is a coordinate hash
+    is_a_coordinate_hash
+    isacoordinatehash
+    -----------------------------------------------------------
+    F_HOTEL13_YES_COOHASH
+    -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    F_HOTEL_STR_ASC | F_HOTEL_ASC_STR
+    F_HOTEL_STR_INT | F_HOTEL_INT_STR
+    is string integer character | is string int char
+    intchar | int_char | int-char
+    F_HOTEL13_0_9_STR_YES | F_HOTEL13_0_9_STR
+    -----------------------------------------------------------
+    F_HOTEL13_STR_0_9_YES
+    -----------------------------------------------------------
+
+--- ----------- -------------------------------- ----------- ---
+
+    TAG[ tag_section | tag-section | tagsection ]
+
+--- ----------- -------------------------------- ----------- ---
 *** *********** ******************************** TAG_SECTION ***
 *** *********** ******************************** CTRL_F_HELP **/
 /** BOMB_LASER_ECHOBOX_SPARKPIN **************************** ***
@@ -14447,6 +14843,65 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @mayepng@   : USE[ scatpng ] ( maye   ==  maybe png )
     @evilpng@   : USE[ scatpng ]
     @strapng@   : USE[ scatpng ] ( strapng==strange png )
+    
+    @m_ooi@     : Member_ OriginOfImage
+                : VALUES:
+                :       "[M_OOI.HEROKU:::::FILE_SYSTEM]"
+                :       "[M_OOI.IMGUR:::IMAGE_DOWNLOAD]"
+    #m_ooi# :
+        Adding this variable because I want a way to
+        confirm from where my server got the image.
+        Message is not to be used to execute logic on,
+        just for debugging and sanity.
+
+
+    #_THIS_IS_NOT_K_I_S_S_#
+        //:----------------------------------://
+        //: THIS IS GETTING WAY TO FUCKING   ://
+        //: COMPLICATED. MAYBE WE SHOULD...  ://
+        //: "KEEP IT SIMPLE STUPID".         ://
+        //:----------------------------------://
+
+        I am really questioning if this is a good
+        idea or not. We are going to do it and
+        see how we like it. DATE[ 2022_07_23 ]
+
+    @i_taskarr@ : Use[ i_tar ]
+    @taskarr@   : Use[   tar ]
+    @o_taskarr@ : Use[ o_tar ]
+
+    @i_tar@ : Input  task array object.
+    @o_tar@ : Output task array object.
+      @tar@ : Local  task array object.
+
+    @e_s@ : Extra_Slash
+
+    @nsh_ooi@ : NonStandardHeader_OriginOfImage
+
+    @EDCL@ : Expected_Dead_Code_Line
+
+    NOW_DATE[ 2022_07_23 ]TIME[ 0336 ]PM
+
+        Just finished writing 1st draft of :
+        [ F_HOTEL13_CAS_COOHASH_SCATPNG ]
+
+        A bit nervous to run the code because I don't
+        know what the fuck I am doing and a lot of
+        experimental stuff in this.
+
+        General idea: Tightly couple the server
+        and client code so that code is less
+        "spaghetti" and easy to find what I am 
+        looking for.
+
+        CAS_COOHASH_SCATPNG is used to get a levelpack
+        .PNG file using a coordinate has. It is designed
+        so that is can be called on the client side
+        or server side.
+
+        Always returns a promise. Promise resolves
+        iself by returning a[ scatpng ]object which
+        may or may not contain a .PNG binary file.
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
