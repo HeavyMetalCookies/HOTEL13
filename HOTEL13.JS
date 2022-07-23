@@ -7080,6 +7080,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     NEX( i_tar );
                 }).catch( function( i_err ){                  
                              
+                    TAL( i_tar , "[i_err]"+i_err );
                     TAL( i_tar , "[BEG:SQL_CMD]" );
                     TAL( i_tar ,   sql_cmd       );
                     TAL( i_tar , "[END:SQL_CMD]" );
@@ -12376,14 +12377,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     -----------------------------------------------------------
 
     -----------------------------------------------------------
-    F_HOTEL_STR_ASC | F_HOTEL_ASC_STR
-    F_HOTEL_STR_INT | F_HOTEL_INT_STR
-    is string integer character | is string int char
-    intchar | int_char | int-char
-    F_HOTEL13_0_9_STR_YES | F_HOTEL13_0_9_STR
+    [ F_HOTEL_STR_ASC | F_HOTEL_ASC_STR                       ]
+    [ F_HOTEL_STR_INT | F_HOTEL_INT_STR                       ]
+    [ is string integer character | is string int char        ]
+    [ intchar | int_char | int-char                           ]
+    [ F_HOTEL13_0_9_STR_YES | F_HOTEL13_0_9_STR               ]
     -----------------------------------------------------------
     F_HOTEL13_STR_0_9_YES
     -----------------------------------------------------------
+
+    -----------------------------------------------------------
+    [ F_HOTEL13_ASS | hotel assert | hotel ass | hotel_ass    ]
+    [ hotel assert function | hotel_assert | hotel-assert     ]
+    -----------------------------------------------------------
+    LOOKING_FOR[ F_PRIVATE_HOTEL13_ASS ]
+    -----------------------------------------------------------
+
 
 --- ----------- -------------------------------- ----------- ---
 
