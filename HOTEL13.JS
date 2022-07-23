@@ -7118,7 +7118,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 got.on( "close",( )=>{ NEX( i_tar  );        });
             });;
             ask.on( "error",(e)=>{ EXI( i_tar,e ); });
-            ask.write( /** Like: xhr.send() **/ );
+        //  ask.write( /** Like: xhr.send() **/ );
             ask.end();
         };;
     });;
