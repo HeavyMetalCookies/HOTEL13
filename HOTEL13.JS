@@ -7094,7 +7094,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         function 
         F02_TRY_TO_READ_FROM_IMGUR( i_tar ){
 
-            var arr_dat = [   ]; //:AKA[ chunks ]://
+            var arr_dat = [   ]; //:@arr_dat@://
             var cat_dat =(null); //:@cat_dat@://
 
             var ask = l_https.request({
@@ -7109,7 +7109,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }
             },( got )=>{ 
 
-                //// got.setEncoding( "utf8"    ); < < < Will probably corrupt data.
+                //+WILL_CORRUPT_YOUR_DATA+//
+                got.setEncoding( "utf8"    ); 
 
                 got.on( "data" , ( got_dat )=>{
 
