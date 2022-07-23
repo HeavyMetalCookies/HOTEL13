@@ -11460,12 +11460,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     i_scatpng.m_log.push( 
                         "[PNG_NOT_FOUND]"
                     );;
-                    h13.m_giv.write(
-                        JSON.stringify( 
-                            i_scatpng.m_log
-                        );;
-                    );;
-      
+                    h13.m_giv.write( JSON.stringify( 
+                            i_scatpng.m_log ));;
                     h13.m_giv.end();
                 }else{
                     ERR("[EDCL_20220723]");
