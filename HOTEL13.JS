@@ -11382,6 +11382,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
              F_HOTEL13_CAS_COOHASH_SCATPNG(    h13.m_seg[ 1 ] )
             .then( ( i_scatpng )=>{
 
+                if( "string" != typeof i_scatpng.m_ooi ){
+                    ERR("[IMAGE_ORIGIN_NEVER_SET]");
+                };;
+
                 if( i_scatpng.m_has >= 1 ){
 
                     h13.m_giv.writeHead( 200 , d_png  );
