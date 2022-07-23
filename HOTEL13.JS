@@ -6920,15 +6920,20 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +    i_coohash
         );;
 
+        var ooi =( null /**Origin_Of_Image**/ );
         var xhr = new XMLHttpRequest();
             xhr.open( "GET" , url );
             xhr.responseType = "arraybuffer" ;
             xhr.send();
             xhr.onreadystatechange=(e)=>{
+            if( xhr.readyState === xhr.HEADERS_RECEIVED ){
+
+                ooi =( xhr.getResponseHeader( 
+                    "nsh_ooi" ));;
+            };;
             if( xhr.readyState === (4) ){
 
-                let      ooi =( xhr.getResponseHeader( 
-                    "nsh_ooi" ));;
+
 
                 if( "string" != typeof ooi ){
                     YEL( "[WHERE_THE_FUCK_IS_MY_HEADER]");
