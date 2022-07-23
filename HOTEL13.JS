@@ -6930,6 +6930,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         +    "F_HOTEL13_CAS_COOHASH_SCATPNG/"
         +    i_coohash
         );;
+        console.log( "[SCATPNG_URL]:" , url );
 
         var ooi =( null /**Origin_Of_Image**/ );
         var xhr = new XMLHttpRequest();
