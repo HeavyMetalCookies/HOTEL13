@@ -6656,7 +6656,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( o_k >= 1 ){
             if( (null===got_png)||(!(got_png)) ){
 
-                YEL( "[got_png:does_not_exist]");
+                MSG( "[got_png:does_not_exist]");
                 o_k=(0-1);
             }else{
                 o_k=(0+1);
