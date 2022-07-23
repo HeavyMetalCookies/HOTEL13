@@ -6888,6 +6888,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                             ,  i_tar.m_log );;
                 ERR("[WHERE_IS_THE_LOG?]");
             };;
+
+            console.log(      i_msg );
             i_tar.m_log.push( i_msg );
         };;
     //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
@@ -7099,8 +7101,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             ,   method   : "GET" 
             ,   headers  :
                 {
-                    //: accept : "image/png"
-                    accept : "application/octet-stream"
+                    accept : "image/png"
+                //: accept : "application/octet-stream"
                 }
             },( got )=>{ 
 
