@@ -8253,7 +8253,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 F_HOTEL13_CAS_COOHASH_SCATPNG( coohash )
                 .then( ( i_scatpng )=>{
 
-                    if( i_scatpng.m_has ){
+                    if( i_scatpng.m_has >= 1 ){
 
                         LOG( "[i_scatpng.m_has]"
                              , i_scatpng.m_has );;
