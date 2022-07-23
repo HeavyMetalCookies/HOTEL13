@@ -7102,7 +7102,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }
             },( got )=>{ 
 
-                got.setEncoding( "utf8"    );
+                //// got.setEncoding( "utf8"    );
                 got.on( "data" , ( got_dat )=>{
 
                     TAL( i_tar , "[!GOT_DAT!]" );
