@@ -7109,8 +7109,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }
             },( got )=>{ 
 
-                //+WILL_CORRUPT_YOUR_DATA+//
-                got.setEncoding( "utf8"    ); 
+                //+ WILL_CORRUPT_YOUR_DATA!!!!!!!!!!!!!! +//
+                //- DONT[  got.setEncoding( "utf8" );  ] -//        
 
                 got.on( "data" , ( got_dat )=>{
 
