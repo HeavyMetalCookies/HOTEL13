@@ -7094,6 +7094,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         function 
         F02_TRY_TO_READ_FROM_IMGUR( i_tar ){
 
+            var arr_dat = [   ]; //:AKA[ chunks ]://
+            var cat_dat =(null); //:@cat_dat@://
+
             var ask = l_https.request({
 
                 host     : "i.imgur.com"  
@@ -7106,18 +7109,26 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 }
             },( got )=>{ 
 
-                //// got.setEncoding( "utf8"    );
+                //// got.setEncoding( "utf8"    ); < < < Will probably corrupt data.
+
                 got.on( "data" , ( got_dat )=>{
 
                     TAL( i_tar , "[!GOT_DAT!]" );
-                
-                    o_scatpng.m_png=( got_dat   );
-                    o_scatpng.m_has=(  1        );
-                    o_scatpng.m_ooi=( ooi_imgur );
+                    arr_dat.push(   got_dat    );
+
                 });;
                 got.on( "error",(e)=>{ EXI( i_tar,e);        });
                 got.on( "end"  ,( )=>{ TAL( i_tar,"[E001]"); });
-                got.on( "close",( )=>{ NEX( i_tar  );        });
+                got.on( "close",( )=>{ 
+
+                    cat_dat =( Buffer.concat( arr_dat ) );
+
+                    o_scatpng.m_png=( cat_dat   );
+                    o_scatpng.m_has=(  1        );
+                    o_scatpng.m_ooi=( ooi_imgur );
+
+                    NEX( i_tar  );        
+                });
             });;
             ask.on( "error",(e)=>{ EXI( i_tar,e ); });
         //  ask.write( /** Like: xhr.send() **/ );
@@ -15121,6 +15132,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     
         DATE[ 2022_07_23 ]TIME[ 508 ]AM
 
+    @arr_dat@ : Array of "data" chunks.
+    @cat_dat@ : All data chunks concatinated together.
+    
 
 *** ****************************************** HASHTAG_SEC - ***
 *** ****************************************** HASHTAG_NOTES **/
