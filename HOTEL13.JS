@@ -6868,8 +6868,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( i_err_obj ){
                 console.log( i_err_obj );
             };;
-            i_tar.m_log.push( ""+i_err+"" );
-            i_tar.m_end( /** NO ARGS **/  );
+            i_tar.m_log.push( ""+i_err_obj+"" );
+            i_tar.m_end( /**   NO ARGS   **/  );
         };;
         const   F_HOTEL13_TAR_TAL = function
         PRIVATE_F_HOTEL13_TAR_TAL(
