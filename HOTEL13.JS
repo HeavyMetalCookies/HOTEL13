@@ -8164,6 +8164,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     if( i_scatpng.m_has ){
 
+                        YEL( "[i_scatpng.m_ooi]"
+                             , i_scatpng.m_ooi );;
+
                         F_HOTEL13_HERSYNC_LOD_PNG(
 
                             i_scatpng.m_png
