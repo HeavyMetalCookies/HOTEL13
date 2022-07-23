@@ -6877,6 +6877,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             i_tar //: Task Array Object     ://
         ,   i_msg //: Message To Add To Log ://
         ){
+            if( !( Array.isArray( i_tar ) ) ){
+                ERR("[TAR_TAL_REQUIRES:i_tar]");
+            };;
             i_tar.m_log.push( i_msg );
         };;
     //:=========================:HOTEL13_TAR:(TASK_ARRAY)://
@@ -7060,14 +7063,14 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     png_url =( i_res.rows[ 0 ]
                               .col_png_url );;
 
-                    TAL( "[png_url]:"+png_url );
+                    TAL( i_tar , "[png_url]:"+png_url );
                     NEX( i_tar );
                 }).catch( function( i_err ){                  
                              
-                    TAL( "[BEG:SQL_CMD]"       );
-                    TAL(   sql_cmd             );
-                    TAL( "[END:SQL_CMD]"       );
-                    EXI( i_tar , "[QUERYFAIL]" );          
+                    TAL( i_tar , "[BEG:SQL_CMD]" );
+                    TAL( i_tar ,   sql_cmd       );
+                    TAL( i_tar , "[END:SQL_CMD]" );
+                    EXI( i_tar , "[QUERYFAIL]"   );          
                 }) 
                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
             };;
