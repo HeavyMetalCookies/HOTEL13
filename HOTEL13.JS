@@ -7104,14 +7104,16 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 got.setEncoding( "utf8"    );
                 got.on( "data" , ( got_dat )=>{
+
+                    TAL( i_tar , "[!GOT_DAT!]" );
                 
                     o_scatpng.m_png=( got_dat   );
                     o_scatpng.m_has=(  1        );
                     o_scatpng.m_ooi=( ooi_imgur );
                 });;
-                got.on( "error", (e)=>{ EXI( i_tar,e); });
-                got.on( "end"  , ( )=>{ LOG("[E001]"); });
-                got.on( "close", ( )=>{ NEX( i_tar  ); });
+                got.on( "error",(e)=>{ EXI( i_tar,e);        });
+                got.on( "end"  ,( )=>{ TAL( i_tar,"[E001]"); });
+                got.on( "close",( )=>{ NEX( i_tar  );        });
             });;
             ask.on( "error",(e)=>{ EXI( i_tar,e ); });
             ask.write( png_url );
