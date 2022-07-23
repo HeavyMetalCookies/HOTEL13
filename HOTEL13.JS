@@ -6877,8 +6877,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             i_tar //: Task Array Object     ://
         ,   i_msg //: Message To Add To Log ://
         ){
-            if( !( Array.isArray( i_tar ) ) ){
-                ERR("[TAR_TAL_REQUIRES:i_tar]");
+            if( !( "object" == typeof i_tar ) ){
+                ERR("[WHERE_IS_THE_TAR?]");
+            };;
+            if( !( Array.isArray( i_tar.m_log ) ) ){
+                console.log( "[i_tar.m_log]:" 
+                            ,  i_tar.m_log );;
+                ERR("[WHERE_IS_THE_LOG?]");
             };;
             i_tar.m_log.push( i_msg );
         };;
