@@ -8164,6 +8164,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                     if( i_scatpng.m_has ){
 
+                        YEL( "[i_scatpng.m_has]"
+                             , i_scatpng.m_has );;
                         YEL( "[i_scatpng.m_ooi]"
                              , i_scatpng.m_ooi );;
 
