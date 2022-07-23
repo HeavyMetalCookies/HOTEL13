@@ -7063,7 +7063,10 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     TAL( "[png_url]:"+png_url );
                     NEX( i_tar );
                 }).catch( function( i_err ){                  
-                                        
+                             
+                    TAL( "[BEG:SQL_CMD]"       );
+                    TAL(   sql_cmd             );
+                    TAL( "[END:SQL_CMD]"       );
                     EXI( i_tar , "[QUERYFAIL]" );          
                 }) 
                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
