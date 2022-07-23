@@ -6937,8 +6937,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             xhr.responseType = "arraybuffer" ;
             xhr.send();
             xhr.onreadystatechange=(e)=>{
-            if( xhr.readyState === xhr.HEADERS_RECEIVED ){
-
+            if( xhr.readyState === xhr.HEADERS_RECEIVED 
+            ||  xhr.readyState === (2)
+            ){
                 YEL( "[HEADERS_RECIEVED]" );
 
                 ooi =( xhr.getResponseHeader( 
