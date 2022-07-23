@@ -6835,6 +6835,9 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 //:#_THIS_IS_NOT_K_I_S_S_#://
 
+                i_tar.m_t_p ++;
+                ASS( 0 === i_tar.m_t_p , "[TAR_M_T_P]" );
+
                 i_tar.m_end =( o_k_yes          );
                 var taskcmd =( i_tar.m_t_a[ 0 ] );
                     taskcmd(   i_tar            );
