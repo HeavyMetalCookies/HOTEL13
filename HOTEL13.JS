@@ -6929,6 +6929,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
                 let      ooi =( xhr.getResponseHeader( 
                     "nsh_ooi" ));;
+
+                if( "string" != typeof ooi ){
+                    YEL( "[WHERE_THE_FUCK_IS_MY_HEADER]");
+                    ERR( "[WHERE_THE_FUCK_IS_MY_HEADER]");
+                };;
                 
                 if( 200 === xhr.status ){
                     o_scatpng.m_has =(  1           );
