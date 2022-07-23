@@ -7068,7 +7068,12 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                     png_url =( i_res.rows[ 0 ]
                               .col_png_url );;
 
-                    TAL( i_tar , "[png_url]:"+png_url );
+                    TAL( i_tar , ""
+                    +   "[x][png_url][x]:"
+                    +   "("
+                    +   png_url 
+                    +   ")"
+                    );;
                     NEX( i_tar );
                 }).catch( function( i_err ){                  
                              
