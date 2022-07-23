@@ -11069,8 +11069,8 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
             i_tar  
         ){
-            var o_promise = new Promise(
-            EXECUTO_F_HOTEL13_TAR_RUN(o_k_yes,wontsay )=>{
+            var o_vod_promise = new Promise( function
+            EXECUTO_F_HOTEL13_TAR_RUN(o_k_yes,wontsay ){
 
                 //:#_THIS_IS_NOT_K_I_S_S_#://
 
@@ -11078,7 +11078,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
                 var taskcmd =( i_tar.m_t_a[ 0 ] );
                     taskcmd(   i_tar            );
             });;
-            return( o_promise );
+            return( o_vod_promise );
         };;
         const   F_HOTEL13_TAR_NEX = function
         PRIVATE_F_HOTEL13_TAR_NEX(
@@ -11090,7 +11090,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( i_tar.m_t_p > m_i ){
 
                 console.log( "[RESOLVING_PROMISE]" );
-                i_tar.m_end( /** NO ARGS **/ );
+                i_tar.m_end( /** _void_ **/ );
             }else{
                 var taskcmd = i_tar.m_t_a[ 
                               i_tar.m_t_p ];  
@@ -11168,7 +11168,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     ////////////////////////////////////////////////////////
     ){if(      d_hotel13_notnode   ){ //////////////////////
     ////////////////////////////////////////////////////////
-    return new Promise( function( o_k_yes , wontsay ){
+    return new Promise( function F01( o_k_yes , wontsay ){
 
         var o_scatpng =( F_HOTEL13_NEW_SCATPNG() );
 
@@ -11186,16 +11186,22 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         var xhr = new XMLHttpRequest();
             xhr.open( "GET" , url );
+            xhr.responseType = "arraybuffer" ;
             xhr.send();
             xhr.onreadystatechange=(e)=>{
             if( xhr.readyState === (4) ){
+
+                let      ooi =( xhr.getResponseHeader( 
+                    "nsh_ooi" ));;
                 
                 if( 200 === xhr.status ){
                     o_scatpng.m_has =(  1           );
                     o_scatpng.m_png =( xhr.response );
-                    o_scatpng.m_ooi =( "nsh_ooi"    );
+                    o_scatpng.m_ooi =(     ooi      );
                 }else{
-                    o_scatpng.m_has =( 0 - 420669 );
+                    o_scatpng.m_has =( 0 - 420669   );
+                    o_scatpng.m_png =(    null      );
+                    o_scatpng.m_ooi =(     ooi      );
                 };;
                 o_k_yes( o_scatpng );
             };;};;
@@ -11203,7 +11209,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     ////////////////////////////////////////////////////////
     }else if(  d_hotel13_yesnode   ){ //////////////////////
     ////////////////////////////////////////////////////////    
-    return new Promise( function( o_k_yes , wontsay ){
+    return new Promise( function F02( o_k_yes , wontsay ){
 
         var tar = F_HOTEL13_NEW_TAR(); //: NewTaskArray  ://
         let NEX = F_HOTEL13_TAR_NEX ;  //: NextTask      ://
@@ -11225,11 +11231,11 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             if( i_err ){
                 let t_a = tar.m_t_a ;
                 t_a.push( 
-                            GET_IMGUR_URL_FROM_DATABASE );;
+                        F02_GET_IMGUR_URL_FROM_DATABASE );;
                 t_a.push( 
-                            TRY_TO_READ_FROM_IMGUR      );;
+                        F02_TRY_TO_READ_FROM_IMGUR      );;
 
-                F_HOTEL13_RUNLIST( tar ).then(()=>{
+                F_HOTEL13_TAR_RUN( tar ).then((_void_)=>{
 
                     //:::::::::::::::::::::::::::::::://
                     //:Never Fail. Just Don't Return ://
@@ -11246,7 +11252,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
         });;
         function 
-        GET_IMGUR_URL_FROM_DATABASE( i_tar ){
+        F02_GET_IMGUR_URL_FROM_DATABASE( i_tar ){
 
             if( ! ( F_HOTEL13_ICH( i_coohash ))){
             
@@ -11274,7 +11280,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
             };;
         };;
         function 
-        TRY_TO_READ_FROM_IMGUR( i_tar ){
+        F02_TRY_TO_READ_FROM_IMGUR( i_tar ){
 
             var ask = l_https.request({
 
@@ -14879,6 +14885,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
     @nsh_ooi@ : NonStandardHeader_OriginOfImage
 
     @EDCL@ : Expected_Dead_Code_Line
+
+    @_void_@ : A note to myself that the function 
+             : returns void.
+    
+    @o_vod_promise@ : A promise that when resolved,
+                    : gives ZERO ARGUMENTS to it's
+                    : "ACCEPTOR" function. ( o_k_yes() )
 
     NOW_DATE[ 2022_07_23 ]TIME[ 0336 ]PM
 
