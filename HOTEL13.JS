@@ -9692,11 +9692,13 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
         PRIVATE_F_HOTEL13_STR_EQU(
 
             i_str_001
-        ,   i_str_001
+        ,   i_str_002
         ){ 
             if( "string" != typeof i_str_001
             ||  "string" != typeof i_str_002
             ){
+                LOG("[i_str_001]:" , i_str_001 );
+                LOG("[i_str_002]:" , i_str_002 );
                 ERR("[EXPECTS_STRING_INPUT_2022]");
             };;
             var o_equ=( 0 );
