@@ -6992,7 +6992,7 @@ UPNG.encode.dither = function(sb, w, h, plte, tb, oind) {
 
         o_scatpng.m_ooi =( ooi_none );
 
-        l_fs.readfile( aimpath , (i_err,i_cof)=>{
+        l_fs.readFile( aimpath , (i_err,i_cof)=>{
 
             if( i_err ){
                 let t_a = tar.m_t_a ;
